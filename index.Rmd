@@ -3,18 +3,15 @@ title: "Marie Rivers"
 image: "MTR_pic.jpg"
 links:
   - label: LinkedIn
-    url: "https://linkedin.com/in/marie-rivers-pep8284b118"
+    url: "https://linkedin.com/in/marie-rivers-pe8284b118"
   - label: Twitter
     url: "https://twitter.com/Marie_T_Rivers"
   - label: GitHub
-    url: "https://github.com/marierivers.io"
-  - label: Email
-    url: "mailto:email@email.com"
+    url: "https://marierivers.github.io"
+ 
 output:
   postcards::jolla
 site: distill::distill_website
 ---
  
-I am a classically trained data scientist living in the San Francisco Bay Area. 
-Currently I work on the Oculus team at Facebook. I love talking about baseball, 
-true crime podcasts, and causal inference.
+I am an environmental data science student at UC Santa Barbara
