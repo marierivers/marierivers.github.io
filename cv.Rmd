@@ -1,8 +1,17 @@
 ---
-title: "cv"
+title: "CV"
 description: |
   This is my resume
+
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+```
+
+```{r}
+ggplot(data = diamonds, aes(x = carat, y = price)) +
+  geom_point(aes(color = price))
+```
+
