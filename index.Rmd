@@ -3,7 +3,7 @@ title: "Marie Rivers"
 image: "MTR_pic.jpg"
 links:
   - label: LinkedIn
-    url: "https://linkedin.com/in/marie-rivers-pe8284b118"
+    url: "https://linkedin.com/in/marie-rivers-pe-8284b118"
   - label: Twitter
     url: "https://twitter.com/Marie_T_Rivers"
   - label: GitHub
