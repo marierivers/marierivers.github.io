@@ -9,7 +9,9 @@ description: |
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 ```
+## Work Experience
 
+## Education
 ```{r}
 ggplot(data = diamonds, aes(x = carat, y = price)) +
   geom_point(aes(color = price))
