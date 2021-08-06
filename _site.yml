@@ -1,0 +1,12 @@
+name: "marierivers.github.io"
+title: "My Website"
+description: |
+  My Website
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Bananas"
+      href: index.html
+    - text: "Lyra"
+      href: about.html
+output: distill::distill_article
