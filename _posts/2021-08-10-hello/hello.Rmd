@@ -8,6 +8,8 @@ date: 08-10-2021
 output:
   distill::distill_article:
     self_contained: false
+preview: images/IMG_1280.jpg
+
 ---
 
 
