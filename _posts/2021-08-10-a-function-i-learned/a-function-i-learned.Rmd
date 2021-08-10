@@ -9,7 +9,7 @@ date: 08-10-2021
 output:
   distill::distill_article:
     self_contained: false
-preview: images/fffgenimage.JPG
+preview: images/IMG_1292.jpg
 
 ---
 
