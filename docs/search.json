@@ -6,24 +6,30 @@
       "description": "Some additional details about the website",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-08-06T11:12:56-07:00"
+      "last_modified": "2021-08-10T10:46:41-07:00"
+    },
+    {
+      "path": "blog.html",
+      "title": "My Blog",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-08-10T10:46:41-07:00"
     },
     {
       "path": "cv.html",
       "title": "CV",
       "description": "This is my resume\n",
       "author": [],
-      "contents": "\n\n\n\n\n\n\n",
-      "last_modified": "2021-08-06T11:12:59-07:00"
+      "contents": "\nWork Experience\nEducation\n\n\n\n\n\n\n",
+      "last_modified": "2021-08-10T10:46:45-07:00"
     },
     {
       "path": "index.html",
-      "title": "Marie Rivers, PE",
-      "description": "Welcome to the website. I hope you enjoy it!\n",
+      "title": "Marie Rivers",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2021-08-06T11:13:00-07:00"
+      "contents": "\n\n          \n          \n          Marie Rivers\n          \n          \n          Home\n          About\n          CV\n          Blog\n          ☰\n          \n          \n      \n        \n          \n            Marie Rivers\n          \n          \n            \n              I am currently an environmental data science student at UC Santa Barbara\n            \n            \n              I am currently an environmental data science student at UC Santa Barbara\n            \n          \n\n          \n            \n              \n                  \n                    \n                      LinkedIn\n                    \n                  \n                \n                                \n                  \n                    \n                      Twitter\n                    \n                  \n                \n                                \n                  \n                    \n                      GitHub\n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                    LinkedIn\n                  \n                \n                                \n                  \n                    Twitter\n                  \n                \n                                \n                  \n                    GitHub\n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2021-08-10T10:46:45-07:00"
     }
   ],
-  "collections": []
+  "collections": ["posts/posts.json"]
 }

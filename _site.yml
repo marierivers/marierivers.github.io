@@ -1,5 +1,5 @@
 name: "marierivers.github.io"
-title: "My Website"
+title: "Marie Rivers"
 description: |
   My Website
 output_dir: "docs"
@@ -11,6 +11,6 @@ navbar:
       href: about.html
     - text: "CV"
       href: cv.html
-    - text: "Lyra"
-      href: lyra.html
+    - text: "Blog"
+      href: blog.html
 output: distill::distill_article
