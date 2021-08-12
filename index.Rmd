@@ -14,4 +14,4 @@ output:
 site: distill::distill_website
 ---
  
-I am currently an environmental data science student at UC Santa Barbara
+Environmental Data Science student at UC Santa Barbara
