@@ -7,7 +7,7 @@ links:
   - label: Twitter
     url: "https://twitter.com/Marie_T_Rivers"
   - label: GitHub
-    url: "https://marierivers.github.io"
+    url: "https://github.com/marierivers"
  
 output:
   postcards::jolla
