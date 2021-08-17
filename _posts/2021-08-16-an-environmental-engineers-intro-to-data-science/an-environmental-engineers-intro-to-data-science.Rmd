@@ -1,0 +1,25 @@
+---
+title: "An Environmental Engineer's Intro to Data Science"
+description: |
+  Reflections on my decision to enroll in the Master of Environmental Data Science program at UC Santa Barbara's Bren School of Environmental Science & Management and first 3 weeks of class.
+author:
+  - name: Marie Rivers
+    url: {}
+date: 08-16-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Add text here
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+

@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2021-08-16-an-environmental-engineers-intro-to-data-science/",
+    "title": "An Environmental Engineer's Intro to Data Science",
+    "description": "Reflections on my decision to enroll in the Master of Environmental Data Science program at UC Santa Barbara's Bren School of Environmental Science & Management and first 3 weeks of class.",
+    "author": [
+      {
+        "name": "Marie Rivers",
+        "url": {}
+      }
+    ],
+    "date": "2021-08-16",
+    "categories": [],
+    "contents": "\nAdd text here\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-08-16T23:13:56-07:00",
+    "input_file": "an-environmental-engineers-intro-to-data-science.knit.md"
+  },
+  {
     "path": "posts/2021-08-10-a-function-i-learned/",
     "title": "A function I learned",
     "description": "A short description of the post.",
