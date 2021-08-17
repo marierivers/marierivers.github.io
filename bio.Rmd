@@ -1,7 +1,7 @@
 ---
 title: "Bio"
 description: |
-  Marie Rivers, P.E.
+  Marie Rivers, P.E. 
 ---
 
 ```{r setup, include=FALSE}
