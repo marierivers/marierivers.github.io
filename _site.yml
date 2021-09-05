@@ -3,6 +3,7 @@ title: "Marie Rivers"
 description: |
   My Website
 output_dir: "docs"
+favicon: images/favicon.ico
 navbar:
   right:
     - text: "Home"

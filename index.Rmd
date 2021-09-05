@@ -1,19 +1,28 @@
 ---
-title: "Marie Rivers, P.E."
+title: <h1>Marie Rivers, P.E.</h1>
+favicon: images/favicon.ico
 image: "MTR_casual_cropped.jpg"
-links:
-  - label: LinkedIn
-    url: "https://linkedin.com/in/marie-rivers-pe-8284b118"
-  - label: Twitter
-    url: "https://twitter.com/Marie_T_Rivers"
-  - label: GitHub
-    url: "https://github.com/marierivers"
- 
+# links:
+  # - label: LinkedIn
+    # url: "https://linkedin.com/in/marie-rivers-pe-8284b118"
+  # - label: Twitter
+    # url: "https://twitter.com/Marie_T_Rivers"
+  # - label: GitHub
+    # url: "https://github.com/marierivers"
 output:
   postcards::trestles
 site: distill::distill_website
 ---
- 
-**Environmental Data Science student at UC Santa Barbara**
+<a href="https://linkedin.com/in/marie-rivers-pe-8284b118">
+    <button class="button"> LinkedIn </button>
+</a>
+<a href="https://twitter.com/Marie_T_Rivers">
+  <button class="button"> Twitter </button>
+</a>
+<a href="https://github.com/marierivers">
+  <button class="button"> GitHub </button>
+</a>  
 
-Marie, a current environmental data science graduate student at UC Santa Barbara's Bren School of Environmental Science and Management, holds Bachelors and Masters degrees in Environmental Engineering from the University of Delaware (2009) and University of Massachusetts (2011). She is also a registered professional civil water resources engineer with 10 years of consultant experience modeling and designing municipal drinking water distribution systems. During this time, she observed the growing need for reproducible data science and visualization skills to develop innovative solutions to current and emerging environmental problems. Marie grew up on a small New England lake with high water quality in part due to a mostly forested watershed. Throughout Marie's academic and professional career, she gained a greater understanding of the factors that contribute to water quality. An initial interest in lake ecosystems expanded to a larger awareness of the interconnectedness of environmental conditions and public health. After graduation, Marie plans to use her professional experience and new data science skills to evaluate interactions between human and natural systems and support implementation of measures that protect and improve the environment by communicating these dynamics to wider audiences.
+<h5>**Environmental Data Science student at UC Santa Barbara**</h5>
+
+<h6>Marie, a current environmental data science graduate student at UC Santa Barbara's Bren School of Environmental Science and Management, holds Bachelors and Masters degrees in Environmental Engineering from the University of Delaware (2009) and University of Massachusetts (2011). She is also a registered professional civil water resources engineer with 10 years of consultant experience modeling and designing municipal drinking water distribution systems. During this time, she observed the growing need for reproducible data science and visualization skills to develop innovative solutions to current and emerging environmental problems. Marie grew up on a small New England lake with high water quality in part due to a mostly forested watershed. Throughout Marie's academic and professional career, she gained a greater understanding of the factors that contribute to water quality. An initial interest in lake ecosystems expanded to a larger awareness of the interconnectedness of environmental conditions and public health. After graduation, Marie plans to use her professional experience and new data science skills to evaluate interactions between human and natural systems and support implementation of measures that protect and improve the environment by communicating these dynamics to wider audiences.</h6>

@@ -11,8 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
     <style type="text/css">body {font-family: 'Roboto Slab', serif;}</style>
 
-    <title>Marie Rivers, P.E.</title>
+    <title><h1>
+Marie Rivers, P.E.
+</h1></title>
 
+          <link rel="shortcut icon" href=images/favicon.ico>
     
           <!--radix_placeholder_navigation_in_header-->
           <meta name="distill:offset" content=""/>
@@ -784,17 +787,78 @@
             --bkgd-color:       #969680; /* footer backgroup color */
           }
 
+          /*--Navbar--*/
+          .distill-site-header{
+            padding: 20px 0px;
+            /* background-image: linear-gradient(to bottom, #636354, #D2CBBA); */
+          }
+
           /*-- Additional custom styles --*/
           /* Add any additional CSS rules below                      */
 
           body {
             background-color: #D2CBBA; /* homepage backgroup color */
+            font-family: ; /* update this */
+            color: #636354; /* update this */
           }
 
-          h3, h2 {
+          h1,h5{
+            color: #636354
+          }
+          h6{
+            color: #636354;
+            text-align: justify;
+          }
+
+
+          h3{
             letter-scacing: 2px;
             color: #C41A60;
-          }</style>
+          }
+
+          /* Buttons on home page */
+          .button {
+            background-color: #A5A58D;
+            border: none;
+            color: #CB997E;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+          }
+
+          .button:hover {
+            background-color: #1A2F6D;
+            color: #882913;
+          }
+
+          /* .btn-outline-dark {
+              background-color: #4682b4;
+              color: #fff;
+              border: 0px;
+          }
+
+          .btn-outline-dark:hover {
+              background-color: #6c9dc6;
+          } */
+
+          /* .button{
+            background-color: #0091AD;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+          }
+
+          .button:hover {
+            background-color: #EBD4CB;
+            color: #114B5F;
+          } */</style>
           <style type="text/css">
           /* base style */
 
@@ -985,33 +1049,14 @@
               <img src=MTR_casual_cropped.jpg style="height:15rem" class="rounded">
             </div>
             <div class="p-2">
-              <h1>Marie Rivers, P.E.</h1>
+              <h1><h1>
+Marie Rivers, P.E.
+</h1></h1>
             </div>
             <hr style="width:60%;"/>
             <div class="p-2">
               <div id="icon-list">
                 <ul class="list-inline">
-                                    <li class="list-inline-item">
-                    <a href=https://linkedin.com/in/marie-rivers-pe-8284b118>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        LinkedIn
-                      </button>
-                    </a>
-                  </li>
-                                    <li class="list-inline-item">
-                    <a href=https://twitter.com/Marie_T_Rivers>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        Twitter
-                      </button>
-                    </a>
-                  </li>
-                                    <li class="list-inline-item">
-                    <a href=https://github.com/marierivers>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        GitHub
-                      </button>
-                    </a>
-                  </li>
                                   </ul>
               </div>
             </div>
@@ -1020,8 +1065,13 @@
         <div class="d-flex flex-column vh-100 border-left"></div>
         <div class="d-flex flex-column col px-5 align-items-center align-self-center mh-100" style="overflow-y: scroll;">
           <div class="my-5" id="content">
-            <p><strong>Environmental Data Science student at UC Santa Barbara</strong></p>
-            <p>Marie, a current environmental data science graduate student at UC Santa Barbara’s Bren School of Environmental Science and Management, holds Bachelors and Masters degrees in Environmental Engineering from the University of Delaware (2009) and University of Massachusetts (2011). She is also a registered professional civil water resources engineer with 10 years of consultant experience modeling and designing municipal drinking water distribution systems. During this time, she observed the growing need for reproducible data science and visualization skills to develop innovative solutions to current and emerging environmental problems. Marie grew up on a small New England lake with high water quality in part due to a mostly forested watershed. Throughout Marie’s academic and professional career, she gained a greater understanding of the factors that contribute to water quality. An initial interest in lake ecosystems expanded to a larger awareness of the interconnectedness of environmental conditions and public health. After graduation, Marie plans to use her professional experience and new data science skills to evaluate interactions between human and natural systems and support implementation of measures that protect and improve the environment by communicating these dynamics to wider audiences.</p>
+            <p><a href="https://linkedin.com/in/marie-rivers-pe-8284b118"> <button class="button"> LinkedIn </button> </a> <a href="https://twitter.com/Marie_T_Rivers"> <button class="button"> Twitter </button> </a> <a href="https://github.com/marierivers"> <button class="button"> GitHub </button> </a></p>
+            <h5>
+            <strong>Environmental Data Science student at UC Santa Barbara</strong>
+            </h5>
+            <h6>
+            Marie, a current environmental data science graduate student at UC Santa Barbara’s Bren School of Environmental Science and Management, holds Bachelors and Masters degrees in Environmental Engineering from the University of Delaware (2009) and University of Massachusetts (2011). She is also a registered professional civil water resources engineer with 10 years of consultant experience modeling and designing municipal drinking water distribution systems. During this time, she observed the growing need for reproducible data science and visualization skills to develop innovative solutions to current and emerging environmental problems. Marie grew up on a small New England lake with high water quality in part due to a mostly forested watershed. Throughout Marie’s academic and professional career, she gained a greater understanding of the factors that contribute to water quality. An initial interest in lake ecosystems expanded to a larger awareness of the interconnectedness of environmental conditions and public health. After graduation, Marie plans to use her professional experience and new data science skills to evaluate interactions between human and natural systems and support implementation of measures that protect and improve the environment by communicating these dynamics to wider audiences.
+            </h6>
           </div>
         </div>
       </div>
@@ -1035,34 +1085,26 @@
               <img src=MTR_casual_cropped.jpg style="height:15rem" class="rounded">
             </div>
             <div class="p-2 text-center">
-              <h1>Marie Rivers, P.E.</h1>
+              <h1><h1>
+Marie Rivers, P.E.
+</h1></h1>
             </div>
             <hr style="width:60%;"/>
 
             <div class="row justify-content-center align-items-center">
               <div class="col-8 p-1 text-center">
                 <div class="list-group">
-                                    <a href=https://linkedin.com/in/marie-rivers-pe-8284b118>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
-                      LinkedIn
-                    </button>
-                  </a>
-                                    <a href=https://twitter.com/Marie_T_Rivers>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
-                      Twitter
-                    </button>
-                  </a>
-                                    <a href=https://github.com/marierivers>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
-                      GitHub
-                    </button>
-                  </a>
                                   </div>
               </div>
             </div>
             <div class="p pt-4 px-5">
-              <p><strong>Environmental Data Science student at UC Santa Barbara</strong></p>
-              <p>Marie, a current environmental data science graduate student at UC Santa Barbara’s Bren School of Environmental Science and Management, holds Bachelors and Masters degrees in Environmental Engineering from the University of Delaware (2009) and University of Massachusetts (2011). She is also a registered professional civil water resources engineer with 10 years of consultant experience modeling and designing municipal drinking water distribution systems. During this time, she observed the growing need for reproducible data science and visualization skills to develop innovative solutions to current and emerging environmental problems. Marie grew up on a small New England lake with high water quality in part due to a mostly forested watershed. Throughout Marie’s academic and professional career, she gained a greater understanding of the factors that contribute to water quality. An initial interest in lake ecosystems expanded to a larger awareness of the interconnectedness of environmental conditions and public health. After graduation, Marie plans to use her professional experience and new data science skills to evaluate interactions between human and natural systems and support implementation of measures that protect and improve the environment by communicating these dynamics to wider audiences.</p>
+              <p><a href="https://linkedin.com/in/marie-rivers-pe-8284b118"> <button class="button"> LinkedIn </button> </a> <a href="https://twitter.com/Marie_T_Rivers"> <button class="button"> Twitter </button> </a> <a href="https://github.com/marierivers"> <button class="button"> GitHub </button> </a></p>
+              <h5>
+              <strong>Environmental Data Science student at UC Santa Barbara</strong>
+              </h5>
+              <h6>
+              Marie, a current environmental data science graduate student at UC Santa Barbara’s Bren School of Environmental Science and Management, holds Bachelors and Masters degrees in Environmental Engineering from the University of Delaware (2009) and University of Massachusetts (2011). She is also a registered professional civil water resources engineer with 10 years of consultant experience modeling and designing municipal drinking water distribution systems. During this time, she observed the growing need for reproducible data science and visualization skills to develop innovative solutions to current and emerging environmental problems. Marie grew up on a small New England lake with high water quality in part due to a mostly forested watershed. Throughout Marie’s academic and professional career, she gained a greater understanding of the factors that contribute to water quality. An initial interest in lake ecosystems expanded to a larger awareness of the interconnectedness of environmental conditions and public health. After graduation, Marie plans to use her professional experience and new data science skills to evaluate interactions between human and natural systems and support implementation of measures that protect and improve the environment by communicating these dynamics to wider audiences.
+              </h6>
             </div>
         </div>
       </div>
