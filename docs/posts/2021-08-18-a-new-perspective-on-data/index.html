@@ -2142,9 +2142,9 @@ html {
   --aside-size:      12px;
   --fig-cap-size:    13px;
   /*-- Main font colors --*/
-  --title-color:     #000000;
-  --header-color:    rgba(220, 0, 0, 0.8);
-  --body-color:      rgba(0, 200, 0, 0.8);
+  --title-color:     #882913; /* blog post titles on blog post page */
+  --header-color:    #882913; /* blog post titles on main blog page */
+  --body-color:      rgba(0, 0, 0, 0.8); /* body text of blog posts*/
   --aside-color:     rgba(0, 0, 0, 0.6);
   --fig-cap-color:   rgba(0, 0, 0, 0.6);
   /*-- Specify custom fonts ~~~ must be imported above   --*/
@@ -2157,7 +2157,7 @@ html {
 /*-- ARTICLE METADATA --*/
 d-byline {
   --heading-size:    0.6rem;
-  --heading-color:   rgba(0, 0, 100, 0.5);
+  --heading-color:   rgba(0, 0, 0, 0.5);
   --body-size:       0.8rem;
   --body-color:      rgba(0, 0, 0, 0.8);
 }
@@ -2171,9 +2171,9 @@ d-byline {
 /*-- ARTICLE APPENDIX --*/
 d-appendix {
   --heading-size:    15px;
-  --heading-color:   rgba(0, 50, 40, 0.65);
+  --heading-color:   rgba(0, 0, 0, 0.65);
   --text-size:       0.8em;
-  --text-color:      rgba(20, 20, 0, 0.5);
+  --text-color:      rgba(0, 0, 0, 0.5);
 }
 
 /*-- WEBSITE HEADER + FOOTER --*/
@@ -2181,24 +2181,24 @@ d-appendix {
 
 .distill-site-header {
   --title-size:       18px;
-  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-color:       #E7D29C; /* home page header bar text */
   --text-size:        15px;
-  --hover-color:      white;
-  --bkgd-color:       #647560; /* header bar color */
+  --hover-color:      #CFA437; /*hover color for home page header bar text*/
+  --bkgd-color:       #1A2F6D; /* header bar color */
 }
 
 .distill-site-footer {
-  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-color:       #E7D29D; /* footer text color */
   --text-size:        15px;
-  --hover-color:      white;
-  --bkgd-color:       #E1E5F2;
+  --hover-color:      #CFA437; /* hover color for link in footer*/
+  --bkgd-color:       #1A2F6D; /* footer backgroup color */
 }
 
 /*-- Additional custom styles --*/
 /* Add any additional CSS rules below                      */
 
 body {
-  background-color: #e9ecef;
+  background-color: #E7D29C; /* homepage backgroup color */
 }
 
 h3, h2 {
@@ -2394,8 +2394,8 @@ d-appendix d-footnote-list a.footnote-backlink {
 </div>
 <div class="nav-right">
 <a href="../../index.html">Home</a>
-<a href="../../cv.html">CV</a>
 <a href="../../blog.html">Blog</a>
+<a href="../../cv.html">CV</a>
 <a href="https://github.com/marierivers/marierivers.github.io">
 <i class="fab fa-github" aria-hidden="true"></i>
 </a>
@@ -2452,7 +2452,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
-  <p>© 2021 Marie Rivers This website was made with <a href="https://rstudio.github.io/distill/">distill by RStudio</a></p>
+  <p>This website was made with <a href="https://rstudio.github.io/distill/">distill by RStudio</a></p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 
