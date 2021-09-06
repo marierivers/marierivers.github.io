@@ -2,26 +2,28 @@
 title: <h1>Marie Rivers, P.E.</h1>
 favicon: images/favicon.ico
 image: "MTR_casual_cropped.jpg"
-# links:
-  # - label: LinkedIn
-    # url: "https://linkedin.com/in/marie-rivers-pe-8284b118"
-  # - label: Twitter
-    # url: "https://twitter.com/Marie_T_Rivers"
-  # - label: GitHub
-    # url: "https://github.com/marierivers"
+links:
+  - label: '<button class="fab fa-linkedin"></button> LinkedIn'
+    url: "https://linkedin.com/in/marie-rivers-pe-8284b118"
+  - label: '<button class="button"> Twitter </button>'
+    url: "https://twitter.com/Marie_T_Rivers"
+  - label: '<button class="button1"> GitHub </button> '
+    url: "https://github.com/marierivers"
 output:
   postcards::trestles
 site: distill::distill_website
+
 ---
-<a href="https://linkedin.com/in/marie-rivers-pe-8284b118">
+  <a href="https://linkedin.com/in/marie-rivers-pe-8284b118">
     <button class="button"> LinkedIn </button>
-</a>
-<a href="https://twitter.com/Marie_T_Rivers">
-  <button class="button"> Twitter </button>
-</a>
-<a href="https://github.com/marierivers">
-  <button class="button"> GitHub </button>
-</a>  
+  </a>
+  <a href="https://twitter.com/Marie_T_Rivers">
+    <button class="button"> Twitter </button>
+  </a>
+  <a href="https://github.com/marierivers">
+    <button class="button"> GitHub </button>
+  </a>  
+
 
 <h5>**Environmental Data Science student at UC Santa Barbara**</h5>
 
