@@ -64,14 +64,14 @@ d-appendix {
   --text-color:       #FFF1E6; /* home page header bar text */
   --text-size:        15px;
   --hover-color:      #636354; /*hover color for home page header bar text*/
-  --bkgd-color:       #969680; /* header bar color */
+  --bkgd-color:       #A5A58D; /* header bar color */
 }
 
 .distill-site-footer {
   --text-color:       #FFF1E6; /* footer text color */
   --text-size:        15px;
   --hover-color:      #636354; /* hover color for link in footer*/
-  --bkgd-color:       #969680; /* footer backgroup color */
+  --bkgd-color:       #A5A58D; /* footer backgroup color */
 }
 
 /*--Navbar--*/
@@ -115,8 +115,8 @@ h3{
   font-size: 16px;
 }
 .button:hover {
-  background-color: #1A2F6D;
-  color: #882913;
+  background-color: #636354;
+  color: #A5A58D;
 }
 .button1 {
   background-color: #2847a4;
