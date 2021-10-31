@@ -118,7 +118,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["a-new-perspective-on-data_files/anchor-4.2.2/anchor.min.js","a-new-perspective-on-data_files/bowser-1.9.3/bowser.min.js","a-new-perspective-on-data_files/distill-2.2.21/template.v2.js","a-new-perspective-on-data_files/header-attrs-2.9/header-attrs.js","a-new-perspective-on-data_files/jquery-1.11.3/jquery.min.js","a-new-perspective-on-data_files/popper-2.6.0/popper.min.js","a-new-perspective-on-data_files/tippy-6.2.7/tippy-bundle.umd.min.js","a-new-perspective-on-data_files/tippy-6.2.7/tippy-light-border.css","a-new-perspective-on-data_files/tippy-6.2.7/tippy.css","a-new-perspective-on-data_files/tippy-6.2.7/tippy.umd.min.js","a-new-perspective-on-data_files/webcomponents-2.0.0/webcomponents.js","images/IMG_2596.jpg","IMG_2596.jpg"]}
+  {"type":"character","attributes":{},"value":["a-new-perspective-on-data_files/anchor-4.2.2/anchor.min.js","a-new-perspective-on-data_files/bowser-1.9.3/bowser.min.js","a-new-perspective-on-data_files/distill-2.2.21/template.v2.js","a-new-perspective-on-data_files/header-attrs-2.10/header-attrs.js","a-new-perspective-on-data_files/header-attrs-2.9/header-attrs.js","a-new-perspective-on-data_files/jquery-1.11.3/jquery.min.js","a-new-perspective-on-data_files/popper-2.6.0/popper.min.js","a-new-perspective-on-data_files/tippy-6.2.7/tippy-bundle.umd.min.js","a-new-perspective-on-data_files/tippy-6.2.7/tippy-light-border.css","a-new-perspective-on-data_files/tippy-6.2.7/tippy.css","a-new-perspective-on-data_files/tippy-6.2.7/tippy.umd.min.js","a-new-perspective-on-data_files/webcomponents-2.0.0/webcomponents.js","images/IMG_2596.jpg","IMG_2596.jpg"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2184,9 +2184,9 @@ d-appendix {
 /* These properties only apply to Distill sites and blogs  */
 
 .distill-site-header {
-  --title-size:       20px;
+  --title-size:       16px;
   --text-color:       #ffffff; /* home page header bar text */
-  --text-size:        20px;
+  --text-size:        16px;
   --hover-color:      white; /*hover color for home page header bar text*/
   --bkgd-color:       #2d6a4f; /* header bar color */
 }
@@ -2198,8 +2198,6 @@ d-appendix {
   --bkgd-color:       #2d6a4f; /* footer backgroup color */
 }
 
-
-
 /*-- Additional custom styles --*/
 /* Add any additional CSS rules below                      */
 
@@ -2209,14 +2207,21 @@ body {
   color: #18392b; /* update this */
 }
 
-h1,h5{
+h1{ /* my name on homepage*/
+  color: #2d6a4f;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 16;
+}
+
+h5{
   color: #18392b
 }
+
 h6{
   color: #18392b;
   text-align: justify;
 }
-
 
 h3{
   letter-scacing: 2px;
@@ -2224,6 +2229,10 @@ h3{
 }
 
 .distill-site-nav a:hover {
+  font-weight: 600;
+}
+
+.distill-site-footer a:hover {
   font-weight: 600;
 }
 

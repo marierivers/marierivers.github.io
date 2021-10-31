@@ -63,9 +63,9 @@ d-appendix {
 /* These properties only apply to Distill sites and blogs  */
 
 .distill-site-header {
-  --title-size:       20px;
+  --title-size:       16px;
   --text-color:       #ffffff; /* home page header bar text */
-  --text-size:        20px;
+  --text-size:        16px;
   --hover-color:      white; /*hover color for home page header bar text*/
   --bkgd-color:       #2d6a4f; /* header bar color */
 }
@@ -77,8 +77,6 @@ d-appendix {
   --bkgd-color:       #2d6a4f; /* footer backgroup color */
 }
 
-
-
 /*-- Additional custom styles --*/
 /* Add any additional CSS rules below                      */
 
@@ -88,14 +86,21 @@ body {
   color: #18392b; /* update this */
 }
 
-h1,h5{
+h1{ /* my name on homepage*/
+  color: #2d6a4f;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 16;
+}
+
+h5{
   color: #18392b
 }
+
 h6{
   color: #18392b;
   text-align: justify;
 }
-
 
 h3{
   letter-scacing: 2px;
@@ -103,6 +108,10 @@ h3{
 }
 
 .distill-site-nav a:hover {
+  font-weight: 600;
+}
+
+.distill-site-footer a:hover {
   font-weight: 600;
 }
 
