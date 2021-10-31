@@ -1,13 +1,13 @@
 ---
-title: <h1>Marie Rivers, P.E.</h1>
+title: <h1>Marie Rivers, PE</h1>
 favicon: images/favicon.ico
 image: "MTR_casual_cropped.jpg"
 links:
-  - label: '<button class=button>LinkedIn</button>'
+  - label: '<i class="fab fa-linkedin"></i>LinkedIn'
     url: "https://linkedin.com/in/marie-rivers-pe-8284b118"
-  - label: '<button class="button"> Twitter </button>'
+  - label: '<i class="fab fa-twitter"></i> Twitter'
     url: "https://twitter.com/Marie_T_Rivers"
-  - label: '<button class="button"> GitHub </button>'
+  - label: '<i class="fab fa-github"></i> GitHub'
     url: "https://github.com/marierivers"
 output:
   postcards::trestles

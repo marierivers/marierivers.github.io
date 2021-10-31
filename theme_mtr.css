@@ -76,7 +76,7 @@ d-appendix {
 
 /*--Navbar--*/
 .distill-site-header{
-  padding: 20px 0px;
+  padding: 18px 0px;
   /* background-image: linear-gradient(to bottom, #636354, #D2CBBA); */
 }
 
@@ -104,31 +104,13 @@ h3{
 }
 
 /* Buttons on home page */
-.button {
-  background-color: #A5A58D;
-  border: none;
-  color: #636354;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+.btn-outline-dark {
+    background-color: #4682b4;
+    color: #fff;
+    border: 0px;
 }
-.button:hover {
-  background-color: #636354;
-  color: #A5A58D;
+
+.btn-outline-dark:hover {
+    background-color: #6c9dc6;
 }
-.button1 {
-  background-color: #2847a4;
-  border: none;
-  color: #CB997E;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
-.button1:hover {
-  background-color: #9091a0;
-  color: #882913;
-}
+

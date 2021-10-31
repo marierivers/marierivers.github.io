@@ -1,5 +1,5 @@
 name: "marierivers.github.io"
-title: "Marie Rivers"
+title: "Marie Rivers, PE"
 description: |
   My Website
 output_dir: "docs"
@@ -10,8 +10,8 @@ navbar:
       href: index.html
     # - text: "Bio"
     #  href: bio.html
-    - text: "Blog"
-      href: blog.html
+    - text: "Posts"
+      href: posts.html
     - text: "CV"
       href: cv.html
     - icon: fab fa-github
