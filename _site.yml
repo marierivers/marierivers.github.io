@@ -5,6 +5,7 @@ description: |
 output_dir: "docs"
 favicon: images/favicon.ico
 navbar:
+  search: false
   right:
     - text: "Home"
       href: index.html

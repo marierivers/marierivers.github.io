@@ -120,9 +120,12 @@ h3{
     background-color: #2d6a4f;
     color: #ffffff;
     border: 0px;
+    /*border-color: black;*/
+    /*border-width: 2px;*/
 }
 
 .btn-outline-dark:hover {
     background-color: #62937c;
+    color: #ffffff;
 }
 
