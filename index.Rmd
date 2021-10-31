@@ -1,5 +1,5 @@
 ---
-title: <h1>Marie Rivers, PE</h1>
+title: "Marie T. Rivers, PE"
 favicon: images/favicon.ico
 image: "MTR_casual_cropped.jpg"
 links:

@@ -6,4 +6,4 @@ title: "Curriculum Vitae"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
-[**Download CV**](mrivers_cv_2021_09_01.pdf)
+[**Download CV**](Rivers_Marie_cv.pdf)
