@@ -61,56 +61,52 @@ d-appendix {
 
 .distill-site-header {
   --title-size:       18px;
-  --text-color:       #FFF1E6; /* home page header bar text */
+  --text-color:       #ffffff; /* home page header bar text */
   --text-size:        15px;
-  --hover-color:      #636354; /*hover color for home page header bar text*/
-  --bkgd-color:       #A5A58D; /* header bar color */
+  --hover-color:      #62937c; /*hover color for home page header bar text*/
+  --bkgd-color:       #2d6a4f; /* header bar color */
 }
 
 .distill-site-footer {
-  --text-color:       #FFF1E6; /* footer text color */
+  --text-color:       #ffffff; /* footer text color */
   --text-size:        15px;
-  --hover-color:      #636354; /* hover color for link in footer*/
-  --bkgd-color:       #A5A58D; /* footer backgroup color */
+  --hover-color:      #62937c; /* hover color for link in footer*/
+  --bkgd-color:       #2d6a4f; /* footer backgroup color */
 }
 
-/*--Navbar--*/
-.distill-site-header{
-  padding: 18px 0px;
-  /* background-image: linear-gradient(to bottom, #636354, #D2CBBA); */
-}
+
 
 /*-- Additional custom styles --*/
 /* Add any additional CSS rules below                      */
 
 body {
-  background-color: #D2CBBA; /* homepage backgroup color */
+  background-color: #ffffff; /* homepage backgroup color */
   font-family: ; /* update this */
   color: #636354; /* update this */
 }
 
 h1,h5{
-  color: #636354
+  color: #18392b
 }
 h6{
-  color: #636354;
+  color: #18392b;
   text-align: justify;
 }
 
 
 h3{
   letter-scacing: 2px;
-  color: #C41A60;
+  color: #18392b;
 }
 
 /* Buttons on home page */
 .btn-outline-dark {
-    background-color: #4682b4;
-    color: #fff;
+    background-color: #2d6a4f;
+    color: #ffffff;
     border: 0px;
 }
 
 .btn-outline-dark:hover {
-    background-color: #6c9dc6;
+    background-color: #62937c;
 }
 

@@ -3,7 +3,7 @@ title: <h1>Marie Rivers, PE</h1>
 favicon: images/favicon.ico
 image: "MTR_casual_cropped.jpg"
 links:
-  - label: '<i class="fab fa-linkedin"></i>LinkedIn'
+  - label: '<i class="fab fa-linkedin"></i> LinkedIn'
     url: "https://linkedin.com/in/marie-rivers-pe-8284b118"
   - label: '<i class="fab fa-twitter"></i> Twitter'
     url: "https://twitter.com/Marie_T_Rivers"
