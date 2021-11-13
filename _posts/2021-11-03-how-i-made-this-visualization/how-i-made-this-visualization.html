@@ -86,377 +86,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Marie T. Rivers, PE: Posts</title>
+  <title>How I made this visualization</title>
+
+  <meta property="description" itemprop="description" content="Alaska household languages data"/>
 
 
-  <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico"/>
-
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-11-03"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-11-03"/>
+  <meta name="article:author" content="Marie Rivers"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Marie T. Rivers, PE: Posts"/>
+  <meta property="og:title" content="How I made this visualization"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Alaska household languages data"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Marie T. Rivers, PE"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Marie T. Rivers, PE: Posts"/>
+  <meta property="twitter:title" content="How I made this visualization"/>
+  <meta property="twitter:description" content="Alaska household languages data"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","listing"]}},"value":[{"type":"character","attributes":{},"value":["Posts"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview"]}},"value":[{"type":"character","attributes":{},"value":["How I made this visualization"]},{"type":"character","attributes":{},"value":["Alaska household languages data\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Marie Rivers"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["11-03-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["images/only_english_plot.png"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
-  <!--radix_placeholder_navigation_in_header-->
-  <meta name="distill:offset" content=""/>
-
-  <script type="application/javascript">
-
-    window.headroom_prevent_pin = false;
-
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        tolerance: 5,
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["how-i-made-this-visualization_files/anchor-4.2.2/anchor.min.js","how-i-made-this-visualization_files/bowser-1.9.3/bowser.min.js","how-i-made-this-visualization_files/distill-2.2.21/template.v2.js","how-i-made-this-visualization_files/header-attrs-2.10/header-attrs.js","how-i-made-this-visualization_files/jquery-1.11.3/jquery.min.js","how-i-made-this-visualization_files/popper-2.6.0/popper.min.js","how-i-made-this-visualization_files/tippy-6.2.7/tippy-bundle.umd.min.js","how-i-made-this-visualization_files/tippy-6.2.7/tippy-light-border.css","how-i-made-this-visualization_files/tippy-6.2.7/tippy.css","how-i-made-this-visualization_files/tippy-6.2.7/tippy.umd.min.js","how-i-made-this-visualization_files/webcomponents-2.0.0/webcomponents.js","images/only_english_plot.png"]}
   </script>
-
-  <style type="text/css">
-
-  /* Theme (user-documented overrideables for nav appearance) */
-
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #0F2E3D;
-    font-size: 15px;
-    font-weight: 300;
-  }
-
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .distill-site-nav a:hover {
-    color: white;
-  }
-
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-
-  .distill-site-header {
-
-  }
-
-  .distill-site-footer {
-
-  }
-
-
-  /* Site Header */
-
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-
-
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-
-  .distill-site-header .title {
-    font-size: 18px;
-    min-width: 150px;
-  }
-
-  .distill-site-header .logo {
-    padding: 0;
-  }
-
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-
-
-
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-
-
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-dropdown-active {
-    display: block;
-  }
-
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative; min-height: 500px; }
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-
-  /* Site Footer */
-
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-
-  /* Headroom */
-
-  d-title {
-    padding-top: 6rem;
-  }
-
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-
-  .headroom--unpinned {
-    top: -100px;
-  }
-
-  .headroom--pinned {
-    top: 0;
-  }
-
-  /* adjust viewport for navbar height */
-  /* helps vertically center bootstrap (non-distill) content */
-  .min-vh-100 {
-    min-height: calc(100vh - 100px) !important;
-  }
-
-  </style>
-
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+  <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -1771,616 +1433,143 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </script>
 
-  <style type="text/css">
-  /* base variables */
-
-  /* Edit the CSS properties in this file to create a custom
-     Distill theme. Only edit values in the right column
-     for each row; values shown are the CSS defaults.
-     To return any property to the default,
-     you may set its value to: unset
-     All rows must end with a semi-colon.                      */
-
-  /* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-
-
-
-  html {
-    /*-- Main font sizes --*/
-    --title-size:      50px;
-    --body-size:       1.06rem;
-    --code-size:       14px;
-    --aside-size:      12px;
-    --fig-cap-size:    13px;
-    /*-- Main font colors --*/
-    --title-color:     #000000;
-    --header-color:    rgba(0, 0, 0, 0.8);
-    --body-color:      rgba(0, 0, 0, 0.8);
-    --aside-color:     rgba(0, 0, 0, 0.6);
-    --fig-cap-color:   rgba(0, 0, 0, 0.6);
-    /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    sans-serif;
-    --mono-font:       monospace;
-    --body-font:       sans-serif;
-    --navbar-font:     sans-serif;  /* websites + blogs only */
-  }
-
-  /*-- ARTICLE METADATA --*/
-  d-byline {
-    --heading-size:    0.6rem;
-    --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       0.8rem;
-    --body-color:      rgba(0, 0, 0, 0.8);
-  }
-
-  /*-- ARTICLE TABLE OF CONTENTS --*/
-  .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
-  }
-
-  /*-- ARTICLE APPENDIX --*/
-  d-appendix {
-    --heading-size:    15px;
-    --heading-color:   rgba(0, 0, 0, 0.65);
-    --text-size:       0.8em;
-    --text-color:      rgba(0, 0, 0, 0.5);
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  /* These properties only apply to Distill sites and blogs  */
-
-  .distill-site-header {
-    --title-size:       18px;
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  .distill-site-footer {
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below                      */
-  </style>
-  <style type="text/css">
-  /* base variables */
-
-  /* Edit the CSS properties in this file to create a custom
-     Distill theme. Only edit values in the right column
-     for each row; values shown are the CSS defaults.
-     To return any property to the default,
-     you may set its value to: unset
-     All rows must end with a semi-colon.                      */
-
-  /* Optional: embed custom fonts here with `@import`          */
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat');
-  @import url('https://fonts.googleapis.com/css2?family=Monosphere');
-  @import url('https://fonts.googleapis.com/css2?family=Quicksand');
-
-  /* This must remain at the top of this file.                 */
-
-
-  html {
-    /*-- Main font sizes --*/
-    --title-size:      50px;
-    --body-size:       1.06rem;
-    --code-size:       14px;
-    --aside-size:      12px;
-    --fig-cap-size:    13px;
-    /*-- Main font colors --*/
-    --title-color:     #18392b; /* blog post titles on blog post page */
-    --header-color:    #18392b; /* blog post titles on main blog page */
-    --body-color:      rgba(0, 0, 0, 0.8); /* body text of blog posts*/
-    --aside-color:     rgba(0, 0, 0, 0.6);
-    --fig-cap-color:   rgba(0, 0, 0, 0.6);
-    /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    "Montserrat", sans-serif;
-    --mono-font:       "Montserrat", monospace;
-    --body-font:       "Montserrat", sans-serif;
-    --navbar-font:     "Montserrat", sans-serif;  /* websites + blogs only */
-  }
-
-  /*-- ARTICLE METADATA --*/
-  d-byline {
-    --heading-size:    0.6rem;
-    --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       0.8rem;
-    --body-color:      rgba(0, 0, 0, 0.8);
-  }
-
-  /*-- ARTICLE TABLE OF CONTENTS --*/
-  .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
-  }
-
-  /*-- ARTICLE APPENDIX --*/
-  d-appendix {
-    --heading-size:    15px;
-    --heading-color:   rgba(0, 0, 0, 0.65);
-    --text-size:       0.8em;
-    --text-color:      rgba(0, 0, 0, 0.5);
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  /* These properties only apply to Distill sites and blogs  */
-
-  .distill-site-header {
-    --title-size:       16px;
-    --text-color:       #ffffff; /* home page header bar text */
-    --text-size:        16px;
-    --hover-color:      white; /*hover color for home page header bar text*/
-    --bkgd-color:       #2d6a4f; /* header bar color */
-  }
-
-  .distill-site-footer {
-    --text-color:       #ffffff; /* footer text color */
-    --text-size:        15px;
-    --hover-color:      #ffffff; /* hover color for link in footer*/
-    --bkgd-color:       #2d6a4f; /* footer backgroup color */
-  }
-
-  /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below                      */
-
-  body {
-    background-color: #ffffff; /* homepage background color */
-    font-family: ; /* update this */
-    color: #18392b; /* update this */
-  }
-
-  h1{ /* my name on homepage*/
-    color: #2d6a4f;
-    font-weight: 800;
-    letter-spacing: 2px;
-    font-size: 16;
-  }
-
-  h5{
-    color: #18392b
-  }
-
-  h6{
-    color: #18392b;
-    text-align: justify;
-  }
-
-  h3{
-    letter-scacing: 2px;
-    color: #18392b;
-  }
-
-  .distill-site-nav a:hover {
-    font-weight: 1000;
-  }
-
-  .distill-site-footer a:hover {
-    font-weight: 1000;
-  }
-
-  /* Buttons on home page */
-  .btn-outline-dark {
-      background-color: #2d6a4f;
-      color: #ffffff;
-      border: 0px;
-      /*border-color: black;*/
-      /*border-width: 2px;*/
-  }
-
-  .btn-outline-dark:hover {
-      background-color: #62937c;
-      color: #ffffff;
-  }
-  </style>
-  <style type="text/css">
-  /* base style */
-
-  /* FONT FAMILIES */
-
-  :root {
-    --heading-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-    --mono-default: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    --body-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-  }
-
-  body,
-  .posts-list .post-preview p,
-  .posts-list .description p {
-    font-family: var(--body-font), var(--body-default);
-  }
-
-  h1, h2, h3, h4, h5, h6,
-  .posts-list .post-preview h2,
-  .posts-list .description h2 {
-    font-family: var(--heading-font), var(--heading-default);
-  }
-
-  d-article div.sourceCode code,
-  d-article pre code {
-    font-family: var(--mono-font), var(--mono-default);
-  }
-
-
-  /*-- TITLE --*/
-  d-title h1,
-  .posts-list > h1 {
-    color: var(--title-color, black);
-  }
-
-  d-title h1 {
-    font-size: var(--title-size, 50px);
-  }
-
-  /*-- HEADERS --*/
-  d-article h1,
-  d-article h2,
-  d-article h3,
-  d-article h4,
-  d-article h5,
-  d-article h6 {
-    color: var(--header-color, rgba(0, 0, 0, 0.8));
-  }
-
-  /*-- BODY --*/
-  d-article > p,  /* only text inside of <p> tags */
-  d-article > ul, /* lists */
-  d-article > ol {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-    font-size: var(--body-size, 1.06rem);
-  }
-
-
-  /*-- CODE --*/
-  d-article div.sourceCode code,
-  d-article pre code {
-    font-size: var(--code-size, 14px);
-  }
-
-  /*-- ASIDE --*/
-  d-article aside {
-    font-size: var(--aside-size, 12px);
-    color: var(--aside-color, rgba(0, 0, 0, 0.6));
-  }
-
-  /*-- FIGURE CAPTIONS --*/
-  figure .caption,
-  figure figcaption,
-  .figure .caption {
-    font-size: var(--fig-cap-size, 13px);
-    color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
-  }
-
-  /*-- METADATA --*/
-  d-byline h3 {
-    font-size: var(--heading-size, 0.6rem);
-    color: var(--heading-color, rgba(0, 0, 0, 0.5));
-  }
-
-  d-byline {
-    font-size: var(--body-size, 0.8rem);
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-  }
-
-  d-byline a,
-  d-article d-byline a {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-  }
-
-  /*-- TABLE OF CONTENTS --*/
-  .d-contents nav h3 {
-    font-size: var(--heading-size, 18px);
-  }
-
-  .d-contents nav a {
-    font-size: var(--contents-size, 13px);
-  }
-
-  /*-- APPENDIX --*/
-  d-appendix h3 {
-    font-size: var(--heading-size, 15px);
-    color: var(--heading-color, rgba(0, 0, 0, 0.65));
-  }
-
-  d-appendix {
-    font-size: var(--text-size, 0.8em);
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
-  }
-
-  d-appendix d-footnote-list a.footnote-backlink {
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  .distill-site-header .title {
-    font-size: var(--title-size, 18px);
-    font-family: var(--navbar-font), var(--heading-default);
-  }
-
-  .distill-site-header a,
-  .nav-dropdown .nav-dropbtn {
-    font-family: var(--navbar-font), var(--heading-default);
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    font-size: var(--text-size, 15px);
-  }
-
-  .distill-site-header a:hover,
-  .nav-dropdown:hover .nav-dropbtn {
-    color: var(--hover-color, white);
-  }
-
-  .distill-site-header {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
-  }
-
-  .distill-site-footer {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
-  }
-
-  .distill-site-footer a:hover {
-    color: var(--hover-color, white);
-  }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="how-i-made-this-visualization_files/header-attrs-2.10/header-attrs.js"></script>
+  <script src="how-i-made-this-visualization_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="how-i-made-this-visualization_files/popper-2.6.0/popper.min.js"></script>
+  <link href="how-i-made-this-visualization_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="how-i-made-this-visualization_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="how-i-made-this-visualization_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="how-i-made-this-visualization_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="how-i-made-this-visualization_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="how-i-made-this-visualization_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="how-i-made-this-visualization_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Posts","authors":[]}
+{"title":"How I made this visualization","description":"Alaska household languages data","authors":[{"author":"Marie Rivers","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-11-03T00:00:00.000+00:00","citationText":"Rivers, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">Marie T. Rivers, PE</a>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="posts.html">Posts</a>
-<a href="cv.html">CV</a>
-<a href="https://github.com/marierivers/marierivers.github.io">
-<i class="fab fa-github" aria-hidden="true"></i>
-</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).load(function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-apply-limit l-page">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Posts">Posts</h1>
-<a href="posts/2021-11-03-how-i-made-this-visualization/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Nov. 3, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Marie Rivers</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2021-11-03-how-i-made-this-visualization/images/only_english_plot.png"/>
-</div>
-<div class="description">
-<h2>How I made this visualization</h2>
-<div class="dt-tags"></div>
-<p>Alaska household languages data</p>
-</div>
-</a>
-<a href="posts/2021-10-17-do-you-learn-about-the-chicken-or-the-egg-first/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Oct. 17, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Marie Rivers</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Do you learn about the chicken or the egg first?</h2>
-<div class="dt-tags"></div>
-<p>If you are new to coding, what first steps should you take?</p>
-</div>
-</a>
-<a href="posts/2021-08-18-a-new-perspective-on-data/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Aug. 18, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Marie Rivers</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2021-08-18-a-new-perspective-on-data/images/IMG_2596.jpg"/>
-</div>
-<div class="description">
-<h2>A New Perspective on Data</h2>
-<div class="dt-tags"></div>
-<p>life beyond excel spreadsheets</p>
-</div>
-</a>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Posts</h1>
+<h1>How I made this visualization</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-
+<p><p>Alaska household languages data</p></p>
 </div>
 
+<div class="d-byline">
+  Marie Rivers true 
+  
+<br/>11-03-2021
+</div>
 
 <div class="d-article">
+<p>An assignment for my Metadata Standards, Data Modeling and Data Semantics class included using the <a href="https://cran.r-project.org/web/packages/metajam/metajam.pdf"><code>metajam</code> R package</a> to download <a href="https://knb.ecoinformatics.org/view/doi:10.5063/F1N58JPP">Alaskan household languages data and metadata</a> from knb. After reviewing the metadata and reading the data into R, we were tasked with writing code to compute the percentage of Alaskan households that only speak English for the years 2009-2015 and visualizing these results…a straightforward task.</p>
+<p>But…as I reviewed the numbers I thought about what I actually wanted to capture in the visualization. Did I want to focus on changes over time? There was a slight trend, but nothing significant. The data included State of Alaska Salmon and People Regions (SASAP) so I wanted to show any regional differences.</p>
+<p>Here’s the final visualization</p>
+<p><img src="images/only_english_plot.png" /></p>
+<p>The items below outline my data visualization process and helpful resources. Full code for data processing and visualization are included at the end.</p>
+<h3 id="heatmap-with-geom_tile">1. Heatmap with geom_tile( )</h3>
+<p>A line graph showing change in time would not have been very interesting, but I didn’t want to exclude the time component by just creating a bar chart of each group. The heatmap tiles provided an efficent way to capture regional differences, subtle changes in time, and percentages of household that only speak English.</p>
+<p>Resource: <a href="https://allisonhorst.github.io/rice-data-viz/">Allison Horst’s Advanced Data Visualization in ggplot2</a></p>
+<h3 id="ordering-the-data">2. Ordering the data</h3>
+<p>I used <code>fct_reorder</code> to sort the SASAP regions by average percent of households that only spoke English</p>
+<p><code>mutate(SASAP.Region = fct_reorder(SASAP.Region, percent_only_english, .fun = mean))</code></p>
+<h3 id="text-within-tiles">3. Text within tiles</h3>
+<p>This line of code rounded the calculated values and displayed white text with a % symbol</p>
+<p><code>geom_text(aes(label = paste0(round(avg_percent_english, 0),"%")), color = "white", size = 3)</code></p>
+<h3 id="picking-colors">4. Picking colors</h3>
+<p>This might have been the hardest part. I played around with the number and shade of colors and settled on shades of gray, blue, green and reddish brown with a <code>scale_fill_gradientn</code> gradient. <code>geom_tile(aes(fill = avg_percent_english), show.legend = TRUE)</code></p>
+<p>The <a href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf">NCEAS R color cheatsheet</a> was helpful for getting color names. Useful information on gradient color scales was found in the book <a href="https://ggplot2-book.org/scale-colour.html">ggplot2: Elegant Graphics for Data Analysis</a> and <a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">ggplot2 documentation</a></p>
+<h3 id="legend-title">5. legend title</h3>
+<p><code>labs(fill = "Percent")</code></p>
+<p>Resource: <a href="https://stackoverflow.com/questions/23635662/editing-legend-text-labels-in-ggplot">Editing legend (text) labels in ggplot</a></p>
+<h3 id="x-axis">6. x-axis</h3>
+<p>While there are more elegant ways set axis divisions for dates, I opted for a simple vector of years. <code>scale_x_discrete(name = "Year", limits = c(2009, 2010, 2011, 2012, 2013, 2014, 2015))</code></p>
+<h3 id="remove-gridlines">7. Remove gridlines</h3>
+<p><code>theme(panel.grid.major = element_blank())</code></p>
+<p>Resource: <a href="https://felixfan.github.io/ggplot2-remove-grid-background-margin/">Remove grid and background from plot (ggplot2)</a></p>
+<h3 id="move-title-and-caption-from-panel-to-plot-area">8. Move title and caption from panel to plot area</h3>
+<p><code>theme(plot.caption = element_text(size = 8, hjust = 0), plot.caption.position = "plot") + theme(plot.title.position = "plot")</code></p>
+<p>Resource: <a href="https://community.rstudio.com/t/changing-position-of-plot-captions/108973">Changing position of plot captions</a></p>
+<h2 id="download-data-using-metajam">Download data using <code>metajam</code></h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># url to csv file</span>
+<span class='va'>data_url</span> <span class='op'>&lt;-</span> <span class='st'>"https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8"</span>
+
+<span class='co'># download the data and metadata to project folder</span>
+<span class='va'>data_path</span> <span class='op'>&lt;-</span> <span class='fu'>metajam</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/metajam/man/download_d1_data.html'>download_d1_data</a></span><span class='op'>(</span><span class='va'>data_url</span>, <span class='st'>"~/Documents/metajam_example"</span><span class='op'>)</span>
+
+<span class='co'># Read the data and metadata</span>
+<span class='va'>hh_list</span> <span class='op'>&lt;-</span> <span class='fu'>metajam</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/metajam/man/read_d1_files.html'>read_d1_files</a></span><span class='op'>(</span><span class='va'>data_path</span><span class='op'>)</span>
+
+<span class='co'># get the household data frame</span>
+<span class='va'>hh_data</span> <span class='op'>&lt;-</span> <span class='va'>hh_list</span><span class='op'>$</span><span class='va'>data</span>
+
+<span class='co'># get the attribute (columns) metadata</span>
+<span class='va'>hh_att_metadata</span> <span class='op'>&lt;-</span> <span class='va'>hh_list</span><span class='op'>$</span><span class='va'>attribute_metadata</span>
+</code></pre>
+</div>
+</div>
+<h2 id="tidy-data">Tidy Data</h2>
+<h4 id="code-used-to-process-the-data">Code used to process the data</h4>
+<p>I adjusted the original data processing code as my plan for the visualization evolved</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>household_language</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='fu'>here</span><span class='op'>(</span><span class='st'>"data"</span>, <span class='st'>"doi_10.5063_F1CJ8BPH__household_language__csv"</span>, <span class='st'>"household_language.csv"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>hh_data_english</span> <span class='op'>&lt;-</span> <span class='va'>household_language</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Year</span> <span class='op'>&gt;=</span> <span class='fl'>2009</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>total</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>percent_only_english <span class='op'>=</span> <span class='op'>(</span><span class='va'>speak_only_english</span> <span class='op'>/</span> <span class='va'>total</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>relocate</span><span class='op'>(</span><span class='va'>percent_only_english</span>, .before <span class='op'>=</span> <span class='va'>german</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>SASAP.Region <span class='op'>=</span> <span class='fu'>fct_reorder</span><span class='op'>(</span><span class='va'>SASAP.Region</span>, <span class='va'>percent_only_english</span>, .fun <span class='op'>=</span> <span class='va'>mean</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>SASAP.Region</span>, <span class='va'>Year</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarise</span><span class='op'>(</span>avg_percent_english <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>percent_only_english</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="ggplot">ggplot</h2>
+<p>Code used to create the plot</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>only_english_plot</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>hh_data_english</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>SASAP.Region</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_tile</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>avg_percent_english</span><span class='op'>)</span>, show.legend <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>avg_percent_english</span>, <span class='fl'>0</span><span class='op'>)</span>,<span class='st'>"%"</span><span class='op'>)</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='st'>"white"</span>, size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_fill_gradientn</span><span class='op'>(</span>colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"antiquewhite3"</span>, <span class='st'>"antiquewhite4"</span>, <span class='st'>"steelblue4"</span>, <span class='st'>"springgreen4"</span>, <span class='st'>"indianred4"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>panel.grid.major <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Year"</span>, y <span class='op'>=</span> <span class='cn'>NULL</span>,
+       fill <span class='op'>=</span> <span class='st'>"Percent"</span>,
+       title <span class='op'>=</span> <span class='st'>"Percent of Alaska Households that Only Speak English"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"based on State of Alaska Salmon and People Region"</span>,
+       caption <span class='op'>=</span> <span class='st'>"source: Jeanette Clark, Sharis Ochs, Derek Strong, and National Historic Geographic Information System. 2018.\nLanguages used in Alaskan households, 1990-2015. urn:node:KNB. doi:10.5063/F1N58JPP"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>plot.caption <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>8</span>, hjust <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,
+        plot.caption.position <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme</span><span class='op'>(</span>plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_x_discrete</span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Year"</span>, limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2009</span>, <span class='fl'>2010</span>, <span class='fl'>2011</span>, <span class='fl'>2012</span>, <span class='fl'>2013</span>, <span class='fl'>2014</span>, <span class='fl'>2015</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p><strong>Data citation:</strong> Jeanette Clark, Sharis Ochs, Derek Strong, and National Historic Geographic Information System. 2018. Languages used in Alaskan households, 1990-2015. <a href="urn:node:KNB" class="uri">urn:node:KNB</a>. <a href="doi:10.5063/F1N58JPP" class="uri">doi:10.5063/F1N58JPP</a>.</p>
+<p><a href="https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8" class="uri">https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8</a>"</p>
+<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
+<p>Learn more about using Distill at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -2396,11 +1585,7 @@ function init_posts_list() {
 <div class="appendix-bottom"></div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
-<div class="distill-site-nav distill-site-footer">
-<p>Website created with <a href="https://rstudio.github.io/distill/">distill by RStudio</a></p>
-</div>
 <!--/radix_placeholder_navigation_after_body-->
-
 
 </body>
 
