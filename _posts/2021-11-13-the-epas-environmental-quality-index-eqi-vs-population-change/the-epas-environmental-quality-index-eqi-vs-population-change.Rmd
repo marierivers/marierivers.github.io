@@ -1,0 +1,79 @@
+---
+title: "The EPA's Environmental Quality Index (EQI) vs. Population Change"
+description: |
+  A statistical analysis
+author:
+  - name: Marie Rivers
+    url: {}
+date: 11-24-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    #code_folding: show
+    toc: TRUE
+    toc_float: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(kableExtra)
+```
+This post discusses a statistical evaluation of the relationship between environmental quality and population change in the United States at the county level between 2006 and 2010.  
+
+# Background
+The Environmental Quality Index (EQI), developed by the U.S. Environmental Protection Agency (EPA) provides a county level snapshop of environmental conditions throughout the country. The purpose of the EQI is to use (1) as an indicator of ambient conditions/exposure in environmental health and modeling and (2) as a covariate to adjust for ambient conditions in environmental models [xxx ref]. The EQI is developed from 5 environmental domains each with identified environmental constructs as show in Table No. 1. Each county has an overall environmental index and a domain specific index. Indexes were also stratified by rural-urban continuum codes (RUCCs).
+
+```{r}
+eqi_domains <- data.frame(
+  Domain = c("air", "water", "land", "built", "sociodemographic"),
+  Constructs = c("criteria air pollutants and hazardous air pollutants", "overall water quality, general water contamination, domistic use, atmospheric deposition, drought, chemical contamination, and drinking water quality", "agriculture, pesticides, facilities, radon, and mining activity", "roads, highway/road safety, commuting behavior, housing environment, walkability, and green space ", "crime, socioeconomic, political character, and creative class representation"))
+```
+
+```{r}
+kbl(eqi_domains, caption = "Table No. 1 - EQI Environmental Domains and Constructs") %>%
+  kable_paper(full_width = F) %>%
+  column_spec(1, bold = T, border_right = T)
+```
+
+EPA first released EQIs for the period 2000-2005 and updated these indexes for 2006-2010. Due to changes in methodology and datasets, the two EQIs should not be directly compared. This statistical evaluation focuses on the 2006-2010 EQI. 
+
+Previous studies have used the EQI to evaluate relationships between environmental quality and public health outcomes such as:  
+- preterm birth  
+- mortality  
+- cancer incidence  
+- asthma  
+- obesity  
+- infant mortality
+
+## Limitations
+While the EQI can identify counties with higher environmental burdens, it may not identify environmental injustices at local community level. The EQI is not intended for regulatory purposes or diagnostics tools.
+
+# The Data
+To develop the EQI, variables were identified from available data to represent each environmental domain and assessed for collinearity so redundant variables could be excluded. Then, variables were standardized based on geographic space or on a per capita rate, as appropriate. Data gaps were evaluated to distinguish between missing data and meaningful zeros. Where applicable, spatial kriging was used to interpolate values when data was not available for all counties. For example, crime likely occurs in all counties despite centralized reporting areas. Finally, the normality of each variable was assessed and transformations such as log-transformations, performed as needed.
+
+Principal component analysis (PCA) was used to aggregate variables into domain specific indexes and and domain indexes into overall indexes for each county.
+
+## EQI
+
+## Census Population Data
+
+# Statistical Methods
+
+# Results
+
+# Conclusion
+
+## Future work
+
+**Data availability:** 
+
+**GitHub Repo Link:**
+
+# References  
+1. U.S. EPA. Environmental Quality Index - Technical Report (2006-2010) (Final, 2020). U.S. Environmental Protection Agency, Washington, DC, EPA/600/R-20/367, 2020.
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+
