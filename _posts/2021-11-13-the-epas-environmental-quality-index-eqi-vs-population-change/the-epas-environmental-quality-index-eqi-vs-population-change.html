@@ -92,8 +92,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-11-24"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-11-24"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-12-02"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-12-02"/>
   <meta name="article:author" content="Marie Rivers"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
@@ -111,7 +111,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["The EPA's Environmental Quality Index (EQI) vs. Population Change"]},{"type":"character","attributes":{},"value":["A statistical analysis\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Marie Rivers"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["11-24-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["The EPA's Environmental Quality Index (EQI) vs. Population Change"]},{"type":"character","attributes":{},"value":["A statistical analysis\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Marie Rivers"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["12-02-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1457,7 +1457,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"The EPA's Environmental Quality Index (EQI) vs. Population Change","description":"A statistical analysis","authors":[{"author":"Marie Rivers","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-11-24T00:00:00.000+00:00","citationText":"Rivers, 2021"}
+{"title":"The EPA's Environmental Quality Index (EQI) vs. Population Change","description":"A statistical analysis","authors":[{"author":"Marie Rivers","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-12-02T00:00:00.000+00:00","citationText":"Rivers, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1476,7 +1476,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="d-byline">
   Marie Rivers true 
   
-<br/>11-24-2021
+<br/>12-02-2021
 </div>
 
 <div class="d-article">
@@ -1486,7 +1486,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <ul>
 <li><a href="#background">Background</a>
 <ul>
-<li><a href="#previous-studies">Previous studies</a></li>
 <li><a href="#limitations">Limitations</a></li>
 </ul></li>
 <li><a href="#the-data">The Data</a>
@@ -1506,7 +1505,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p>This post discusses a statistical evaluation of the relationship between environmental quality and population change in the United States at the county level between 2006 and 2010.</p>
 <h1 id="background">Background</h1>
-<p>The Environmental Quality Index (EQI), developed by the U.S. Environmental Protection Agency (EPA) provides a county level snapshop of environmental conditions throughout the country. The purpose of the EQI is to use (1) as an indicator of ambient conditions/exposure in environmental health and modeling and (2) as a covariate to adjust for ambient conditions in environmental models [xxx ref]. The EQI is developed from 5 environmental domains each with identified environmental constructs as show in Table No. 1.</p>
+<p>The Environmental Quality Index (EQI), developed by the U.S. Environmental Protection Agency (EPA) provides a county level snapshop of environmental conditions throughout the country. EPA first released EQIs for the period 2000-2005 and updated these indexes for 2006-2010. This statistical evaluation focuses on the 2006-2010 EQI. The purpose of the EQI is to use (1) as an indicator of ambient conditions/exposure in environmental health and modeling and (2) as a covariate to adjust for ambient conditions in environmental models [xxx ref].</p>
+<p>The EQI is developed from 5 environmental domains each with identified environmental constructs as show in Table No. 1. Each county has an overall environmental index and a domain specific index. Indexes were also stratified by rural-urban continuum codes (RUCCs) for counties classified as metropolitan urbanized, non-metro urbanized, less urbanized, and thinly populated.</p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
@@ -1531,7 +1531,7 @@ Constructs
 air
 </td>
 <td style="text-align:left;">
-concentration of criteria air pollutants or hazardous air pollutants
+criteria air pollutants and hazardous air pollutants
 </td>
 </tr>
 <tr>
@@ -1539,7 +1539,7 @@ concentration of criteria air pollutants or hazardous air pollutants
 water
 </td>
 <td style="text-align:left;">
-water quality, general water, contamination, recreational water quality, domistic use, deposition, drought, and chemical contamination
+overall water quality, general water contamination, domistic use, atmospheric deposition, drought, chemical contamination, and drinking water quality
 </td>
 </tr>
 <tr>
@@ -1547,7 +1547,7 @@ water quality, general water, contamination, recreational water quality, domisti
 land
 </td>
 <td style="text-align:left;">
-agriculture, pesticides, contaminants, facilities, and radon
+agriculture, pesticides, facilities, radon, and mining activity
 </td>
 </tr>
 <tr>
@@ -1555,7 +1555,7 @@ agriculture, pesticides, contaminants, facilities, and radon
 built
 </td>
 <td style="text-align:left;">
-roads, highway road safety, public transit behavior, business environments (physical activity, food, health care, and educational), and subsidized housing
+roads, highway/road safety, commuting behavior, housing environment, walkability, and green space
 </td>
 </tr>
 <tr>
@@ -1563,15 +1563,12 @@ roads, highway road safety, public transit behavior, business environments (phys
 sociodemographic
 </td>
 <td style="text-align:left;">
-crime and socioeconomic
+crime, socioeconomic, political character, and creative class representation
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>EPA first released EQIs for the period 2000-2005 and updated these indexes for 2006-2010. Due to changes in methodology and datasets, the two EQIs should not be directly compared. This statistical evaluation focuses on the 2006-2010 EQI.</p>
-<p>xxx…This index is also stratified by rural-urban continuum codes (RUCCs).</p>
-<h2 id="previous-studies">Previous studies</h2>
 <p>Previous studies have used the EQI to evaluate relationships between environmental quality and public health outcomes such as:<br />
 - preterm birth<br />
 - mortality<br />
@@ -1580,14 +1577,20 @@ crime and socioeconomic
 - obesity<br />
 - infant mortality</p>
 <h2 id="limitations">Limitations</h2>
-<p>While the EQI can identify counties with higher environmental burdens, it may not identify environmental injustices at local community level. The EQI is not intended for regulatory purposes or diagnostics tools.</p>
+<p>While the EQI can identify counties with higher environmental burdens, it may not identify environmental injustices at local community level. The EQI can not quantify environmental exposure for individuals and reflects only outside environmental conditions, not indoor conditions. The EQI can be used identify locations for future research, but is not intended for regulatory purposes or as a diagnostics tool. Due to changes in methodology and datasets, the 2000-2005 and 2006-2010 EQIs should not be directly compared.</p>
 <h1 id="the-data">The Data</h1>
 <h2 id="eqi">EQI</h2>
+<p>To develop the EQI, variables were identified from available data to represent each environmental domain and assessed for collinearity so redundant variables could be excluded. Then, variables were standardized based on geographic space or on a per capita rate, as appropriate. Data gaps were evaluated to distinguish between missing data and meaningful zeros. Where applicable, spatial kriging was used to interpolate values when data was not available for all counties. For example, crime likely occurs in all counties despite centralized reporting areas. Finally, the normality of each variable was assessed and transformations such as log-transformations, performed as needed.</p>
+<p>Principal component analysis (PCA) was used to aggregate variables into domain specific indexes and domain indexes into overall indexes for each county. A result of this method was that counties with different RUCC classifications were influenced by each domain differently. Each domain does not equally influence the overall EQI value for a given county.</p>
+<p><strong>Higher EQI values correspond with worse environmental quality. Lower (more negative) EQI values correspond with better environmental quality</strong></p>
 <h2 id="census-population-data">Census Population Data</h2>
+<p>xxx</p>
 <h1 id="statistical-methods">Statistical Methods</h1>
 <h1 id="results">Results</h1>
 <h1 id="conclusion">Conclusion</h1>
 <h2 id="future-work">Future work</h2>
+<p>xxx…RUCC</p>
+<p>In the future, EPA plans to create a census tract level EQI. This would be facilitate a higher resolution statistical evaluation of the relationship between environmental conditions and population change.</p>
 <p><strong>Data availability:</strong></p>
 <p><strong>GitHub Repo Link:</strong></p>
 <h1 id="references">References</h1>
