@@ -9,7 +9,7 @@ date: 12-02-2021
 output:
   distill::distill_article:
     self_contained: false
-    code_folding: show
+    #code_folding: show
     toc: TRUE
     toc_float: TRUE
 ---
@@ -22,6 +22,8 @@ library(kableExtra)
 ```{r}
 library(tidyverse)
 library(here)
+
+eqi_pop <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "eqi_pop.csv"))
 ```
 
 This post discusses a statistical evaluation of the relationship between environmental quality and population change in the United States at the county level between 2006 and 2010.  
@@ -59,7 +61,7 @@ While the EQI can identify counties with higher environmental burdens, it may no
 ## EQI
 To develop the EQI, variables were identified from available data to represent each environmental domain and assessed for collinearity so redundant variables could be excluded. Then, variables were standardized based on geographic space or on a per capita rate, as appropriate. Data gaps were evaluated to distinguish between missing data and meaningful zeros. Where applicable, spatial kriging was used to interpolate values when data was not available for all counties. For example, crime likely occurs in all counties despite centralized reporting areas. Finally, the normality of each variable was assessed and transformations such as log-transformations, performed as needed.
 
-Principal component analysis (PCA) was used to aggregate variables into domain specific indexes and domain indexes into overall indexes for each county. A result of this method was that counties with different RUCC classifications were influenced by each domain differently. Each domain does not equally influence the overall EQI value for a given county.
+Principal component analysis (PCA) was used to aggregate variables into domain specific indexes. The domain indexes were then aggregated into overall indexes for each county. A result of this method is that each domain does not equally influence the overall EQI value for a given county. The EQI is developed to be normally distributed with mean=0 and standard deviation=1.
 
 **Higher EQI values correspond with worse environmental quality. Lower (more negative) EQI values correspond with better environmental quality**
 
@@ -67,6 +69,7 @@ xxx...patchwork map of EQI (no space for maps)
 
 
 ## Census Population Data
+
 County level population data was obtained from the U.S. Census Bureau's county intercensal datasets for 2000-2010. The Census Bureau estimates intercensal populations by modifying the 2000-2010 postcensal estimates using the fomula:
 
 $$P_{t} = Q_{t}(P_{3652}/Q_{3652})^ {(t / 3652)}$$
@@ -79,21 +82,19 @@ where:
 
 xxx...map of population change
 
-# Statistical Methods
-A different means test was completed to determine if mean environmental quality was varied for counties experienced positive vs negative population change between 2006-2010. 
+# Statistical Methods  
 
-**null_hypothesis:**
-There is no difference in mean EQI for counties with positive and negative population change.  
-
-$$H_{0}: \mu_{posPopChange} - \mu_{negPopChange} = 0$$
-**alternative hypothesis:** 
-There is a difference in EQI for counties with positive and negative population change.
-
-$$H_{A}: \mu_{posPopChange} - \mu_{negPopChange} \neq 0$$
+The figure below shows a histogram of EQI values for counties with negative and positive population change.
 
 ```{r}
-eqi_pop <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "eqi_pop.csv"))
+histogram_pop_change <- ggplot(data = eqi_pop, aes(x = EQI_22July2013)) +
+  geom_histogram(aes(fill = pop_change_text), position = "dodge", bins = 50) +
+  labs(title = "Historgram of EQI based on county population change, 2006-2010", x = "EQI", fill = "Population change")
+histogram_pop_change
+```
+Kalawao County, Hawaii had the lowest EQI value (highest environmental quality) and greatest decrease in population (-17.4%). Falls Church, Virginia had the highest EQI (lowest environmental quality) and a population change of 15.4% which falls is the 99th percentile.
 
+```{r}
 eqi_summary_table <- eqi_pop %>%
   group_by(pop_change_text) %>%
   summarise(min_eqi = round(min(EQI_22July2013, na.rm = TRUE),2),
@@ -119,9 +120,18 @@ eqi_summary_table <- eqi_pop %>%
 eqi_summary_table  
 ```
 
-Kalawao County, Hawaii had the lowest EQI value (highest environmental quality) and greatest decrease in population (-17.4%). Falls Church, Virginia had the highest EQI (lowest environmental quality) and a population change of 15.4% which falls is the 99th percentile.
+A different means test was completed to determine if mean environmental quality varied for counties that experienced positive vs negative population change between 2006-2010. 
 
-```{r summary_statisic_values}
+**null_hypothesis:**
+There is no difference in mean EQI for counties with positive and negative population change.  
+
+$$H_{0}: \mu_{posPopChange} - \mu_{negPopChange} = 0$$
+**alternative hypothesis:** 
+There is a difference in EQI for counties with positive and negative population change.
+
+$$H_{A}: \mu_{posPopChange} - \mu_{negPopChange} \neq 0$$
+
+```{r}
 # mean values
 mu_eqi_pos_pop_change <- eqi_pop %>% 
   filter(pop_change_pct > 0) %>% 
@@ -150,7 +160,7 @@ n_neg_pop_change <- eqi_pop %>%
   summarise(count = n())
 ```
 
-```{r echo=TRUE}
+```{r}
 # calculate point estimate
 point_est <- as.numeric(mu_eqi_pos_pop_change - mu_eqi_neg_pop_change)
 
@@ -169,8 +179,15 @@ $$SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s^2_2}{n_2}} = \sqrt{\frac{`r sd_eqi_pos_
 and the z-score for hypothesis testing is:  
 
 $$z = \frac{\text{point estimate - null}}{SE} = \frac{`r point_est` - 0}{`r SE`} = `r z_score`$$
+```{r}
+p_value = 2 * pnorm(point_est, mean = 0, sd = SE, lower.tail=FALSE)
+```
+Calculated p-value: the probability of getting a point estimate at least as extreme as calculates above if the null hypothesis were true: 
+$$p\text {- value }=\operatorname{Pr}(Z<-|z| \text { or } Z>|z|)=2 * \operatorname{Pr}(Z>|z|) = `r p_value`$$
 
 # Results and Conclusion
+
+Since the $p-value = `r p_value` < 0.05$ we reject the null that there is no difference in the EQI of counties with positive population change versus negative population change. There is a statistically significant difference (at the 5% significance level) in EQI across the two population change groups.
 
 ## Future work
 xxx...RUCC
