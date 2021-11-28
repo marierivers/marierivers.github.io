@@ -9,7 +9,7 @@ date: 12-02-2021
 output:
   distill::distill_article:
     self_contained: false
-    #code_folding: show
+    code_folding: show
     toc: TRUE
     toc_float: TRUE
 ---
@@ -18,6 +18,12 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 library(kableExtra)
 ```
+
+```{r}
+library(tidyverse)
+library(here)
+```
+
 This post discusses a statistical evaluation of the relationship between environmental quality and population change in the United States at the county level between 2006 and 2010.  
 
 # Background
@@ -32,7 +38,7 @@ eqi_domains <- data.frame(
 ```
 
 ```{r}
-kbl(eqi_domains, caption = "Table No. 1 - EQI Environmental Domains and Constructs") %>%
+kbl(eqi_domains, caption = "EQI Environmental Domains and Constructs") %>%
   kable_paper(full_width = F) %>%
   column_spec(1, bold = T, border_right = T)
 ```
@@ -57,22 +63,114 @@ Principal component analysis (PCA) was used to aggregate variables into domain s
 
 **Higher EQI values correspond with worse environmental quality. Lower (more negative) EQI values correspond with better environmental quality**
 
-xxx...patchwork map of EQI
+xxx...patchwork map of EQI (no space for maps)
 
 
 ## Census Population Data
-xxx
+County level population data was obtained from the U.S. Census Bureau's county intercensal datasets for 2000-2010. The Census Bureau estimates intercensal populations by modifying the 2000-2010 postcensal estimates using the fomula:
+
+$$P_{t} = Q_{t}(P_{3652}/Q_{3652})^ {(t / 3652)}$$
+where:  
+  t = time in days since APril 1, 2000  
+  $P_{t}$ = population estimate at time t  
+  $Q_{t}$ = postcensal estiamte at time t  
+  $P_{3652}$ = April 1, 2010 census count  
+  $Q_{3652}$ = April 1, 2010 postcensal estiamte based on Census 2000  
 
 xxx...map of population change
 
 # Statistical Methods
-Table of summary stats
+A different means test was completed to determine if mean environmental quality was varied for counties experienced positive vs negative population change between 2006-2010. 
 
-Kalawao County, Hawaii had the lowest EQI value (highest environmental quality) and greatest decrease in population (17.4%).
+**null_hypothesis:**
+There is no difference in mean EQI for counties with positive and negative population change.  
 
-# Results
+$$H_{0}: \mu_{posPopChange} - \mu_{negPopChange} = 0$$
+**alternative hypothesis:** 
+There is a difference in EQI for counties with positive and negative population change.
 
-# Conclusion
+$$H_{A}: \mu_{posPopChange} - \mu_{negPopChange} \neq 0$$
+
+```{r}
+eqi_pop <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "eqi_pop.csv"))
+
+eqi_summary_table <- eqi_pop %>%
+  group_by(pop_change_text) %>%
+  summarise(min_eqi = round(min(EQI_22July2013, na.rm = TRUE),2),
+            max_eqi = round(max(EQI_22July2013, na.rm = TRUE),2),
+            mean_eqi = round(mean(EQI_22July2013, na.rm = TRUE),2),
+            sd_eqi = round(sd(EQI_22July2013, na.rm = TRUE), 2),
+            var_eqi = round(var(EQI_22July2013, na.rm = TRUE), 2),
+            count = n()) %>%
+  bind_rows(., eqi_pop %>%
+              summarise(min_eqi = round(min(EQI_22July2013, na.rm = TRUE),2),
+                        max_eqi = round(max(EQI_22July2013, na.rm = TRUE),2),
+                        mean_eqi = round(mean(EQI_22July2013, na.rm = TRUE),2),
+                        sd_eqi = round(sd(EQI_22July2013, na.rm = TRUE), 2),
+                        var_eqi = round(var(EQI_22July2013, na.rm = TRUE), 2),
+                        count = n()) %>%
+              mutate(pop_change_text = "all counties")
+            ) %>%
+  kable(col.names = c("Population Change", "Minimum", "Maximum", "Mean", "Standard Deviation", "Variance", "Number of Counties"), caption = "EQI summary statistics for counties based on population change between 2006 and 2010", color = 'black') %>%
+  kable_paper(full_width = FALSE) %>%
+  column_spec(1, bold = T) %>%
+  row_spec(0, bold = T, color = 'black') %>%
+  row_spec(3, bold = T, background = '#e5e5e5')
+eqi_summary_table  
+```
+
+Kalawao County, Hawaii had the lowest EQI value (highest environmental quality) and greatest decrease in population (-17.4%). Falls Church, Virginia had the highest EQI (lowest environmental quality) and a population change of 15.4% which falls is the 99th percentile.
+
+```{r summary_statisic_values}
+# mean values
+mu_eqi_pos_pop_change <- eqi_pop %>% 
+  filter(pop_change_pct > 0) %>% 
+  summarise(mean_eqi = mean(EQI_22July2013, na.rm = TRUE))
+
+mu_eqi_neg_pop_change <- eqi_pop %>% 
+  filter(pop_change_pct <= 0) %>% 
+  summarise(mean_eqi = mean(EQI_22July2013, na.rm = TRUE))
+
+# standard deviations  
+sd_eqi_pos_pop_change <- eqi_pop %>% 
+  filter(pop_change_pct > 0) %>% 
+  summarise(sd_eqi = sd(EQI_22July2013, na.rm = TRUE))
+
+sd_eqi_neg_pop_change <- eqi_pop %>% 
+  filter(pop_change_pct <= 0) %>% 
+  summarise(sd_eqi = sd(EQI_22July2013, na.rm = TRUE))
+
+# count of observations 
+n_pos_pop_change <- eqi_pop %>% 
+  filter(pop_change_pct > 0) %>% 
+  summarise(count = n())
+
+n_neg_pop_change <- eqi_pop %>% 
+  filter(pop_change_pct <= 0) %>% 
+  summarise(count = n())
+```
+
+```{r echo=TRUE}
+# calculate point estimate
+point_est <- as.numeric(mu_eqi_pos_pop_change - mu_eqi_neg_pop_change)
+
+# calculate standard error
+SE <- as.numeric(sqrt( (sd_eqi_pos_pop_change^2 / n_pos_pop_change) + (sd_eqi_neg_pop_change^2 / n_neg_pop_change) ))
+
+# z-score
+z_score <- (point_est - 0) / SE
+```
+
+$$\text{point estimate} = \mu_{posPopChange} - \mu_{negPopChange} = `r mu_eqi_pos_pop_change` - `r mu_eqi_neg_pop_change` = `r point_est`$$
+
+The standard error for a difference in means is defined as: 
+
+$$SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s^2_2}{n_2}} = \sqrt{\frac{`r sd_eqi_pos_pop_change`^2}{`r n_pos_pop_change`} + \frac{`r sd_eqi_neg_pop_change`^2}{`r n_neg_pop_change`}} = `r SE`$$ 
+and the z-score for hypothesis testing is:  
+
+$$z = \frac{\text{point estimate - null}}{SE} = \frac{`r point_est` - 0}{`r SE`} = `r z_score`$$
+
+# Results and Conclusion
 
 ## Future work
 xxx...RUCC
@@ -81,12 +179,17 @@ While this project did not evaluate economic variables, locations with higher en
 
 In the future, EPA plans to create a census tract level EQI. This would be facilitate a higher resolution statistical evaluation of the relationship between environmental conditions and population change. 
 
-**Data availability:** 
+**Data availability:**   
+[EPA Datasets and files from the EQI county data from 2006-2010](https://edg.epa.gov/data/public/ORD/CPHEA/)  
+[U.S. Census Bureau County Intercensal Tables: 2000-2010](https://www.census.gov/data/tables/time-series/demo/popest/intercensal-2000-2010-counties.html)
 
 **GitHub Repo Link:**
+xxx...Code used to read and tidy the data can be found here:
 
 # References  
 1. U.S. EPA. Environmental Quality Index - Technical Report (2006-2010) (Final, 2020). U.S. Environmental Protection Agency, Washington, DC, EPA/600/R-20/367, 2020.
+
+2. U.S. Census Bureau. County Intercensal Datasets: 2000-2010. https://www.census.gov/data/datasets/time-series/demo/popest/intercensal-2000-2010-counties.html
 
 Distill is a publication format for scientific and technical writing, native to the web.
 
