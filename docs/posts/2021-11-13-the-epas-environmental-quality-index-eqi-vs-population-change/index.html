@@ -118,7 +118,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/eqi_pop.csv","the-epas-environmental-quality-index-eqi-vs-population-change_files/anchor-4.2.2/anchor.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/bowser-1.9.3/bowser.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/distill-2.2.21/template.v2.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/figure-html5/unnamed-chunk-4-1.png","the-epas-environmental-quality-index-eqi-vs-population-change_files/header-attrs-2.10/header-attrs.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/jquery-1.11.3/jquery.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/kePrint-0.0.1/kePrint.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/lightable-0.0.1/lightable.css","the-epas-environmental-quality-index-eqi-vs-population-change_files/popper-2.6.0/popper.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/tippy-6.2.7/tippy-bundle.umd.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/tippy-6.2.7/tippy-light-border.css","the-epas-environmental-quality-index-eqi-vs-population-change_files/tippy-6.2.7/tippy.css","the-epas-environmental-quality-index-eqi-vs-population-change_files/tippy-6.2.7/tippy.umd.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["data/eqi_pop.csv","the-epas-environmental-quality-index-eqi-vs-population-change_files/anchor-4.2.2/anchor.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/bowser-1.9.3/bowser.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/distill-2.2.21/template.v2.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/figure-html5/unnamed-chunk-10-1.png","the-epas-environmental-quality-index-eqi-vs-population-change_files/figure-html5/unnamed-chunk-4-1.png","the-epas-environmental-quality-index-eqi-vs-population-change_files/header-attrs-2.10/header-attrs.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/jquery-1.11.3/jquery.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/kePrint-0.0.1/kePrint.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/lightable-0.0.1/lightable.css","the-epas-environmental-quality-index-eqi-vs-population-change_files/popper-2.6.0/popper.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/tippy-6.2.7/tippy-bundle.umd.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/tippy-6.2.7/tippy-light-border.css","the-epas-environmental-quality-index-eqi-vs-population-change_files/tippy-6.2.7/tippy.css","the-epas-environmental-quality-index-eqi-vs-population-change_files/tippy-6.2.7/tippy.umd.min.js","the-epas-environmental-quality-index-eqi-vs-population-change_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2221,7 +2221,11 @@ d-appendix d-footnote-list a.footnote-backlink {
 <li><a href="#eqi">EQI</a></li>
 <li><a href="#census-population-data">Census Population Data</a></li>
 </ul></li>
-<li><a href="#statistical-methods">Statistical Methods</a></li>
+<li><a href="#statistical-methods">Statistical Methods</a>
+<ul>
+<li><a href="#hypothesis-testing">Hypothesis testing</a></li>
+<li><a href="#interaction-model">Interaction model</a></li>
+</ul></li>
 <li><a href="#results-and-conclusion">Results and Conclusion</a>
 <ul>
 <li><a href="#future-work">Future work</a></li>
@@ -2324,6 +2328,7 @@ t = time in days since APril 1, 2000<br />
 <span class="math inline">\(Q_{3652}\)</span> = April 1, 2010 postcensal estiamte based on Census 2000</p>
 <p>xxx…map of population change</p>
 <h1 id="statistical-methods">Statistical Methods</h1>
+<h2 id="hypothesis-testing">Hypothesis testing</h2>
 <p>The figure below shows a histogram of EQI values for counties with negative and positive population change.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="the-epas-environmental-quality-index-eqi-vs-population-change_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
@@ -2403,7 +2408,7 @@ positive
 1.02
 </td>
 <td style="text-align:right;">
-2052
+2051
 </td>
 </tr>
 <tr>
@@ -2426,7 +2431,7 @@ all counties
 1.00
 </td>
 <td style="text-align:right;font-weight: bold;background-color: #e5e5e5 !important;">
-3140
+3139
 </td>
 </tr>
 </tbody>
@@ -2442,16 +2447,51 @@ all counties
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p><span class="math display">\[\text{point estimate} = \mu_{posPopChange} - \mu_{negPopChange} = 0.130914 - -0.2446399 = 0.375554\]</span></p>
+<p><span class="math display">\[\text{point estimate} = \mu_{posPopChange} - \mu_{negPopChange} = 0.1309754 - -0.2446399 = 0.3756154\]</span></p>
 <p>The standard error for a difference in means is defined as:</p>
-<p><span class="math display">\[SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s^2_2}{n_2}} = \sqrt{\frac{1.0086977^2}{2052} + \frac{0.933283^2}{1088}} = 0.0360057\]</span> and the z-score for hypothesis testing is:</p>
-<span class="math display">\[z = \frac{\text{point estimate - null}}{SE} = \frac{0.375554 - 0}{0.0360057} = 10.4304012\]</span>
+<p><span class="math display">\[SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s^2_2}{n_2}} = \sqrt{\frac{1.0089399^2}{2051} + \frac{0.933283^2}{1088}} = 0.0360124\]</span> and the z-score for hypothesis testing is:</p>
+<span class="math display">\[z = \frac{\text{point estimate - null}}{SE} = \frac{0.3756154 - 0}{0.0360124} = 10.4301758\]</span>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p>Calculated p-value: the probability of getting a point estimate at least as extreme as calculates above if the null hypothesis were true: <span class="math display">\[p\text {- value }=\operatorname{Pr}(Z&lt;-|z| \text { or } Z&gt;|z|)=2 * \operatorname{Pr}(Z&gt;|z|) = 1.8012604\times 10^{-25}\]</span></p>
+<p>Calculated p-value: the probability of getting a point estimate at least as extreme as calculates above if the null hypothesis were true: <span class="math display">\[p\text {- value }=\operatorname{Pr}(Z&lt;-|z| \text { or } Z&gt;|z|)=2 * \operatorname{Pr}(Z&gt;|z|) = 1.8055388\times 10^{-25}\]</span> xxx…maybe just use t.test for hypothesis test?</p>
+<h2 id="interaction-model">Interaction model</h2>
+Looking at the data, the relationship between EQI and population change may be influenced by the rural-urban continuum of each county. The interaction model used to describe this relationship is: <span class="math display">\[\text{percent population change}_i=\beta_{0}+\beta_{1} \cdot EQI_i + \beta_{2} \cdot RUCC_i + \beta_{3} \cdot EQI_i \cdot RUCC_i + \varepsilon_i\]</span>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+Call:
+lm(formula = pop_change_pct ~ EQI + rucc_text + EQI:rucc_text, 
+    data = eqi_pop)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-16.629  -2.661  -0.605   1.940  47.733 
+
+Coefficients:
+                                   Estimate Std. Error t value
+(Intercept)                          0.6651     0.1150   5.785
+EQI                                  0.2495     0.1141   2.186
+rucc_textmetropolitan or urban       2.5590     0.1795  14.260
+EQI:rucc_textmetropolitan or urban   0.2209     0.1801   1.226
+                                   Pr(&gt;|t|)    
+(Intercept)                        7.97e-09 ***
+EQI                                  0.0289 *  
+rucc_textmetropolitan or urban      &lt; 2e-16 ***
+EQI:rucc_textmetropolitan or urban   0.2201    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 4.256 on 3135 degrees of freedom
+Multiple R-squared:  0.1097,    Adjusted R-squared:  0.1088 
+F-statistic: 128.8 on 3 and 3135 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="the-epas-environmental-quality-index-eqi-vs-population-change_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
 <h1 id="results-and-conclusion">Results and Conclusion</h1>
-<p>Since the <span class="math inline">\(p-value = 1.8012604\times 10^{-25} &lt; 0.05\)</span> we reject the null that there is no difference in the EQI of counties with positive population change versus negative population change. There is a statistically significant difference (at the 5% significance level) in EQI across the two population change groups.</p>
+<p>Since the <span class="math inline">\(p-value = 1.8055388\times 10^{-25} &lt; 0.05\)</span> we reject the null that there is no difference in the EQI of counties with positive population change versus negative population change. There is a statistically significant difference (at the 5% significance level) in EQI across the two population change groups.</p>
+<p>The reference group for this model is less urban and thinly populated counties. Based on output from the interaction model, the average % population change for a county that is less urban or thinly populated with an EQI of zero is 0.67%. For less urban or thinly populated counties, percent population change increases by 0.25 when EQI increases by a value of 1. On average, population change is 2.68 percentage points higher for metropolitan and urban counties relative to less urban and thinly populated counties when EQI is zero. This shows that the effect of the rural-urban continuum varies with EQI. The impact of EQI on percent population change is 0.15 percentage points higher for metropolitan and urban counties than for less urban and thinly populated counties.</p>
+<p>slope for the relationship between % population change and EQI for metropolitan and urban counties = <span class="math inline">\((\beta_{1}+\beta_{3})\cdot EQI = xxx\)</span> slope for the relationship between % population change and EQi for less urban and thinly populated counties = <span class="math inline">\((\beta_{1}\cdot EQI = xxx\)</span> The difference between these slopes = <span class="math inline">\((\beta_{3} = xxx\)</span></p>
 <h2 id="future-work">Future work</h2>
 <p>xxx…RUCC</p>
 <p>While this project did not evaluate economic variables, locations with higher environmental quality could also have higher living costs which drive people to move to more affordable places. Many studies have documented to connection between environmental quality and public health. xxx[add ref]. If economic factors contribute to population growth in counties with poor environmental quality, then this could negatively affect public health in vulnerable populations and perpetuate social inequalities. Further analysis could evaluate trends in mean household income to determine if there is growing income inequality between counties with better and worse environmental quality.</p>
@@ -2467,7 +2507,7 @@ all counties
 </ol>
 <p>Distill is a publication format for scientific and technical writing, native to the web.</p>
 <p>Learn more about using Distill at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

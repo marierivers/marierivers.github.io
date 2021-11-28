@@ -23,7 +23,8 @@ library(kableExtra)
 library(tidyverse)
 library(here)
 
-eqi_pop <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "eqi_pop.csv"))
+eqi_pop <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "eqi_pop.csv")) %>%
+  filter(pop_change_pct < 100)
 ```
 
 This post discusses a statistical evaluation of the relationship between environmental quality and population change in the United States at the county level between 2006 and 2010.  
@@ -82,12 +83,13 @@ where:
 
 xxx...map of population change
 
-# Statistical Methods  
+# Statistical Methods 
+## Hypothesis testing
 
 The figure below shows a histogram of EQI values for counties with negative and positive population change.
 
 ```{r}
-histogram_pop_change <- ggplot(data = eqi_pop, aes(x = EQI_22July2013)) +
+histogram_pop_change <- ggplot(data = eqi_pop, aes(x = EQI)) +
   geom_histogram(aes(fill = pop_change_text), position = "dodge", bins = 50) +
   labs(title = "Historgram of EQI based on county population change, 2006-2010", x = "EQI", fill = "Population change")
 histogram_pop_change
@@ -97,18 +99,18 @@ Kalawao County, Hawaii had the lowest EQI value (highest environmental quality) 
 ```{r}
 eqi_summary_table <- eqi_pop %>%
   group_by(pop_change_text) %>%
-  summarise(min_eqi = round(min(EQI_22July2013, na.rm = TRUE),2),
-            max_eqi = round(max(EQI_22July2013, na.rm = TRUE),2),
-            mean_eqi = round(mean(EQI_22July2013, na.rm = TRUE),2),
-            sd_eqi = round(sd(EQI_22July2013, na.rm = TRUE), 2),
-            var_eqi = round(var(EQI_22July2013, na.rm = TRUE), 2),
+  summarise(min_eqi = round(min(EQI),2),
+            max_eqi = round(max(EQI),2),
+            mean_eqi = round(mean(EQI),2),
+            sd_eqi = round(sd(EQI), 2),
+            var_eqi = round(var(EQI), 2),
             count = n()) %>%
   bind_rows(., eqi_pop %>%
-              summarise(min_eqi = round(min(EQI_22July2013, na.rm = TRUE),2),
-                        max_eqi = round(max(EQI_22July2013, na.rm = TRUE),2),
-                        mean_eqi = round(mean(EQI_22July2013, na.rm = TRUE),2),
-                        sd_eqi = round(sd(EQI_22July2013, na.rm = TRUE), 2),
-                        var_eqi = round(var(EQI_22July2013, na.rm = TRUE), 2),
+              summarise(min_eqi = round(min(EQI),2),
+                        max_eqi = round(max(EQI),2),
+                        mean_eqi = round(mean(EQI),2),
+                        sd_eqi = round(sd(EQI), 2),
+                        var_eqi = round(var(EQI), 2),
                         count = n()) %>%
               mutate(pop_change_text = "all counties")
             ) %>%
@@ -135,20 +137,20 @@ $$H_{A}: \mu_{posPopChange} - \mu_{negPopChange} \neq 0$$
 # mean values
 mu_eqi_pos_pop_change <- eqi_pop %>% 
   filter(pop_change_pct > 0) %>% 
-  summarise(mean_eqi = mean(EQI_22July2013, na.rm = TRUE))
+  summarise(mean_eqi = mean(EQI))
 
 mu_eqi_neg_pop_change <- eqi_pop %>% 
   filter(pop_change_pct <= 0) %>% 
-  summarise(mean_eqi = mean(EQI_22July2013, na.rm = TRUE))
+  summarise(mean_eqi = mean(EQI))
 
 # standard deviations  
 sd_eqi_pos_pop_change <- eqi_pop %>% 
   filter(pop_change_pct > 0) %>% 
-  summarise(sd_eqi = sd(EQI_22July2013, na.rm = TRUE))
+  summarise(sd_eqi = sd(EQI))
 
 sd_eqi_neg_pop_change <- eqi_pop %>% 
   filter(pop_change_pct <= 0) %>% 
-  summarise(sd_eqi = sd(EQI_22July2013, na.rm = TRUE))
+  summarise(sd_eqi = sd(EQI))
 
 # count of observations 
 n_pos_pop_change <- eqi_pop %>% 
@@ -184,10 +186,35 @@ p_value = 2 * pnorm(point_est, mean = 0, sd = SE, lower.tail=FALSE)
 ```
 Calculated p-value: the probability of getting a point estimate at least as extreme as calculates above if the null hypothesis were true: 
 $$p\text {- value }=\operatorname{Pr}(Z<-|z| \text { or } Z>|z|)=2 * \operatorname{Pr}(Z>|z|) = `r p_value`$$
+xxx...maybe just use t.test for hypothesis test?
+
+## Interaction model
+Looking at the data, the relationship between EQI and population change may be influenced by the rural-urban continuum of each county. The interaction model used to describe this relationship is:
+$$\text{percent population change}_i=\beta_{0}+\beta_{1} \cdot EQI_i + \beta_{2} \cdot RUCC_i + \beta_{3} \cdot EQI_i \cdot RUCC_i + \varepsilon_i$$
+```{r}
+int_model <- lm(pop_change_pct ~ EQI + rucc_text + EQI:rucc_text, data = eqi_pop)
+summary(int_model)
+```
+
+```{r}
+int_model_plot <- ggplot(data = eqi_pop, aes(x = EQI, y = pop_change_pct, color = rucc_text)) +
+  geom_point(size = 0.5) + 
+  geom_smooth(method = "lm", se = FALSE) +
+  theme(legend.position = "bottom") + 
+  labs(title = "Interaction model for population change and EQI based on RUCC", y = "% population change", color = "rural-urban continual category:")
+int_model_plot
+```
+
 
 # Results and Conclusion
 
 Since the $p-value = `r p_value` < 0.05$ we reject the null that there is no difference in the EQI of counties with positive population change versus negative population change. There is a statistically significant difference (at the 5% significance level) in EQI across the two population change groups.
+
+The reference group for this model is less urban and thinly populated counties. Based on output from the interaction model, the average % population change for a county that is less urban or thinly populated with an EQI of zero is 0.67%. For less urban or thinly populated counties, percent population change increases by 0.25 when EQI increases by a value of 1. On average, population change is 2.68 percentage points higher for metropolitan and urban counties relative to less urban and thinly populated counties when EQI is zero. This shows that the effect of the rural-urban continuum varies with EQI. The impact of EQI on percent population change is 0.15 percentage points higher for metropolitan and urban counties than for less urban and thinly populated counties. 
+
+slope for the relationship between % population change and EQI for metropolitan and urban counties = $(\beta_{1}+\beta_{3})\cdot EQI = xxx$
+slope for the relationship between % population change and EQi for less urban and thinly populated counties = $(\beta_{1}\cdot EQI = xxx$
+The difference between these slopes = $(\beta_{3} = xxx$
 
 ## Future work
 xxx...RUCC
