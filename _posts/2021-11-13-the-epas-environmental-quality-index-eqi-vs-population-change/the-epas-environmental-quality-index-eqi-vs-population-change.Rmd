@@ -9,27 +9,30 @@ date: 12-02-2021
 output:
   distill::distill_article:
     self_contained: false
-    #code_folding: show
+    code_folding: show
     toc: TRUE
     toc_float: TRUE
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(here)
 library(kableExtra)
+library(jtools)
+library(ggstance)
+library(huxtable)
+library(tidymodels)
 ```
 
 ```{r}
-library(tidyverse)
-library(here)
-
 eqi_pop <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "eqi_pop.csv")) %>%
   filter(pop_change_pct < 100)
 ```
 
 This post discusses a statistical evaluation of the relationship between environmental quality and population change in the United States at the county level between 2006 and 2010.  
 
-# Background
+## Background
 The Environmental Quality Index (EQI), developed by the U.S. Environmental Protection Agency (EPA) provides a county level snapshop of environmental conditions throughout the country. EPA first released EQIs for the period 2000-2005 and updated these indexes for 2006-2010. This statistical evaluation focuses on the 2006-2010 EQI. The purpose of the EQI is to use (1) as an indicator of ambient conditions/exposure in environmental health and modeling and (2) as a covariate to adjust for ambient conditions in environmental models [xxx ref].
 
 The EQI is developed from 5 environmental domains each with identified environmental constructs as show in Table No. 1. Each county has an overall environmental index and a domain specific index. Indexes were also stratified by rural-urban continuum codes (RUCCs) for counties classified as metropolitan urbanized, non-metro urbanized, less urbanized, and thinly populated.
@@ -54,12 +57,12 @@ Previous studies have used the EQI to evaluate relationships between environment
 - obesity  
 - infant mortality
 
-## Limitations
+### Limitations
 While the EQI can identify counties with higher environmental burdens, it may not identify environmental injustices at local community level. The EQI can not quantify environmental exposure for individuals and reflects only outside environmental conditions, not indoor conditions. The EQI can be used identify locations for future research, but is not intended for regulatory purposes or as a diagnostics tool. Due to changes in methodology and datasets, the 2000-2005 and 2006-2010 EQIs should not be directly compared. 
 
-# The Data
+## The Data
 
-## EQI
+### Environmental Quality Index
 To develop the EQI, variables were identified from available data to represent each environmental domain and assessed for collinearity so redundant variables could be excluded. Then, variables were standardized based on geographic space or on a per capita rate, as appropriate. Data gaps were evaluated to distinguish between missing data and meaningful zeros. Where applicable, spatial kriging was used to interpolate values when data was not available for all counties. For example, crime likely occurs in all counties despite centralized reporting areas. Finally, the normality of each variable was assessed and transformations such as log-transformations, performed as needed.
 
 Principal component analysis (PCA) was used to aggregate variables into domain specific indexes. The domain indexes were then aggregated into overall indexes for each county. A result of this method is that each domain does not equally influence the overall EQI value for a given county. The EQI is developed to be normally distributed with mean=0 and standard deviation=1.
@@ -69,22 +72,19 @@ Principal component analysis (PCA) was used to aggregate variables into domain s
 xxx...patchwork map of EQI (no space for maps)
 
 
-## Census Population Data
+### Census Population Data
 
-County level population data was obtained from the U.S. Census Bureau's county intercensal datasets for 2000-2010. The Census Bureau estimates intercensal populations by modifying the 2000-2010 postcensal estimates using the fomula:
-
-$$P_{t} = Q_{t}(P_{3652}/Q_{3652})^ {(t / 3652)}$$
-where:  
+County level population data was obtained from the U.S. Census Bureau's county intercensal datasets for 2000-2010. The Census Bureau estimates intercensal populations by modifying the 2000-2010 postcensal estimates using the fomula^[where:  
   t = time in days since APril 1, 2000  
   $P_{t}$ = population estimate at time t  
   $Q_{t}$ = postcensal estiamte at time t  
   $P_{3652}$ = April 1, 2010 census count  
-  $Q_{3652}$ = April 1, 2010 postcensal estiamte based on Census 2000  
+  $Q_{3652}$ = April 1, 2010 postcensal estiamte based on Census 2000]:
 
-xxx...map of population change
+$$P_{t} = Q_{t}(P_{3652}/Q_{3652})^ {(t / 3652)}$$
 
-# Statistical Methods 
-## Hypothesis testing
+## Statistical Methods 
+### Hypothesis testing
 
 The figure below shows a histogram of EQI values for counties with negative and positive population change.
 
@@ -128,6 +128,7 @@ A different means test was completed to determine if mean environmental quality 
 There is no difference in mean EQI for counties with positive and negative population change.  
 
 $$H_{0}: \mu_{posPopChange} - \mu_{negPopChange} = 0$$
+
 **alternative hypothesis:** 
 There is a difference in EQI for counties with positive and negative population change.
 
@@ -177,36 +178,149 @@ $$\text{point estimate} = \mu_{posPopChange} - \mu_{negPopChange} = `r mu_eqi_po
 
 The standard error for a difference in means is defined as: 
 
-$$SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s^2_2}{n_2}} = \sqrt{\frac{`r sd_eqi_pos_pop_change`^2}{`r n_pos_pop_change`} + \frac{`r sd_eqi_neg_pop_change`^2}{`r n_neg_pop_change`}} = `r SE`$$ 
+$$SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s^2_2}{n_2}} = `r SE`$$ 
+
 and the z-score for hypothesis testing is:  
 
 $$z = \frac{\text{point estimate - null}}{SE} = \frac{`r point_est` - 0}{`r SE`} = `r z_score`$$
+
 ```{r}
 p_value = 2 * pnorm(point_est, mean = 0, sd = SE, lower.tail=FALSE)
 ```
-Calculated p-value: the probability of getting a point estimate at least as extreme as calculates above if the null hypothesis were true: 
-$$p\text {- value }=\operatorname{Pr}(Z<-|z| \text { or } Z>|z|)=2 * \operatorname{Pr}(Z>|z|) = `r p_value`$$
-xxx...maybe just use t.test for hypothesis test?
 
-## Interaction model
-Looking at the data, the relationship between EQI and population change may be influenced by the rural-urban continuum of each county. The interaction model used to describe this relationship is:
-$$\text{percent population change}_i=\beta_{0}+\beta_{1} \cdot EQI_i + \beta_{2} \cdot RUCC_i + \beta_{3} \cdot EQI_i \cdot RUCC_i + \varepsilon_i$$
+Calculated p-value: the probability of getting a point estimate at least as extreme as calculates above if the null hypothesis were true: 
+
+$$p\text {- value }=\operatorname{Pr}(Z<-|z| \text { or } Z>|z|)=2 * \operatorname{Pr}(Z>|z|) = `r p_value`$$
+
 ```{r}
-int_model <- lm(pop_change_pct ~ EQI + rucc_text + EQI:rucc_text, data = eqi_pop)
-summary(int_model)
+crit_val = qnorm((1-0.95)/2, lower.tail = FALSE)
+ci_lower = round(point_est - crit_val*SE, 2)
+ci_upper = round(point_est + crit_val*SE, 2)
+```
+The 95% confidence interval ranges from `r ci_lower` to `r ci_upper`. This means that there is a 95% chance that this interval includes the true difference in mean EQI between counties with positive and negative percent population change.
+
+### Simple linear regression  
+
+Linear regression models were used to evaluate the relationship between environmental quality and population change using the overall EQI value and each domain specific EQI to determine if a particular domain was a stronger predictor of population change.
+
+```{r}
+eqi_model <- lm(pop_change_pct ~ EQI, data = eqi_pop)
+summary(eqi_model)
+```
+
+
+
+```{r}
+air_eqi_model <- lm(pop_change_pct ~ air_EQI, data = eqi_pop)
+water_eqi_model <- lm(pop_change_pct ~ water_EQI, data = eqi_pop)
+land_eqi_model <- lm(pop_change_pct ~ land_EQI, data = eqi_pop)
+built_eqi_model <- lm(pop_change_pct ~ built_EQI, data = eqi_pop)
+sociodemographic_eqi_model <- lm(pop_change_pct ~ sociodemographic_EQI, data = eqi_pop)
 ```
 
 ```{r}
-int_model_plot <- ggplot(data = eqi_pop, aes(x = EQI, y = pop_change_pct, color = rucc_text)) +
+plot_summs(eqi_model, air_eqi_model, water_eqi_model, land_eqi_model, built_eqi_model, sociodemographic_eqi_model, inner_ci_level = 0.9, model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
+```
+
+```{r}
+export_summs(eqi_model, air_eqi_model, water_eqi_model, land_eqi_model, built_eqi_model, sociodemographic_eqi_model, 
+             digits = 3, error_format = "[{conf.low}, {conf.high}]", 
+             model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
+```
+
+### Linear regression with categorical variables
+
+```{r}
+eqi_cat_model <- lm(pop_change_pct ~ EQI + rucc_text, data = eqi_pop)
+summary(eqi_cat_model)
+```
+
+```{r}
+eqi_cat_model_plot <- ggplot(data = eqi_pop, aes(x = EQI, y = pop_change_pct, color = rucc_text)) +
+  geom_point(size = 0.5) + 
+  geom_line(data = augment(eqi_cat_model), aes(y = .fitted, color = rucc_text)) +
+  theme(legend.position = "bottom") + 
+  labs(title = "Categorical model for population change and EQI based on RUCC", y = "% population change", color = "rural-urban continual category:")
+eqi_cat_model_plot
+```
+
+```{r}
+summ(eqi_cat_model, confint = TRUE, digits = 3)
+```
+
+```{r}
+plot_summs(eqi_cat_model, inner_ci_level = 0.9)
+```
+
+```{r}
+air_eqi_cat_model <- lm(pop_change_pct ~ air_EQI + rucc_text, data = eqi_pop)
+water_eqi_cat_model <- lm(pop_change_pct ~ water_EQI + rucc_text, data = eqi_pop)
+land_eqi_cat_model <- lm(pop_change_pct ~ land_EQI + rucc_text, data = eqi_pop)
+built_eqi_cat_model <- lm(pop_change_pct ~ built_EQI + rucc_text, data = eqi_pop)
+sociodemographic_eqi_cat_model <- lm(pop_change_pct ~ sociodemographic_EQI + rucc_text, data = eqi_pop)
+```
+
+```{r}
+plot_summs(eqi_cat_model, air_eqi_cat_model, water_eqi_cat_model, land_eqi_cat_model, built_eqi_cat_model, sociodemographic_eqi_cat_model, inner_ci_level = 0.9, model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
+```
+
+```{r}
+export_summs(eqi_cat_model, air_eqi_cat_model, water_eqi_cat_model, land_eqi_cat_model, built_eqi_cat_model, sociodemographic_eqi_cat_model, 
+             digits = 3, error_format = "[{conf.low}, {conf.high}]", 
+             model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
+```
+
+### Interaction model  
+
+Linear regression was used to explore the relationship between EQI and population change. Looking at the data, the relationship between EQI and population change may be influenced by the rural-urban continuum of each county. The interaction model used to describe this relationship is:
+
+$$\text{percent population change}_i=\beta_{0}+\beta_{1} \cdot EQI_i + \beta_{2} \cdot RUCC_i + \beta_{3} \cdot EQI_i \cdot RUCC_i + \varepsilon_i$$
+
+```{r}
+eqi_int_model <- lm(pop_change_pct ~ EQI + rucc_text + EQI:rucc_text, data = eqi_pop)
+summary(eqi_int_model)
+```
+
+```{r}
+eqi_int_model_plot <- ggplot(data = eqi_pop, aes(x = EQI, y = pop_change_pct, color = rucc_text)) +
   geom_point(size = 0.5) + 
   geom_smooth(method = "lm", se = FALSE) +
   theme(legend.position = "bottom") + 
   labs(title = "Interaction model for population change and EQI based on RUCC", y = "% population change", color = "rural-urban continual category:")
-int_model_plot
+eqi_int_model_plot
+```
+
+```{r}
+summ(eqi_int_model, confint = TRUE, digits = 3)
+```
+
+```{r}
+plot_summs(eqi_int_model, inner_ci_level = 0.9)
 ```
 
 
-# Results and Conclusion
+Additionally, interaction models were created for each domain specific EQI to determine if a particular domain was more strongly correlated with population change.
+
+```{r}
+air_eqi_int_model <- lm(pop_change_pct ~ air_EQI + rucc_text + air_EQI:rucc_text, data = eqi_pop)
+water_eqi_int_model <- lm(pop_change_pct ~ water_EQI + rucc_text + water_EQI:rucc_text, data = eqi_pop)
+land_eqi_int_model <- lm(pop_change_pct ~ land_EQI + rucc_text + land_EQI:rucc_text, data = eqi_pop)
+built_eqi_int_model <- lm(pop_change_pct ~ built_EQI + rucc_text + built_EQI:rucc_text, data = eqi_pop)
+sociodemographic_eqi_int_model <- lm(pop_change_pct ~ sociodemographic_EQI + rucc_text + sociodemographic_EQI:rucc_text, data = eqi_pop)
+```
+
+```{r}
+plot_summs(eqi_int_model, air_eqi_int_model, water_eqi_int_model, land_eqi_int_model, built_eqi_int_model, sociodemographic_eqi_int_model, inner_ci_level = 0.9, model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
+```
+
+```{r}
+export_summs(eqi_int_model, air_eqi_int_model, water_eqi_int_model, land_eqi_int_model, built_eqi_int_model, sociodemographic_eqi_int_model, 
+             digits = 3, error_format = "[{conf.low}, {conf.high}]", 
+             model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
+```
+
+
+## Results and Conclusions
 
 Since the $p-value = `r p_value` < 0.05$ we reject the null that there is no difference in the EQI of counties with positive population change versus negative population change. There is a statistically significant difference (at the 5% significance level) in EQI across the two population change groups.
 
@@ -216,7 +330,7 @@ slope for the relationship between % population change and EQI for metropolitan 
 slope for the relationship between % population change and EQi for less urban and thinly populated counties = $(\beta_{1}\cdot EQI = xxx$
 The difference between these slopes = $(\beta_{3} = xxx$
 
-## Future work
+### Future work
 xxx...RUCC
 
 While this project did not evaluate economic variables, locations with higher environmental quality could also have higher living costs which drive people to move to more affordable places. Many studies have documented to connection between environmental quality and public health. xxx[add ref]. If economic factors contribute to population growth in counties with poor environmental quality, then this could negatively affect public health in vulnerable populations and perpetuate social inequalities. Further analysis could evaluate trends in mean household income to determine if there is growing income inequality between counties with better and worse environmental quality.
@@ -230,7 +344,7 @@ In the future, EPA plans to create a census tract level EQI. This would be facil
 **GitHub Repo Link:**
 xxx...Code used to read and tidy the data can be found here:
 
-# References  
+## References  
 1. U.S. EPA. Environmental Quality Index - Technical Report (2006-2010) (Final, 2020). U.S. Environmental Protection Agency, Washington, DC, EPA/600/R-20/367, 2020.
 
 2. U.S. Census Bureau. County Intercensal Datasets: 2000-2010. https://www.census.gov/data/datasets/time-series/demo/popest/intercensal-2000-2010-counties.html
