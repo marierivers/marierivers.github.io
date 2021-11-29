@@ -23,6 +23,7 @@ library(jtools)
 library(ggstance)
 library(huxtable)
 library(tidymodels)
+library(patchwork)
 ```
 
 ```{r}
@@ -199,125 +200,13 @@ ci_upper = round(point_est + crit_val*SE, 2)
 ```
 The 95% confidence interval ranges from `r ci_lower` to `r ci_upper`. This means that there is a 95% chance that this interval includes the true difference in mean EQI between counties with positive and negative percent population change.
 
-### Simple linear regression  
-
-Linear regression models were used to evaluate the relationship between environmental quality and population change using the overall EQI value and each domain specific EQI to determine if a particular domain was a stronger predictor of population change.
-
-```{r}
-eqi_model <- lm(pop_change_pct ~ EQI, data = eqi_pop)
-summary(eqi_model)
-```
 
 
 
-```{r}
-air_eqi_model <- lm(pop_change_pct ~ air_EQI, data = eqi_pop)
-water_eqi_model <- lm(pop_change_pct ~ water_EQI, data = eqi_pop)
-land_eqi_model <- lm(pop_change_pct ~ land_EQI, data = eqi_pop)
-built_eqi_model <- lm(pop_change_pct ~ built_EQI, data = eqi_pop)
-sociodemographic_eqi_model <- lm(pop_change_pct ~ sociodemographic_EQI, data = eqi_pop)
-```
-
-```{r}
-plot_summs(eqi_model, air_eqi_model, water_eqi_model, land_eqi_model, built_eqi_model, sociodemographic_eqi_model, inner_ci_level = 0.9, model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
-```
-
-```{r}
-export_summs(eqi_model, air_eqi_model, water_eqi_model, land_eqi_model, built_eqi_model, sociodemographic_eqi_model, 
-             digits = 3, error_format = "[{conf.low}, {conf.high}]", 
-             model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
-```
-
-### Linear regression with categorical variables
-
-```{r}
-eqi_cat_model <- lm(pop_change_pct ~ EQI + rucc_text, data = eqi_pop)
-summary(eqi_cat_model)
-```
-
-```{r}
-eqi_cat_model_plot <- ggplot(data = eqi_pop, aes(x = EQI, y = pop_change_pct, color = rucc_text)) +
-  geom_point(size = 0.5) + 
-  geom_line(data = augment(eqi_cat_model), aes(y = .fitted, color = rucc_text)) +
-  theme(legend.position = "bottom") + 
-  labs(title = "Categorical model for population change and EQI based on RUCC", y = "% population change", color = "rural-urban continual category:")
-eqi_cat_model_plot
-```
-
-```{r}
-summ(eqi_cat_model, confint = TRUE, digits = 3)
-```
-
-```{r}
-plot_summs(eqi_cat_model, inner_ci_level = 0.9)
-```
-
-```{r}
-air_eqi_cat_model <- lm(pop_change_pct ~ air_EQI + rucc_text, data = eqi_pop)
-water_eqi_cat_model <- lm(pop_change_pct ~ water_EQI + rucc_text, data = eqi_pop)
-land_eqi_cat_model <- lm(pop_change_pct ~ land_EQI + rucc_text, data = eqi_pop)
-built_eqi_cat_model <- lm(pop_change_pct ~ built_EQI + rucc_text, data = eqi_pop)
-sociodemographic_eqi_cat_model <- lm(pop_change_pct ~ sociodemographic_EQI + rucc_text, data = eqi_pop)
-```
-
-```{r}
-plot_summs(eqi_cat_model, air_eqi_cat_model, water_eqi_cat_model, land_eqi_cat_model, built_eqi_cat_model, sociodemographic_eqi_cat_model, inner_ci_level = 0.9, model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
-```
-
-```{r}
-export_summs(eqi_cat_model, air_eqi_cat_model, water_eqi_cat_model, land_eqi_cat_model, built_eqi_cat_model, sociodemographic_eqi_cat_model, 
-             digits = 3, error_format = "[{conf.low}, {conf.high}]", 
-             model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
-```
-
-### Interaction model  
-
-Linear regression was used to explore the relationship between EQI and population change. Looking at the data, the relationship between EQI and population change may be influenced by the rural-urban continuum of each county. The interaction model used to describe this relationship is:
-
-$$\text{percent population change}_i=\beta_{0}+\beta_{1} \cdot EQI_i + \beta_{2} \cdot RUCC_i + \beta_{3} \cdot EQI_i \cdot RUCC_i + \varepsilon_i$$
-
-```{r}
-eqi_int_model <- lm(pop_change_pct ~ EQI + rucc_text + EQI:rucc_text, data = eqi_pop)
-summary(eqi_int_model)
-```
-
-```{r}
-eqi_int_model_plot <- ggplot(data = eqi_pop, aes(x = EQI, y = pop_change_pct, color = rucc_text)) +
-  geom_point(size = 0.5) + 
-  geom_smooth(method = "lm", se = FALSE) +
-  theme(legend.position = "bottom") + 
-  labs(title = "Interaction model for population change and EQI based on RUCC", y = "% population change", color = "rural-urban continual category:")
-eqi_int_model_plot
-```
-
-```{r}
-summ(eqi_int_model, confint = TRUE, digits = 3)
-```
-
-```{r}
-plot_summs(eqi_int_model, inner_ci_level = 0.9)
-```
 
 
-Additionally, interaction models were created for each domain specific EQI to determine if a particular domain was more strongly correlated with population change.
 
-```{r}
-air_eqi_int_model <- lm(pop_change_pct ~ air_EQI + rucc_text + air_EQI:rucc_text, data = eqi_pop)
-water_eqi_int_model <- lm(pop_change_pct ~ water_EQI + rucc_text + water_EQI:rucc_text, data = eqi_pop)
-land_eqi_int_model <- lm(pop_change_pct ~ land_EQI + rucc_text + land_EQI:rucc_text, data = eqi_pop)
-built_eqi_int_model <- lm(pop_change_pct ~ built_EQI + rucc_text + built_EQI:rucc_text, data = eqi_pop)
-sociodemographic_eqi_int_model <- lm(pop_change_pct ~ sociodemographic_EQI + rucc_text + sociodemographic_EQI:rucc_text, data = eqi_pop)
-```
 
-```{r}
-plot_summs(eqi_int_model, air_eqi_int_model, water_eqi_int_model, land_eqi_int_model, built_eqi_int_model, sociodemographic_eqi_int_model, inner_ci_level = 0.9, model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
-```
-
-```{r}
-export_summs(eqi_int_model, air_eqi_int_model, water_eqi_int_model, land_eqi_int_model, built_eqi_int_model, sociodemographic_eqi_int_model, 
-             digits = 3, error_format = "[{conf.low}, {conf.high}]", 
-             model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
-```
 
 
 ## Results and Conclusions
