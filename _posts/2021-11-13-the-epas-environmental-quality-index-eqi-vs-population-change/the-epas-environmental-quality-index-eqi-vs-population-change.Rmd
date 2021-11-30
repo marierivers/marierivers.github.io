@@ -1,5 +1,5 @@
 ---
-title: "The EPA's Environmental Quality Index (EQI) vs. Population Change"
+title: "The EPA Environmental Quality Index (EQI) vs. Population Change"
 description: |
   A statistical analysis
 author:
@@ -9,7 +9,7 @@ date: 12-02-2021
 output:
   distill::distill_article:
     self_contained: false
-    code_folding: show
+    #code_folding: show
     toc: TRUE
     toc_float: TRUE
 ---
@@ -27,8 +27,13 @@ library(patchwork)
 ```
 
 ```{r}
-eqi_pop <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "eqi_pop.csv")) %>%
-  filter(pop_change_pct < 100)
+eqi_pop_with_outliers <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "eqi_pop.csv"))
+
+quantile_999th <- quantile(eqi_pop_with_outliers$pop_change_pct, 0.999)
+
+eqi_pop <- eqi_pop_with_outliers %>%
+  mutate(pop_change_pct = case_when(pop_change_pct < quantile_999th ~ pop_change_pct,
+                                     pop_change_pct >= quantile_999th ~ quantile_999th))
 ```
 
 This post discusses a statistical evaluation of the relationship between environmental quality and population change in the United States at the county level between 2006 and 2010.  
@@ -70,29 +75,38 @@ Principal component analysis (PCA) was used to aggregate variables into domain s
 
 **Higher EQI values correspond with worse environmental quality. Lower (more negative) EQI values correspond with better environmental quality**
 
-xxx...patchwork map of EQI (no space for maps)
-
-
 ### Census Population Data
 
-County level population data was obtained from the U.S. Census Bureau's county intercensal datasets for 2000-2010. The Census Bureau estimates intercensal populations by modifying the 2000-2010 postcensal estimates using the fomula^[where:  
-  t = time in days since APril 1, 2000  
+County level population data was obtained from the U.S. Census Bureau's county intercensal datasets for 2000-2010. The Census Bureau estimates intercensal populations by modifying the 2000-2010 postcensal estimates using the formula ^[where:  
+  t = time in days since April 1, 2000  
   $P_{t}$ = population estimate at time t  
-  $Q_{t}$ = postcensal estiamte at time t  
+  $Q_{t}$ = postcensal estimate at time t  
   $P_{3652}$ = April 1, 2010 census count  
-  $Q_{3652}$ = April 1, 2010 postcensal estiamte based on Census 2000]:
+  $Q_{3652}$ = April 1, 2010 postcensal estimate based on Census 2000]:
 
 $$P_{t} = Q_{t}(P_{3652}/Q_{3652})^ {(t / 3652)}$$
+Census data was winsorized to remove outilers above the 99.9th percentile (ie counties with population change above 28.5%).
 
 ## Statistical Methods 
 ### Hypothesis testing
 
 The figure below shows a histogram of EQI values for counties with negative and positive population change.
 
-```{r}
+eqi_lm_plot_big <- ggplot(data = eqi_pop, aes(x = EQI, y = pop_change_pct)) + 
+  geom_point() + 
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  labs(title = "Linear Regression Model of Overall EQI vs. Population Change", 
+       subtitle = "US Counties, 2006-2010", y = "% pop change") +
+  theme(plot.title.position = "plot", plot.title = element_text(size = 10), plot.subtitle = element_text(size = 8),
+        axis.title = element_text(size = 8))
+eqi_lm_plot_big
+
+```{r fig.height = 3, fig.width = 5}
 histogram_pop_change <- ggplot(data = eqi_pop, aes(x = EQI)) +
   geom_histogram(aes(fill = pop_change_text), position = "dodge", bins = 50) +
-  labs(title = "Historgram of EQI based on county population change, 2006-2010", x = "EQI", fill = "Population change")
+  labs(title = "Historgram of EQI Based on Population Change", subtitle = "US Counties, 2006-2010", x = "EQI", fill = "Population change") +
+  theme(plot.title.position = "plot", plot.title = element_text(size = 10), plot.subtitle = element_text(size = 8),
+        axis.title = element_text(size = 8), legend.title = element_text(size = 8), legend.text = element_text(size = 8))
 histogram_pop_change
 ```
 Kalawao County, Hawaii had the lowest EQI value (highest environmental quality) and greatest decrease in population (-17.4%). Falls Church, Virginia had the highest EQI (lowest environmental quality) and a population change of 15.4% which falls is the 99th percentile.
@@ -175,7 +189,7 @@ SE <- as.numeric(sqrt( (sd_eqi_pos_pop_change^2 / n_pos_pop_change) + (sd_eqi_ne
 z_score <- (point_est - 0) / SE
 ```
 
-$$\text{point estimate} = \mu_{posPopChange} - \mu_{negPopChange} = `r mu_eqi_pos_pop_change` - `r mu_eqi_neg_pop_change` = `r point_est`$$
+$$\text{point estimate} = \mu_{posPopChange} - \mu_{negPopChange} =`r as.numeric(mu_eqi_pos_pop_change)` - `r as.numeric(mu_eqi_neg_pop_change)` = `r point_est`$$
 
 The standard error for a difference in means is defined as: 
 
@@ -193,34 +207,147 @@ Calculated p-value: the probability of getting a point estimate at least as extr
 
 $$p\text {- value }=\operatorname{Pr}(Z<-|z| \text { or } Z>|z|)=2 * \operatorname{Pr}(Z>|z|) = `r p_value`$$
 
+Since the p-value < 0.001 we reject the null that there is no difference in the EQI of counties with positive population change versus negative population change. There is a statistically significant difference (at the 0.1% significance level) in EQI across the two population change groups.
+
 ```{r}
-crit_val = qnorm((1-0.95)/2, lower.tail = FALSE)
-ci_lower = round(point_est - crit_val*SE, 2)
-ci_upper = round(point_est + crit_val*SE, 2)
+crit_val <- qnorm((1-0.95)/2, lower.tail = FALSE)
+ci_lower <- round(point_est - crit_val*SE, 2)
+ci_upper <- round(point_est + crit_val*SE, 2)
 ```
 The 95% confidence interval ranges from `r ci_lower` to `r ci_upper`. This means that there is a 95% chance that this interval includes the true difference in mean EQI between counties with positive and negative percent population change.
 
+### Linear Regression
 
+Linear regression was used to model the relationship between environmental quality and population change using the overall EQI value and each domain specific EQI to determine if a particular domain was a stronger predictor of population change.
 
+```{r}
+eqi_model <- lm(pop_change_pct ~ EQI, data = eqi_pop)
+summary(eqi_model)
 
+eqi_model_summary <- summary(eqi_model)
+```
 
+$$\text{percent population change}_i=\beta_{0}+\beta_{1} \cdot EQI_i + \varepsilon_i$$
 
+```{r fig.height = 3, fig.width = 5}
+eqi_lm_plot_big <- ggplot(data = eqi_pop, aes(x = EQI, y = pop_change_pct)) + 
+  geom_point(size = 0.5) + 
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  labs(title = "Linear Regression Model of Overall EQI vs. Population Change", 
+       subtitle = "US Counties, 2006-2010", y = "% pop change") +
+  theme(plot.title.position = "plot", plot.title = element_text(size = 10), plot.subtitle = element_text(size = 8),
+        axis.title = element_text(size = 8))
+eqi_lm_plot_big
+```
 
+First, hypothesis testing was used to test whether the slope coefficient for the % population change rate is equal to zero or not.
+**null_hypothesis:**
+The slope coefficient is equal to zero  
 
+$$H_{0}: \beta_{1} = 0$$
+**alternative hypothesis:** 
+The slope coefficient is **NOT** equal to zero
 
+$$H_{A}: \beta_{1} \neq 0$$
+```{r}
+beta_1_lm <- eqi_model_summary$coefficients["EQI", "Estimate"]
+SE_lm <- eqi_model_summary$coefficients["EQI", "Std. Error"]
+z_score_lm <- eqi_model_summary$coefficients["EQI", "t value"]
+p_value_lm <- eqi_model_summary$coefficients["EQI", "Pr(>|t|)"]
+```
 
-## Results and Conclusions
+point estimate, $\beta_1$ = `r beta_1_lm`
 
-Since the $p-value = `r p_value` < 0.05$ we reject the null that there is no difference in the EQI of counties with positive population change versus negative population change. There is a statistically significant difference (at the 5% significance level) in EQI across the two population change groups.
+SE = `r SE_lm`
 
-The reference group for this model is less urban and thinly populated counties. Based on output from the interaction model, the average % population change for a county that is less urban or thinly populated with an EQI of zero is 0.67%. For less urban or thinly populated counties, percent population change increases by 0.25 when EQI increases by a value of 1. On average, population change is 2.68 percentage points higher for metropolitan and urban counties relative to less urban and thinly populated counties when EQI is zero. This shows that the effect of the rural-urban continuum varies with EQI. The impact of EQI on percent population change is 0.15 percentage points higher for metropolitan and urban counties than for less urban and thinly populated counties. 
+the z-score for hypothesis testing is:  
 
-slope for the relationship between % population change and EQI for metropolitan and urban counties = $(\beta_{1}+\beta_{3})\cdot EQI = xxx$
-slope for the relationship between % population change and EQi for less urban and thinly populated counties = $(\beta_{1}\cdot EQI = xxx$
-The difference between these slopes = $(\beta_{3} = xxx$
+$$z = \frac{\text{point estimate - null}}{SE} = \frac{{`r beta_1_lm` - 0}}{`r SE_lm`} = `r z_score_lm`$$
 
-### Future work
-xxx...RUCC
+p-value: the probability of getting a point estimate at least as extreme as calculates above if the null hypothesis were true: 
+
+$$p\text {- value }=\operatorname{Pr}(Z<-|z| \text { or } Z>|z|)=2 * \operatorname{Pr}(Z>|z|) = `r p_value_lm`$$
+Since p-value for the slope coefficient < 0.001, we reject the null hypothesis that the slope coefficient for the % population change rate is equal to zero. There is a statistically significant relationship (at the 0.1% significance level) between EQI and % population change.
+
+```{r}
+lm_ci_95_lower <- round(beta_1_lm - crit_val*SE_lm, 2)
+lm_ci_95_upper <- round(beta_1_lm + crit_val*SE_lm, 2)
+```
+
+The 95% confidence interval for the slope coefficient ranges from `r lm_ci_95_lower` to `r lm_ci_95_upper`. This means that there is a 95% chance that this interval includes the true county level rate of change for percent population change for each one unit change in EQI.
+
+### Domain Specific Linear Models
+```{r}
+air_eqi_model <- lm(pop_change_pct ~ air_EQI, data = eqi_pop)
+water_eqi_model <- lm(pop_change_pct ~ water_EQI, data = eqi_pop)
+land_eqi_model <- lm(pop_change_pct ~ land_EQI, data = eqi_pop)
+built_eqi_model <- lm(pop_change_pct ~ built_EQI, data = eqi_pop)
+sociodemographic_eqi_model <- lm(pop_change_pct ~ sociodemographic_EQI, data = eqi_pop)
+```
+
+```{r}
+eqi_lm_plot <- ggplot(data = eqi_pop, aes(x = EQI, y = pop_change_pct)) + 
+  geom_point(size = 0.25) + 
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  labs(y = "% pop change")
+
+air_eqi_lm_plot <- ggplot(data = eqi_pop, aes(x = air_EQI, y = pop_change_pct)) + 
+  geom_point(size = 0.25) + 
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  labs(y = "% pop change")
+
+water_eqi_lm_plot <- ggplot(data = eqi_pop, aes(x = water_EQI, y = pop_change_pct)) + 
+  geom_point(size = 0.25) + 
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  labs(y = "% pop change")
+
+land_eqi_lm_plot <- ggplot(data = eqi_pop, aes(x = land_EQI, y = pop_change_pct)) + 
+  geom_point(size = 0.25) + 
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  labs(y = "% pop change")
+
+built_eqi_lm_plot <- ggplot(data = eqi_pop, aes(x = built_EQI, y = pop_change_pct)) + 
+  geom_point(size = 0.25) + 
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  labs(y = "% pop change")
+
+sociod_eqi_lm_plot <- ggplot(data = eqi_pop, aes(x = sociodemographic_EQI, y = pop_change_pct)) + 
+  geom_point(size = 0.25) + 
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  labs(y = "% pop change")
+```
+
+```{r fig.height = 4, fig.width = 6}
+linear_model_plots <- (eqi_lm_plot | air_eqi_lm_plot | water_eqi_lm_plot) / (land_eqi_lm_plot | built_eqi_lm_plot | sociod_eqi_lm_plot )
+
+linear_model_plots + plot_annotation(
+  title = "Simple Linear Models of EQI Domains vs. % Population Change",
+  subtitle = "US Counties, 2006-2010") & 
+  theme(plot.title = element_text(size = 10), plot.subtitle = element_text(size = 8))
+```
+
+While a partly manual method was used above for the overall EQI model, the tables below present similar results for domain specific models generated with statistical functions in R. The numbers in [brackets] are the 95% confidence intervals for each estimated coefficient.
+
+```{r}
+options(knitr.kable.NA = '')
+model_summary_table <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "model_summary_table.csv")) %>%
+  kable() %>%
+  kable_paper(full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  row_spec(c(0, 1, 3, 5, 7, 9, 11), bold = T)
+model_summary_table
+```
+
+The figure below provides a visual comparison of each model result. The bold portion of the line represents the 90% confidence interval and the full line represents the 95% confidence interval for each estimate.
+
+xxx...Talk about which models are best/worse based on magnitude of slope and R squared values.
+
+```{r fig.height = 4, fig.width = 6}
+plot_summs(eqi_model, air_eqi_model, water_eqi_model, land_eqi_model, built_eqi_model, sociodemographic_eqi_model, inner_ci_level = 0.9, model.names = c("EQI", "air EQI", "water EQI", "land EQI", "built EQI", "sociodem EQI"))
+```
+
+## Conclusions
+public health and environmental justice implications, future work
 
 While this project did not evaluate economic variables, locations with higher environmental quality could also have higher living costs which drive people to move to more affordable places. Many studies have documented to connection between environmental quality and public health. xxx[add ref]. If economic factors contribute to population growth in counties with poor environmental quality, then this could negatively affect public health in vulnerable populations and perpetuate social inequalities. Further analysis could evaluate trends in mean household income to determine if there is growing income inequality between counties with better and worse environmental quality.
 
@@ -237,9 +364,3 @@ xxx...Code used to read and tidy the data can be found here:
 1. U.S. EPA. Environmental Quality Index - Technical Report (2006-2010) (Final, 2020). U.S. Environmental Protection Agency, Washington, DC, EPA/600/R-20/367, 2020.
 
 2. U.S. Census Bureau. County Intercensal Datasets: 2000-2010. https://www.census.gov/data/datasets/time-series/demo/popest/intercensal-2000-2010-counties.html
-
-Distill is a publication format for scientific and technical writing, native to the web.
-
-Learn more about using Distill at <https://rstudio.github.io/distill>.
-
-
