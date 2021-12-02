@@ -7,11 +7,11 @@ author:
     url: {}
 date: 12-01-2021
 output:
-  pdf_document:
-    toc: yes
   html_document:
     toc: yes
     df_print: paged
+  pdf_document:
+    toc: yes
   distill::distill_article:
     toc: yes
     code_folding: yes
@@ -39,10 +39,10 @@ eqi_pop <- eqi_pop_with_outliers %>%
   mutate(pop_change_pct = case_when(pop_change_pct < quantile_999th ~ pop_change_pct,
                                      pop_change_pct >= quantile_999th ~ quantile_999th))
 ```
-This post discusses a statistical analysis used to answer the question: does environmental quality influence where people live in the United States?
+This post discusses a statistical analysis used to answer the question: Does environmental quality influence where people live in the United States?
 
 ## Background
-The Environmental Quality Index (EQI), developed by the U.S. Environmental Protection Agency (EPA) provides a county level snapshop of environmental conditions throughout the country. EPA first released EQIs for the period 2000-2005 and updated these indexes for 2006-2010. This statistical evaluation focuses on the 2006-2010 EQI. The purpose of the EQI is to use (1) as an indicator of ambient conditions/exposure in environmental health and modeling and (2) as a covariate to adjust for ambient conditions in environmental models (EPA 2020). Previous studies have used the EQI to evaluate relationships between environmental quality and public health outcomes such as preterm birth, mortality, cancer incidence, asthma, obesity, infant mortality
+The Environmental Quality Index (EQI), developed by the U.S. Environmental Protection Agency (EPA) provides a county level snapshop of environmental conditions throughout the country. EPA first released EQIs for the period 2000-2005 and updated these indexes for 2006-2010. This statistical evaluation focuses on the 2006-2010 EQI. The purpose of the EQI is to use (1) as an indicator of ambient conditions/exposure in environmental health and modeling and (2) as a covariate to adjust for ambient conditions in environmental models (EPA 2020). Previous studies have used the EQI to evaluate relationships between environmental quality and public health outcomes such as preterm birth, cancer incidence, asthma, obesity, infant mortality.
 
 The EQI is developed from 5 environmental domains each with identified environmental constructs as show in Table No. 1. Each county has an overall environmental index and a domain specific index. Indexes were also stratified by rural-urban continuum codes (RUCCs) for counties classified as metropolitan urbanized, non-metro urbanized, less urbanized, and thinly populated.
 
@@ -58,7 +58,7 @@ kbl(eqi_domains, caption = "EQI Environmental Domains and Constructs") %>%
   column_spec(1, bold = T, border_right = T)
 ```
 ### Limitations
-While the EQI can identify counties with higher environmental burdens, it may not identify environmental injustices at local community level. The EQI can not quantify environmental exposure for individuals and reflects only outside environmental conditions, not indoor conditions. The EQI can be used identify locations for future research, but is not intended for regulatory purposes or as a diagnostics tool. Due to changes in methodology and datasets, the 2000-2005 and 2006-2010 EQIs should not be directly compared. 
+While the EQI can identify counties with higher environmental burdens, it may not identify environmental injustices at local community level. The EQI cannot quantify environmental exposure for individuals and reflects only outside environmental conditions, not indoor conditions. The EQI can be used to identify locations for future research, but is not intended for regulatory purposes or as a diagnostics tool. Due to changes in methodology and datasets, the 2000-2005 and 2006-2010 EQIs should not be directly compared. 
 
 ## The Data
 ### Environmental Quality Index
@@ -72,41 +72,41 @@ Principal component analysis (PCA) was used to aggregate variables into domain s
 
 County level population data was obtained from the U.S. Census Bureau's county intercensal datasets for 2000-2010. Percent population change was calculated for 2006-2010 then winsorized to remove outliers above the 99.9th percentile (ie. counties with population change above 28.5%).
 
-## Statistical Methods 
+## Statistical Analysis 
 
 Kalawao County, Hawaii had the lowest EQI value (highest environmental quality) and greatest decrease in population (-17.4%). Falls Church, Virginia had the highest EQI (lowest environmental quality) and a population change of 15.4% which falls is the 99th percentile. The summary statistics in table 2 suggest that population growth is correlated with worse environmental characteristics.
 
-```{r include=FALSE}
-# eqi_summary_table <- eqi_pop %>%
-#   group_by(pop_change_text) %>%
-#   summarise(min_eqi = round(min(EQI),2),
-#             max_eqi = round(max(EQI),2),
-#             mean_eqi = round(mean(EQI),2),
-#             sd_eqi = round(sd(EQI), 2),
-#             var_eqi = round(var(EQI), 2),
-#             count = n()) %>%
-#   bind_rows(., eqi_pop %>%
-#               summarise(min_eqi = round(min(EQI),2),
-#                         max_eqi = round(max(EQI),2),
-#                         mean_eqi = round(mean(EQI),2),
-#                         sd_eqi = round(sd(EQI), 2),
-#                         var_eqi = round(var(EQI), 2),
-#                         count = n()) %>%
-#               mutate(pop_change_text = "all counties")
-#             ) %>%
-#   kable(col.names = c("Population Change", "Minimum", "Maximum", "Mean", "Standard Deviation", "Variance", "Number of Counties"), caption = "EQI summary statistics for counties based on population change between 2006 and 2010", color = 'black') %>%
-#   kable_paper(full_width = FALSE) %>%
-#   column_spec(1, bold = T) %>%
-#   row_spec(0, bold = T, color = 'black') %>%
-#   row_spec(3, bold = T, background = '#e5e5e5')
-# eqi_summary_table  
+```{r include=FALSE options(knitr.table.format = "pdf"}
+eqi_summary_table <- eqi_pop %>%
+  group_by(pop_change_text) %>%
+  summarise(min_eqi = round(min(EQI),2),
+            max_eqi = round(max(EQI),2),
+            mean_eqi = round(mean(EQI),2),
+            sd_eqi = round(sd(EQI), 2),
+            var_eqi = round(var(EQI), 2),
+            count = n()) %>%
+  bind_rows(., eqi_pop %>%
+              summarise(min_eqi = round(min(EQI),2),
+                        max_eqi = round(max(EQI),2),
+                        mean_eqi = round(mean(EQI),2),
+                        sd_eqi = round(sd(EQI), 2),
+                        var_eqi = round(var(EQI), 2),
+                        count = n()) %>%
+              mutate(pop_change_text = "all counties")
+            ) %>%
+  kable(format = "latex", col.names = c("Population Change", "Minimum", "Maximum", "Mean", "Standard Deviation", "Variance", "Number of Counties"), caption = "EQI summary statistics for counties based on population change between 2006 and 2010", color = 'black') %>%
+  kable_paper(full_width = FALSE) %>%
+  column_spec(1, bold = T) %>%
+  row_spec(0, bold = T, color = 'black') %>%
+  row_spec(3, bold = T, background = '#e5e5e5')
+eqi_summary_table
 ```
 
-### Hypothesis testing
+### Hypothesis Testing
 
 A different means test was completed to determine if mean environmental quality was statistically different for counties that experienced positive vs negative population change between 2006-2010. The figure below shows a histogram of EQI values for counties with negative and positive population change.
 
-```{r fig.height = 3, fig.width = 5}
+```{r echo=FALSE, fig.height=3, fig.width=}
 histogram_pop_change <- ggplot(data = eqi_pop, aes(x = EQI)) +
   geom_histogram(aes(fill = pop_change_text), position = "dodge", bins = 50) +
   labs(title = "Historgram of EQI Based on Population Change", subtitle = "US Counties, 2006-2010", x = "EQI", fill = "Population change") +
