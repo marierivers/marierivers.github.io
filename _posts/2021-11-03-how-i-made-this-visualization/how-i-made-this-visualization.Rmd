@@ -7,6 +7,8 @@ author:
     url: {}
 date: 11-03-2021
 output:
+  pdf_document:
+    toc: yes
   distill::distill_article:
     self_contained: false
 preview: images/only_english_plot.png
