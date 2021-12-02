@@ -33,7 +33,7 @@ library(tidymodels)
 library(patchwork)
 ```
 ```{r message=FALSE, warning=FALSE, include=FALSE}
-eqi_pop_with_outliers <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "eqi_pop.csv"))
+eqi_pop_with_outliers <- read_csv(here("_posts", "environmental-quality-population-change", "data", "eqi_pop.csv"))
 
 quantile_999th <- quantile(eqi_pop_with_outliers$pop_change_pct, 0.999)
 
@@ -116,7 +116,7 @@ histogram_pop_change <- ggplot(data = eqi_pop, aes(x = EQI)) +
   theme(plot.title.position = "plot", plot.title = element_text(size = 10), plot.subtitle = element_text(size = 8),
         axis.title = element_text(size = 8), legend.title = element_text(size = 8), legend.text = element_text(size = 8))
 histogram_pop_change
-ggsave(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "figs", "histogram.png"), plot = histogram_pop_change)
+ggsave(here("_posts", "environmental-quality-population-change", "figs", "histogram.png"), plot = histogram_pop_change)
 ```
 **null hypothesis:**
 There is no difference in mean EQI for counties with positive and negative population change.  
@@ -218,7 +218,7 @@ eqi_lm_plot_big <- ggplot(data = eqi_pop, aes(x = EQI, y = pop_change_pct)) +
   theme(plot.title.position = "plot", plot.title = element_text(size = 10), plot.subtitle = element_text(size = 8),
         axis.title = element_text(size = 12))
 eqi_lm_plot_big
-ggsave(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "figs", "lm.png"), plot = eqi_lm_plot_big)
+ggsave(here("_posts", "environmental-quality-population-change", "figs", "lm.png"), plot = eqi_lm_plot_big)
 ```
 
 First, hypothesis testing was used to test whether the slope coefficient for the percent population change rate is equal to zero or not.
@@ -302,14 +302,14 @@ lm_domain_plot <- linear_model_plots + plot_annotation(
   subtitle = "US Counties, 2006-2010") & 
   theme(plot.title = element_text(size = 12), plot.subtitle = element_text(size = 12), axis.title = element_text(size = 8))
 lm_domain_plot
-ggsave(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "figs", "lm_domain.png"), plot = lm_domain_plot)
+ggsave(here("_posts", "environmental-quality-population-change", "figs", "lm_domain.png"), plot = lm_domain_plot)
 ```
 
 While a partly manual method was used above, statistical functions in R were used test for the significance of domain models. Table 3 presents coefficients for each domain specific model. The numbers in [brackets] are the 95% confidence intervals for each estimated coefficient.
 
 ```{r echo=FALSE, fig.height=3, fig.width=8, message=FALSE, warning=FALSE}
 options(knitr.kable.NA = '')
-model_summary_table <- read_csv(here("_posts", "2021-11-13-the-epas-environmental-quality-index-eqi-vs-population-change", "data", "model_summary_table.csv")) %>%
+model_summary_table <- read_csv(here("_posts", "environmental-quality-population-change", "data", "model_summary_table.csv")) %>%
   kable(caption = "Summary of EQI Domain Slope Coefficients") %>%
   kable_paper(full_width = F) %>%
   column_spec(1, bold = T) %>%
