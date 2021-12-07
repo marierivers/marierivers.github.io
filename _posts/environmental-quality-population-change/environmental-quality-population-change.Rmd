@@ -8,6 +8,7 @@ output:
     toc: yes
     toc_float: yes
     theme: theme_mtr.css
+    code_folding: yes
   word_document:
     toc: yes
   pdf_document:
