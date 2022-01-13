@@ -1,9 +1,0 @@
----
-title: "Curriculum Vitae"
-
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
-[**Download CV**](Rivers_Marie_cv.pdf)
