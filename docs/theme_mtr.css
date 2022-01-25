@@ -19,11 +19,11 @@
 
 html {
   /*-- Main font sizes --*/
-  --title-size:      24px;
-  --body-size:       12px; /*1.00rem;*/
-  --code-size:       10px;
-  --aside-size:      10px;
-  --fig-cap-size:    10px;
+  --title-size:      50px;
+  --body-size:       1.05rem;
+  --code-size:       14px;
+  --aside-size:      12px;
+  --fig-cap-size:    12px;
   --line-height: 1;
 
   /*-- Main font colors --*/
@@ -41,9 +41,9 @@ html {
 
 /*-- ARTICLE METADATA --*/
 d-byline {
-  --heading-size:    0.6rem;
+  --heading-size:    1.0rem;
   --heading-color:   rgba(0, 0, 0, 0.5);
-  --body-size:       0.6rem;
+  --body-size:       1.0rem;
   --body-color:      rgba(0, 0, 0, 0.8);
 }
 
@@ -65,16 +65,16 @@ d-appendix {
 /* These properties only apply to Distill sites and blogs  */
 
 .distill-site-header {
-  --title-size:       12px;
+  --title-size:       16px;
   --text-color:       #ffffff; /* home page header bar text */
-  --text-size:        12px;
+  --text-size:        16px;
   --hover-color:      white; /*hover color for home page header bar text*/
   --bkgd-color:       #2d6a4f; /* header bar color */
 }
 
 .distill-site-footer {
   --text-color:       #ffffff; /* footer text color */
-  --text-size:        10px;
+  --text-size:        12px;
   --hover-color:      #ffffff; /* hover color for link in footer*/
   --bkgd-color:       #2d6a4f; /* footer backgroup color */
 }
@@ -93,7 +93,7 @@ h1{ /* my name on homepage*/
   color: #2d6a4f; /* bottle green */
   font-weight: 800;
   letter-spacing: 2px;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 h2{
@@ -111,18 +111,18 @@ h3{
 h4{
   letter-scacing: 2px;
   color: #18392b; /* phthalo green (dark green) */
-  font-size: 15px;
+  font-size: 16px;
 }
 
 h5{
   color: #18392b; /* phthalo green (dark green) */
-  font-size: 12px;
+  font-size: 16px;
 }
 
 h6{
   color: #18392b; /* phthalo green (dark green) */
   text-align: justify;
-  font-size: 12px; /* 6 hashtag header in blog post  */
+  font-size: 14px; /* 6 hashtag header in blog post  */
 }
 
 .distill-site-nav a:hover {
