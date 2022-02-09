@@ -1,7 +1,7 @@
 ---
 title: "How to make a dumbbell schedule with R"
 description: |
-  A modern update to the gantt chart
+  A modern update to the Gantt chart
 author:
   - name: Marie Rivers
     url: {}
