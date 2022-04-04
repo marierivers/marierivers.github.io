@@ -1,0 +1,14 @@
+---
+title: "Shiny App"
+description: |
+  A Shiny App displaying California snow depth data 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+```
+
+[California Snow Depth Shiny App](https://marierivers.shinyapps.io/snow_shiny_app/)
+
+![shiny app image](images/snow_shiny_app.png)

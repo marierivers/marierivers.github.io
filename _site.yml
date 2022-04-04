@@ -13,6 +13,8 @@ navbar:
     #  href: bio.html
     - text: "Posts"
       href: posts.html
+    - text: "Shiny App"
+      href: shiny_app.html
     - text: "Resume"
       href: resume/Rivers_Marie_Resume.pdf
     - icon: fab fa-github
