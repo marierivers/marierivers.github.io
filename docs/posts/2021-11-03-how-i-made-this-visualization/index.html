@@ -50,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -73,17 +74,18 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
 <title>Marie T. Rivers, PE: How I made this visualization</title>
@@ -113,12 +115,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview"]}},"value":[{"type":"character","attributes":{},"value":["How I made this visualization"]},{"type":"character","attributes":{},"value":["Alaska household languages data"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Marie Rivers"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["11-03-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["images/only_english_plot.png"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output","description","preview"]}},"value":[{"type":"character","attributes":{},"value":["How I made this visualization"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Marie Rivers"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["11-03-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["Alaska household languages data"]},{"type":"character","attributes":{},"value":["images/only_english_plot.png"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["how-i-made-this-visualization_files/anchor-4.2.2/anchor.min.js","how-i-made-this-visualization_files/bowser-1.9.3/bowser.min.js","how-i-made-this-visualization_files/distill-2.2.21/template.v2.js","how-i-made-this-visualization_files/header-attrs-2.10/header-attrs.js","how-i-made-this-visualization_files/jquery-1.11.3/jquery.min.js","how-i-made-this-visualization_files/popper-2.6.0/popper.min.js","how-i-made-this-visualization_files/tippy-6.2.7/tippy-bundle.umd.min.js","how-i-made-this-visualization_files/tippy-6.2.7/tippy-light-border.css","how-i-made-this-visualization_files/tippy-6.2.7/tippy.css","how-i-made-this-visualization_files/tippy-6.2.7/tippy.umd.min.js","how-i-made-this-visualization_files/webcomponents-2.0.0/webcomponents.js","images/only_english_plot.png"]}
+  {"type":"character","attributes":{},"value":["how-i-made-this-visualization.pdf","images/only_english_plot.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -777,10 +779,6 @@ figure img.external {
   position: relative;
   margin-bottom: 2.5em;
   margin-top: 1.5em;
-}
-
-.figure img {
-  width: 100%;
 }
 
 .figure .caption {
@@ -1612,6 +1610,12 @@ function init_distill() {
 
     // hoverable references
     $('span.citation[data-cites]').each(function() {
+      if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+        var fn = $(this).children()[0]
+        $(this).html(fn.shadowRoot.querySelector("sup"))
+        $(this).id = fn.id
+        fn.remove()
+      }
       var refs = $(this).attr('data-cites').split(" ");
       var refHtml = refs.map(function(ref) {
         return "<p>" + $('#ref-' + ref).html() + "</p>";
@@ -1626,6 +1630,31 @@ function init_distill() {
         placement: 'bottom-start'
       });
     });
+
+    // fix footnotes in tables (#411)
+    // replacing broken distill.pub feature
+    $('table d-footnote').each(function() {
+      // we replace internal showAtNode methode which is triggered when hovering a footnote
+      this.hoverBox.showAtNode = function(node) {
+        // ported from https://github.com/distillpub/template/pull/105/files
+        calcOffset = function(elem) {
+            let x = elem.offsetLeft;
+            let y = elem.offsetTop;
+            // Traverse upwards until an `absolute` element is found or `elem`
+            // becomes null.
+            while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                x += elem.offsetLeft;
+                y += elem.offsetTop;
+            }
+
+            return { left: x, top: y };
+        }
+        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+        const bbox = node.getBoundingClientRect();
+        const offset = calcOffset(node);
+        this.show([offset.left + bbox.width, offset.top + bbox.height]);
+      }
+    })
 
     // clear polling timer
     clearInterval(tid);
@@ -1725,6 +1754,8 @@ function init_common() {
   // mark non-body figures created by knitr chunks as 100% width
   $('.layout-chunk').each(function(i, val) {
     var figures = $(this).find('img, .html-widget');
+    // ignore leaflet img layers (#106)
+    figures = figures.filter(':not(img[class*="leaflet"])')
     if ($(this).attr('data-layout') !== "l-body") {
       figures.css('width', '100%');
     } else {
@@ -1747,7 +1778,7 @@ function init_common() {
   // get rid of index.html references in header
   if (window.location.protocol !== "file:") {
     $('.distill-site-header a[href]').each(function(i,val) {
-      $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
     });
   }
 
@@ -2167,8 +2198,8 @@ d-appendix d-footnote-list a.footnote-backlink {
   color: var(--hover-color, white);
 }</style>
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.10/header-attrs.js"></script>
-  <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/header-attrs-2.13/header-attrs.js"></script>
+  <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2228,35 +2259,78 @@ d-appendix d-footnote-list a.footnote-backlink {
 </div>
 
 <div class="d-article">
-<p>An assignment for my Metadata Standards, Data Modeling and Data Semantics class included using the <a href="https://cran.r-project.org/web/packages/metajam/metajam.pdf"><code>metajam</code> R package</a> to download <a href="https://knb.ecoinformatics.org/view/doi:10.5063/F1N58JPP">Alaskan household languages data and metadata</a> from knb. After reviewing the metadata and reading the data into R, we were tasked with writing code to compute the percentage of Alaskan households that only speak English for the years 2009-2015 and visualizing these results…a straightforward task.</p>
-<p>But…as I reviewed the numbers I thought about what I actually wanted to capture in the visualization. Did I want to focus on changes over time? There was a slight trend, but nothing significant. The data included State of Alaska Salmon and People Regions (SASAP) so I wanted to show any regional differences.</p>
+<p>An assignment for my Metadata Standards, Data Modeling and Data
+Semantics class included using the <a
+href="https://cran.r-project.org/web/packages/metajam/metajam.pdf"><code>metajam</code>
+R package</a> to download <a
+href="https://knb.ecoinformatics.org/view/doi:10.5063/F1N58JPP">Alaskan
+household languages data and metadata</a> from knb. After reviewing the
+metadata and reading the data into R, we were tasked with writing code
+to compute the percentage of Alaskan households that only speak English
+for the years 2009-2015 and visualizing these results…a straightforward
+task.</p>
+<p>But…as I reviewed the numbers I thought about what I actually wanted
+to capture in the visualization. Did I want to focus on changes over
+time? There was a slight trend, but nothing significant. The data
+included State of Alaska Salmon and People Regions (SASAP) so I wanted
+to show any regional differences.</p>
 <p>Here’s the final visualization</p>
 <p><img src="images/only_english_plot.png" /></p>
-<p>The items below outline my data visualization process and helpful resources. Full code for data processing and visualization are included at the end.</p>
+<p>The items below outline my data visualization process and helpful
+resources. Full code for data processing and visualization are included
+at the end.</p>
 <h3 id="heatmap-with-geom_tile">1. Heatmap with geom_tile( )</h3>
-<p>A line graph showing change in time would not have been very interesting, but I didn’t want to exclude the time component by just creating a bar chart of each group. The heatmap tiles provided an efficent way to capture regional differences, subtle changes in time, and percentages of household that only speak English.</p>
-<p>Resource: <a href="https://allisonhorst.github.io/rice-data-viz/">Allison Horst’s Advanced Data Visualization in ggplot2</a></p>
+<p>A line graph showing change in time would not have been very
+interesting, but I didn’t want to exclude the time component by just
+creating a bar chart of each group. The heatmap tiles provided an
+efficent way to capture regional differences, subtle changes in time,
+and percentages of household that only speak English.</p>
+<p>Resource: <a
+href="https://allisonhorst.github.io/rice-data-viz/">Allison Horst’s
+Advanced Data Visualization in ggplot2</a></p>
 <h3 id="ordering-the-data">2. Ordering the data</h3>
-<p>I used <code>fct_reorder</code> to sort the SASAP regions by average percent of households that only spoke English</p>
+<p>I used <code>fct_reorder</code> to sort the SASAP regions by average
+percent of households that only spoke English</p>
 <p><code>mutate(SASAP.Region = fct_reorder(SASAP.Region, percent_only_english, .fun = mean))</code></p>
 <h3 id="text-within-tiles">3. Text within tiles</h3>
-<p>This line of code rounded the calculated values and displayed white text with a % symbol</p>
+<p>This line of code rounded the calculated values and displayed white
+text with a % symbol</p>
 <p><code>geom_text(aes(label = paste0(round(avg_percent_english, 0),"%")), color = "white", size = 3)</code></p>
 <h3 id="picking-colors">4. Picking colors</h3>
-<p>This might have been the hardest part. I played around with the number and shade of colors and settled on shades of gray, blue, green and reddish brown with a <code>scale_fill_gradientn</code> gradient. <code>geom_tile(aes(fill = avg_percent_english), show.legend = TRUE)</code></p>
-<p>The <a href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf">NCEAS R color cheatsheet</a> was helpful for getting color names. Useful information on gradient color scales was found in the book <a href="https://ggplot2-book.org/scale-colour.html">ggplot2: Elegant Graphics for Data Analysis</a> and <a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">ggplot2 documentation</a></p>
+<p>This might have been the hardest part. I played around with the
+number and shade of colors and settled on shades of gray, blue, green
+and reddish brown with a <code>scale_fill_gradientn</code> gradient.
+<code>geom_tile(aes(fill = avg_percent_english), show.legend = TRUE)</code></p>
+<p>The <a
+href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf">NCEAS
+R color cheatsheet</a> was helpful for getting color names. Useful
+information on gradient color scales was found in the book <a
+href="https://ggplot2-book.org/scale-colour.html">ggplot2: Elegant
+Graphics for Data Analysis</a> and <a
+href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">ggplot2
+documentation</a></p>
 <h3 id="legend-title">5. legend title</h3>
 <p><code>labs(fill = "Percent")</code></p>
-<p>Resource: <a href="https://stackoverflow.com/questions/23635662/editing-legend-text-labels-in-ggplot">Editing legend (text) labels in ggplot</a></p>
+<p>Resource: <a
+href="https://stackoverflow.com/questions/23635662/editing-legend-text-labels-in-ggplot">Editing
+legend (text) labels in ggplot</a></p>
 <h3 id="x-axis">6. x-axis</h3>
-<p>While there are more elegant ways set axis divisions for dates, I opted for a simple vector of years. <code>scale_x_discrete(name = "Year", limits = c(2009, 2010, 2011, 2012, 2013, 2014, 2015))</code></p>
+<p>While there are more elegant ways set axis divisions for dates, I
+opted for a simple vector of years.
+<code>scale_x_discrete(name = "Year", limits = c(2009, 2010, 2011, 2012, 2013, 2014, 2015))</code></p>
 <h3 id="remove-gridlines">7. Remove gridlines</h3>
 <p><code>theme(panel.grid.major = element_blank())</code></p>
-<p>Resource: <a href="https://felixfan.github.io/ggplot2-remove-grid-background-margin/">Remove grid and background from plot (ggplot2)</a></p>
-<h3 id="move-title-and-caption-from-panel-to-plot-area">8. Move title and caption from panel to plot area</h3>
+<p>Resource: <a
+href="https://felixfan.github.io/ggplot2-remove-grid-background-margin/">Remove
+grid and background from plot (ggplot2)</a></p>
+<h3 id="move-title-and-caption-from-panel-to-plot-area">8. Move title
+and caption from panel to plot area</h3>
 <p><code>theme(plot.caption = element_text(size = 8, hjust = 0), plot.caption.position = "plot") + theme(plot.title.position = "plot")</code></p>
-<p>Resource: <a href="https://community.rstudio.com/t/changing-position-of-plot-captions/108973">Changing position of plot captions</a></p>
-<h2 id="download-data-using-metajam">Download data using <code>metajam</code></h2>
+<p>Resource: <a
+href="https://community.rstudio.com/t/changing-position-of-plot-captions/108973">Changing
+position of plot captions</a></p>
+<h2 id="download-data-using-metajam">Download data using
+<code>metajam</code></h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># url to csv file</span>
@@ -2277,8 +2351,10 @@ d-appendix d-footnote-list a.footnote-backlink {
 </div>
 </div>
 <h2 id="tidy-data">Tidy Data</h2>
-<h4 id="code-used-to-process-the-data">Code used to process the data</h4>
-<p>I adjusted the original data processing code as my plan for the visualization evolved</p>
+<h4 id="code-used-to-process-the-data">Code used to process the
+data</h4>
+<p>I adjusted the original data processing code as my plan for the
+visualization evolved</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>household_language</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='fu'>here</span><span class='op'>(</span><span class='st'>"data"</span>, <span class='st'>"doi_10.5063_F1CJ8BPH__household_language__csv"</span>, <span class='st'>"household_language.csv"</span><span class='op'>)</span><span class='op'>)</span>
@@ -2316,11 +2392,21 @@ d-appendix d-footnote-list a.footnote-backlink {
 </code></pre>
 </div>
 </div>
-<p><strong>Data citation:</strong> Jeanette Clark, Sharis Ochs, Derek Strong, and National Historic Geographic Information System. 2018. Languages used in Alaskan households, 1990-2015. <a href="urn:node:KNB" class="uri">urn:node:KNB</a>. <a href="doi:10.5063/F1N58JPP" class="uri">doi:10.5063/F1N58JPP</a>.</p>
-<p><a href="https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8" class="uri">https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8</a>"</p>
-<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
-<p>Learn more about using Distill at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p><strong>Data citation:</strong> Jeanette Clark, Sharis Ochs, Derek
+Strong, and National Historic Geographic Information System. 2018.
+Languages used in Alaskan households, 1990-2015. <a href="urn:node:KNB"
+class="uri">urn:node:KNB</a>. <a href="doi:10.5063/F1N58JPP"
+class="uri">doi:10.5063/F1N58JPP</a>.</p>
+<p><a
+href="https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8"
+class="uri">https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8</a>”</p>
+<p>Distill is a publication format for scientific and technical writing,
+native to the web.</p>
+<p>Learn more about using Distill at <a
+href="https://rstudio.github.io/distill"
+class="uri">https://rstudio.github.io/distill</a>.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

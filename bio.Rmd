@@ -1,7 +1,6 @@
 ---
 title: "Bio"
-description: |
-  Marie Rivers, P.E. 
+description: "Marie Rivers, P.E. \n"
 ---
 
 ```{r setup, include=FALSE}

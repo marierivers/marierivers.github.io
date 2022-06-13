@@ -1,16 +1,14 @@
 ---
 title: "How I made this visualization"
-description: |
-  Alaska household languages data
 author:
-  - name: Marie Rivers
-    url: {}
-date: 11-03-2021
+- name: Marie Rivers
+  url: {}
+date: "11-03-2021"
 output:
-  pdf_document:
-    toc: yes
   distill::distill_article:
     self_contained: false
+description: |
+  Alaska household languages data
 preview: images/only_english_plot.png
 ---
 
