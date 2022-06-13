@@ -1,24 +1,29 @@
 ---
 title: "Does Environmental Quality Influence Where People Live?"
+description: |
+  Population Change vs. the EPA Environmental Quality Index (EQI): a statistical analysis
 author: "Marie Rivers"
 date: "12-02-2021"
 output:
   distill::distill_article:
-    self_contained: no
-    toc: yes
-    toc_float: yes
-    theme: theme_mtr.css
-    code_folding: yes
-  word_document:
-    toc: yes
-  pdf_document:
-    toc: yes
-    latex_engine: xelatex
-  html_document:
-    toc: yes
-    df_print: paged
-description: |
-  Population Change vs. the EPA Environmental Quality Index (EQI): a statistical analysis
+    self_contained: false
+preview: distill-preview.png
+# output:
+#   distill::distill_article:
+#     self_contained: no
+#     toc: yes
+#     toc_float: yes
+#     theme: theme_mtr.css
+#     code_folding: yes
+#   word_document:
+#     toc: yes
+#   pdf_document:
+#     toc: yes
+#     latex_engine: xelatex
+#   html_document:
+#     toc: yes
+#     df_print: paged
+
 ---
 
 ```{r setup, include=FALSE}

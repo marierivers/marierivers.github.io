@@ -114,7 +114,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","output","description"]}},"value":[{"type":"character","attributes":{},"value":["Does Environmental Quality Influence Where People Live?"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Marie Rivers"]}]}]},{"type":"character","attributes":{},"value":["12-02-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article","word_document","pdf_document","html_document"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float","theme","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["theme_mtr.css"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","latex_engine"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["xelatex"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","df_print"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["paged"]}]}]},{"type":"character","attributes":{},"value":["Population Change vs. the EPA Environmental Quality Index (EQI): a statistical analysis"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview"]}},"value":[{"type":"character","attributes":{},"value":["Does Environmental Quality Influence Where People Live?"]},{"type":"character","attributes":{},"value":["Population Change vs. the EPA Environmental Quality Index (EQI): a statistical analysis"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Marie Rivers"]}]}]},{"type":"character","attributes":{},"value":["12-02-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["distill-preview.png"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -2233,32 +2233,6 @@ statistical analysis</p></p>
 </div>
 
 <div class="d-article">
-<div class="d-contents d-contents-float">
-<nav class="l-text toc figcaption" id="TOC">
-<h3>Contents</h3>
-<ul>
-<li><a href="#background">Background</a>
-<ul>
-<li><a href="#limitations">Limitations</a></li>
-</ul></li>
-<li><a href="#the-data">The Data</a>
-<ul>
-<li><a href="#environmental-quality-index">Environmental Quality
-Index</a></li>
-<li><a href="#census-population-data">Census Population Data</a></li>
-</ul></li>
-<li><a href="#statistical-analysis">Statistical Analysis</a>
-<ul>
-<li><a href="#hypothesis-testing">Hypothesis Testing</a></li>
-<li><a href="#linear-regression">Linear Regression</a></li>
-<li><a href="#domain-specific-linear-models">Domain Specific Linear
-Models</a></li>
-</ul></li>
-<li><a href="#conclusions">Conclusions</a></li>
-<li><a href="#references">References</a></li>
-</ul>
-</nav>
-</div>
 <p><strong>This post discusses a statistical analysis used to answer the
 question: Does environmental quality influence where people live in the
 United States?</strong></p>
@@ -2281,32 +2255,9 @@ stratified by rural-urban continuum codes (RUCCs) for counties
 classified as metropolitan urbanized, non-metro urbanized, less
 urbanized, and thinly populated.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>eqi_domains</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-  Domain <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"air"</span>, <span class='st'>"water"</span>, <span class='st'>"land"</span>, <span class='st'>"built"</span>, <span class='st'>"sociodemographic"</span><span class='op'>)</span>,
-  Constructs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"criteria air pollutants and hazardous air pollutants"</span>, <span class='st'>"overall water quality, general water contamination, domestic use, atmospheric deposition, drought, chemical contamination, and drinking water quality"</span>, <span class='st'>"agriculture, pesticides, facilities, radon, and mining activity"</span>, <span class='st'>"roads, highway/road safety, commuting behavior, housing environment, walkability, and green space "</span>, <span class='st'>"crime, socioeconomic, political character, and creative class representation"</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
+
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kbl.html'>kbl</a></span><span class='op'>(</span><span class='va'>eqi_domains</span>, caption <span class='op'>=</span> <span class='st'>"EQI Environmental Domains and Constructs"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_classic.html'>kable_paper</a></span><span class='op'>(</span>full_width <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/column_spec.html'>column_spec</a></span><span class='op'>(</span><span class='fl'>1</span>, bold <span class='op'>=</span> <span class='cn'>T</span>, border_right <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/row_spec.html'>row_spec</a></span><span class='op'>(</span><span class='fl'>0</span>, bold <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span>latex_options <span class='op'>=</span> <span class='st'>"HOLD_position"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
 <table class=" lightable-paper table" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:unnamed-chunk-3">Table 1: </span>EQI Environmental Domains and Constructs
@@ -2411,39 +2362,6 @@ quality) and a population change of 15.4% which falls is the 99th
 percentile. The summary statistics in Table 2 suggest that population
 growth is correlated with worse environmental characteristics.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#options(knitr.table.format = "latex")</span>
-<span class='va'>eqi_summary_table_df</span> <span class='op'>&lt;-</span> <span class='va'>eqi_pop</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>pop_change_text</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>min_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span>,<span class='fl'>2</span><span class='op'>)</span>,
-            max_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span>,<span class='fl'>2</span><span class='op'>)</span>,
-            mean_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span>,<span class='fl'>2</span><span class='op'>)</span>,
-            sd_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span>, <span class='fl'>2</span><span class='op'>)</span>,
-            var_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>var</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span>, <span class='fl'>2</span><span class='op'>)</span>,
-            count <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>.</span>, <span class='va'>eqi_pop</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-              <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>min_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span>,<span class='fl'>2</span><span class='op'>)</span>,
-                        max_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span>,<span class='fl'>2</span><span class='op'>)</span>,
-                        mean_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span>,<span class='fl'>2</span><span class='op'>)</span>,
-                        sd_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span>, <span class='fl'>2</span><span class='op'>)</span>,
-                        var_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>var</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span>, <span class='fl'>2</span><span class='op'>)</span>,
-                        count <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-              <span class='fu'><a href='https://hughjonesd.github.io/huxtable/reference/dplyr-verbs.html'>mutate</a></span><span class='op'>(</span>pop_change_text <span class='op'>=</span> <span class='st'>"all counties"</span><span class='op'>)</span>
-            <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Population Change"</span>, <span class='st'>"Min"</span>, <span class='st'>"Max"</span>, <span class='st'>"Mean"</span>, <span class='st'>"Standard Deviation"</span>, <span class='st'>"Variance"</span>, <span class='st'>"Number of Counties"</span><span class='op'>)</span>, caption <span class='op'>=</span> <span class='st'>"EQI summary statistics for counties based on population change between 2006 and 2010"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_classic.html'>kable_paper</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/column_spec.html'>column_spec</a></span><span class='op'>(</span><span class='fl'>1</span>, bold <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/row_spec.html'>row_spec</a></span><span class='op'>(</span><span class='fl'>0</span>, bold <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/row_spec.html'>row_spec</a></span><span class='op'>(</span><span class='fl'>3</span>, bold <span class='op'>=</span> <span class='cn'>T</span>, background <span class='op'>=</span> <span class='st'>'#e5e5e5'</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span>latex_options <span class='op'>=</span> <span class='st'>"HOLD_position"</span><span class='op'>)</span>
-<span class='va'>eqi_summary_table_df</span>
-</code></pre>
-</div>
-</details>
 <table class=" lightable-paper table" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:unnamed-chunk-4">Table 2: </span>EQI summary statistics for counties based on
@@ -2554,30 +2472,7 @@ experienced positive vs. negative population change between 2006-2010.
 The figure below shows a histogram of EQI values for counties with
 negative and positive population change.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>histogram_pop_change</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>eqi_pop</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>EQI</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>pop_change_text</span><span class='op'>)</span>, position <span class='op'>=</span> <span class='st'>"dodge"</span>, bins <span class='op'>=</span> <span class='fl'>50</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Historgram of EQI Based on Population Change"</span>, subtitle <span class='op'>=</span> <span class='st'>"US Counties, 2006-2010"</span>, x <span class='op'>=</span> <span class='st'>"EQI"</span>, fill <span class='op'>=</span> <span class='st'>"Population change"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span>, plot.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>, plot.subtitle <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>,
-        axis.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>, legend.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>, legend.text <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>histogram_pop_change</span>
-</code></pre>
-</div>
-</details>
-<img src="environmental-quality-population-change_files/figure-html5/unnamed-chunk-5-1.png" width="672" />
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsave.html'>ggsave</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"_posts"</span>, <span class='st'>"environmental-quality-population-change"</span>, <span class='st'>"figs"</span>, <span class='st'>"histogram.png"</span><span class='op'>)</span>, plot <span class='op'>=</span> <span class='va'>histogram_pop_change</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
+<p><img src="environmental-quality-population-change_files/figure-html5/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <p><strong>null hypothesis:</strong> There is no difference in mean EQI
 for counties with positive and negative population change.</p>
@@ -2588,62 +2483,10 @@ mean EQI for counties with positive and negative population change.</p>
 <p><span class="math display">\[H_{A}: \mu_{posPopChange} -
 \mu_{negPopChange} \neq 0\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># mean values</span>
-<span class='va'>mu_eqi_pos_pop_change</span> <span class='op'>&lt;-</span> <span class='va'>eqi_pop</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>mean_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>mu_eqi_neg_pop_change</span> <span class='op'>&lt;-</span> <span class='va'>eqi_pop</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>&lt;=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>mean_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># standard deviations  </span>
-<span class='va'>sd_eqi_pos_pop_change</span> <span class='op'>&lt;-</span> <span class='va'>eqi_pop</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>sd_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>sd_eqi_pos_pop_change</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>sd_eqi_pos_pop_change</span><span class='op'>)</span>
-
-<span class='va'>sd_eqi_neg_pop_change</span> <span class='op'>&lt;-</span> <span class='va'>eqi_pop</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>&lt;=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>sd_eqi <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>EQI</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>sd_eqi_neg_pop_change</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>sd_eqi_neg_pop_change</span><span class='op'>)</span>
-
-<span class='co'># count of observations </span>
-<span class='va'>n_pos_pop_change</span> <span class='op'>&lt;-</span> <span class='va'>eqi_pop</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>count <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>n_pos_pop_change</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>n_pos_pop_change</span><span class='op'>)</span>
-
-<span class='va'>n_neg_pop_change</span> <span class='op'>&lt;-</span> <span class='va'>eqi_pop</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>&lt;=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>count <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>n_neg_pop_change</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>n_neg_pop_change</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># calculate point estimate</span>
-<span class='va'>point_est</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>mu_eqi_pos_pop_change</span> <span class='op'>-</span> <span class='va'>mu_eqi_neg_pop_change</span><span class='op'>)</span>, <span class='fl'>3</span><span class='op'>)</span>
 
-<span class='co'># calculate standard error</span>
-<span class='va'>SE</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span> <span class='op'>(</span><span class='va'>sd_eqi_pos_pop_change</span><span class='op'>^</span><span class='fl'>2</span> <span class='op'>/</span> <span class='va'>n_pos_pop_change</span><span class='op'>)</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>sd_eqi_neg_pop_change</span><span class='op'>^</span><span class='fl'>2</span> <span class='op'>/</span> <span class='va'>n_neg_pop_change</span><span class='op'>)</span> <span class='op'>)</span><span class='op'>)</span>
-
-<span class='co'># z-score</span>
-<span class='va'>z_score</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='va'>point_est</span> <span class='op'>-</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>/</span> <span class='va'>SE</span>
-</code></pre>
-</div>
-</details>
 </div>
 <p><span class="math display">\[\text{point estimate} =
 \mu_{posPopChange} - \mu_{negPopChange} =0.131 - -0.245 =
@@ -2656,15 +2499,7 @@ Show code
 <p><span class="math display">\[z = \frac{\text{point estimate -
 null}}{SE} = \frac{0.376 - 0}{0.036} = 10.443\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>p_value</span> <span class='op'>=</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>point_est</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='va'>SE</span>, lower.tail<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
+
 </div>
 <p>The p-value, the probability of getting a point estimate at least as
 extreme as calculated if the null hypothesis were true, is:</p>
@@ -2672,17 +2507,7 @@ extreme as calculated if the null hypothesis were true, is:</p>
 }=\operatorname{Pr}(Z&lt;-|z| \text { or } Z&gt;|z|)=2 *
 \operatorname{Pr}(Z&gt;|z|) = 1.5809578\times 10^{-25}\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>crit_val</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span><span class='op'>(</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>-</span><span class='fl'>0.95</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>2</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='va'>ci_lower</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>point_est</span> <span class='op'>-</span> <span class='va'>crit_val</span><span class='op'>*</span><span class='va'>SE</span>, <span class='fl'>2</span><span class='op'>)</span>
-<span class='va'>ci_upper</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>point_est</span> <span class='op'>+</span> <span class='va'>crit_val</span><span class='op'>*</span><span class='va'>SE</span>, <span class='fl'>2</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
+
 </div>
 <p>Since the p-value &lt; 0.001 we reject the null that there is no
 difference in EQI for counties with positive population change versus
@@ -2700,32 +2525,7 @@ stronger predictor of population change.</p>
 <p><span class="math display">\[\text{percent population
 change}_i=\beta_{0}+\beta_{1} \cdot EQI_i + \varepsilon_i\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>eqi_lm_plot_big</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>eqi_pop</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>EQI</span>, y <span class='op'>=</span> <span class='va'>pop_change_pct</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='va'>lm</span>, formula <span class='op'>=</span> <span class='va'>y</span><span class='op'>~</span><span class='va'>x</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Linear Regression Model of Population Change vs. Overall EQI"</span>, 
-       subtitle <span class='op'>=</span> <span class='st'>"US Counties, 2006-2010"</span>, y <span class='op'>=</span> <span class='st'>"% pop change"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.title.position <span class='op'>=</span> <span class='st'>"plot"</span>, plot.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>, plot.subtitle <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span>,
-        axis.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>eqi_lm_plot_big</span>
-</code></pre>
-</div>
-</details>
-<img src="environmental-quality-population-change_files/figure-html5/unnamed-chunk-11-1.png" width="672" />
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsave.html'>ggsave</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"_posts"</span>, <span class='st'>"environmental-quality-population-change"</span>, <span class='st'>"figs"</span>, <span class='st'>"lm.png"</span><span class='op'>)</span>, plot <span class='op'>=</span> <span class='va'>eqi_lm_plot_big</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
+<p><img src="environmental-quality-population-change_files/figure-html5/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <p>First, hypothesis testing was used to test whether the slope
 coefficient for the percent population change rate is equal to zero or
@@ -2737,18 +2537,7 @@ zero</p>
 <strong>NOT</strong> equal to zero</p>
 <span class="math display">\[H_{A}: \beta_{1} \neq 0\]</span>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>beta_1_lm</span> <span class='op'>&lt;-</span> <span class='va'>eqi_model_summary</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='st'>"EQI"</span>, <span class='st'>"Estimate"</span><span class='op'>]</span>
-<span class='va'>SE_lm</span> <span class='op'>&lt;-</span> <span class='va'>eqi_model_summary</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='st'>"EQI"</span>, <span class='st'>"Std. Error"</span><span class='op'>]</span>
-<span class='va'>z_score_lm</span> <span class='op'>&lt;-</span> <span class='va'>eqi_model_summary</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='st'>"EQI"</span>, <span class='st'>"t value"</span><span class='op'>]</span>
-<span class='va'>p_value_lm</span> <span class='op'>&lt;-</span> <span class='va'>eqi_model_summary</span><span class='op'>$</span><span class='va'>coefficients</span><span class='op'>[</span><span class='st'>"EQI"</span>, <span class='st'>"Pr(&gt;|t|)"</span><span class='op'>]</span>
-</code></pre>
-</div>
-</details>
+
 </div>
 <p>The point estimate, <span class="math inline">\(\beta_1\)</span> =
 0.991 and the standard error, SE = 0.077.</p>
@@ -2758,16 +2547,7 @@ null}}{SE} = \frac{{0.991 - 0}}{0.077} = 12.817\]</span></p>
 }=\operatorname{Pr}(Z&lt;-|z| \text { or } Z&gt;|z|)=2 *
 \operatorname{Pr}(Z&gt;|z|) = 1.0849376\times 10^{-36}\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>lm_ci_95_lower</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>beta_1_lm</span> <span class='op'>-</span> <span class='va'>crit_val</span><span class='op'>*</span><span class='va'>SE_lm</span>, <span class='fl'>3</span><span class='op'>)</span>
-<span class='va'>lm_ci_95_upper</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>beta_1_lm</span> <span class='op'>+</span> <span class='va'>crit_val</span><span class='op'>*</span><span class='va'>SE_lm</span>, <span class='fl'>3</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
+
 </div>
 <p>Since the p-value for the slope coefficient was &lt; 0.001, we reject
 the null hypothesis that EQI has no influence on population change at
@@ -2786,107 +2566,19 @@ Models</h3>
 change}_i=\beta_{0,domain}+\beta_{1,domain} \cdot EQI_{i,domain} +
 \varepsilon_i\]</span>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>air_eqi_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>~</span> <span class='va'>air_EQI</span>, data <span class='op'>=</span> <span class='va'>eqi_pop</span><span class='op'>)</span>
-<span class='va'>water_eqi_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>~</span> <span class='va'>water_EQI</span>, data <span class='op'>=</span> <span class='va'>eqi_pop</span><span class='op'>)</span>
-<span class='va'>land_eqi_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>~</span> <span class='va'>land_EQI</span>, data <span class='op'>=</span> <span class='va'>eqi_pop</span><span class='op'>)</span>
-<span class='va'>built_eqi_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>~</span> <span class='va'>built_EQI</span>, data <span class='op'>=</span> <span class='va'>eqi_pop</span><span class='op'>)</span>
-<span class='va'>sociodemographic_eqi_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>pop_change_pct</span> <span class='op'>~</span> <span class='va'>sociodemographic_EQI</span>, data <span class='op'>=</span> <span class='va'>eqi_pop</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
+
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>eqi_lm_plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>eqi_pop</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>EQI</span>, y <span class='op'>=</span> <span class='va'>pop_change_pct</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='va'>lm</span>, formula <span class='op'>=</span> <span class='va'>y</span><span class='op'>~</span><span class='va'>x</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"% pop change"</span><span class='op'>)</span>
 
-<span class='va'>air_eqi_lm_plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>eqi_pop</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>air_EQI</span>, y <span class='op'>=</span> <span class='va'>pop_change_pct</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='va'>lm</span>, formula <span class='op'>=</span> <span class='va'>y</span><span class='op'>~</span><span class='va'>x</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"% pop change"</span><span class='op'>)</span>
-
-<span class='va'>water_eqi_lm_plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>eqi_pop</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>water_EQI</span>, y <span class='op'>=</span> <span class='va'>pop_change_pct</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='va'>lm</span>, formula <span class='op'>=</span> <span class='va'>y</span><span class='op'>~</span><span class='va'>x</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"% pop change"</span><span class='op'>)</span>
-
-<span class='va'>land_eqi_lm_plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>eqi_pop</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>land_EQI</span>, y <span class='op'>=</span> <span class='va'>pop_change_pct</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='va'>lm</span>, formula <span class='op'>=</span> <span class='va'>y</span><span class='op'>~</span><span class='va'>x</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"% pop change"</span><span class='op'>)</span>
-
-<span class='va'>built_eqi_lm_plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>eqi_pop</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>built_EQI</span>, y <span class='op'>=</span> <span class='va'>pop_change_pct</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='va'>lm</span>, formula <span class='op'>=</span> <span class='va'>y</span><span class='op'>~</span><span class='va'>x</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"% pop change"</span><span class='op'>)</span>
-
-<span class='va'>sociod_eqi_lm_plot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>eqi_pop</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sociodemographic_EQI</span>, y <span class='op'>=</span> <span class='va'>pop_change_pct</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='va'>lm</span>, formula <span class='op'>=</span> <span class='va'>y</span><span class='op'>~</span><span class='va'>x</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"% pop change"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>linear_model_plots</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='va'>eqi_lm_plot</span> <span class='op'>|</span> <span class='va'>air_eqi_lm_plot</span> <span class='op'>|</span> <span class='va'>water_eqi_lm_plot</span><span class='op'>)</span> <span class='op'>/</span> <span class='op'>(</span><span class='va'>land_eqi_lm_plot</span> <span class='op'>|</span> <span class='va'>built_eqi_lm_plot</span> <span class='op'>|</span> <span class='va'>sociod_eqi_lm_plot</span> <span class='op'>)</span>
-
-<span class='va'>lm_domain_plot</span> <span class='op'>&lt;-</span> <span class='va'>linear_model_plots</span> <span class='op'>+</span> <span class='fu'><a href='https://patchwork.data-imaginist.com/reference/plot_annotation.html'>plot_annotation</a></span><span class='op'>(</span>
-  title <span class='op'>=</span> <span class='st'>"Simple Linear Models of % Population Change vs. EQI Domains"</span>,
-  subtitle <span class='op'>=</span> <span class='st'>"US Counties, 2006-2010"</span><span class='op'>)</span> <span class='op'>&amp;</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>plot.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>, plot.subtitle <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>, axis.title <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>lm_domain_plot</span>
-</code></pre>
-</div>
-</details>
-<img src="environmental-quality-population-change_files/figure-html5/unnamed-chunk-16-1.png" width="768" />
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsave.html'>ggsave</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"_posts"</span>, <span class='st'>"environmental-quality-population-change"</span>, <span class='st'>"figs"</span>, <span class='st'>"lm_domain.png"</span><span class='op'>)</span>, plot <span class='op'>=</span> <span class='va'>lm_domain_plot</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
+<p><img src="environmental-quality-population-change_files/figure-html5/unnamed-chunk-16-1.png" width="768" /></p>
 </div>
 <p>While a partly manual method was used above, statistical functions in
 R were used test for the significance of domain models. Table 3 presents
 coefficients for each domain specific model. The numbers in [brackets]
 are the 95% confidence intervals for each estimated coefficient.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span><span class='op'>(</span>knitr.kable.NA <span class='op'>=</span> <span class='st'>''</span><span class='op'>)</span>
-<span class='va'>model_summary_table</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"_posts"</span>, <span class='st'>"environmental-quality-population-change"</span>, <span class='st'>"data"</span>, <span class='st'>"model_summary_table.csv"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>caption <span class='op'>=</span> <span class='st'>"Summary of EQI Domain Slope Coefficients"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_classic.html'>kable_paper</a></span><span class='op'>(</span>full_width <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/column_spec.html'>column_spec</a></span><span class='op'>(</span><span class='fl'>1</span>, bold <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/row_spec.html'>row_spec</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>3</span>, <span class='fl'>5</span>, <span class='fl'>7</span>, <span class='fl'>9</span>, <span class='fl'>11</span>, <span class='fl'>13</span><span class='op'>)</span>, bold <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span>latex_options <span class='op'>=</span> <span class='st'>"HOLD_position"</span><span class='op'>)</span>
-<span class='va'>model_summary_table</span>
-</code></pre>
-</div>
-</details>
 <table class=" lightable-paper table" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:unnamed-chunk-17">Table 3: </span>Summary of EQI Domain Slope Coefficients
@@ -3226,15 +2918,6 @@ The bold portion of the line represents the 90% confidence interval and
 the full line represents the 95% confidence interval for each
 estimate.</p>
 <div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-Show code
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://jtools.jacob-long.com/reference/plot_summs.html'>plot_summs</a></span><span class='op'>(</span><span class='va'>eqi_model</span>, <span class='va'>air_eqi_model</span>, <span class='va'>water_eqi_model</span>, <span class='va'>land_eqi_model</span>, <span class='va'>built_eqi_model</span>, <span class='va'>sociodemographic_eqi_model</span>, inner_ci_level <span class='op'>=</span> <span class='fl'>0.9</span>, model.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"EQI"</span>, <span class='st'>"air EQI"</span>, <span class='st'>"water EQI"</span>, <span class='st'>"land EQI"</span>, <span class='st'>"built EQI"</span>, <span class='st'>"sociodem EQI"</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
 <p><img src="environmental-quality-population-change_files/figure-html5/unnamed-chunk-18-1.png" width="672" /></p>
 </div>
 <p>The p-value on the slope coefficient was &lt; 0.001 for all domain
