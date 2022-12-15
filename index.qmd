@@ -1,13 +1,40 @@
 ---
-title: "marierivers.github.io"
+title: "Marie T. Rivers"
+about:
+  id: marie-heading
+  template: trestles
+  image: images/Rivers_Marie_MEDS22_Bren_001.jpg
+  links:
+    - text: '<i class="fab fa-linkedin"></i> LinkedIn'
+      href: "https://linkedin.com/in/marie-rivers-pe-8284b118"
+    - text: '<i class="fab fa-twitter"></i> Twitter'
+      href: "https://twitter.com/Marie_T_Rivers"
+    - text: '<i class="fab fa-github"></i> GitHub'
+      href: "https://github.com/marierivers"
+description: Environmental Data Scientist
+
 ---
 
-test test tes
+### this website is under construction
 
-This is a Quarto website.
+::: {#marie-heading}
+<h3>Education</h3>
+<h4>Master of Environmental Data Science</h4> 
+Bren School of Environmental Science & Management<br>
+University of California, Santa Barbara (2022)
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+<h4>MS in Environmental Engineering</h4> 
+Department of Civil and Environmental Engineering<br>
+University of Massachusetts, Amherst (2011)
 
-```{r}
-1 + 1
-```
+<h4>BS in Environmental Engineering</h4> 
+Department of Civil and Environmental Engineering<br>
+University of Delaware (2009)
+
+
+:::
+------------------------------------------------------------------------
+
+<h5>Marie is a graduate of [UC Santa Barbara's Bren School of Environmental Science and Management](https://ucsb-meds.github.io/) inaugural environmental data science cohort. She is also a registered professional civil water resources engineer with 10 years of  experience modeling and designing municipal drinking water distribution systems. During this time, she observed the growing need for reproducible data analysis and visualization skills to solve current and emerging environmental problems. Marie is interested in using geospatial analyses to understand interactions between human and natural systems so that these insights can advance renewable energy technologies that support climate change goals.
+
+

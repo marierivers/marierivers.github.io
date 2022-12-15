@@ -1,0 +1,35 @@
+---
+title: "A New Perspective on Data"
+description: "life beyond excel spreadsheets"
+author:
+  - name: Marie Rivers
+    url: https://marierivers.github.io/
+date: 2012-08-18
+categories: [Quarto, R, MEDS]
+citation: 
+  url: https://marierivers.github.io/posts/2021-08-18-a-new-perspective-on-data/ 
+image: IMG_2596.jpg
+draft: false
+---
+
+Throughout my career as an environmental engineer, the bulk of my experience with data had been with excel spreadsheets and modeling software. Spreadsheets were my primary tool to complete bulk calculations and create graphs. I’ve collected many tips and tricks and consider my excel skills to be very strong. When I want to try something I’ve never tried before, I have a reasonably good intuition for if it’s something excel is capable of and how to find the solution using help features or internet searches.
+
+During college I used excel for everything inside and outside of class. My classmates and I would joke about using solver to answer everything from mundane domestic questions to meaning of life type queries. While I haven’t used solver since finding the optimal 2012 US Olympic gymnastics team based on various scoring scenarios, spreadsheets are still prevalent in my life:
+
+> -- Planning a group vacation…shared Google sheet!
+>
+> -- Outlining an epic fantasy novel…no need for scrivener
+>
+> -- Any major life decision…better back that choice up with excel 
+
+And my works days were full of engineering calcs, budgets, cost estimates, asset management analyses, and graphs. From summary statistics, if statements, and well placed $ signs to conditional formatting and pivot tables, I thought my data storage, analysis, and visualization skills were top of their game…until I discovered the Masters of Environmental Data Science (MEDS) program at UC Santa Barbara’s Bren school of Environmental Science & Management. I started to get a hunch that there were other alternatives when working with data.
+
+Since starting the MEDS program, I’ve begun to expand my data storage, analysis, and visualization outlook. I was very impressed with an article we read in class [Data Organization in Spreadsheet](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989?scroll=top&needAccess=true) by Karl W. Broman & Kara H. Woo. (Karl W. Broman & Kara H. Woo (2018) Data Organization in Spreadsheets, The American Statistician, 72:1, 2-10, DOI: 10.1080/00031305.2017.1375989). This paper articulates many of the logistical challenges I’ve faced with data and presented useful recommendations. I’ve worked with or created spreadsheets where each of the basic spreadsheet principles were not used. 
+
+I have received and passed along complicated spreadsheets with equations linked to cells in tabs throughout the workbook. While my coworkers and I attempted to used consistent file names (even if only consistent with their own files) these efforts often fall short when unexpected complexities arise or deadlines get close. When you are desperately trying to get a deliverable out the door, intermediate file names are the least of your priorities. Challenges associated with combining or separating dates and addresses and entering zip codes or ID numbers that begin with 0 were expected parts of data manipulation. I’ve received data with no documentation for column headers, acronyms, or units; from these experiences I began to use perhaps overly lengthy variable names, often with a top row merged over several variables.
+
+The concept of Tidy data was completely knew to me. At first, this data structure seemed drawn-out and a little redundant, but as we’ve worked with more data in class I now see the advantages. Taking the time to use functions such as pivot_wider and pivot_longer to get data in Tide format ultimately gives your subsequent analysis more flexibility and ease.
+
+As I continue with the MEDS program, I’m looking forward to gaining the same intuition for R and Python that I have with excel. I’m sure this journey will be frustrating and time consuming, but know that learning new ways to store, analyze, and visual data will be rewarding!
+
+P.S. I never fully appreciated CSV files

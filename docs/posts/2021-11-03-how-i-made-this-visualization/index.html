@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.243">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Marie Rivers">
+  <meta name="dcterms.date" content="2021-11-03">
+  <meta name="description" content="Visualization of Alaska household languages data">
+  <title>Marie Rivers - How I made this visualization</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+
+  <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../../site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="../../">
+  <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="../../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../../site_libs/quarto-search/quarto-search.js"></script>
+  <script src="../../site_libs/quarto-html/quarto.js"></script>
+  <script src="../../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../../site_libs/quarto-html/anchor.min.js"></script>
+  <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "navbar",
+    "copy-button": false,
+    "collapse-after": 3,
+    "panel-placement": "end",
+    "type": "overlay",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
+  }</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="nav-fixed">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Marie Rivers</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../code_samples.html">Code Samples</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html">Posts</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../data/rivers_marie_resume.pdf">Resume</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/marierivers"><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+
+
+
+<div class="quarto-title-banner color-navbar page-columns page-full"><div class="quarto-title column-body"><h1 class="title display-7">How I made this visualization</h1><div class="quarto-description"><p>Visualization of Alaska household languages data</p></div><div class="quarto-categories"><div class="quarto-category">R</div><div class="quarto-category">data visualization</div></div></div></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><a href="https://marierivers.github.io/">
+<p>Marie Rivers</p>
+</a></div></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">November 3, 2021</p></div></div></div></header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">On this page</h2>
+<ul>
+<li><a href="#heatmap-with-geom_tile" id="toc-heatmap-with-geom_tile" class="nav-link active" data-scroll-target="#heatmap-with-geom_tile">1. Heatmap with geom_tile( )</a></li>
+<li><a href="#ordering-the-data" id="toc-ordering-the-data" class="nav-link" data-scroll-target="#ordering-the-data">2. Ordering the data</a></li>
+<li><a href="#text-within-tiles" id="toc-text-within-tiles" class="nav-link" data-scroll-target="#text-within-tiles">3. Text within tiles</a></li>
+<li><a href="#picking-colors" id="toc-picking-colors" class="nav-link" data-scroll-target="#picking-colors">4. Picking colors</a></li>
+<li><a href="#legend-title" id="toc-legend-title" class="nav-link" data-scroll-target="#legend-title">5. legend title</a></li>
+<li><a href="#x-axis" id="toc-x-axis" class="nav-link" data-scroll-target="#x-axis">6. x-axis</a></li>
+<li><a href="#remove-gridlines" id="toc-remove-gridlines" class="nav-link" data-scroll-target="#remove-gridlines">7. Remove gridlines</a></li>
+<li><a href="#move-title-and-caption-from-panel-to-plot-area" id="toc-move-title-and-caption-from-panel-to-plot-area" class="nav-link" data-scroll-target="#move-title-and-caption-from-panel-to-plot-area">8. Move title and caption from panel to plot area</a></li>
+<li><a href="#download-data-using-metajam" id="toc-download-data-using-metajam" class="nav-link" data-scroll-target="#download-data-using-metajam">Download data using <code>metajam</code></a></li>
+<li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy Data</a></li>
+<li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot">ggplot</a></li>
+</ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+<p data-sidebar-align="true">An assignment for my Metadata Standards, Data Modeling and Data Semantics class included using the <a href="https://cran.r-project.org/web/packages/metajam/metajam.pdf"><code>metajam</code> R package</a> to download <a href="https://knb.ecoinformatics.org/view/doi:10.5063/F1N58JPP">Alaskan household languages data and metadata</a> from knb. After reviewing the metadata and reading the data into R, we were tasked with writing code to compute the percentage of Alaskan households that only speak English for the years 2009-2015 and visualizing these results…a straightforward task.</p>
+<p>But…as I reviewed the numbers I thought about what I actually wanted to capture in the visualization. Did I want to focus on changes over time? There was a slight trend, but nothing significant. The data included State of Alaska Salmon and People Regions (SASAP) so I wanted to show any regional differences.</p>
+<p>Here’s the final visualization</p>
+<p><img src="only_english_plot.png" class="img-fluid"></p>
+<p>The items below outline my data visualization process and helpful resources. Full code for data processing and visualization are included at the end.</p>
+<section id="heatmap-with-geom_tile" class="level3">
+<h3 class="anchored" data-anchor-id="heatmap-with-geom_tile">1. Heatmap with geom_tile( )</h3>
+<p>A line graph showing change in time would not have been very interesting, but I didn’t want to exclude the time component by just creating a bar chart of each group. The heatmap tiles provided an efficent way to capture regional differences, subtle changes in time, and percentages of household that only speak English.</p>
+<p>Resource: <a href="https://allisonhorst.github.io/rice-data-viz/">Allison Horst’s Advanced Data Visualization in ggplot2</a></p>
+</section>
+<section id="ordering-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="ordering-the-data">2. Ordering the data</h3>
+<p>I used <code>fct_reorder</code> to sort the SASAP regions by average percent of households that only spoke English</p>
+<p><code>mutate(SASAP.Region = fct_reorder(SASAP.Region, percent_only_english, .fun = mean))</code></p>
+</section>
+<section id="text-within-tiles" class="level3">
+<h3 class="anchored" data-anchor-id="text-within-tiles">3. Text within tiles</h3>
+<p>This line of code rounded the calculated values and displayed white text with a % symbol</p>
+<p><code>geom_text(aes(label = paste0(round(avg_percent_english, 0),"%")), color = "white", size = 3)</code></p>
+</section>
+<section id="picking-colors" class="level3">
+<h3 class="anchored" data-anchor-id="picking-colors">4. Picking colors</h3>
+<p>This might have been the hardest part. I played around with the number and shade of colors and settled on shades of gray, blue, green and reddish brown with a <code>scale_fill_gradientn</code> gradient. <code>geom_tile(aes(fill = avg_percent_english), show.legend = TRUE)</code></p>
+<p>The <a href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf">NCEAS R color cheatsheet</a> was helpful for getting color names. Useful information on gradient color scales was found in the book <a href="https://ggplot2-book.org/scale-colour.html">ggplot2: Elegant Graphics for Data Analysis</a> and <a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">ggplot2 documentation</a></p>
+</section>
+<section id="legend-title" class="level3">
+<h3 class="anchored" data-anchor-id="legend-title">5. legend title</h3>
+<p><code>labs(fill = "Percent")</code></p>
+<p>Resource: <a href="https://stackoverflow.com/questions/23635662/editing-legend-text-labels-in-ggplot">Editing legend (text) labels in ggplot</a></p>
+</section>
+<section id="x-axis" class="level3">
+<h3 class="anchored" data-anchor-id="x-axis">6. x-axis</h3>
+<p>While there are more elegant ways set axis divisions for dates, I opted for a simple vector of years. <code>scale_x_discrete(name = "Year", limits = c(2009, 2010, 2011, 2012, 2013, 2014, 2015))</code></p>
+</section>
+<section id="remove-gridlines" class="level3">
+<h3 class="anchored" data-anchor-id="remove-gridlines">7. Remove gridlines</h3>
+<p><code>theme(panel.grid.major = element_blank())</code></p>
+<p>Resource: <a href="https://felixfan.github.io/ggplot2-remove-grid-background-margin/">Remove grid and background from plot (ggplot2)</a></p>
+</section>
+<section id="move-title-and-caption-from-panel-to-plot-area" class="level3">
+<h3 class="anchored" data-anchor-id="move-title-and-caption-from-panel-to-plot-area">8. Move title and caption from panel to plot area</h3>
+<p><code>theme(plot.caption = element_text(size = 8, hjust = 0), plot.caption.position = "plot") + theme(plot.title.position = "plot")</code></p>
+<p>Resource: <a href="https://community.rstudio.com/t/changing-position-of-plot-captions/108973">Changing position of plot captions</a></p>
+</section>
+<section id="download-data-using-metajam" class="level2">
+<h2 class="anchored" data-anchor-id="download-data-using-metajam">Download data using <code>metajam</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># url to csv file</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data_url <span class="ot">&lt;-</span> <span class="st">"https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># download the data and metadata to project folder</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> metajam<span class="sc">::</span><span class="fu">download_d1_data</span>(data_url, <span class="st">"~/Documents/metajam_example"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data and metadata</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>hh_list <span class="ot">&lt;-</span> metajam<span class="sc">::</span><span class="fu">read_d1_files</span>(data_path)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># get the household data frame</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>hh_data <span class="ot">&lt;-</span> hh_list<span class="sc">$</span>data</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># get the attribute (columns) metadata</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>hh_att_metadata <span class="ot">&lt;-</span> hh_list<span class="sc">$</span>attribute_metadata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tidy-data" class="level2">
+<h2 class="anchored" data-anchor-id="tidy-data">Tidy Data</h2>
+<section id="code-used-to-process-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="code-used-to-process-the-data">Code used to process the data</h4>
+<p>I adjusted the original data processing code as my plan for the visualization evolved</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>household_language <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"doi_10.5063_F1CJ8BPH__household_language__csv"</span>, <span class="st">"household_language.csv"</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>hh_data_english <span class="ot">&lt;-</span> household_language <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">&gt;=</span> <span class="dv">2009</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent_only_english =</span> (speak_only_english <span class="sc">/</span> total) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(percent_only_english, <span class="at">.before =</span> german) <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SASAP.Region =</span> <span class="fu">fct_reorder</span>(SASAP.Region, percent_only_english, <span class="at">.fun =</span> mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(SASAP.Region, Year) <span class="sc">%&gt;%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_percent_english =</span> <span class="fu">mean</span>(percent_only_english))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="ggplot" class="level2">
+<h2 class="anchored" data-anchor-id="ggplot">ggplot</h2>
+<p>Code used to create the plot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>only_english_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hh_data_english, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> SASAP.Region)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> avg_percent_english), <span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(avg_percent_english, <span class="dv">0</span>),<span class="st">"%"</span>)), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"antiquewhite3"</span>, <span class="st">"antiquewhite4"</span>, <span class="st">"steelblue4"</span>, <span class="st">"springgreen4"</span>, <span class="st">"indianred4"</span>)) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Percent"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Percent of Alaska Households that Only Speak English"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"based on State of Alaska Salmon and People Region"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"source: Jeanette Clark, Sharis Ochs, Derek Strong, and National Historic Geographic Information System. 2018.</span><span class="sc">\n</span><span class="st">Languages used in Alaskan households, 1990-2015. urn:node:KNB. doi:10.5063/F1N58JPP"</span>) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">hjust =</span> <span class="dv">0</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption.position =</span> <span class="st">"plot"</span>) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title.position =</span> <span class="st">"plot"</span>) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">"Year"</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">2010</span>, <span class="dv">2011</span>, <span class="dv">2012</span>, <span class="dv">2013</span>, <span class="dv">2014</span>, <span class="dv">2015</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Data citation:</strong> Jeanette Clark, Sharis Ochs, Derek Strong, and National Historic Geographic Information System. 2018. Languages used in Alaskan households, 1990-2015. <a href="urn:node:KNB" class="uri">urn:node:KNB</a>. <a href="doi:10.5063/F1N58JPP" class="uri">doi:10.5063/F1N58JPP</a>.</p>
+<p><a href="https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8" class="uri">https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8</a>”</p>
+
+
+
+</section>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{rivers2021,
+  author = {Marie Rivers},
+  title = {How {I} Made This Visualization},
+  date = {2021-11-03},
+  url = {https://marierivers.github.io/posts/2021-11-03-how-i-made-this-visualization/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-rivers2021" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Marie Rivers. 2021. <span>“How I Made This Visualization.”</span>
+November 3, 2021. <a href="https://marierivers.github.io/posts/2021-11-03-how-i-made-this-visualization/">https://marierivers.github.io/posts/2021-11-03-how-i-made-this-visualization/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+</body></html>

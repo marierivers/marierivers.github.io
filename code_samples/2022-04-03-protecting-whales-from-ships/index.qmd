@@ -1,0 +1,426 @@
+---
+title: "Protecting Whales from Ships"
+description: "A spatial analysis using Python and GeoPandas"
+author:
+  - name: Marie Rivers
+    url: https://marierivers.github.io/
+date: 2022-04-03
+categories: [Python, geopandas, statial analysis]
+citation: 
+  url: https://marierivers.github.io/posts/2022-04-03-protecting-whales-from-ships/ 
+#image: 
+draft: false
+editor: visual
+toc-title: Contents
+toc-location: left
+toc-depth: 2
+code-tools: 
+  source: true
+  toggle: true
+  caption: view code
+code-block-bg: true
+code-block-border-left: "#31BAE9"
+---
+
+This analysis identifies a speed reduction zone off the island of Dominica for the purpose of reducing the occurrence of ships striking whales and quantifies the impact of reduced travel speeds on marine traffic.
+
+# Setup
+
+```{r}
+
+```
+
+```{python}
+import pandas as pd
+import geopandas as gpd
+import os
+import matplotlib.pyplot as plt
+import numpy as np
+import shapely
+import contextily as ctx
+import pygeos
+```
+
+# Dominica outline
+
+```{python}
+# Define path to folder
+input_folder = r"data/dominica"
+
+# Join folder path and filename 
+fp = os.path.join(input_folder, "dma_admn_adm0_py_s1_dominode_v2.shp")
+
+# Print out the full file path
+print(fp)
+```
+
+    data/dominica/dma_admn_adm0_py_s1_dominode_v2.shp
+
+```{python}
+# Read file using gpd.read_file()
+dominica = gpd.read_file(fp)
+```
+
+```{python}
+type(dominica)
+```
+
+```{python}
+dominica.head()
+```
+
+```{python}
+dominica.crs
+```
+
+```{python}
+# change the projection to Dominica 1945 / British West Indies Grid (metric units)
+proj_area_crs = 2002 # project area coordinate system EPSG code. Projected CRS for Dominica is 2002
+dominica = dominica.to_crs(epsg=proj_area_crs)
+```
+
+```{python}
+dominica.crs
+```
+
+# Plot the Dominica outline
+
+```{python}
+ax = dominica.plot(color="none", figsize=(9, 9))
+ctx.add_basemap(ax, crs=dominica.crs.to_string())
+ax.grid(True)
+```
+
+# Whale sighting data
+
+Whale habitat was approximated using data from approximately 5,000 whale sightings between 2008 and 2015.
+
+```{python}
+# Define path to folder
+input_folder2 = r"data"
+
+# Join folder path and filename 
+fp2 = os.path.join(input_folder2, "sightings2005_2018.csv")
+
+# Print out the full file path
+print(fp2)
+```
+
+```{python}
+# Read file using gpd.read_file()
+whales = gpd.read_file(fp2)
+```
+
+```{python}
+type(whales)
+```
+
+```{python}
+whales.head()
+```
+
+```{python}
+# bootstrap the geometries
+whale_points = gpd.points_from_xy(whales['Long'], whales['Lat'])
+whale_gdf = gpd.GeoDataFrame(whales, geometry=whale_points)
+```
+
+```{python}
+whale_gdf.head()
+```
+
+```{python}
+type(whale_gdf)
+```
+
+```{python}
+# project the dataset into an appropriate CRS
+whale_gdf = whale_gdf.set_crs(epsg=4326)
+whale_gdf = whale_gdf.to_crs(epsg=proj_area_crs)
+```
+
+```{python}
+whale_gdf.crs
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(15,15), dpi=100)
+
+whale_gdf.plot(ax=ax)
+```
+
+# Create grid
+
+```{python}
+xmin, ymin, xmax, ymax = whale_gdf.total_bounds
+
+cell_size = 2000
+length = 2000
+width = 2000
+
+xs = list(np.arange(xmin, xmax + width, width)) # return evenly spaced values starting at xmin, stopping (but not including) at xmax+width, by a step of width
+ys = list(np.arange(ymin, ymax + length, length))
+```
+
+```{python}
+xmin, ymin, xmax, ymax
+```
+
+```{python}
+# function to convert corner points into a cell polygon
+def make_cell(x, y, cell_size):
+    ring = [
+        (x, y),
+        (x + cell_size, y),
+        (x + cell_size, y + cell_size),
+        (x, y + cell_size)
+    ]
+    cell = shapely.geometry.Polygon(ring)
+    return cell
+```
+
+```{python}
+# iterate over each combination of x and y coordinates in two nested for loops
+cells = []
+for x in xs:
+    for y in ys:
+        cell = make_cell(x, y, cell_size)
+        cells.append(cell)
+```
+
+```{python}
+grid = gpd.GeoDataFrame({'geometry':cells}, crs=proj_area_crs)
+#grid.to_file("grid.shp")
+```
+
+```{python}
+grid.head()
+```
+
+```{python}
+grid.crs
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(10,10), dpi=100)
+
+grid.boundary.plot(ax=ax, linewidth = 0.5)
+```
+
+```{python}
+base = dominica.plot(facecolor='none', edgecolor='black', linewidth=2, figsize=(15, 15))
+whale_gdf.plot(ax=base, facecolor='red', markersize=2)
+grid.boundary.plot(ax=base, linewidth = 0.5)
+ctx.add_basemap(ax=base, crs=dominica.crs.to_string())
+```
+
+# Extract whale habitat
+
+```{python}
+# spatially join the grid with whale sighting data to count the number of sightings in each cell
+# use an inner join since we're not interested in grid cells without any sightings
+whale_grid = grid.sjoin(whale_gdf, how="inner")
+whale_grid
+```
+
+```{python}
+whale_grid.boundary.plot(figsize=(5,10))
+```
+
+```{python}
+whale_grid.crs
+```
+
+```{python}
+grid['count'] = whale_grid.groupby(whale_grid.index).count()['index_right']
+grid
+```
+
+```{python}
+# subset the grid dataframe to cells that have more than 20 sightings
+whale_mask = (grid['count'] > 20)
+whale_mask
+```
+
+```{python}
+whale_habitat = grid[whale_mask]
+```
+
+```{python}
+speed_reduction_zone = whale_habitat.unary_union.convex_hull
+speed_reduction_zone
+```
+
+```{python}
+type(speed_reduction_zone)
+# need to create a new GeoDataFrame with the speed_reduction_zone as a single feature
+```
+
+```{python}
+speed_reduction_zone = gpd.GeoDataFrame(index=[0], crs='epsg:2002', geometry=[speed_reduction_zone])
+```
+
+```{python}
+speed_reduction_zone.crs
+```
+
+```{python}
+type(speed_reduction_zone)
+```
+
+```{python}
+base = dominica.plot(facecolor='none', edgecolor='black', linewidth=3, figsize=(15, 15))
+speed_reduction_zone.plot(ax=base, facecolor='lightgray', edgecolor='red', alpha=0.5, linewidth=5)
+ctx.add_basemap(ax=base, crs=dominica.crs.to_string())
+```
+
+# Vessel data
+
+Vessel data was obtained from Automatic Identification System (AIS) tranceivers from 2015.
+
+## Load data
+
+```{python}
+# Join folder path and filename 
+fp3 = os.path.join(input_folder2, "station1249.csv")
+
+# Print out the full file path
+print(fp3)
+```
+
+```{python}
+# Read file using gpd.read_file()
+vessels = gpd.read_file(fp3)
+```
+
+```{python}
+type(vessels)
+```
+
+```{python}
+vessels.head
+```
+
+```{python}
+# bootstrap the geometries
+vessel_points = gpd.points_from_xy(vessels['LON'], vessels['LAT'])
+vessel_gdf = gpd.GeoDataFrame(vessels, geometry=vessel_points)
+```
+
+```{python}
+# project the dataset into an appropriate CRS
+vessel_gdf = vessel_gdf.set_crs(epsg=4326)
+vessel_gdf = vessel_gdf.to_crs(epsg=proj_area_crs)
+```
+
+```{python}
+vessel_gdf.crs
+```
+
+```{python}
+vessel_gdf['TIMESTAMP'] = pd.to_datetime(vessel_gdf['TIMESTAMP'])
+```
+
+```{python}
+vessel_gdf.head()
+```
+
+```{python}
+# plot of all vessel points
+
+vessel_gdf.plot(figsize=(5,10))
+```
+
+```{python}
+# plot of all vessel points
+base = dominica.plot(facecolor='none', edgecolor='black', linewidth=3, figsize=(15, 15))
+vessel_gdf.plot(ax=base, markersize = 3)
+speed_reduction_zone.plot(ax=base, edgecolor='red', linewidth=2)
+```
+
+```{python}
+# spatially subset AIS data to only include vessels within identified whale habitat
+vessels_in_whale_habitat = vessel_gdf.sjoin(speed_reduction_zone, how="inner")
+vessels_in_whale_habitat
+```
+
+## Calculate distance and speed
+
+```{python}
+# plot of only vessel points within speed reduction zone
+base = dominica.plot(facecolor='none', linewidth=3, figsize=(15, 15))
+speed_reduction_zone.plot(ax=base, facecolor='none', edgecolor='red', linewidth=3)
+vessels_in_whale_habitat.plot(ax=base, markersize = 0.5, facecolor='black')
+ctx.add_basemap(ax=base, crs=dominica.crs.to_string())
+```
+
+```{python}
+# sort vessel dataframe by MMSI and time
+vessels_in_whale_habitat = vessels_in_whale_habitat.sort_values(by=['MMSI', 'TIMESTAMP'])
+vessels_in_whale_habitat
+```
+
+```{python}
+# create a copy of the vessel dataframe and shift each observation down one row using `shift()`
+vessels_shift = vessels_in_whale_habitat.copy(deep=True).shift(periods=1)
+```
+
+```{python}
+# rename shifted column names
+vessels_shift = vessels_shift.rename(columns={"field_1": "field_1_shift", "MMSI": "MMSI_shift", "LON": "LON_shift", "LAT": "LAT_shift", "TIMESTAMP": "TIMESTAMP_shift", "geometry": "geometry_shift", "index_right": "index_right_shift"})
+```
+
+```{python}
+# join original dataframe with the shifted copy using `join()`
+vessels_shift_join = vessels_in_whale_habitat.join(vessels_shift).sort_values(by=['MMSI', 'TIMESTAMP'])
+```
+
+```{python}
+# drop all rows in the joined dataframe in which the MMSI of the left is not the same as the one on the right
+vessels_keep = vessels_shift_join.drop(vessels_shift_join[vessels_shift_join['MMSI'] != vessels_shift_join['MMSI_shift']].index)
+```
+
+```{python}
+# set the geometry column
+vessels_keep = vessels_keep.set_geometry("geometry")
+vessels_keep2 = vessels_keep.set_geometry("geometry_shift")
+```
+
+```{python}
+# calculate distance between each observation
+vessels_keep['distance_m'] = vessels_keep.distance(vessels_keep2)
+```
+
+```{python}
+# calculate time difference between each observation to the next
+vessels_keep['time'] = vessels_keep['TIMESTAMP'] - vessels_keep['TIMESTAMP_shift']
+```
+
+```{python}
+# calculate speed
+meters_per_nm = 1852
+
+vessels_keep['speed_m_per_sec'] = vessels_keep['distance_m'] / vessels_keep['time'].dt.total_seconds()
+vessels_keep['speed_knots'] = vessels_keep['speed_m_per_sec'] * 60 * 60 / meters_per_nm
+vessels_keep['time_10knots_minutes'] = (vessels_keep['distance_m'] * 60 ) / ( meters_per_nm * 10 )
+vessels_keep['time_dif_minutes'] = vessels_keep['time_10knots_minutes'] - (vessels_keep['time'].dt.total_seconds() / 60 )
+vessels_keep
+```
+
+```{python}
+vessels_keep = vessels_keep.sort_values(by=['speed_knots'], ascending=False)
+```
+
+```{python}
+# look at the vessels that would be affected by the speed reduction zone
+vessels_going_too_fast = vessels_keep.drop(vessels_keep[vessels_keep['time_dif_minutes'] < 0].index)
+vessels_going_too_fast
+```
+
+```{python}
+shipping_impact_minutes = vessels_going_too_fast['time_dif_minutes'].sum()
+shipping_impact_days = round(shipping_impact_minutes / ( 60 * 24), 2)
+shipping_impact_days
+```
+
+**A 10-knot reduced speed zone in the identified whale habitat will increase travel time by approximately 27.88 days.**

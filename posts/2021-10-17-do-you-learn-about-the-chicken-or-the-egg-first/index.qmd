@@ -1,0 +1,21 @@
+---
+title: "Do you learn about the chicken or the egg first"
+description: "If you are new to coding, what first steps should you take?"
+author:
+  - name: Marie Rivers
+    url: https://marierivers.github.io/
+date: 2021-10-17
+categories: [Python, R, MEDS]
+citation: 
+  url: https://marierivers.github.io/posts/2021-10-17-do-you-learn-about-the-chicken-or-the-egg-first/ 
+#image: 
+draft: false
+---
+
+When I decided to apply for an Environmental Data Science program I had zero coding experience. I knew that Python was a common language, but had never heard about R until learning about the UCSB Environmental Data Science program. Before starting classes I tried to learn more about this new world I’d be entering. I enrolled in an Intro to Programming class that focused on Python. In the first class we learned background info and advantages/disadvantages of C, Java, and Python, what a compiler and an interpreter are, general python syntax, and different data types (integers/floats/Booleans/strings). Over the next few weeks, we received formal definitions for value, variable, constant, expression, data strictures (arrays, queues, stacks, lists) and logical operators…All this info was useful, but we didn’t actually jump into much coding. The class dedicated more time to theoretical content than hands on coding.
+
+A big take away from the class wasn’t any specific coding knowledge, but rather an idea of the general mindset required to successfully learn how to code. I experienced the problem solving component of coding and the potentially frustrating cycle trying, failing, trying again, tweaking, consulting other references, and approaching from a different direction. More important than the lessons, I confirmed that I enjoy this type of work, my mind thinks in the logical way that code often requires, and I have the patience to work through debugging. An aspiring coder can’t be daunted when things don’t work the first, second, or third time. I also completed enough Codecademy R tutorials to confirm that yep, this coding thing was for me. I skimmed a few reference docs and watched a few intro R YouTube videos, but I didn’t have a great understanding of how R was used beyond tutorial world. A lot of this early context didn’t stick.
+
+Once I arrived at UCSB, we started using R (and a little Python) straight away. From the beginning, our classes emphasized the importance of reproducible workflows, documenting code with comments, and version control. We spent more time typing code than just looking at code. Our classes include the right amount of repetition to retain essential content and appreciate its use in a variety of contexts.
+
+There is no “right” way to being to learn how to code. Starting is the most important part. Don’t try to gain some arbitrary minimum knowledge base before starting.  The first time you use a new package or function, you’re not going to remember all the details. The first times you read reference books, package documentations or blog posts they won’t make much sense. The more you learn, the more your capacity to ingest new information will increase. You will never know everything, but you will gain a larger understanding of what is possible (and where to go to learn how to do it). AND…you’ll start to understand R jokes. The best way to learn is by doing. This grad program has a good balance of formal instruction and, more importantly,  plenty of opportunities to figure things out for yourself. 

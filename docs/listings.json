@@ -1,0 +1,19 @@
+[
+  {
+    "listing": "/code_samples.html",
+    "items": [
+      "/code_samples/2022-04-03-protecting-whales-from-ships/index.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/2022-06-07-the-importance-of-meaningfully-open-snow-data/index.html",
+      "/posts/2022-02-08-how-to-make-a-dumbbell-schedule-with-r/index.html",
+      "/posts/2021-12-02-environmental-quality-population-change/index.html",
+      "/posts/2021-11-03-how-i-made-this-visualization/index.html",
+      "/posts/2021-10-17-do-you-learn-about-the-chicken-or-the-egg-first/index.html",
+      "/posts/2021-08-18-a-new-perspective-on-data/index.html"
+    ]
+  }
+]

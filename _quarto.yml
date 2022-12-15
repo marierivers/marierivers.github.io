@@ -3,13 +3,22 @@ project:
   output-dir: docs
 
 website:
-  title: "marierivers.github.io"
+  title: "Marie Rivers"
   navbar:
     background: primary
-    left:
+    # left:
+    right:
       - href: index.qmd
         text: Home
-      - about.qmd
+      # - href: code_samples.qmd
+      #   text: Code Samples
+      - code_samples.qmd
+      - posts.qmd
+      - href: data/rivers_marie_resume.pdf
+        text: Resume
+      - icon: github
+        href: https://github.com/marierivers
+        aria-label: GitHub
 
 format:
   html:
