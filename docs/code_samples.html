@@ -60,9 +60,9 @@
       }
 
       const options = {
-        valueNames: ['listing-title','listing-author','listing-date','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+        valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
         
-        searchColumns: ["listing-title","listing-author","listing-date","listing-description","listing-categories"],
+        searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
       };
 
       window['quarto-listings'] = window['quarto-listings'] || {};
@@ -101,7 +101,7 @@
     <a class="nav-link" href="./posts.html">Posts</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data/rivers_marie_resume.pdf">Resume</a>
+    <a class="nav-link" href="./resume/rivers_marie_resume.pdf">Resume</a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/marierivers"><i class="bi bi-github" role="img" aria-label="GitHub">
@@ -120,7 +120,7 @@
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="geopandas">geopandas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="statial analysis">statial analysis <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Data Wrangling">Data Wrangling <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Shiny App">Shiny App <span class="quarto-category-count">(1)</span></div><div class="category" data-category="geopandas">geopandas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="statial analysis">statial analysis <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 <header id="title-block-header" class="quarto-title-block default">
@@ -157,9 +157,81 @@
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Python,geopandas,statial analysis" data-listing-date-sort="1648958400000" data-listing-file-modified-sort="1671079708565" data-listing-reading-time-sort="3.935">
+<div class="g-col-1" data-index="0" data-categories="Python,R,Data Wrangling" data-listing-date-sort="1663905600000" data-listing-file-modified-sort="1671381442882" data-listing-reading-time-sort="11.295">
+<a href="./code_samples/data-wrangling-with-python-and-R/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./code_samples/data-wrangling-with-python-and-R/types_of_joins.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Data Wrangling with Python and R
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
+Python
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Data Wrangling'); return false;">
+Data Wrangling
+</div>
+</div>
+<div class="card-text listing-description">
+Examples of common data wrangling commands with Python and R
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Marie Rivers
+</div>
+<div class="listing-date">
+Sep 23, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="R,Shiny App" data-listing-date-sort="1654833600000" data-listing-file-modified-sort="1671384428790" data-listing-reading-time-sort="0.125">
+<a href="./code_samples/shiny-apps/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./code_samples/shiny-apps/snow_today_shiny_example.gif" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Shiny Apps
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Shiny App'); return false;">
+Shiny App
+</div>
+</div>
+<div class="card-text listing-description">
+a sample of projects with interactive web applications
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Marie Rivers
+</div>
+<div class="listing-date">
+Jun 10, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="Python,geopandas,statial analysis" data-listing-date-sort="1648958400000" data-listing-file-modified-sort="1671380319296" data-listing-reading-time-sort="3.935">
 <a href="./code_samples/2022-04-03-protecting-whales-from-ships/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="card-img-bg" style="height: 150px;">
+&nbsp;
+</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Protecting Whales from Ships

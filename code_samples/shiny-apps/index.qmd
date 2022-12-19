@@ -1,0 +1,37 @@
+---
+title: "Shiny Apps"
+description: "a sample of projects with interactive web applications"
+author:
+  - name: Marie Rivers
+    url: https://marierivers.github.io/
+date: 2022-06-10
+categories: [R, Shiny App]
+citation: 
+  url: https://marierivers.github.io/code_samples/shiny-apps/ 
+#image: 
+draft: false
+editor: visual
+toc-title: Contents
+toc-location: left
+toc-depth: 2
+code-tools: 
+  source: true
+  toggle: true
+  caption: view code
+code-block-bg: true
+code-block-border-left: "#31BAE9"
+---
+
+# [Snow Today Capstone Project](https://shiny.snow.ucsb.edu/snow_today_shiny_app/)
+
+Visualize 20 years of snow cover and albedo data from the Western US
+
+
+
+![](snow_today_shiny_example.gif)
+
+# [California Snow Depth Shiny App](https://marierivers.shinyapps.io/snow_shiny_app/)
+
+A Shiny App displaying California snow depth data
+
+![](snow_shiny_app.png)

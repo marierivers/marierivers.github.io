@@ -7,7 +7,7 @@ author:
 date: 2022-04-03
 categories: [Python, geopandas, statial analysis]
 citation: 
-  url: https://marierivers.github.io/posts/2022-04-03-protecting-whales-from-ships/ 
+  url: https://marierivers.github.io/code_samples/2022-04-03-protecting-whales-from-ships/ 
 #image: 
 draft: false
 editor: visual

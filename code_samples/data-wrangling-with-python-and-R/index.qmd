@@ -1,0 +1,903 @@
+---
+title: "Data Wrangling with Python and R"
+description: "Examples of common data wrangling commands with Python and R"
+author:
+  - name: Marie Rivers
+    url: https://marierivers.github.io/
+date: 2022-09-23
+categories: [Python, R, Data Wrangling]
+citation: 
+  url: https://marierivers.github.io/code_samples/data-wrangling-with-python-and-R/ 
+#image: 
+draft: false
+editor: visual
+toc-title: Contents
+toc-location: left
+toc-depth: 2
+code-tools: 
+  source: true
+  toggle: true
+  caption: view code
+code-block-bg: true
+code-block-border-left: "#31BAE9"
+---
+
+The purpose of this document is to illustrate common data wrangling commands with R and Python. These examples use data from the [`lterdatasampler`](https://lter.github.io/lterdatasampler/index.html) package.
+
+# Basics
+
+The [`and_vertebrates`](https://lter.github.io/lterdatasampler/reference/and_vertebrates.html) dataset includes trout and salamander observations from Mack Creek which is part of the Andrews Forest LTER.
+
+```{r}
+#| warning: false
+library(tidyverse)
+library(lterdatasampler)
+
+trout_salamander_R <- and_vertebrates
+```
+
+```{python}
+import pandas as pd
+
+trout_salamander_py = pd.read_csv('data/and_vertebrates.csv')
+```
+
+## Head and Tail
+
+Head returns the first few rows of the data frame and tail returns the last rows. The integer in the examples below is optional and used to specify the number of rows returned.
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+head(trout_salamander_R, 5) # include an integrer is you want to specify the number of rows returned
+tail(trout_salamander_R)
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+trout_salamander_py.head(5) # include an integrer is you want to specify the number of rows returned
+
+trout_salamander_py.tail()
+```
+:::
+
+## Class / Type
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+class(trout_salamander_R)
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+print(type(trout_salamander_py))
+```
+:::
+
+## Shape
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| echo: false
+trout_salamander_nrow <- nrow(trout_salamander_R)
+trout_salamander_ncol <- ncol(trout_salamander_R)
+```
+
+Here R and Python both tell us that the dataframe has `r format(round(trout_salamander_nrow), big.mark=',')` rows and `r trout_salamander_ncol` columns.
+
+::: callout-note
+## Note
+
+How to format inline code to include a comma for the thousands separator.
+
+r format(round(trout_salamander_nrow), big.mark=',')
+:::
+
+```{r}
+dim(trout_salamander_R) # returns the number of rows and columns in a data frame
+nrow(trout_salamander_R)
+ncol(trout_salamander_R)
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+trout_salamander_py.shape
+trout_salamander_py.shape[0] # number of rows
+trout_salamander_py.shape[1] # number of columns
+```
+:::
+
+## Summary / Describe
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+summary(trout_salamander_R)
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+trout_salamander_py.describe()
+```
+
+```{python}
+trout_salamander_py.info()
+```
+:::
+
+## Variable Names
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+names(trout_salamander_R) # returns column names of a data frame
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+trout_salamander_py.columns
+```
+:::
+
+## Unique
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+Get the unique values from a specified column in a dataframe
+
+```{r}
+unique(trout_salamander_R$species)
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+trout_salamander_py.species.unique()
+```
+:::
+
+# Selecting Columns
+
+Subset a datafame based on columns of interst
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+trout_salamander_R <- trout_salamander_R %>% 
+  select(year, sitecode, species, length_1_mm, weight_g)
+trout_salamander_R
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+trout_salamander_py = trout_salamander_py[['year', 'sitecode', 'species', 'length_1_mm', 'weight_g']]
+trout_salamander_py
+```
+
+or...
+
+```{python}
+#| column: page-right
+cols_to_subset = ['year', 'sitecode', 'species', 'length_1_mm', 'weight_g']
+trout_salamander_py[cols_to_subset]
+```
+:::
+
+# New Columns
+
+Convert the length variable from milimeters to inches and store these values in a new column
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+trout_salamander_R <- trout_salamander_R %>% 
+  mutate(length_1_in = length_1_mm / 25.4)
+trout_salamander_R
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+trout_salamander_py['length_1_in'] = trout_salamander_py['length_1_mm'] / 25.4
+trout_salamander_py
+```
+:::
+
+# Missing Values
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+Get the number of missing values for all variables in the dataframe
+
+```{r}
+#| column: page-right
+colSums(is.na(trout_salamander_R))
+```
+
+Get the number of NAs for only variables with missing values
+
+```{r}
+#| column: page-right
+which(colSums(is.na(trout_salamander_R))>0)
+```
+
+Get the names of variables with missing values
+
+```{r}
+#| column: page-right
+names(which(colSums(is.na(trout_salamander_R))>0))
+```
+
+Show variables with missing values on a bar chart
+
+```{r}
+#| column: page-right
+missing_values_R <- data.frame(colSums(is.na(trout_salamander_R))) %>% 
+  rownames_to_column("variable")
+
+names(missing_values_R) <- c(
+  "variable",
+  "num_missing_values"
+  )
+
+ggplot(data = missing_values_R, aes(x = variable, y = num_missing_values)) +
+  geom_col()
+```
+
+Drop missing values
+
+```{r}
+#| column: page-right
+trout_salamander_R <- trout_salamander_R %>% 
+  drop_na(length_1_mm, weight_g)
+  # if columns aren't specified, then all variables are selected
+  # drop_na()
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+Identify which columns in the dataframe have missings values
+
+```{python}
+#| column: page-right
+trout_salamander_py.isna().any()
+```
+
+Get the number of NaNs for all variables in the dataframe
+
+```{python}
+#| column: page-right
+trout_salamander_py.isna().sum()
+```
+
+Show variables with missing values on a bar chart
+
+```{python}
+#| column: page-right
+import matplotlib.pyplot as plt
+
+trout_salamander_py.isna().sum().plot(kind='bar', rot=0)
+plt.show()
+```
+
+Drop missing values
+
+```{python}
+#| column: page-right
+
+trout_salamander_py = trout_salamander_py.dropna(subset=['length_1_mm', 'weight_g'])
+
+# if subset variables aren't specified, rows with any NaN value will be dropped
+# trout_salamander_py = trout_salamander_py.dropna()
+```
+:::
+
+# Sorting
+
+Order rows in a dataframe based on values in a specified column. Default is ascending order.
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+trout_salamander_R %>% 
+  arrange(length_1_mm)
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+trout_salamander_py.sort_values("length_1_mm")
+```
+:::
+
+Sort values by descending order
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+trout_salamander_R %>% 
+  arrange(desc(length_1_mm))
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+trout_salamander_py.sort_values("length_1_mm", ascending=False)
+```
+:::
+
+Sort values by multiple variables
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+trout_salamander_R %>% 
+  arrange(length_1_mm, weight_g, year)
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+trout_salamander_py.sort_values(['length_1_mm', 'weight_g', 'year'])
+```
+:::
+
+# Filtering
+
+Create datasets of all cutthroat trout
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+trout_R <- trout_salamander_R %>% 
+  filter(species == 'Cutthroat trout')
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+trout_py = trout_salamander_py[ (trout_salamander_py['species'] == 'Cutthroat trout') ]
+```
+:::
+
+Filter data based on values and logical arguments. This example filters for cutthroat trout that are longer than 86 mm.
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+large_trout_R <- trout_salamander_R %>% 
+  filter(species == 'Cutthroat trout') %>% 
+  filter(length_1_mm > 86)
+large_trout_R
+
+num_large_trout <- nrow(large_trout_R)
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+trout_salamander_py[ (trout_salamander_py['species'] == 'Cutthroat trout') & (trout_salamander_py['length_1_mm'] > 86) ]
+```
+:::
+
+There are `r format(round(num_large_trout), big.mark=',')` cutthroat trout longer than 86 mm in this dataset.
+
+# Summary Statistics
+
+::: callout-note
+## Note
+
+Even though missing values have been removed in previous steps, the code to exclude NA / NaN values from summary statistics is included here for reference.
+:::
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+### Mean
+
+Mean of specified column
+
+```{r}
+#| column: page-right
+mean(trout_R$weight_g, na.rm = TRUE)
+```
+
+Mean of multiple specified columns
+
+```{r}
+#| column: page-right
+# calculate statistic on multiple columns
+trout_R %>% 
+  summarise_at(vars('length_1_mm', 'weight_g'), mean, na.rm = TRUE)
+```
+
+Mean of all numeric columns
+
+```{r}
+#| column: page-right
+# calculate statistic on all numeric columns
+trout_R %>% 
+  summarise(across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+### Median
+
+```{r}
+#| column: page-right
+median(trout_R$weight_g, na.rm = TRUE)
+```
+
+### Minimum
+
+```{r}
+#| column: page-right
+min(trout_R$weight_g, na.rm = TRUE)
+```
+
+### Maximum
+
+```{r}
+#| column: page-right
+max(trout_R$weight_g, na.rm = TRUE)
+```
+
+**Use var() to calculate the variance of a variable.**
+
+**Use sd() to calculate the standard deviation of a variable.**
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+### Mean
+
+Mean of specified column
+
+```{python}
+#| column: page-right
+trout_py['weight_g'].mean()
+```
+
+Mean of multiple specified columns
+
+```{python}
+#| column: page-right
+# calcuate statistic on multiple columns
+trout_py[['length_1_mm', 'weight_g']].mean()
+```
+
+Mean of all numeric columns
+
+```{python}
+#| column: page-right
+# calculate statistic on all numeric columns
+trout_py.mean()
+```
+
+### Median
+
+```{python}
+#| column: page-right
+trout_py['weight_g'].median()
+```
+
+### Minimum
+
+```{python}
+#| column: page-right
+trout_py['weight_g'].min()
+```
+
+### Maximum
+
+```{python}
+#| column: page-right
+trout_py['weight_g'].max()
+```
+
+**Use .var() to calculate the variance of a variable.**
+
+**Use .std() to calculate the standard deviation of a variable.**
+:::
+
+# Grouped Statistics
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+#| message: false
+
+library(kableExtra)
+
+trout_salamander_R %>% 
+  drop_na(length_1_mm, weight_g) %>% 
+  # even though missing values have been removed in previous steps, 
+  # code to exclude NA values from summary statistics is included here for reference.
+  group_by(sitecode, species) %>% 
+  summarise(mean_length = mean(length_1_mm),
+            min_length = min(length_1_mm),
+            max_lenth = max(length_1_mm),
+            mean_weight = mean(weight_g),
+            min_weight = min(weight_g),
+            max_weight = max(weight_g)) %>% 
+  kable(digits=2) %>% 
+  kable_paper()
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+#| eval: false
+trout_salamander_py.dropna(subset=['length_1_mm', 'weight_g']) \
+.groupby(['sitecode', 'species'])[['length_1_mm', 'weight_g']] \
+.agg(['mean', 'min', 'max'])
+```
+
+```{python}
+#| column: page-right
+#| echo: false
+
+trout_salamander_py.dropna(subset=['length_1_mm', 'weight_g']) \
+.groupby(['sitecode', 'species'])[['length_1_mm', 'weight_g']] \
+.agg(['mean', 'min', 'max']) \
+.style.format(precision=2).set_table_styles([dict(selector="th", props=[("color", "black"),
+                               ("border", "1px solid black"),
+                               ("border-collapse", "collapse"),
+                               ('min-width', '80px'),
+                               ]),]) \
+                               .set_properties(**{'border': '1px solid black', 'color': 'black'})
+```
+:::
+
+# Visualizations
+
+## Scatter Plot
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| code-overflow: wrap
+#| column: page-right
+#| warning: false
+#| label: fig-trout_sal_size1
+#| fig-cap: "scatter plot length vs. weight visualized with ggplot"
+#| cap-location: margin
+
+trout_salamander_R <- trout_salamander_R %>% 
+  filter(species %in% c('Cutthroat trout', 'Coastal giant salamander'))
+
+ggplot(data = trout_salamander_R, aes(x = length_1_mm, y = weight_g)) +
+  geom_point(aes(color = species), show.legend = TRUE) +
+  labs(x = "Length (mm)",
+       y = "Weight (g)",
+       title = "Length vs. Weight of Cutthroat Trout and Coastal Giant Salamander Length",
+       color = "Species")
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| code-overflow: wrap
+#| column: page-right
+#| label: fig-trout_sal_size2
+#| fig-cap: "scatter plot of length vs. weight visualized with matplotlib"
+#| cap-location: margin
+
+trout_salamander_py = trout_salamander_py[trout_salamander_py['species'].isin(['Cutthroat trout','Coastal giant salamander'])]
+
+import matplotlib.pyplot as plt
+
+colors = {'Cutthroat trout':'blue', 'Coastal giant salamander':'orange'}
+plt.scatter(x=trout_salamander_py.length_1_mm, y=trout_salamander_py.weight_g, 
+c= trout_salamander_py.species.apply(lambda x: colors[x]))
+plt.xlabel('length (mm)')
+plt.ylabel('weight (g)')
+plt.show()
+```
+:::
+
+## Histograms
+
+These histograms show the distribution of coastal giant salamander lenths.
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| code-overflow: wrap
+#| column: page-right
+#| warning: false
+#| message: false
+salamander_R <- trout_salamander_R %>% 
+  filter(species == 'Coastal giant salamander')
+
+ggplot(data = salamander_R, aes(x = length_1_mm)) +
+  geom_histogram(fill = 'blue', bins = 25) +
+  labs(x = "lenth (mm)",
+       title = 'Distribution of Coastal Giant Salamander Length')
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| code-overflow: wrap
+#| column: page-right
+#| output: false
+
+salamander_py = trout_salamander_py[ (trout_salamander_py['species'] == 'Coastal giant salamander') ]
+```
+
+```{python}
+#| code-overflow: wrap
+#| column: page-right
+#| eval: false
+
+salamander_py['length_1_mm'].hist(bins=25, color='green')
+plt.title('Distribution of Coastal Giant Salamander Length')
+plt.xlabel('length (mm)')
+plt.show()
+```
+
+```{python}
+#| code-overflow: wrap
+#| column: page-right
+#| echo: false
+
+salamander_py['length_1_mm'].hist(bins=25, color='green')
+plt.title('Distribution of Coastal Giant Salamander Length')
+plt.xlabel('length (mm)')
+plt.show()
+```
+:::
+
+## Bar Plots
+
+These bar plots show the averge salamander weight based on site code.
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| code-overflow: wrap
+#| column: page-right
+salamander_avg_weight_by_sitecode_R <- salamander_R %>% 
+  group_by(sitecode) %>% 
+  summarise(mean_weight = mean(weight_g, na.rm = TRUE))
+
+ggplot(data = salamander_avg_weight_by_sitecode_R, aes(x = sitecode, y = mean_weight)) +
+  geom_col(fill = 'darkgreen') +
+  labs(y = 'weight (g)',
+       title = 'Average Coastal Giant Salamander Weight by Site')
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| code-overflow: wrap
+#| column: page-right
+
+salamander_avg_weight_by_sitecode_py = salamander_py.groupby('sitecode')['weight_g'].mean()
+
+salamander_avg_weight_by_sitecode_py.plot(kind='bar', rot=0)
+plt.title('Average Coastal Giant Salamander Weight by Site')
+plt.ylabel('weight (g)')
+plt.show()
+```
+:::
+
+## Line Plots
+
+These line plots show average salamander length over time.
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| code-overflow: wrap
+#| column: page-right
+salamander_avg_length_by_year_R <- salamander_R %>% 
+  group_by(year) %>% 
+  summarise(mean_length = mean(length_1_mm, na.rm = TRUE))
+
+ggplot(data = salamander_avg_length_by_year_R, aes(x = year, y = mean_length)) +
+  geom_line(color = 'red') +
+  labs(x = 'year',
+       y = 'length (mm)',
+       title = 'Average Coastal Giant Salamander Length by Year')
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| code-overflow: wrap
+#| column: page-right
+salamander_avg_lenth_by_year_py = salamander_py.groupby('year')['length_1_mm'].mean()
+
+salamander_avg_lenth_by_year_py.plot(x='year', y='length_1_mm', kind='line')
+plt.title('Average Coastal Giant Salamander Length by Year')
+plt.ylabel('length (mm)')
+plt.show()
+```
+:::
+
+# Joining /Merging Data
+
+The examples below use the `arc_weather` and `ntl_airtemp` datasets from the [`lterdatasampler`](https://lter.github.io/lterdatasampler/index.html) package. Both of these datasets include daily meteorological observations. The [`arc_weather`](https://lter.github.io/lterdatasampler/reference/arc_weather.html) data incldues daily weather data from the Toolik Field Station at Toolik Lake, Alaska. The [`ntl_airtemp`](https://lter.github.io/lterdatasampler/reference/ntl_airtemp.html) data includes daily average temperature data from Madison, WI. These datasets are used for the examples in this section because they both have a date field in common that can be used for joins.
+
+```{r}
+#| column: page-right
+#| echo: false
+start_arc_weather <- min(arc_weather$date)
+end_arc_weather <- max(arc_weather$date)
+
+start_ntl_airtemp <- min(ntl_airtemp$sampledate)
+end_ntl_airtemp <- max(ntl_airtemp$sampledate)
+```
+
+Looking at the data, we see that the `arc_weather` dataset begins on `r start_arc_weather` and ends on `r end_arc_weather`. The `ntl_airtemp` dataset has a much longer period of record and begins on `r start_ntl_airtemp` and ends on `r end_ntl_airtemp`. Also, the `ntl_airtemp` dataset has a column called `sampledate` that will have to be renamed to match `arc_weather's` `date` column so that both datasets have a common field that can be using for joins.
+
+**Types of Joins** ![types of joins](types_of_joins.jpeg)
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+arc_weather_R <- arc_weather %>% 
+  # adding `arc` suffix for clarity when datasets are joined
+  rename(station_arc = station,
+         mean_airtemp_arc = mean_airtemp,
+         daily_precip_arc = daily_precip,
+         mean_windspeed_arc = mean_windspeed)
+head(arc_weather_R, 3)
+
+ntl_airtemp_R <- ntl_airtemp %>% 
+  # renaming so the data fields in both datasets have the same name
+  # adding `ntl` suffix for clarity when datasets are joined
+  rename(date = sampledate,
+         year_ntl = year,
+         ave_air_temp_adjusted_ntl = ave_air_temp_adjusted) 
+head(ntl_airtemp_R, 3)
+```
+
+### Inner join
+
+```{r}
+#| column: page-right
+inner_join_R <- inner_join(arc_weather_R, ntl_airtemp_R, by = "date")
+```
+
+### Full join
+
+```{r}
+#| column: page-right
+full_join_R <- full_join(arc_weather_R, ntl_airtemp_R, by = "date")
+```
+
+### Left join
+
+```{r}
+#| column: page-right
+left_join_R <- left_join(arc_weather_R, ntl_airtemp_R, by = "date")
+```
+
+### Right join
+
+```{r}
+#| column: page-right
+right_join_R <- right_join(arc_weather_R, ntl_airtemp_R, by = "date")
+```
+
+### Anti join
+
+```{r}
+#| column: page-right
+anti_join_R <- anti_join(arc_weather_R, ntl_airtemp_R, by = "date")
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+arc_weather_py = pd.read_csv('data/arc_weather.csv').rename(columns={"station":"station_arc", "mean_airtemp":"mean_airtemp_arc", "daily_precip":"daily_precip_arc", "mean_windspeed":"mean_windspeed_arc"})
+arc_weather_py.head(3)
+
+ntl_airtemp_py = pd.read_csv(('data/ntl_airtemp.csv')).rename(columns={"sampledate":"date", "year":"year_ntl", "ave_air_temp_adjusted":"ave_air_temp_adjusted_ntl"})
+ntl_airtemp_py.head(3)
+```
+
+### Inner merge
+
+```{python}
+#| column: page-right
+inner_merge_py = arc_weather_py.merge(ntl_airtemp_py, how='inner', on='date')
+```
+
+### Full/Outer merge
+
+```{python}
+#| column: page-right
+full_merge_py = arc_weather_py.merge(ntl_airtemp_py, how='outer', on='date')
+```
+
+### Left merge
+
+```{python}
+#| column: page-right
+left_merge_py = arc_weather_py.merge(ntl_airtemp_py, how='left', on='date')
+```
+
+### Right merge
+
+```{python}
+#| column: page-right
+right_merge_py = arc_weather_py.merge(ntl_airtemp_py, how='right', on='date')
+```
+:::
+
+xxx...add images of each species
+
+xxxxx
+
+# Heading
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+
+```
+:::
+
+# Citation
+
+Horst A, Brun J (2022). lterdatasampler: Educational dataset examples from the Long Term Ecological Research program. R package version 0.1.0, <https://github.com/lter/lterdatasampler>.
+
