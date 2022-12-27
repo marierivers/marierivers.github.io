@@ -11,7 +11,7 @@
     "href": "code_samples/wind-resource-temporal-variability/index.html",
     "title": "Wind Resource Temporal Variability",
     "section": "",
-    "text": "Note\n\n\n\nClick the drop down to the right of the title to view all code written for this analysis\n\n\n\n\n\n\n\nAccess data\nThe code below was used to access the data with the h5pyd Python package and NREL Highly Scalable Data Service (HSDS). The data are stored in the file wtk_us.h5 which is in HDF5 format. Data are stored in three dimensions dataset[t, y, x] where x is the longitudinal index, y is the latitudinal index, and t is the temporal index. Timestamps are in the UTC time zone.\n\n\n\n\n\n\nCitationBibTeX citation:@online{rivers,\n  author = {Marie Rivers},\n  title = {Wind {Resource} {Temporal} {Variability}},\n  url = {https://marierivers.github.io/code_samples/wind-resource-temporal-variability/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nMarie Rivers. n.d. “Wind Resource Temporal Variability.” https://marierivers.github.io/code_samples/wind-resource-temporal-variability/."
+    "text": "Access data\nThe code below was used to access the data with the h5pyd Python package and NREL Highly Scalable Data Service (HSDS). The data are stored in the file wtk_us.h5 which is in HDF5 format. Data are stored in three dimensions dataset[t, y, x] where x is the longitudinal index, y is the latitudinal index, and t is the temporal index. Timestamps are in the UTC time zone.\n\n\n\n\n\n\nCitationBibTeX citation:@online{rivers,\n  author = {Marie Rivers},\n  title = {Wind {Resource} {Temporal} {Variability}},\n  url = {https://marierivers.github.io/code_samples/wind-resource-temporal-variability/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nMarie Rivers. n.d. “Wind Resource Temporal Variability.” https://marierivers.github.io/code_samples/wind-resource-temporal-variability/."
   },
   {
     "objectID": "code_samples/2022-04-03-protecting-whales-from-ships/index.html",
@@ -320,6 +320,223 @@
     "title": "Wind Resource Temporal Variability",
     "section": "Citations",
     "text": "Citations\nDraxl, C., B.M. Hodge, A. Clifton, and J. McCaa. 2015. Overview and Meteorological Validation of the Wind Integration National Dataset Toolkit (Technical Report, NREL/TP-5000-61740). Golden, CO: National Renewable Energy Laboratory.\nDraxl, C., B.M. Hodge, A. Clifton, and J. McCaa. 2015. “The Wind Integration National Dataset (WIND) Toolkit.” Applied Energy 151: 355366.\nKing, J., A. Clifton, and B.M. Hodge. 2014. Validation of Power Output for the WIND Toolkit (Technical Report, NREL/TP-5D00-61714). Golden, CO: National Renewable Energy Laboratory.\nhttps://www.eia.gov/electricity/gridmonitor/dashboard/electric_overview/US48/US48\nhttps://www.eia.gov/energyexplained/wind/where-wind-power-is-harnessed.php#:~:text=Good%20places%20for%20wind%20turbines,)%20for%20utility%2Dscale%20turbines.\n\n\nhttps://marierivers.github.io/wind_resource_temporal_variability/"
+  },
+  {
+    "objectID": "presentations/power_outage_presentation.html#background",
+    "href": "presentations/power_outage_presentation.html#background",
+    "title": "Houston Power Outages",
+    "section": "Background",
+    "text": "Background\n\n\nIn February 2021 the Houston, TX metropolitan area experienced wide scale power outages due to electrical infrastructure failure during winter storms and extreme cold temperatures\n\n\n\n\n       1.4 million customers without power"
+  },
+  {
+    "objectID": "presentations/power_outage_presentation.html#approach",
+    "href": "presentations/power_outage_presentation.html#approach",
+    "title": "Houston Power Outages",
+    "section": "Approach",
+    "text": "Approach\nUse geospatial and statistical methods to quantify:\n\nNumber of residential homes without power\nSocioeconomic differences of areas with and without power\n\n…by using data from:\n\nSatellite imagery of nighttime lights\nOpenStreetMaps roadways and buidings\nCensus tract level race, age and income variables"
+  },
+  {
+    "objectID": "presentations/power_outage_presentation.html#project-overview",
+    "href": "presentations/power_outage_presentation.html#project-overview",
+    "title": "Houston Power Outages",
+    "section": "Project overview",
+    "text": "Project overview\n\n\n\n\nLoad satellite imagery\n\n\n\n\nCreate blackout mask\n\n\n\n\nIdentify residential buildings within blackout area\n\n\n\n\nSpatially join census data to blackout areas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  +144,000 households without power"
+  },
+  {
+    "objectID": "presentations/power_outage_presentation.html#section",
+    "href": "presentations/power_outage_presentation.html#section",
+    "title": "Houston Power Outages",
+    "section": "",
+    "text": "Percent white\n\n\n\n\n\nPercent bipoc"
+  },
+  {
+    "objectID": "presentations/power_outage_presentation.html#statistical-analysis",
+    "href": "presentations/power_outage_presentation.html#statistical-analysis",
+    "title": "Houston Power Outages",
+    "section": "Statistical Analysis",
+    "text": "Statistical Analysis\nLinear regression models of percent of households without power vs. census variables\n\n\n\n\n\n\n\nRace\npercent white\npercent black\npercent Native American\npercent Asian\npercent Hispanic / Latino\n\n\nAge\n65 and older\nchildren under 18\n\n\nIncome\npercent households below poverty\nmedian income"
+  },
+  {
+    "objectID": "presentations/power_outage_presentation.html#statistical-analysis-1",
+    "href": "presentations/power_outage_presentation.html#statistical-analysis-1",
+    "title": "Houston Power Outages",
+    "section": "Statistical Analysis",
+    "text": "Statistical Analysis\n\ngraphcode\n\n\n\n\n\n\n\n\n\n\n# linear regression model\nmodel_pct_white <- lm(data = blackout_census_data, pct_houses_that_lost_power ~ pct_white)\n\n#plot\nplot_model_pct_white <- ggplot(data = blackout_census_data, aes(x = pct_white, y = pct_houses_that_lost_power)) +\n  geom_point(size = 0.5) +\n  geom_smooth(method = lm, formula = y~x, se = FALSE) +\n  theme_classic() +\n  labs(x = \"% white\", y = \"% of houses that lost power\",\n       title = \"Linear regression of % households without power vs. % population white\")\nplot_model_pct_white"
+  },
+  {
+    "objectID": "presentations/power_outage_presentation.html#statistical-analysis-2",
+    "href": "presentations/power_outage_presentation.html#statistical-analysis-2",
+    "title": "Houston Power Outages",
+    "section": "Statistical Analysis",
+    "text": "Statistical Analysis\n\ngraphcode\n\n\n\n\n\n\n\n\n\n\n# linear regression model\nmodel_pct_black <- lm(data = blackout_census_data, pct_houses_that_lost_power ~ pct_black)\n\n# plot\nplot_model_pct_black <- ggplot(data = blackout_census_data, aes(x = pct_black, y = pct_houses_that_lost_power)) +\n  geom_point(size = 0.5) +\n  geom_smooth(method = lm, formula = y~x, se = FALSE) +\n  theme_classic() +\n  labs(x = \"% black\", y = \"% of houses that lost power\",\n       title = \"Linear regression of % households without power vs. % population black\")\nplot_model_pct_black"
+  },
+  {
+    "objectID": "presentations/power_outage_presentation.html#results",
+    "href": "presentations/power_outage_presentation.html#results",
+    "title": "Houston Power Outages",
+    "section": "Results",
+    "text": "Results"
+  },
+  {
+    "objectID": "presentations/power_outage_presentation.html#conclusions",
+    "href": "presentations/power_outage_presentation.html#conclusions",
+    "title": "Houston Power Outages",
+    "section": "Conclusions",
+    "text": "Conclusions\n\n\n\nWhile race, age and income accounted for small portions of the overall variance in residential power outages, this analysis suggests some racial and economic inequality.\nElectric utilities should evaluate infrastructure and asset management plans in areas with higher proportions of people of color and poverty\nThere is a need for more equitable responses to natural disasters\n\n\n image source1\n\n\n\n\nhttps://marierivers.github.io/blackout_analysis/\n\nhttps://appliedsciences.nasa.gov/our-impact/news/extreme-winter-weather-causes-us-blackouts"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#section",
+    "href": "presentations/snow_today_presentation.html#section",
+    "title": "Snow Today",
+    "section": "",
+    "text": "Knowing the spatial extent of snow cover is critical for water management and winter recreation. Climate change will affect the variability of frozen water resources."
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#section-1",
+    "href": "presentations/snow_today_presentation.html#section-1",
+    "title": "Snow Today",
+    "section": "",
+    "text": "Snow Science: UCSB CUES Field Station Site Visit"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#albedo-importance",
+    "href": "presentations/snow_today_presentation.html#albedo-importance",
+    "title": "Snow Today",
+    "section": "Albedo Importance",
+    "text": "Albedo Importance\n\n\n\nRegulates the Earth’s temperature by reflecting solar radiation  \nInfluences rate of snow melt  \nParticularly important in the Western US  \nAccurate estimates critical for climate models and predicting water storage"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#snow-today",
+    "href": "presentations/snow_today_presentation.html#snow-today",
+    "title": "Snow Today",
+    "section": "Snow Today",
+    "text": "Snow Today\n\n\n\nScientific analysis website that provides data on snow conditions from satellite and surface measurements  \nUsed by scientists, water managers, and outdoor enthusiasts for snow observations  \nSpatial products offered include measures of snow cover extent and albedo"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#snow-today-usability",
+    "href": "presentations/snow_today_presentation.html#snow-today-usability",
+    "title": "Snow Today",
+    "section": "Snow Today: Usability",
+    "text": "Snow Today: Usability\n\n\n\n\nSnow Today can be hard to navigate for new users unfamiliar with the website’s layout\nVisualizations are of current snow conditions, and have limited customization options\nSnow cover and albedo files are hard to find\nData format may be challenging for new users\nSnow metadata is stored in a non-standardized format which is difficult for some software to interpret the data\nUsers may have trouble processing and analyzing snow data without the help"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#snow-today-visualizations",
+    "href": "presentations/snow_today_presentation.html#snow-today-visualizations",
+    "title": "Snow Today",
+    "section": "Snow Today: Visualizations",
+    "text": "Snow Today: Visualizations"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#objectives",
+    "href": "presentations/snow_today_presentation.html#objectives",
+    "title": "Snow Today",
+    "section": "Objectives",
+    "text": "Objectives\n\n\n\n\nCreate an open source workflow for processing and visualizing snow data\n\n\n\nProvide recommendations for the Snow Today website\n\n\n\n\n\nCreate interactive visualizations\n\n\n\n\nImprove data usability through tutorials in Python"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#website-recommendations",
+    "href": "presentations/snow_today_presentation.html#website-recommendations",
+    "title": "Snow Today",
+    "section": "Website Recommendations",
+    "text": "Website Recommendations\nwebsite architecture"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#website-recommendations-1",
+    "href": "presentations/snow_today_presentation.html#website-recommendations-1",
+    "title": "Snow Today",
+    "section": "Website Recommendations",
+    "text": "Website Recommendations"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#objectives-1",
+    "href": "presentations/snow_today_presentation.html#objectives-1",
+    "title": "Snow Today",
+    "section": "Objectives",
+    "text": "Objectives\n\n\n\n\nCreate an open source workflow for processing and visualizing snow data\n\nProvide recommendations for the Snow Today website\n\n2. Create interactive visualizations\n\nImprove data usability through tutorials in Python"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#interactive-visualizations",
+    "href": "presentations/snow_today_presentation.html#interactive-visualizations",
+    "title": "Snow Today",
+    "section": "Interactive Visualizations",
+    "text": "Interactive Visualizations\n\n\nPrototype Web Application\n  Daily maps of snow cover and albedo for any selected date"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#interactive-visualizations-1",
+    "href": "presentations/snow_today_presentation.html#interactive-visualizations-1",
+    "title": "Snow Today",
+    "section": "Interactive Visualizations",
+    "text": "Interactive Visualizations\n\n\nMonthly Average and Anomaly\n  Users can select a specific month, water year, and variable to view averages on anomalies."
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#interactive-visualizations-2",
+    "href": "presentations/snow_today_presentation.html#interactive-visualizations-2",
+    "title": "Snow Today",
+    "section": "Interactive Visualizations",
+    "text": "Interactive Visualizations\nAnnual Comparisons"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#interactive-visualizations-3",
+    "href": "presentations/snow_today_presentation.html#interactive-visualizations-3",
+    "title": "Snow Today",
+    "section": "Interactive Visualizations",
+    "text": "Interactive Visualizations\n\ngraphcode\n\n\n\n\n                        \n                                            \n\n\n\n\n\nsnow_cover_df = pd.read_csv('data/snow_cover_df.csv')\nsnow_cover_df = snow_cover_df.fillna(0)\n\n# Create empty list to input with for loop\nIQR_25 = []\nIQR_75 = []\nIQR_50 = []\ndays = []\nfor i in range(len(snow_cover_df)): \n    #Takes the IQR of each day (25, 50, 75)\n    Q1 = np.percentile(snow_cover_df.iloc[i], 25)\n    Q2 = np.percentile(snow_cover_df.iloc[i], 50)\n    Q3 = np.percentile(snow_cover_df.iloc[i], 75)\n    #appends list with IQR outputs\n    IQR_25.append(Q1)\n    IQR_50.append(Q2)\n    IQR_75.append(Q3)\n    #Creates day list to append dataset with\n    days.append(i + 1)\n    \n# Next, need to create a single column of mean values. \nsnow_cover_df['Average Snow Cover'] = snow_cover_df.mean(axis = 1)\n\n#Appends list for loop lists\nsnow_cover_df['IQR_25'] = IQR_25\nsnow_cover_df['IQR_75'] = IQR_75\nsnow_cover_df['IQR_50'] = IQR_50\nsnow_cover_df['days'] = days\n\nmonth_day = [31, 30, 31, 31, 28, 31, 30, 31, 30, 31, 31, 30]\nnew_list = []\n\nj = 0 \nfor i in range(0,len(month_day)):\n    j+=month_day[i]\n    new_list.append(j)\n    \n# Create a list of years to graph. legend rank allows lets you order where the lines are located on the chart. \nfor i in range(len(snow_cover_df)):\n    print(\"\"\"go.Scatter(\"\"\"\n        \"\"\"name = '\"\"\" + str(i + 2001) + \"\"\"', \"\"\"\n        \"\"\"y = snow_cover_df['\"\"\"+ str(i + 2001) + \"\"\"'], x = snow_cover_df['days'], \"\"\"\n        \"\"\"mode = 'lines', legendrank = \"\"\" + str(19-i) + \"\"\"),\"\"\"\n    )\n#Plot the figure. \nfig = go.Figure([\n\n#create median line\ngo.Scatter(\n    #Name that appears on legend\n    name = 'Median',\n    # y-dim\n    y = snow_cover_df['IQR_50'],\n    # x-dim\n    x = snow_cover_df['days'],\n    # type of plot\n    mode = 'lines',\n    # Include to select/deselect multiple variables at once\n    legendgroup = 'IQR',\n    # Name of legend group on legend\n    legendgrouptitle_text=\"<b>Interquartile Range</b>\",\n    # Legend position\n    legendrank = 20,\n    # Line color\n    line=dict(color='rgb(31, 119, 180)'),\n),\n#Create IQR 75 line\ngo.Scatter(\n        name = 'IQR 75', y = snow_cover_df['IQR_75'], x = snow_cover_df['days'],\n        mode='lines', marker=dict(color=\"#444\"), line=dict(width=0),\n        legendgroup = 'IQR', showlegend = False\n        # Here we 'hide' the name from appearing on the legend since it's lumped in with the legendgroup 'IQR'\n    ),\n    #Create IQR 25 fill color\n    go.Scatter(\n        name='IQR 25', y = snow_cover_df['IQR_25'], x = snow_cover_df['days'],\n        marker=dict(color=\"#444\"), line=dict(width=0),  mode='lines',\n        fillcolor='rgba(68, 68, 68, 0.3)', fill='tonexty',\n        legendgroup = 'IQR', showlegend = False\n    ),\n    #Create mean line\n    go.Scatter(\n        name = 'Average Snow Cover',  y = snow_cover_df['Average Snow Cover'], x = snow_cover_df['days'],\n        mode = 'lines', legendgroup = 'Average',\n        legendgrouptitle_text = '<b>Average</b>', legendrank = 21\n    ),\n#Create lines for each respective year\ngo.Scatter(name = '2001', y = snow_cover_df['2001'], x = snow_cover_df['days'], mode = 'lines', legendrank = 19),\ngo.Scatter(name = '2002', y = snow_cover_df['2002'], x = snow_cover_df['days'], mode = 'lines', legendrank = 18),\ngo.Scatter(name = '2003', y = snow_cover_df['2003'], x = snow_cover_df['days'], mode = 'lines', legendrank = 17),\ngo.Scatter(name = '2004', y = snow_cover_df['2004'], x = snow_cover_df['days'], mode = 'lines', legendrank = 16),\ngo.Scatter(name = '2005', y = snow_cover_df['2005'], x = snow_cover_df['days'], mode = 'lines', legendrank = 15),\ngo.Scatter(name = '2006', y = snow_cover_df['2006'], x = snow_cover_df['days'], mode = 'lines', legendrank = 14),\ngo.Scatter(name = '2007', y = snow_cover_df['2007'], x = snow_cover_df['days'], mode = 'lines', legendrank = 13),\ngo.Scatter(name = '2008', y = snow_cover_df['2008'], x = snow_cover_df['days'], mode = 'lines', legendrank = 12),\ngo.Scatter(name = '2009', y = snow_cover_df['2009'], x = snow_cover_df['days'], mode = 'lines', legendrank = 11),\ngo.Scatter(name = '2010', y = snow_cover_df['2010'], x = snow_cover_df['days'], mode = 'lines', legendrank = 10),\ngo.Scatter(name = '2011', y = snow_cover_df['2011'], x = snow_cover_df['days'], mode = 'lines', legendrank = 9),\ngo.Scatter(name = '2012', y = snow_cover_df['2012'], x = snow_cover_df['days'], mode = 'lines', legendrank = 8),\ngo.Scatter(name = '2013', y = snow_cover_df['2013'], x = snow_cover_df['days'], mode = 'lines', legendrank = 7),\ngo.Scatter(name = '2014', y = snow_cover_df['2014'], x = snow_cover_df['days'], mode = 'lines', legendrank = 6),\ngo.Scatter(name = '2015', y = snow_cover_df['2015'], x = snow_cover_df['days'], mode = 'lines', legendrank = 5),\ngo.Scatter(name = '2016', y = snow_cover_df['2016'], x = snow_cover_df['days'], mode = 'lines', legendrank = 4),\ngo.Scatter(name = '2017', y = snow_cover_df['2017'], x = snow_cover_df['days'], mode = 'lines', legendrank = 3),\ngo.Scatter(name = '2018', y = snow_cover_df['2018'], x = snow_cover_df['days'], mode = 'lines', legendrank = 2),\ngo.Scatter(name = '2019', y = snow_cover_df['2019'], x = snow_cover_df['days'], mode = 'lines', legendrank = 1)\n\n])\n# Can change default \"off\" variables. Right now, the only variable visible is year_2019 and IQR\nvariables_to_hide = ['2001', '2002', '2003', '2004', '2005', '2006', '2007', \n'2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018',\n'Average Snow Cover']\nfig.for_each_trace(lambda trace: trace.update(visible=\"legendonly\") \n                   if trace.name in variables_to_hide else ())\nfig.update_layout(\n    title = \"<b> Annual Snow Cover Area: Sierra Nevada Region </b> <br> <sup>2001-2019</sup></br>\",\n    legend_title=\"<b>Year</b>\",\n    autosize=False,\n    width=1200,\n    height=700,\n    template = 'none',\n    font=dict(\n        size=16),\nxaxis = dict(\n        tickmode = 'array',\n        tickvals = [1, 31, 61, 92, 123, 151, 182, 212, 243, 273, 304, 335, 365],\n        ticktext = ['<b>October</b>', '<b>November</b>', '<b>December</b>', '<b>January</b>', '<b>February</b>', '<b>March</b>', '<b>April</b>', '<b>May</b>', \n        '<b>June</b>', '<b>July', '<b>August</b>', \"<b>September</b>\", \"<b>October</b>\"],\n        tickfont = dict(size=12))\n)\n\nfig.update_xaxes(title_text = \"\", gridcolor = 'lightgrey', gridwidth = 0.1)\nfig.update_yaxes(title_text = \"<b> Area (Thousands of Square Kilometers) </b>\", \n    title_font = {\"size\": 15}, gridcolor = 'lightgrey', gridwidth = 0.1)"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#objectives-2",
+    "href": "presentations/snow_today_presentation.html#objectives-2",
+    "title": "Snow Today",
+    "section": "Objectives",
+    "text": "Objectives\n\n\n\n\nCreate an open source workflow for processing and visualizing snow data\n\nProvide recommendations for the Snow Today website\nCreate interactive visualizations\n\n3. Improve data usability through tutorials in Python"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#tutorials",
+    "href": "presentations/snow_today_presentation.html#tutorials",
+    "title": "Snow Today",
+    "section": "Tutorials",
+    "text": "Tutorials\n\n\n 1. Download and Explore Datasets     2. Process and Format Data     3. Analyze and Visualize Snow Data"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#tutorials-1",
+    "href": "presentations/snow_today_presentation.html#tutorials-1",
+    "title": "Snow Today",
+    "section": "Tutorials",
+    "text": "Tutorials\n\n\n 1. Download and Explore Datasets     2. Process and Format Data     3. Analyze and Visualize Snow Data\n\n\nDownload snow cover and albedo datasets\nOpen datasets and view metadata\nCreate basic visualizations of each dataset"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#tutorials-2",
+    "href": "presentations/snow_today_presentation.html#tutorials-2",
+    "title": "Snow Today",
+    "section": "Tutorials",
+    "text": "Tutorials\n\n\n 1. Download and Explore Datasets     2. Process and Format Data     3. Analyze and Visualize Snow Data\n\n\nProcess and subset datasets\nCalculate monthly and yearly snow cover and albedo averages and anomalies\nCreate interactive maps of processed data\nConvert processed data to GeoTiff and NetCDF formats"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#tutorials-3",
+    "href": "presentations/snow_today_presentation.html#tutorials-3",
+    "title": "Snow Today",
+    "section": "Tutorials",
+    "text": "Tutorials\n\n\n 1. Download and Explore Datasets     2. Process and Format Data     3. Analyze and Visualize Snow Data\n\n\nCalculate total snow cover area and average albedo for entire spatial domain\nPerform basic statistical analysis of datasets\nDevelop interactive charts to compare snow cover area and albedo percentages for each water year"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#contributions",
+    "href": "presentations/snow_today_presentation.html#contributions",
+    "title": "Snow Today",
+    "section": "Contributions",
+    "text": "Contributions"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#section-3",
+    "href": "presentations/snow_today_presentation.html#section-3",
+    "title": "Snow Today",
+    "section": "",
+    "text": "As water resources become harder to manage due to climate change, implementing these tools will open a valuable dataset to a wider audience"
+  },
+  {
+    "objectID": "presentations/snow_today_presentation.html#acknowledgements",
+    "href": "presentations/snow_today_presentation.html#acknowledgements",
+    "title": "Snow Today",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nFaculty Advisors\nSam Stevenson, UCSB Bren School\nAllison Horst, UCSB Bren School\nClients\nTimbo Stillinger, UCSB Earth Research Institute\nNed Bair, UCSB Earth Research Institute\nKarl Rittger, CU Boulder Institute of Arctic & Alpine Research\nExternal Advisors\nJames Frew, UCSB Bren School\nNiklas Griessbaum, UCSB Bren School\nKat Le, UCSB Bren School\nMichael Colee, UCSB Geography & Earth Research Institute\nBren School Faculty and Staff and the MEDS 2022 cohort\n\n\nhttps://shiny.snow.ucsb.edu/snow_today_shiny_app/>"
   },
   {
     "objectID": "posts.html",

@@ -825,7 +825,7 @@ fig.update_layout(
 <br> <br>
 
 |         | **smallest variability** | greatest variability | smallest average wind speed | greatest average wind speed |
-|---------|:------------------------:|:--------------------:|:---------------------------:|:---------------------------:|
+|--------------|:------------:|:------------:|:------------:|:------------:|
 | monthly |           July           |       November       |           August            |          February           |
 | hourly  |            19            |          13          |             16              |              1              |
 |         |                          |                      |                             |                             |

@@ -1,0 +1,249 @@
+---
+title: "Houston Power Outages"
+subtitle: "A Geospatial and Statistical Analysis"
+author: "Marie Rivers"
+date: "October 13, 2022"
+format: 
+  revealjs:
+    theme: [default, presentation_styles.scss]
+    slide-number: true
+    preview-links: auto
+    footer: <https://marierivers.github.io/blackout_analysis/>
+    title-slide-attributes:
+      data-background-color: "#447099"
+editor: visual
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(leaflet)
+library(kableExtra)
+```
+
+## Background {.smaller}
+
+::: columns
+::: {.column width="55%"}
+In February 2021 the Houston, TX metropolitan area experienced wide scale power outages due to electrical infrastructure failure during winter storms and extreme cold temperatures
+:::
+
+::: {.column width="40%"}
+![](images/houston_street_map.png){.absolute top="0" right="0" width="450"}
+:::
+:::
+
+<br> <br> <br> <br> <br> <br> <br> [1.4 million customers without power]{.fragment .text_block}
+
+## Approach {.smaller}
+
+**Use geospatial and statistical methods to quantify:**
+
+1.  Number of residential homes without power
+
+2.  Socioeconomic differences of areas with and without power
+
+**...by using data from:**
+
+1.  Satellite imagery of nighttime lights
+
+2.  OpenStreetMaps roadways and buidings
+
+3.  Census tract level race, age and income variables
+
+## Project overview {.smaller}
+
+::: columns
+::: {.column width="40%"}
+::: {.fragment fragment-index="1"}
+1.  Load satellite imagery
+:::
+
+::: {.fragment fragment-index="2"}
+2.  Create blackout mask
+:::
+
+::: {.fragment fragment-index="3"}
+3.  Identify residential buildings within blackout area
+:::
+
+::: {.fragment fragment-index="4"}
+4.  Spatially join census data to blackout areas
+:::
+:::
+:::
+
+::: {.fragment fragment-index="1"}
+![](images/step1_satellite_imagery.png){.absolute top="70" right="300"}
+:::
+
+::: {.fragment fragment-index="2"}
+![](images/step2_blackout_mask.png){.absolute top="70" right="0"}
+:::
+
+::: {.fragment fragment-index="3"}
+![](images/step3_buildings.png){.absolute bottom="50" right="300" width="295"}
+:::
+
+::: {.fragment fragment-index="4"}
+![](images/step4_spatial_join.png){.absolute bottom="50" right="0"}
+:::
+
+<br> <br> [+144,000 households without power]{.fragment .text_block_small fragment-index="5"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+**Percent white**
+
+::: r-stack
+![](images/pct_white_map.png){.fragment width="425" fragment-index="1"}
+
+![](images/pct_white_blackout_map.png){.fragment fragment-index="2" width="425"}
+:::
+:::
+
+::: {.column width="50%"}
+**Percent bipoc**
+
+::: r-stack
+![](images/pct_bipoc_map.png){.fragment fragment-index="1" width="425"}
+
+![](images/pct_bipoc_blackout_map.png){.fragment fragment-index="2" width="425"}
+:::
+:::
+:::
+
+## Statistical Analysis {.smaller}
+
+Linear regression models of percent of households without power vs. census variables
+
++-----------------+----------------------------------+
+| [Race]{.blue}   | percent white                    |
+|                 |                                  |
+|                 | percent black                    |
+|                 |                                  |
+|                 | percent Native American          |
+|                 |                                  |
+|                 | percent Asian                    |
+|                 |                                  |
+|                 | percent Hispanic / Latino        |
++-----------------+----------------------------------+
+| [Age]{.blue}    | 65 and older                     |
+|                 |                                  |
+|                 | children under 18                |
++-----------------+----------------------------------+
+| [Income]{.blue} | percent households below poverty |
+|                 |                                  |
+|                 | median income                    |
++-----------------+----------------------------------+
+
+## Statistical Analysis {.smaller}
+
+```{r}
+#| include: false
+blackout_census_data <- read_csv("data/census_tract_blackout_data_df.csv")
+```
+
+::: panel-tabset
+### graph
+
+```{r}
+# linear regression model
+model_pct_white <- lm(data = blackout_census_data, pct_houses_that_lost_power ~ pct_white)
+
+#plot
+plot_model_pct_white <- ggplot(data = blackout_census_data, aes(x = pct_white, y = pct_houses_that_lost_power)) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  theme_classic() +
+  labs(x = "% white", y = "% of houses that lost power",
+       title = "Linear regression of % households without power vs. % population white")
+plot_model_pct_white
+```
+
+### code
+
+```{r}
+#| echo: true
+#| eval: false
+# linear regression model
+model_pct_white <- lm(data = blackout_census_data, pct_houses_that_lost_power ~ pct_white)
+
+#plot
+plot_model_pct_white <- ggplot(data = blackout_census_data, aes(x = pct_white, y = pct_houses_that_lost_power)) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  theme_classic() +
+  labs(x = "% white", y = "% of houses that lost power",
+       title = "Linear regression of % households without power vs. % population white")
+plot_model_pct_white
+```
+:::
+
+## Statistical Analysis {.smaller}
+
+::: panel-tabset
+### graph
+
+```{r}
+# linear regression model
+model_pct_black <- lm(data = blackout_census_data, pct_houses_that_lost_power ~ pct_black)
+
+# plot
+plot_model_pct_black <- ggplot(data = blackout_census_data, aes(x = pct_black, y = pct_houses_that_lost_power)) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  theme_classic() +
+  labs(x = "% black", y = "% of houses that lost power",
+       title = "Linear regression of % households without power vs. % population black")
+plot_model_pct_black
+```
+
+### code
+
+```{r}
+#| echo: true
+#| eval: false
+# linear regression model
+model_pct_black <- lm(data = blackout_census_data, pct_houses_that_lost_power ~ pct_black)
+
+# plot
+plot_model_pct_black <- ggplot(data = blackout_census_data, aes(x = pct_black, y = pct_houses_that_lost_power)) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  theme_classic() +
+  labs(x = "% black", y = "% of houses that lost power",
+       title = "Linear regression of % households without power vs. % population black")
+plot_model_pct_black
+```
+:::
+
+## Results {.smaller}
+
+::: r-stack
+![](images/blackout_results1.png){.fragment}
+
+![](images/blackout_results2.png){.fragment}
+
+![](images/blackout_results3.png){.fragment}
+:::
+
+## Conclusions {.smaller}
+
+::: columns
+::: {.column width="55%"}
+-   While race, age and income accounted for small portions of the overall variance in residential power outages, this analysis suggests some racial and economic inequality.
+
+-   Electric utilities should evaluate infrastructure and asset management plans in areas with higher proportions of people of color and poverty
+
+-   There is a need for more equitable responses to natural disasters
+:::
+
+::: {.column width="40%"}
+![](images/Houston_bmhd_2021038_lrg_Feb_7_2021.jpg) image source[^3]
+:::
+:::
+
+[^3]: https://appliedsciences.nasa.gov/our-impact/news/extreme-winter-weather-causes-us-blackouts
