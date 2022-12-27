@@ -192,7 +192,7 @@ Note
 </div>
 </div>
 <center>
-<iframe src="https://marierivers.github.io/docs/code_samples/wind-resource-temporal-variability/wind_resource_presentation.html" title="Presentation" width="750px," height="550px">
+<iframe src="https://marierivers.github.io/presentations/wind_resource_presentation/#/title-slide" title="Presentation" width="750px," height="550px">
 </iframe>
 </center>
 <section id="access-data" class="level1">
@@ -371,23 +371,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Click the drop down to the right of the title to view all code written for this analysis</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;center&gt;&lt;iframe</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://marierivers.github.io/presentations/wind_resource_presentation/#/title-slide"</span> <span class="er">title</span><span class="ot">=</span><span class="st">"Presentation"</span> <span class="er">width</span><span class="ot">=</span><span class="st">"750px,"</span> <span class="er">height</span><span class="ot">=</span><span class="st">"550px"</span><span class="kw">&gt;&lt;/iframe&gt;&lt;/center&gt;</span></span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://marierivers.github.io/docs/code_samples/wind-resource-temporal-variability/wind_resource_presentation.html"</span> <span class="er">title</span><span class="ot">=</span><span class="st">"Presentation"</span> <span class="er">width</span><span class="ot">=</span><span class="st">"750px,"</span> <span class="er">height</span><span class="ot">=</span><span class="st">"550px"</span><span class="kw">&gt;</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu"># Access data</span></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/iframe&gt;</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>The code below was used to access the data with the <span class="co">[</span><span class="ot">h5pyd</span><span class="co">](https://github.com/HDFGroup/h5pyd)</span> Python package and NREL <span class="co">[</span><span class="ot">Highly Scalable Data Service (HSDS)</span><span class="co">](https://github.com/NREL/hsds-examples)</span>. The data are stored in the file <span class="in">`wtk_us.h5`</span> which is in HDF5 format. Data are stored in three dimensions <span class="in">`dataset[t, y, x]`</span> where x is the longitudinal index, y is the latitudinal index, and t is the temporal index. Timestamps are in the UTC time zone.</span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/center&gt;</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu"># Access data</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>The code below was used to access the data with the <span class="co">[</span><span class="ot">h5pyd</span><span class="co">](https://github.com/HDFGroup/h5pyd)</span> Python package and NREL <span class="co">[</span><span class="ot">Highly Scalable Data Service (HSDS)</span><span class="co">](https://github.com/NREL/hsds-examples)</span>. The data are stored in the file <span class="in">`wtk_us.h5`</span> which is in HDF5 format. Data are stored in three dimensions <span class="in">`dataset[t, y, x]`</span> where x is the longitudinal index, y is the latitudinal index, and t is the temporal index. Timestamps are in the UTC time zone.</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
