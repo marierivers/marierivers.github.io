@@ -1,0 +1,48 @@
+---
+title: "Wind Resource Temporal Variability"
+description: "Diurnal and monthly variability of NREL Wind Toolkit Data"
+author:
+  - name: Marie Rivers
+    url: https://marierivers.github.io/
+categories: [Python, renewable energy]
+citation: 
+  url: https://marierivers.github.io/code_samples/wind-resource-temporal-variability/ 
+#image: 
+draft: false
+editor: visual
+toc-title: Contents
+toc-location: left
+toc-depth: 3
+code-tools: 
+  source: true
+  toggle: true
+  caption: view code
+code-block-bg: true
+code-block-border-left: "#31BAE9"
+---
+
+This code sample uses statistical analyses and visualizations to explore the diurnal and monthly variability of wind resources at Mount Washington in New Hampshire using data from the [National Renewable Energy Laboratory (NREL) Wind Integration National Dataset (WIND) Toolkit](https://www.nrel.gov/grid/wind-toolkit.html). Datasets within this tool include meteorological conditions such as temperature, pressure, relative humidity, wind direction, and wind speed. Hourly data is available for the continental United States from 2007 to 2013. This analysis used the dataset of wind speed at 100 meters for the year 2012.
+
+::: callout-note
+## Note
+
+Click the drop down to the right of the title to view all code written for this analysis
+:::
+
+<center>
+
+<iframe src="https://marierivers.github.io/docs/code_samples/wind-resource-temporal-variability/wind_resource_presentation.html" title="Presentation" width="750px," height="550px">
+
+</iframe>
+
+</center>
+
+# Access data
+
+The code below was used to access the data with the [h5pyd](https://github.com/HDFGroup/h5pyd) Python package and NREL [Highly Scalable Data Service (HSDS)](https://github.com/NREL/hsds-examples). The data are stored in the file `wtk_us.h5` which is in HDF5 format. Data are stored in three dimensions `dataset[t, y, x]` where x is the longitudinal index, y is the latitudinal index, and t is the temporal index. Timestamps are in the UTC time zone.
+
+```{r}
+#| include: false
+library(tidyverse)
+library(here)
+```

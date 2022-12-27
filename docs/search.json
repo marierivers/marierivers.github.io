@@ -4,7 +4,14 @@
     "href": "code_samples.html",
     "title": "Code Samples",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\nPython\n\n\nR\n\n\nData Wrangling\n\n\n\nExamples of common data wrangling commands with Python and R\n\n\n\nMarie Rivers\n\n\nSep 23, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR\n\n\nShiny App\n\n\n\na sample of projects with interactive web applications\n\n\n\nMarie Rivers\n\n\nJun 10, 2022\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\nPython\n\n\ngeopandas\n\n\nstatial analysis\n\n\n\nA spatial analysis using Python and GeoPandas\n\n\n\nMarie Rivers\n\n\nApr 3, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n \n\n\n\n\n\nPython\n\n\nrenewable energy\n\n\n\nDiurnal and monthly variability of NREL Wind Toolkit Data\n\n\n\nMarie Rivers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPython\n\n\nR\n\n\nData Wrangling\n\n\n\nExamples of common data wrangling commands with Python and R\n\n\n\nMarie Rivers\n\n\nSep 23, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR\n\n\nShiny App\n\n\n\na sample of projects with interactive web applications\n\n\n\nMarie Rivers\n\n\nJun 10, 2022\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\nPython\n\n\ngeopandas\n\n\nstatial analysis\n\n\n\nA spatial analysis using Python and GeoPandas\n\n\n\nMarie Rivers\n\n\nApr 3, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "code_samples/wind-resource-temporal-variability/index.html",
+    "href": "code_samples/wind-resource-temporal-variability/index.html",
+    "title": "Wind Resource Temporal Variability",
+    "section": "",
+    "text": "Note\n\n\n\nClick the drop down to the right of the title to view all code written for this analysis\n\n\n\n\n\n\n\nAccess data\nThe code below was used to access the data with the h5pyd Python package and NREL Highly Scalable Data Service (HSDS). The data are stored in the file wtk_us.h5 which is in HDF5 format. Data are stored in three dimensions dataset[t, y, x] where x is the longitudinal index, y is the latitudinal index, and t is the temporal index. Timestamps are in the UTC time zone.\n\n\n\n\n\n\nCitationBibTeX citation:@online{rivers,\n  author = {Marie Rivers},\n  title = {Wind {Resource} {Temporal} {Variability}},\n  url = {https://marierivers.github.io/code_samples/wind-resource-temporal-variability/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nMarie Rivers. n.d. “Wind Resource Temporal Variability.” https://marierivers.github.io/code_samples/wind-resource-temporal-variability/."
   },
   {
     "objectID": "code_samples/2022-04-03-protecting-whales-from-ships/index.html",
