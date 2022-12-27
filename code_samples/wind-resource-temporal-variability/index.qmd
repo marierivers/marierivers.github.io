@@ -29,7 +29,7 @@ This code sample uses statistical analyses and visualizations to explore the diu
 Click the drop down to the right of the title to view all code written for this analysis
 :::
 
-<center><iframe src="https://marierivers.github.io/presentations/wind_resource_presentation/#/title-slide" title="Presentation" width="750px," height="550px"></iframe></center>
+<center><iframe src="https://marierivers.github.io/presentations/wind_resource_presentation#/title-slide" title="Presentation" width="750px," height="550px"></iframe></center>
 
 # Access data
 
