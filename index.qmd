@@ -15,8 +15,6 @@ description: Environmental Data Scientist
 
 ---
 
-### this website is under construction xxxx
-
 ::: {#marie-heading}
 <h3>Education</h3>
 <h4>Master of Environmental Data Science</h4> 
