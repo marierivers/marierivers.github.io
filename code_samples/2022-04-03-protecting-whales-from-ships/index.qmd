@@ -27,7 +27,7 @@ This analysis identifies a speed reduction zone off the island of Dominica for t
 # Setup
 
 ```{r}
-
+library(reticulate)
 ```
 
 ```{python}

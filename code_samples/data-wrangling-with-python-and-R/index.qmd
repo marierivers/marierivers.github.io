@@ -166,9 +166,24 @@ unique(trout_salamander_R$species)
 
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
+Get unique values of a variable
+
 ```{python}
 trout_salamander_py.species.unique()
 ```
+
+Get number of unique values
+
+```{python}
+len(pd.unique(trout_salamander_py['species']))
+```
+
+Get number of observations for each unique value
+
+```{python}
+trout_salamander_py.groupby(['species']).count()
+```
+
 :::
 
 # Selecting Columns
@@ -900,4 +915,3 @@ xxxxx
 # Citation
 
 Horst A, Brun J (2022). lterdatasampler: Educational dataset examples from the Long Term Ecological Research program. R package version 0.1.0, <https://github.com/lter/lterdatasampler>.
-

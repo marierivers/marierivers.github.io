@@ -1,93 +1,111 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.243">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="author" content="Marie Rivers">
-  <meta name="dcterms.date" content="2021-12-02">
-  <meta name="description" content="Population Change vs.&nbsp;the EPA Environmental Quality Index (EQI): a statistical analysis">
-  <title>Marie Rivers - Does Environmental Quality Influence Where People Live?</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-  </style>
 
-  <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-  <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-  <script src="../../site_libs/clipboard/clipboard.min.js"></script>
-  <meta name="quarto:offset" content="../../">
-  <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-  <script src="../../site_libs/quarto-search/fuse.min.js"></script>
-  <script src="../../site_libs/quarto-search/quarto-search.js"></script>
-  <script src="../../site_libs/quarto-html/quarto.js"></script>
-  <script src="../../site_libs/quarto-html/popper.min.js"></script>
-  <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="../../site_libs/quarto-html/anchor.min.js"></script>
-  <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-  <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <script id="quarto-search-options" type="application/json">{
-    "location": "navbar",
-    "copy-button": false,
-    "collapse-after": 3,
-    "panel-placement": "end",
-    "type": "overlay",
-    "limit": 20,
-    "language": {
-      "search-no-results-text": "No results",
-      "search-matching-documents-text": "matching documents",
-      "search-copy-link-title": "Copy link to search",
-      "search-hide-matches-text": "Hide additional matches",
-      "search-more-match-text": "more match in this document",
-      "search-more-matches-text": "more matches in this document",
-      "search-clear-button-title": "Clear",
-      "search-detached-cancel-button-title": "Cancel",
-      "search-submit-button-title": "Submit"
-    }
-  }</script>
-  <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marie Rivers">
+<meta name="dcterms.date" content="2021-12-02">
+<meta name="description" content="Population Change vs.&nbsp;the EPA Environmental Quality Index (EQI): a statistical analysis">
+
+<title>Marie Rivers - Does Environmental Quality Influence Where People Live?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-  <link rel="stylesheet" href="../../styles.css">
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
+
 <body class="nav-fixed">
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../../index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Marie Rivers</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">Home</a>
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../code_samples.html">Code Samples</a>
+    <a class="nav-link" href="../../code_samples.html">
+ <span class="menu-text">Code Samples</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html">Posts</a>
+    <a class="nav-link" href="../../posts.html">
+ <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume/rivers_marie_resume.pdf">Resume</a>
+    <a class="nav-link" href="../../data/rivers_marie_resume.pdf">
+ <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/marierivers"><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -97,43 +115,76 @@
 </header>
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Does Environmental Quality Influence Where People Live?</h1>
+                  <div>
+        <div class="description">
+          Population Change vs.&nbsp;the EPA Environmental Quality Index (EQI): a statistical analysis
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
 
-
-
-<div class="quarto-title-banner color-navbar page-columns page-full"><div class="quarto-title column-body"><h1 class="title display-7">Does Environmental Quality Influence Where People Live?</h1><div class="quarto-description"><p>Population Change vs. the EPA Environmental Quality Index (EQI): a statistical analysis</p></div><div class="quarto-categories"><div class="quarto-category">R</div></div></div></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><a href="https://marierivers.github.io/">
-<p>Marie Rivers</p>
-</a></div></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">December 2, 2021</p></div></div></div></header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marie Rivers </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 2, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
-<h2 id="toc-title">On this page</h2>
-<ul>
-<li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
-<ul class="collapse">
-<li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
-</ul></li>
-<li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a>
-<ul class="collapse">
-<li><a href="#environmental-quality-index" id="toc-environmental-quality-index" class="nav-link" data-scroll-target="#environmental-quality-index">Environmental Quality Index</a></li>
-<li><a href="#census-population-data" id="toc-census-population-data" class="nav-link" data-scroll-target="#census-population-data">Census Population Data</a></li>
-</ul></li>
-<li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis">Statistical Analysis</a>
-<ul class="collapse">
-<li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a></li>
-<li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a></li>
-<li><a href="#domain-specific-linear-models" id="toc-domain-specific-linear-models" class="nav-link" data-scroll-target="#domain-specific-linear-models">Domain Specific Linear Models</a></li>
-</ul></li>
-<li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
-<li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-</ul>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  </ul></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a>
+  <ul class="collapse">
+  <li><a href="#environmental-quality-index" id="toc-environmental-quality-index" class="nav-link" data-scroll-target="#environmental-quality-index">Environmental Quality Index</a></li>
+  <li><a href="#census-population-data" id="toc-census-population-data" class="nav-link" data-scroll-target="#census-population-data">Census Population Data</a></li>
+  </ul></li>
+  <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis">Statistical Analysis</a>
+  <ul class="collapse">
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">Linear Regression</a></li>
+  <li><a href="#domain-specific-linear-models" id="toc-domain-specific-linear-models" class="nav-link" data-scroll-target="#domain-specific-linear-models">Domain Specific Linear Models</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
-<p data-sidebar-align="true"><strong>This post discusses a statistical analysis used to answer the question: Does environmental quality influence where people live in the United States?</strong></p>
+
+
+<p><strong>This post discusses a statistical analysis used to answer the question: Does environmental quality influence where people live in the United States?</strong></p>
 <section id="background" class="level2">
 <h2 class="anchored" data-anchor-id="background">Background</h2>
 <p>The Environmental Quality Index (EQI), developed by the U.S. Environmental Protection Agency (EPA) provides a county level snapshop of environmental conditions throughout the country. EPA first released EQIs for the period 2000-2005 and updated these indexes for 2006-2010. This statistical evaluation focuses on the 2006-2010 EQI. The purpose of the EQI is to use (1) as an indicator of ambient conditions/exposure in environmental health and modeling and (2) as a covariate to adjust for ambient conditions in environmental models (EPA 2020). Previous studies have used the EQI to evaluate relationships between environmental quality and public health outcomes such as cancer incidence, asthma, obesity, and infant mortality.</p>
@@ -143,6 +194,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
+
 <table class=" lightable-paper table" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>EQI Environmental Domains and Constructs</caption>
  <thead>
@@ -198,6 +250,7 @@
 <p>Kalawao County, Hawaii had the lowest EQI value (highest environmental quality) and greatest decrease in population (-17.4%). Falls Church, Virginia had the highest EQI (lowest environmental quality) and a population change of 15.4% which falls is the 99th percentile. The summary statistics in Table 2 suggest that population growth is correlated with worse environmental characteristics.</p>
 <div class="cell">
 <div class="cell-output-display">
+
 <table class=" lightable-paper table" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>EQI summary statistics for counties based on population change between 2006 and 2010</caption>
  <thead>
@@ -314,6 +367,7 @@
 <p>While a partly manual method was used above, statistical functions in R were used to test for the significance of domain models. Table 3 presents coefficients for each domain specific model. The numbers in [brackets] are the 95% confidence intervals for each estimated coefficient.</p>
 <div class="cell">
 <div class="cell-output-display">
+
 <table class=" lightable-paper table" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption>Summary of EQI Domain Slope Coefficients</caption>
  <thead>
@@ -501,8 +555,8 @@
 </ol>
 
 
-
 </section>
+
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{rivers2021,
   author = {Marie Rivers},
   title = {Does {Environmental} {Quality} {Influence} {Where} {People}
@@ -515,8 +569,26 @@
 Marie Rivers. 2021. <span>“Does Environmental Quality Influence Where
 People Live?”</span> December 2, 2021. <a href="https://marierivers.github.io/posts/2021-12-02-environmental-quality-population-change/">https://marierivers.github.io/posts/2021-12-02-environmental-quality-population-change/</a>.
 </div></div></section></div></main> <!-- /main -->
-<script type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -536,7 +608,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -563,35 +655,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 </body></html>

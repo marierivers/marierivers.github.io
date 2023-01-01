@@ -1,153 +1,170 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.243">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="author" content="Marie Rivers">
-  <meta name="dcterms.date" content="2021-11-03">
-  <meta name="description" content="Visualization of Alaska household languages data">
-  <title>Marie Rivers - How I made this visualization</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
 
-  <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-  <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-  <script src="../../site_libs/clipboard/clipboard.min.js"></script>
-  <meta name="quarto:offset" content="../../">
-  <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-  <script src="../../site_libs/quarto-search/fuse.min.js"></script>
-  <script src="../../site_libs/quarto-search/quarto-search.js"></script>
-  <script src="../../site_libs/quarto-html/quarto.js"></script>
-  <script src="../../site_libs/quarto-html/popper.min.js"></script>
-  <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="../../site_libs/quarto-html/anchor.min.js"></script>
-  <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-  <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <script id="quarto-search-options" type="application/json">{
-    "location": "navbar",
-    "copy-button": false,
-    "collapse-after": 3,
-    "panel-placement": "end",
-    "type": "overlay",
-    "limit": 20,
-    "language": {
-      "search-no-results-text": "No results",
-      "search-matching-documents-text": "matching documents",
-      "search-copy-link-title": "Copy link to search",
-      "search-hide-matches-text": "Hide additional matches",
-      "search-more-match-text": "more match in this document",
-      "search-more-matches-text": "more matches in this document",
-      "search-clear-button-title": "Clear",
-      "search-detached-cancel-button-title": "Cancel",
-      "search-submit-button-title": "Submit"
-    }
-  }</script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-  <link rel="stylesheet" href="../../styles.css">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Marie Rivers">
+<meta name="dcterms.date" content="2021-11-03">
+<meta name="description" content="Visualization of Alaska household languages data">
+
+<title>Marie Rivers - How I made this visualization</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
+
 <body class="nav-fixed">
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../../index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Marie Rivers</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">Home</a>
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../code_samples.html">Code Samples</a>
+    <a class="nav-link" href="../../code_samples.html">
+ <span class="menu-text">Code Samples</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html">Posts</a>
+    <a class="nav-link" href="../../posts.html">
+ <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume/rivers_marie_resume.pdf">Resume</a>
+    <a class="nav-link" href="../../data/rivers_marie_resume.pdf">
+ <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/marierivers"><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -157,37 +174,71 @@
 </header>
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">How I made this visualization</h1>
+                  <div>
+        <div class="description">
+          Visualization of Alaska household languages data
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">data visualization</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
 
-
-
-<div class="quarto-title-banner color-navbar page-columns page-full"><div class="quarto-title column-body"><h1 class="title display-7">How I made this visualization</h1><div class="quarto-description"><p>Visualization of Alaska household languages data</p></div><div class="quarto-categories"><div class="quarto-category">R</div><div class="quarto-category">data visualization</div></div></div></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><a href="https://marierivers.github.io/">
-<p>Marie Rivers</p>
-</a></div></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">November 3, 2021</p></div></div></div></header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Marie Rivers </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 3, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
-<h2 id="toc-title">On this page</h2>
-<ul>
-<li><a href="#heatmap-with-geom_tile" id="toc-heatmap-with-geom_tile" class="nav-link active" data-scroll-target="#heatmap-with-geom_tile">1. Heatmap with geom_tile( )</a></li>
-<li><a href="#ordering-the-data" id="toc-ordering-the-data" class="nav-link" data-scroll-target="#ordering-the-data">2. Ordering the data</a></li>
-<li><a href="#text-within-tiles" id="toc-text-within-tiles" class="nav-link" data-scroll-target="#text-within-tiles">3. Text within tiles</a></li>
-<li><a href="#picking-colors" id="toc-picking-colors" class="nav-link" data-scroll-target="#picking-colors">4. Picking colors</a></li>
-<li><a href="#legend-title" id="toc-legend-title" class="nav-link" data-scroll-target="#legend-title">5. legend title</a></li>
-<li><a href="#x-axis" id="toc-x-axis" class="nav-link" data-scroll-target="#x-axis">6. x-axis</a></li>
-<li><a href="#remove-gridlines" id="toc-remove-gridlines" class="nav-link" data-scroll-target="#remove-gridlines">7. Remove gridlines</a></li>
-<li><a href="#move-title-and-caption-from-panel-to-plot-area" id="toc-move-title-and-caption-from-panel-to-plot-area" class="nav-link" data-scroll-target="#move-title-and-caption-from-panel-to-plot-area">8. Move title and caption from panel to plot area</a></li>
-<li><a href="#download-data-using-metajam" id="toc-download-data-using-metajam" class="nav-link" data-scroll-target="#download-data-using-metajam">Download data using <code>metajam</code></a></li>
-<li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy Data</a></li>
-<li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot">ggplot</a></li>
-</ul>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#heatmap-with-geom_tile" id="toc-heatmap-with-geom_tile" class="nav-link active" data-scroll-target="#heatmap-with-geom_tile">1. Heatmap with geom_tile( )</a></li>
+  <li><a href="#ordering-the-data" id="toc-ordering-the-data" class="nav-link" data-scroll-target="#ordering-the-data">2. Ordering the data</a></li>
+  <li><a href="#text-within-tiles" id="toc-text-within-tiles" class="nav-link" data-scroll-target="#text-within-tiles">3. Text within tiles</a></li>
+  <li><a href="#picking-colors" id="toc-picking-colors" class="nav-link" data-scroll-target="#picking-colors">4. Picking colors</a></li>
+  <li><a href="#legend-title" id="toc-legend-title" class="nav-link" data-scroll-target="#legend-title">5. legend title</a></li>
+  <li><a href="#x-axis" id="toc-x-axis" class="nav-link" data-scroll-target="#x-axis">6. x-axis</a></li>
+  <li><a href="#remove-gridlines" id="toc-remove-gridlines" class="nav-link" data-scroll-target="#remove-gridlines">7. Remove gridlines</a></li>
+  <li><a href="#move-title-and-caption-from-panel-to-plot-area" id="toc-move-title-and-caption-from-panel-to-plot-area" class="nav-link" data-scroll-target="#move-title-and-caption-from-panel-to-plot-area">8. Move title and caption from panel to plot area</a></li>
+  <li><a href="#download-data-using-metajam" id="toc-download-data-using-metajam" class="nav-link" data-scroll-target="#download-data-using-metajam">Download data using <code>metajam</code></a></li>
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy Data</a></li>
+  <li><a href="#ggplot" id="toc-ggplot" class="nav-link" data-scroll-target="#ggplot">ggplot</a></li>
+  </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
-<p data-sidebar-align="true">An assignment for my Metadata Standards, Data Modeling and Data Semantics class included using the <a href="https://cran.r-project.org/web/packages/metajam/metajam.pdf"><code>metajam</code> R package</a> to download <a href="https://knb.ecoinformatics.org/view/doi:10.5063/F1N58JPP">Alaskan household languages data and metadata</a> from knb. After reviewing the metadata and reading the data into R, we were tasked with writing code to compute the percentage of Alaskan households that only speak English for the years 2009-2015 and visualizing these results…a straightforward task.</p>
+
+
+<p>An assignment for my Metadata Standards, Data Modeling and Data Semantics class included using the <a href="https://cran.r-project.org/web/packages/metajam/metajam.pdf"><code>metajam</code> R package</a> to download <a href="https://knb.ecoinformatics.org/view/doi:10.5063/F1N58JPP">Alaskan household languages data and metadata</a> from knb. After reviewing the metadata and reading the data into R, we were tasked with writing code to compute the percentage of Alaskan households that only speak English for the years 2009-2015 and visualizing these results…a straightforward task.</p>
 <p>But…as I reviewed the numbers I thought about what I actually wanted to capture in the visualization. Did I want to focus on changes over time? There was a slight trend, but nothing significant. The data included State of Alaska Salmon and People Regions (SASAP) so I wanted to show any regional differences.</p>
 <p>Here’s the final visualization</p>
 <p><img src="only_english_plot.png" class="img-fluid"></p>
@@ -293,8 +344,8 @@
 <p><a href="https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8" class="uri">https://knb.ecoinformatics.org/knb/d1/mn/v2/object/urn%3Auuid%3A7fc6f6db-c5ea-426a-a743-1f2edafb43b8</a>”</p>
 
 
-
 </section>
+
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{rivers2021,
   author = {Marie Rivers},
   title = {How {I} Made This Visualization},
@@ -306,8 +357,26 @@
 Marie Rivers. 2021. <span>“How I Made This Visualization.”</span>
 November 3, 2021. <a href="https://marierivers.github.io/posts/2021-11-03-how-i-made-this-visualization/">https://marierivers.github.io/posts/2021-11-03-how-i-made-this-visualization/</a>.
 </div></div></section></div></main> <!-- /main -->
-<script type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -327,7 +396,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -354,35 +443,55 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 </body></html>

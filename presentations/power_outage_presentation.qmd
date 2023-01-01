@@ -8,6 +8,9 @@ format:
     theme: [default, presentation_styles.scss]
     slide-number: true
     preview-links: auto
+    code-link: true
+    highlight-style: a11y
+    chalkboard: true
     footer: <https://marierivers.github.io/blackout_analysis/>
     title-slide-attributes:
       data-background-color: "#447099"
