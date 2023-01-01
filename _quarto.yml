@@ -14,7 +14,7 @@ website:
       #   text: Code Samples
       - code_samples.qmd
       - posts.qmd
-      - href: data/rivers_marie_resume.pdf
+      - href: resume/rivers_marie_resume.pdf
         text: Resume
       - icon: github
         href: https://github.com/marierivers
