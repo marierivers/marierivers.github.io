@@ -1,8 +1,8 @@
 ---
-title: "Wind Resource Temporal Variability"
-subtitle: "Diurnal and monthly variability of NREL Wind Toolkit Data"
-author: "Marie Rivers"
-date: "October 13, 2022"
+# title: "Wind Resource Temporal Variability"
+# subtitle: "Diurnal and monthly variability of NREL Wind Toolkit Data"
+# author: "Marie Rivers"
+# date: "October 13, 2022"
 format: 
   revealjs:
     theme: [default, wind_resource_presentation_styles.scss]
@@ -145,6 +145,8 @@ moving_averages_30day = windows_30day.mean()
 ```
 
 # Wind Resource Temporal Variability {background-color="#447099"}
+
+Diurnal and monthly variability of NREL Wind Toolkit Data
 
 ## Data Workflow {.smaller}
 
@@ -825,7 +827,7 @@ fig.update_layout(
 <br> <br>
 
 |         | **smallest variability** | greatest variability | smallest average wind speed | greatest average wind speed |
-|---------------|:-------------:|:-------------:|:-------------:|:-------------:|
+|---------|:------------------------:|:--------------------:|:---------------------------:|:---------------------------:|
 | monthly |           July           |       November       |           August            |          February           |
 | hourly  |            19            |          13          |             16              |              1              |
 |         |                          |                      |                             |                             |

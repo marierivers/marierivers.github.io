@@ -16,16 +16,16 @@ description: Environmental Data Scientist
 ---
 
 ::: {#marie-heading}
-<h3>Education</h3>
-<h4>Master of Environmental Data Science</h4> 
+<h4>Education</h4>
+<h5>Master of Environmental Data Science</h5> 
 Bren School of Environmental Science & Management<br>
 University of California, Santa Barbara (2022)
 
-<h4>MS in Environmental Engineering</h4> 
+<h5>MS in Environmental Engineering</h5> 
 Department of Civil and Environmental Engineering<br>
 University of Massachusetts, Amherst (2011)
 
-<h4>BS in Environmental Engineering</h4> 
+<h5>BS in Environmental Engineering</h5> 
 Department of Civil and Environmental Engineering<br>
 University of Delaware (2009)
 
@@ -33,6 +33,5 @@ University of Delaware (2009)
 :::
 ------------------------------------------------------------------------
 
-<h5>Marie is a graduate of [UC Santa Barbara's Bren School of Environmental Science and Management](https://ucsb-meds.github.io/) inaugural environmental data science cohort. She is also a registered professional civil water resources engineer with 10 years of  experience modeling and designing municipal drinking water distribution systems. During this time, she observed the growing need for reproducible data analysis and visualization skills to solve current and emerging environmental problems. Marie is interested in using geospatial analyses to understand interactions between human and natural systems so that these insights can advance renewable energy technologies that support climate change goals.
-
+Marie is a graduate of [UC Santa Barbara's Bren School of Environmental Science and Management](https://ucsb-meds.github.io/) inaugural environmental data science cohort. She is also a registered professional civil water resources engineer with 10 years of  experience modeling and designing municipal drinking water distribution systems. During this time, she observed the growing need for reproducible data analysis and visualization skills to solve current and emerging environmental problems. Marie is interested in using geospatial analyses to understand interactions between human and natural systems so that these insights can advance renewable energy technologies that support climate change goals.
 

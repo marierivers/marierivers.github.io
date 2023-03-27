@@ -164,6 +164,12 @@ Get the unique values from a specified column in a dataframe
 unique(trout_salamander_R$species)
 ```
 
+Get number of unique values
+
+```{r}
+length(unique(trout_salamander_R$species))
+```
+
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 Get unique values of a variable
@@ -183,7 +189,6 @@ Get number of observations for each unique value
 ```{python}
 trout_salamander_py.groupby(['species']).count()
 ```
-
 :::
 
 # Selecting Columns

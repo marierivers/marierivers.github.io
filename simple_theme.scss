@@ -1,0 +1,231 @@
+/*-- scss:defaults --*/
+
+// Import fonts (define mainfont in _quarto.yml)
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito:wght@300&family=Roboto+Mono:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+// Colors
+$light-sage-green: #D1D9CE;
+$dark-sage-green: #98A08D;
+$cream: #FDFBF7;
+$dark-gray: #2e2d2b;
+$gray: #504f4f;
+$light-gray: #8b8b87;
+$lighter-gray: tint-color($light-gray, 70%);
+$lightest-gray: tint-color($light-gray, 90%);
+$purple: #AE8BD1;
+$black: #000000;
+$burnt-orange: #ad7237;
+$dark-purple: #29101f;
+$auburn: #5c3e22;
+$yellow: #d6c536; 
+$blueberry: #6b7a8f;
+$blueberry-700: shade-color($blueberry, 40%);
+$apricot: #f7882f;
+$citrus: #f7c331;
+$apple-core: #dcc7aa;
+$pink: #dc2787;
+$lime-green: #16F66C;
+$mist: #7A9D96;
+$cerulean: #00303F;
+$honey: #DCAE1D;
+$morning-sky: #CAE4DB;
+$teal: #02735E;
+$light-teal: tint-color($teal, 50%);
+//$light-teal: #03A678;
+$dark-teal: #014040;
+$orangey: #F27405;
+$dark-red: #731702;
+$bluey: #0E3486;
+$light-bluey: tint-color($bluey, 20%);
+$light-blue: #7A89A8;
+$dark-blue: #050F25;
+$dark-yellow: #C98500;
+$brown: #372503;
+$dark-orange: #C95900;
+$orange-brown: #371A03;
+
+
+// sizes
+$my-font-size: 25px;
+$my-width: 500px;
+
+// Base document colors
+$navbar-bg: $cream; // The background color of the navbar
+$navbar-fg: $teal; // The color of foreground elements (text and navigation) on the navbar. If not specified, a contrasting color is automatically computed
+$navbar-hl: $dark-teal; // The highlight color for links in the navbar. If not specified, the $link-color is used or a contrasting color is automatically computed
+// $sidebar-bg: $blueberry; // The background color for a sidebar
+$body-bg: $cream; // The page background color
+//$body-color: $dark-blue; // The page text color
+$body-color: $gray; // The page text color
+$footer-bg: $dark-purple; 
+$link-color: $light-bluey; // The link color
+$popover-bg: $dark-purple;	// The background color for popovers (for example, when a citation preview is shown)
+
+// Inline code
+// $code-bg: $cream; // The background color of inline code. Defaults to a mix between the body-bg and body-color
+$code-color: $dark-red; // The text color of inline code
+
+// Code blocks
+$code-block-bg: $lighter-gray;
+$code-block-bg-alpha: -0.35; // Defaults to -0.35
+$code-block-border-left: $teal;
+$code-block-border-left-size: 5px; // The thickness of the left border displayed on code blocks. Defaults to 3px
+$btn-code-copy-color: $teal; // The color used for the copy button at the top right of code blocks
+$btn-code-copy-color-active: $dark-teal; // The hover color used for the copy button at the top right of code blocks
+
+// Callouts
+$callout-color-note: $dark-red;
+
+// The default colors for the various types of callouts
+// $callout-color-tip: $green;
+// $callout-color-caution: $orange;
+// $callout-color-warning: $yellow;
+// $callout-color-important: $red;
+
+
+/*-- scss:rules --*/
+
+/* ELEMENT SELECTORS */
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: $teal;
+}
+
+/*h3 {
+  font-color: $pink;
+  font-size: 35px;
+}*/
+
+body {
+  line-height: 1.5; // min 1.5 suggested for assistive tech
+  font-size: 19.5px;
+}
+
+/* CLASS SELECTORS (self-defined) */
+
+.custom-subtitle {
+  font-size: 22px;
+  margin-bottom: 0.15em;
+}
+
+.custom-subtitle2 {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.topbr {
+    display: block;
+    margin-top: 1em;
+}
+
+.center {
+  text-align: center;
+  left: 50%;
+}
+
+.container {
+  display: flex;
+}
+
+.button-styling {
+  background: $teal;
+  border-color: $dark-teal;
+  color: $dark-teal;
+  border-radius: 0.6rem;
+  border-width: thin;
+  font-size: 18px;
+  font-color: $cream;
+  letter-spacing: 3px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 6px;
+  padding-left: 6px;
+  transition-duration: 0.4s;
+}
+
+.button-styling:hover {
+  background-color: $light-teal; 
+}
+
+
+// Example from Meghan Hall
+/* .btn-primary {
+  color: $gray;
+  background-color: $light-sage-green;
+  border: 1px solid $gray;
+  width: 25%;
+  margin-bottom: 0;
+  text-align: center;
+  padding: 0px 2px;
+  border-radius: 25px;
+  vertical-align: middle;
+}
+
+.btn-primary:hover {
+  color: #ffffff;
+  background-color: #978e83;
+  border-color: white;
+}
+
+.btn-primary:focus {
+  color: #ffffff;
+  background-color: #978e83;
+  border-color: white;
+} */
+
+.gray-italic {
+  color: $gray;
+  font-style: italic;
+  font-size: 17px;
+}
+
+/* CLASS SELECTORS (copied from inspecting site -- Quarto defined?) */
+
+.navbar-brand img { // see https://github.com/robertmitchellv/robertmitchellv.github.io/blob/main/custom-dark.scss
+  max-height: 60px;
+  width: auto;
+}
+
+.rounded { // headshot shape
+    border-radius: 50px 20px 50px 20px !important;
+}
+
+.about-link-text { // button text size
+  font-size: 18px;
+}
+
+.bi { // button icon size
+  font-size: 18px;
+}
+
+.card {
+  background-color: $cream;
+  //border-radius: 5.25em;
+}
+
+/* .card-attribution {
+  //padding-top: 5em;
+  padding-bottom: 3em;
+} */
+
+.description {
+  font-size: 25px;
+}
+
+// Color tints and shades
+$cyan-100: tint-color($cyan, 80%);
+$cyan-200: tint-color($cyan, 60%);
+$cyan-300: tint-color($cyan, 40%);
+$cyan-400: tint-color($cyan, 20%);
+$cyan-500: $cyan;
+$cyan-600: shade-color($cyan, 20%);
+$cyan-700: shade-color($cyan, 40%);
+$cyan-800: shade-color($cyan, 60%);
+$cyan-900: shade-color($cyan, 80%);
+
+// Resources
+// https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss

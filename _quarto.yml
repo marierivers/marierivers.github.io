@@ -3,7 +3,8 @@ project:
   output-dir: docs
 
 website:
-  title: "Marie Rivers"
+  title: "Marie T. Rivers"
+  favicon: <i class="fa-solid fa-star"></i>
   navbar:
     background: primary
     # left:
@@ -22,7 +23,9 @@ website:
 
 format:
   html:
-    theme: cosmo
+    # theme: cosmo
+    theme: 
+      - simple_theme.scss
     css: styles.css
     toc: true
 

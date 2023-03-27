@@ -18,7 +18,7 @@ code-tools:
   toggle: true
   caption: view code
 code-block-bg: true
-code-block-border-left: "#31BAE9"
+# code-block-border-left: "#31BAE9"
 ---
 
 This code sample uses statistical analyses and visualizations to explore the diurnal and monthly variability of wind resources at Mount Washington in New Hampshire using data from the [National Renewable Energy Laboratory (NREL) Wind Integration National Dataset (WIND) Toolkit](https://www.nrel.gov/grid/wind-toolkit.html). Datasets within this tool include meteorological conditions such as temperature, pressure, relative humidity, wind direction, and wind speed. Hourly data is available for the continental United States from 2007 to 2013. This analysis used the dataset of wind speed at 100 meters for the year 2012.
@@ -31,27 +31,18 @@ Click the drop down to the right of the title to view all code written for this 
 
 <center>
 
-<iframe src="https://marierivers.github.io/presentations/wind_resource_presentation#/title-slide" title="Presentation" width="750px," height="550px">
+<iframe src="https://marierivers.github.io/presentations/wind_resource_presentation#/wind-resource-temporal-variability" title="Presentation" width="750px," height="550px">
 
 </iframe>
 
 </center>
 
-::: container
-::: center
-<button type="button" class="button-styling" onclick="window.location.href=&#39;https://marierivers.github.io/presentations/wind_resource_presentation#/title-slide&#39;">
-
-`r fontawesome::fa("tv", fill = "#64605f", a11y = "sem")` slides
-
-</button>
-
-<button type="button" class="button-styling" onclick="window.location.href=&#39;https://github.com/marierivers/marierivers.github.io/tree/main/code_samples/wind-resource-temporal-variability&#39;">
-
-`r fontawesome::fa("github-square", fill = "#64605f", a11y = "sem")` source code
-
-</button>
-:::
-:::
+<div class="container">
+<div class="center">
+<button type="button" class="button-styling" onclick=window.location.href='https://marierivers.github.io/presentations/wind_resource_presentation#/wind-resource-temporal-variability'>`r fontawesome::fa("tv", fill = "#64605f", a11y = "sem")` slides</button>
+<button type="button" class="button-styling" onclick=window.location.href='https://github.com/marierivers/marierivers.github.io/tree/main/code_samples/wind-resource-temporal-variability'>`r fontawesome::fa("github-square", fill = "#64605f", a11y = "sem")` source code</button>
+</div>
+</div>
 
 # Access data
 
@@ -251,7 +242,6 @@ hourly_std_by_month = hourly_std_by_month.reset_index().pivot(index = "hour", co
 hourly_std_by_month.columns = hourly_std_by_month.columns.astype(str)
 hourly_std_by_month.head()
 ```
-
 :::
 
 ```{python}
@@ -319,8 +309,7 @@ fig.update_layout(
 )
 ```
 
-<br>
-Diurnal variability is important when selecting potential sites for utility scale wind power because it is important to have adequate wind speeds when electricity demand peaks. To begin looking at the diurnal variability for Mount Washington, the graph on the left shows average hourly wind speed for the year 2012. This graph also presents the interquartile range (IQR) and standard deviation of this data. The IQR illustrates the spread of the middle half of wind speed values. The standard deviation quantifies the spread of the data around the mean. The lower the standard deviation, the more the data is clustered around the mean. The greater the standard deviation, the more spread out the data.
+<br> Diurnal variability is important when selecting potential sites for utility scale wind power because it is important to have adequate wind speeds when electricity demand peaks. To begin looking at the diurnal variability for Mount Washington, the graph on the left shows average hourly wind speed for the year 2012. This graph also presents the interquartile range (IQR) and standard deviation of this data. The IQR illustrates the spread of the middle half of wind speed values. The standard deviation quantifies the spread of the data around the mean. The lower the standard deviation, the more the data is clustered around the mean. The greater the standard deviation, the more spread out the data.
 
 Based on the hourly wind speed visualization, wind speed at Mount Washington seems to be lowest in the middle of the day, but based on the standard deviation bars and interquartile range, there is a large spread to the data. Seasonal diurnal variability will be explored further down the page.
 
@@ -429,8 +418,7 @@ fig.update_layout(
 :::
 :::
 
-<br>
-The next graph shows hourly average wind speed with lines for each month. The thick black line represents the annual mean for each hour.
+<br> The next graph shows hourly average wind speed with lines for each month. The thick black line represents the annual mean for each hour.
 
 This graph illustrates both the magnitude of wind speed values related to other months as well and the seasonal variability of daily wind speed patterns. For the year 2012, the months of January, February, March, April, October and December had higher than average wind speeds while the months of May, June, July, August, September, and November had lower than average wind speed. For most months, wind speeds are lowest during the middle of the day.
 
@@ -500,8 +488,7 @@ fig.update_layout(
 # fig.write_image("avg_hourly_windspeed_by_month.png")
 ```
 
-<br>
-This heatmap summarizes both the daily and monthly variability of wind speed at Mount Washington in 2012. Here we can clearly see that for this location, wind speeds are lowest in the summer and mid day and highest in the winter and early/late hours.
+<br> This heatmap summarizes both the daily and monthly variability of wind speed at Mount Washington in 2012. Here we can clearly see that for this location, wind speeds are lowest in the summer and mid day and highest in the winter and early/late hours.
 
 ```{python}
 #| column: page-right
@@ -604,7 +591,7 @@ fig.update_layout(
 
 # Results and Conclusions
 
-This analysis concludes that wind speeds at 100 meters near Mount Washington in New Hampshire varied based on month and time of day. As summarized in the table below, smallest monthly variability occurred in July and the greatest monthly variability occurred in November. August had the smallest average wind speed and February had the greatest average wind speed. Hourly variability was smallest for hour 19 and largest for hour 13. Average hourly wind speed was smallest for hour 16 and greatest for hour 1. 
+This analysis concludes that wind speeds at 100 meters near Mount Washington in New Hampshire varied based on month and time of day. As summarized in the table below, smallest monthly variability occurred in July and the greatest monthly variability occurred in November. August had the smallest average wind speed and February had the greatest average wind speed. Hourly variability was smallest for hour 19 and largest for hour 13. Average hourly wind speed was smallest for hour 16 and greatest for hour 1.
 
 Overall, the diurnal wind speed pattern resulted in higher speeds between hours 1-4; from there, wind speed tended to decrease and reach a minimum between hours 13-18; wind speeds generally increased between hours 19-23. Monthly wind speeds tended to be highest during the winter and lowest during the summer.
 
@@ -756,15 +743,15 @@ param_list <- split(report_parameters, seq(nrow(report_parameters))) %>%
   purrr::walk(render_fun)
 ```
 
-The example reports generated above can be viewed here: 
+The example reports generated above can be viewed here:
 
-[University of Delaware](University of Delaware-report.pdf)
+[University of Delaware](University%20of%20Delaware-report.pdf)
 
-[UMass Amherst](Umass Amherst-report.pdf)
+[UMass Amherst](Umass%20Amherst-report.pdf)
 
-[UC Santa Barbara](UC Santa Barbara-report.pdf)
+[UC Santa Barbara](UC%20Santa%20Barbara-report.pdf)
 
-[NREL - Golden, CO](Golden, CO-report.pdf)
+[NREL - Golden, CO](Golden,%20CO-report.pdf)
 
 # Citations
 
@@ -772,11 +759,8 @@ Draxl, C., B.M. Hodge, A. Clifton, and J. McCaa. 2015. [Overview and Meteorologi
 
 Draxl, C., B.M. Hodge, A. Clifton, and J. McCaa. 2015. "[The Wind Integration National Dataset (WIND) Toolkit.](https://www.sciencedirect.com/science/article/pii/S0306261915004237?via%3Dihub)" Applied Energy 151: 355366.
 
-Energy.gov. “How Do Wind Turbines Survive Severe Storms?” Accessed October 11, 2022. <https://www.energy.gov/eere/articles/how-do-wind-turbines-survive-severe-storms>.
+Energy.gov. "How Do Wind Turbines Survive Severe Storms?" Accessed October 11, 2022. <https://www.energy.gov/eere/articles/how-do-wind-turbines-survive-severe-storms>.
 
 King, J., A. Clifton, and B.M. Hodge. 2014. [Validation of Power Output for the WIND Toolkit](https://www.nrel.gov/docs/fy14osti/61714.pdf) (Technical Report, NREL/TP-5D00-61714). Golden, CO: National Renewable Energy Laboratory.
 
-“Where Wind Power Is Harnessed - U.S. Energy Information Administration (EIA).” Accessed October 11, 2022. <https://www.eia.gov/energyexplained/wind/where-wind-power-is-harnessed.php>.
-
-
-
+"Where Wind Power Is Harnessed - U.S. Energy Information Administration (EIA)." Accessed October 11, 2022. <https://www.eia.gov/energyexplained/wind/where-wind-power-is-harnessed.php>.
