@@ -1,14 +1,5 @@
 [
   {
-    "listing": "/code_samples.html",
-    "items": [
-      "/code_samples/wind-resource-temporal-variability/index.html",
-      "/code_samples/protecting-whales-from-ships/index.html",
-      "/code_samples/data-wrangling-with-python-and-R/index.html",
-      "/code_samples/shiny-apps/index.html"
-    ]
-  },
-  {
     "listing": "/posts.html",
     "items": [
       "/posts/2022-06-07-the-importance-of-meaningfully-open-snow-data/index.html",
@@ -17,6 +8,15 @@
       "/posts/2021-11-03-how-i-made-this-visualization/index.html",
       "/posts/2021-10-17-do-you-learn-about-the-chicken-or-the-egg-first/index.html",
       "/posts/2021-08-18-a-new-perspective-on-data/index.html"
+    ]
+  },
+  {
+    "listing": "/code_samples.html",
+    "items": [
+      "/code_samples/wind-resource-temporal-variability/index.html",
+      "/code_samples/protecting-whales-from-ships/index.html",
+      "/code_samples/data-wrangling-with-python-and-R/index.html",
+      "/code_samples/shiny-apps/index.html"
     ]
   }
 ]

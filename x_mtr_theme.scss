@@ -53,10 +53,10 @@ $my-width: 500px;
 
 // Base document colors
 $navbar-bg: $teal; // The background color of the navbar
-$navbar-fg: $cream; // The color of foreground elements (text and navigation) on the navbar. If not specified, a contrasting color is automatically computed
-$navbar-hl: $dark-teal; // The highlight color for links in the navbar. If not specified, the $link-color is used or a contrasting color is automatically computed
+$navbar-fg: $light-teal; // The color of foreground elements (text and navigation) on the navbar. If not specified, a contrasting color is automatically computed
+$navbar-hl: $cream; // The highlight color for links in the navbar. If not specified, the $link-color is used or a contrasting color is automatically computed
 // $sidebar-bg: $blueberry; // The background color for a sidebar
-$body-bg: $cream; // The page background color
+$body-bg: $lightest-gray; // The page background color
 //$body-color: $dark-blue; // The page text color
 $body-color: $gray; // The page text color
 $footer-bg: $dark-purple; 
@@ -92,7 +92,7 @@ $callout-color-note: $dark-red;
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: 2px;
   font-weight: 700;
-  color: $teal;
+  color: $dark-teal;
 }
 
 /*h3 {
@@ -148,7 +148,7 @@ body {
 }
 
 .button-styling:hover {
-  background-color: $light-bluey; 
+  background-color: $light-teal; 
 }
 
 

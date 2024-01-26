@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,9 +20,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -49,43 +50,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -122,7 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -144,34 +116,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Marie T. Rivers</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../code_samples.html">
+    <a class="nav-link" href="../../code_samples.html" rel="" target="">
  <span class="menu-text">Code Samples</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html">
+    <a class="nav-link" href="../../posts.html" rel="" target="">
  <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume/rivers_marie_resume.pdf">
+    <a class="nav-link" href="../../resume/rivers_marie_resume.pdf" rel="" target="">
  <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/marierivers"><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/marierivers" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -200,7 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Marie Rivers </p>
+               <p><a href="https://marierivers.github.io/">Marie Rivers</a> </p>
             </div>
     </div>
       
@@ -217,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Contents</h2>
    
@@ -251,6 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul>
 </nav>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
@@ -278,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="head-and-tail" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="head-and-tail">Head and Tail</h2>
 <p>Head returns the first few rows of the data frame and tail returns the last rows. The integer in the examples below is optional and used to specify the number of rows returned.</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-1-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-1-1-tab">
@@ -343,7 +318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="class-type" class="level2">
 <h2 class="anchored" data-anchor-id="class-type">Class / Type</h2>
-<div class="panel-tabset">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
@@ -367,20 +342,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="shape" class="level2">
 <h2 class="anchored" data-anchor-id="shape">Shape</h2>
-<div class="panel-tabset">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div class="cell">
-
-</div>
 <p>Here R and Python both tell us that the dataframe has 32,209 rows and 16 columns.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -425,7 +397,7 @@ Note
 </section>
 <section id="summary-describe" class="level2">
 <h2 class="anchored" data-anchor-id="summary-describe">Summary / Describe</h2>
-<div class="panel-tabset">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
@@ -518,7 +490,7 @@ memory usage: 3.9+ MB</code></pre>
 </section>
 <section id="variable-names" class="level2">
 <h2 class="anchored" data-anchor-id="variable-names">Variable Names</h2>
-<div class="panel-tabset">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
@@ -548,7 +520,7 @@ memory usage: 3.9+ MB</code></pre>
 </section>
 <section id="unique" class="level2">
 <h2 class="anchored" data-anchor-id="unique">Unique</h2>
-<div class="panel-tabset">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
@@ -605,7 +577,7 @@ Cutthroat trout             20433     20433    20433  ...  20433       20433   1
 <section id="selecting-columns" class="level1 page-columns page-full">
 <h1>Selecting Columns</h1>
 <p>Subset a datafame based on columns of interst</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-7-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-7-1-tab">
@@ -680,7 +652,7 @@ Cutthroat trout             20433     20433    20433  ...  20433       20433   1
 <section id="new-columns" class="level1 page-columns page-full">
 <h1>New Columns</h1>
 <p>Convert the length variable from milimeters to inches and store these values in a new column</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-8-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-8-1-tab">
@@ -733,7 +705,7 @@ Cutthroat trout             20433     20433    20433  ...  20433       20433   1
 </section>
 <section id="missing-values" class="level1 page-columns page-full">
 <h1>Missing Values</h1>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-9-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-9-1-tab">
@@ -835,7 +807,7 @@ dtype: int64</code></pre>
 <section id="sorting" class="level1 page-columns page-full">
 <h1>Sorting</h1>
 <p>Order rows in a dataframe based on values in a specified column. Default is ascending order.</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-10-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-10-1-tab">
@@ -884,7 +856,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>Sort values by descending order</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-11-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-11-1-tab">
@@ -933,7 +905,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>Sort values by multiple variables</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-12-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-12-1-tab">
@@ -985,7 +957,7 @@ dtype: int64</code></pre>
 <section id="filtering" class="level1 page-columns page-full">
 <h1>Filtering</h1>
 <p>Create datasets of all cutthroat trout</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-13-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-1" role="tab" aria-controls="tabset-13-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-13-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-13-2" role="tab" aria-controls="tabset-13-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-13-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-13-1-tab">
@@ -1002,7 +974,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>Filter data based on values and logical arguments. This example filters for cutthroat trout that are longer than 86 mm.</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-14-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-1" role="tab" aria-controls="tabset-14-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-14-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-14-2" role="tab" aria-controls="tabset-14-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-14-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-14-1-tab">
@@ -1057,12 +1029,12 @@ dtype: int64</code></pre>
 </section>
 <section id="summary-statistics" class="level1 page-columns page-full">
 <h1>Summary Statistics</h1>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -1070,7 +1042,7 @@ Note
 <p>Even though missing values have been removed in previous steps, the code to exclude NA / NaN values from summary statistics is included here for reference.</p>
 </div>
 </div>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-15-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-1" role="tab" aria-controls="tabset-15-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-15-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-15-2" role="tab" aria-controls="tabset-15-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-15-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-15-1-tab">
@@ -1208,7 +1180,7 @@ dtype: float64
 </section>
 <section id="grouped-statistics" class="level1 page-columns page-full">
 <h1>Grouped Statistics</h1>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-16-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-1" role="tab" aria-controls="tabset-16-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-16-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-16-2" role="tab" aria-controls="tabset-16-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-16-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-16-1-tab">
@@ -1229,173 +1201,173 @@ dtype: float64
 <span id="cb114-14"><a href="#cb114-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb114-15"><a href="#cb114-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_paper</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display column-page-right">
-
-<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> sitecode </th>
-   <th style="text-align:left;"> species </th>
-   <th style="text-align:right;"> mean_length </th>
-   <th style="text-align:right;"> min_length </th>
-   <th style="text-align:right;"> max_lenth </th>
-   <th style="text-align:right;"> mean_weight </th>
-   <th style="text-align:right;"> min_weight </th>
-   <th style="text-align:right;"> max_weight </th>
-  </tr>
- </thead>
+<table class="lightable-paper table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">sitecode</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mean_length</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">min_length</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">max_lenth</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">mean_weight</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">min_weight</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">max_weight</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> MACKCC-L </td>
-   <td style="text-align:left;"> Cascade torrent salamander </td>
-   <td style="text-align:right;"> 36.80 </td>
-   <td style="text-align:right;"> 32 </td>
-   <td style="text-align:right;"> 40 </td>
-   <td style="text-align:right;"> 1.32 </td>
-   <td style="text-align:right;"> 0.80 </td>
-   <td style="text-align:right;"> 1.95 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKCC-L </td>
-   <td style="text-align:left;"> Coastal giant salamander </td>
-   <td style="text-align:right;"> 59.09 </td>
-   <td style="text-align:right;"> 21 </td>
-   <td style="text-align:right;"> 143 </td>
-   <td style="text-align:right;"> 10.11 </td>
-   <td style="text-align:right;"> 0.29 </td>
-   <td style="text-align:right;"> 90.77 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKCC-L </td>
-   <td style="text-align:left;"> Cutthroat trout </td>
-   <td style="text-align:right;"> 78.93 </td>
-   <td style="text-align:right;"> 24 </td>
-   <td style="text-align:right;"> 253 </td>
-   <td style="text-align:right;"> 7.73 </td>
-   <td style="text-align:right;"> 0.09 </td>
-   <td style="text-align:right;"> 66.97 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKCC-M </td>
-   <td style="text-align:left;"> Coastal giant salamander </td>
-   <td style="text-align:right;"> 58.08 </td>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> 9.55 </td>
-   <td style="text-align:right;"> 0.58 </td>
-   <td style="text-align:right;"> 85.60 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKCC-M </td>
-   <td style="text-align:left;"> Cutthroat trout </td>
-   <td style="text-align:right;"> 93.11 </td>
-   <td style="text-align:right;"> 27 </td>
-   <td style="text-align:right;"> 197 </td>
-   <td style="text-align:right;"> 11.76 </td>
-   <td style="text-align:right;"> 0.10 </td>
-   <td style="text-align:right;"> 77.78 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKCC-U </td>
-   <td style="text-align:left;"> Coastal giant salamander </td>
-   <td style="text-align:right;"> 57.79 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 154 </td>
-   <td style="text-align:right;"> 9.53 </td>
-   <td style="text-align:right;"> 0.42 </td>
-   <td style="text-align:right;"> 102.99 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKCC-U </td>
-   <td style="text-align:left;"> Cutthroat trout </td>
-   <td style="text-align:right;"> 84.36 </td>
-   <td style="text-align:right;"> 26 </td>
-   <td style="text-align:right;"> 192 </td>
-   <td style="text-align:right;"> 9.14 </td>
-   <td style="text-align:right;"> 0.10 </td>
-   <td style="text-align:right;"> 65.00 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKOG-L </td>
-   <td style="text-align:left;"> Coastal giant salamander </td>
-   <td style="text-align:right;"> 53.54 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 172 </td>
-   <td style="text-align:right;"> 8.56 </td>
-   <td style="text-align:right;"> 0.30 </td>
-   <td style="text-align:right;"> 134.59 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKOG-L </td>
-   <td style="text-align:left;"> Cutthroat trout </td>
-   <td style="text-align:right;"> 81.87 </td>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:right;"> 181 </td>
-   <td style="text-align:right;"> 8.50 </td>
-   <td style="text-align:right;"> 0.13 </td>
-   <td style="text-align:right;"> 63.00 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKOG-M </td>
-   <td style="text-align:left;"> Cascade torrent salamander </td>
-   <td style="text-align:right;"> 29.00 </td>
-   <td style="text-align:right;"> 28 </td>
-   <td style="text-align:right;"> 30 </td>
-   <td style="text-align:right;"> 0.73 </td>
-   <td style="text-align:right;"> 0.65 </td>
-   <td style="text-align:right;"> 0.80 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKOG-M </td>
-   <td style="text-align:left;"> Coastal giant salamander </td>
-   <td style="text-align:right;"> 54.02 </td>
-   <td style="text-align:right;"> 21 </td>
-   <td style="text-align:right;"> 155 </td>
-   <td style="text-align:right;"> 8.27 </td>
-   <td style="text-align:right;"> 0.30 </td>
-   <td style="text-align:right;"> 131.50 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKOG-M </td>
-   <td style="text-align:left;"> Cutthroat trout </td>
-   <td style="text-align:right;"> 79.30 </td>
-   <td style="text-align:right;"> 23 </td>
-   <td style="text-align:right;"> 193 </td>
-   <td style="text-align:right;"> 7.86 </td>
-   <td style="text-align:right;"> 0.10 </td>
-   <td style="text-align:right;"> 101.00 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKOG-U </td>
-   <td style="text-align:left;"> Cascade torrent salamander </td>
-   <td style="text-align:right;"> 32.50 </td>
-   <td style="text-align:right;"> 26 </td>
-   <td style="text-align:right;"> 39 </td>
-   <td style="text-align:right;"> 0.85 </td>
-   <td style="text-align:right;"> 0.50 </td>
-   <td style="text-align:right;"> 1.20 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKOG-U </td>
-   <td style="text-align:left;"> Coastal giant salamander </td>
-   <td style="text-align:right;"> 54.64 </td>
-   <td style="text-align:right;"> 21 </td>
-   <td style="text-align:right;"> 164 </td>
-   <td style="text-align:right;"> 8.20 </td>
-   <td style="text-align:right;"> 0.30 </td>
-   <td style="text-align:right;"> 134.00 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> MACKOG-U </td>
-   <td style="text-align:left;"> Cutthroat trout </td>
-   <td style="text-align:right;"> 81.47 </td>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:right;"> 175 </td>
-   <td style="text-align:right;"> 8.29 </td>
-   <td style="text-align:right;"> 0.10 </td>
-   <td style="text-align:right;"> 104.00 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">MACKCC-L</td>
+<td style="text-align: left;">Cascade torrent salamander</td>
+<td style="text-align: right;">36.80</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">1.32</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">1.95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MACKCC-L</td>
+<td style="text-align: left;">Coastal giant salamander</td>
+<td style="text-align: right;">59.09</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">143</td>
+<td style="text-align: right;">10.11</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">90.77</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MACKCC-L</td>
+<td style="text-align: left;">Cutthroat trout</td>
+<td style="text-align: right;">78.93</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">253</td>
+<td style="text-align: right;">7.73</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">66.97</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MACKCC-M</td>
+<td style="text-align: left;">Coastal giant salamander</td>
+<td style="text-align: right;">58.08</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">137</td>
+<td style="text-align: right;">9.55</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">85.60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MACKCC-M</td>
+<td style="text-align: left;">Cutthroat trout</td>
+<td style="text-align: right;">93.11</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">197</td>
+<td style="text-align: right;">11.76</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">77.78</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MACKCC-U</td>
+<td style="text-align: left;">Coastal giant salamander</td>
+<td style="text-align: right;">57.79</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">154</td>
+<td style="text-align: right;">9.53</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">102.99</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MACKCC-U</td>
+<td style="text-align: left;">Cutthroat trout</td>
+<td style="text-align: right;">84.36</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">192</td>
+<td style="text-align: right;">9.14</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">65.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MACKOG-L</td>
+<td style="text-align: left;">Coastal giant salamander</td>
+<td style="text-align: right;">53.54</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">172</td>
+<td style="text-align: right;">8.56</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">134.59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MACKOG-L</td>
+<td style="text-align: left;">Cutthroat trout</td>
+<td style="text-align: right;">81.87</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">181</td>
+<td style="text-align: right;">8.50</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">63.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MACKOG-M</td>
+<td style="text-align: left;">Cascade torrent salamander</td>
+<td style="text-align: right;">29.00</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">0.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MACKOG-M</td>
+<td style="text-align: left;">Coastal giant salamander</td>
+<td style="text-align: right;">54.02</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">155</td>
+<td style="text-align: right;">8.27</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">131.50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MACKOG-M</td>
+<td style="text-align: left;">Cutthroat trout</td>
+<td style="text-align: right;">79.30</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">193</td>
+<td style="text-align: right;">7.86</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">101.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MACKOG-U</td>
+<td style="text-align: left;">Cascade torrent salamander</td>
+<td style="text-align: right;">32.50</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">1.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MACKOG-U</td>
+<td style="text-align: left;">Coastal giant salamander</td>
+<td style="text-align: right;">54.64</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">164</td>
+<td style="text-align: right;">8.20</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">134.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MACKOG-U</td>
+<td style="text-align: left;">Cutthroat trout</td>
+<td style="text-align: right;">81.47</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">8.29</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">104.00</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
@@ -1408,7 +1380,6 @@ dtype: float64
 </div>
 <div class="cell page-columns page-full">
 <div class="cell-output-display column-page-right">
-
 <style type="text/css">
 #T_631bd th {
   color: black;
@@ -1421,179 +1392,181 @@ dtype: float64
   color: black;
 }
 </style>
-<table id="T_631bd">
-  <thead>
-    <tr>
-      <th class="blank">&nbsp;</th>
-      <th class="blank level0">&nbsp;</th>
-      <th id="T_631bd_level0_col0" class="col_heading level0 col0" colspan="3">length_1_mm</th>
-      <th id="T_631bd_level0_col3" class="col_heading level0 col3" colspan="3">weight_g</th>
-    </tr>
-    <tr>
-      <th class="blank">&nbsp;</th>
-      <th class="blank level1">&nbsp;</th>
-      <th id="T_631bd_level1_col0" class="col_heading level1 col0">mean</th>
-      <th id="T_631bd_level1_col1" class="col_heading level1 col1">min</th>
-      <th id="T_631bd_level1_col2" class="col_heading level1 col2">max</th>
-      <th id="T_631bd_level1_col3" class="col_heading level1 col3">mean</th>
-      <th id="T_631bd_level1_col4" class="col_heading level1 col4">min</th>
-      <th id="T_631bd_level1_col5" class="col_heading level1 col5">max</th>
-    </tr>
-    <tr>
-      <th class="index_name level0">sitecode</th>
-      <th class="index_name level1">species</th>
-      <th class="blank col0">&nbsp;</th>
-      <th class="blank col1">&nbsp;</th>
-      <th class="blank col2">&nbsp;</th>
-      <th class="blank col3">&nbsp;</th>
-      <th class="blank col4">&nbsp;</th>
-      <th class="blank col5">&nbsp;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_631bd_level0_row0" class="row_heading level0 row0" rowspan="3">MACKCC-L</th>
-      <th id="T_631bd_level1_row0" class="row_heading level1 row0">Cascade torrent salamander</th>
-      <td id="T_631bd_row0_col0" class="data row0 col0">36.80</td>
-      <td id="T_631bd_row0_col1" class="data row0 col1">32.00</td>
-      <td id="T_631bd_row0_col2" class="data row0 col2">40.00</td>
-      <td id="T_631bd_row0_col3" class="data row0 col3">1.32</td>
-      <td id="T_631bd_row0_col4" class="data row0 col4">0.80</td>
-      <td id="T_631bd_row0_col5" class="data row0 col5">1.95</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level1_row1" class="row_heading level1 row1">Coastal giant salamander</th>
-      <td id="T_631bd_row1_col0" class="data row1 col0">59.09</td>
-      <td id="T_631bd_row1_col1" class="data row1 col1">21.00</td>
-      <td id="T_631bd_row1_col2" class="data row1 col2">143.00</td>
-      <td id="T_631bd_row1_col3" class="data row1 col3">10.11</td>
-      <td id="T_631bd_row1_col4" class="data row1 col4">0.29</td>
-      <td id="T_631bd_row1_col5" class="data row1 col5">90.77</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level1_row2" class="row_heading level1 row2">Cutthroat trout</th>
-      <td id="T_631bd_row2_col0" class="data row2 col0">78.93</td>
-      <td id="T_631bd_row2_col1" class="data row2 col1">24.00</td>
-      <td id="T_631bd_row2_col2" class="data row2 col2">253.00</td>
-      <td id="T_631bd_row2_col3" class="data row2 col3">7.73</td>
-      <td id="T_631bd_row2_col4" class="data row2 col4">0.09</td>
-      <td id="T_631bd_row2_col5" class="data row2 col5">66.97</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level0_row3" class="row_heading level0 row3" rowspan="2">MACKCC-M</th>
-      <th id="T_631bd_level1_row3" class="row_heading level1 row3">Coastal giant salamander</th>
-      <td id="T_631bd_row3_col0" class="data row3 col0">58.08</td>
-      <td id="T_631bd_row3_col1" class="data row3 col1">25.00</td>
-      <td id="T_631bd_row3_col2" class="data row3 col2">137.00</td>
-      <td id="T_631bd_row3_col3" class="data row3 col3">9.55</td>
-      <td id="T_631bd_row3_col4" class="data row3 col4">0.58</td>
-      <td id="T_631bd_row3_col5" class="data row3 col5">85.60</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level1_row4" class="row_heading level1 row4">Cutthroat trout</th>
-      <td id="T_631bd_row4_col0" class="data row4 col0">93.11</td>
-      <td id="T_631bd_row4_col1" class="data row4 col1">27.00</td>
-      <td id="T_631bd_row4_col2" class="data row4 col2">197.00</td>
-      <td id="T_631bd_row4_col3" class="data row4 col3">11.76</td>
-      <td id="T_631bd_row4_col4" class="data row4 col4">0.10</td>
-      <td id="T_631bd_row4_col5" class="data row4 col5">77.78</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level0_row5" class="row_heading level0 row5" rowspan="2">MACKCC-U</th>
-      <th id="T_631bd_level1_row5" class="row_heading level1 row5">Coastal giant salamander</th>
-      <td id="T_631bd_row5_col0" class="data row5 col0">57.79</td>
-      <td id="T_631bd_row5_col1" class="data row5 col1">20.00</td>
-      <td id="T_631bd_row5_col2" class="data row5 col2">154.00</td>
-      <td id="T_631bd_row5_col3" class="data row5 col3">9.53</td>
-      <td id="T_631bd_row5_col4" class="data row5 col4">0.42</td>
-      <td id="T_631bd_row5_col5" class="data row5 col5">102.99</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level1_row6" class="row_heading level1 row6">Cutthroat trout</th>
-      <td id="T_631bd_row6_col0" class="data row6 col0">84.36</td>
-      <td id="T_631bd_row6_col1" class="data row6 col1">26.00</td>
-      <td id="T_631bd_row6_col2" class="data row6 col2">192.00</td>
-      <td id="T_631bd_row6_col3" class="data row6 col3">9.14</td>
-      <td id="T_631bd_row6_col4" class="data row6 col4">0.10</td>
-      <td id="T_631bd_row6_col5" class="data row6 col5">65.00</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level0_row7" class="row_heading level0 row7" rowspan="2">MACKOG-L</th>
-      <th id="T_631bd_level1_row7" class="row_heading level1 row7">Coastal giant salamander</th>
-      <td id="T_631bd_row7_col0" class="data row7 col0">53.54</td>
-      <td id="T_631bd_row7_col1" class="data row7 col1">20.00</td>
-      <td id="T_631bd_row7_col2" class="data row7 col2">172.00</td>
-      <td id="T_631bd_row7_col3" class="data row7 col3">8.56</td>
-      <td id="T_631bd_row7_col4" class="data row7 col4">0.30</td>
-      <td id="T_631bd_row7_col5" class="data row7 col5">134.59</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level1_row8" class="row_heading level1 row8">Cutthroat trout</th>
-      <td id="T_631bd_row8_col0" class="data row8 col0">81.87</td>
-      <td id="T_631bd_row8_col1" class="data row8 col1">25.00</td>
-      <td id="T_631bd_row8_col2" class="data row8 col2">181.00</td>
-      <td id="T_631bd_row8_col3" class="data row8 col3">8.50</td>
-      <td id="T_631bd_row8_col4" class="data row8 col4">0.13</td>
-      <td id="T_631bd_row8_col5" class="data row8 col5">63.00</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level0_row9" class="row_heading level0 row9" rowspan="3">MACKOG-M</th>
-      <th id="T_631bd_level1_row9" class="row_heading level1 row9">Cascade torrent salamander</th>
-      <td id="T_631bd_row9_col0" class="data row9 col0">29.00</td>
-      <td id="T_631bd_row9_col1" class="data row9 col1">28.00</td>
-      <td id="T_631bd_row9_col2" class="data row9 col2">30.00</td>
-      <td id="T_631bd_row9_col3" class="data row9 col3">0.73</td>
-      <td id="T_631bd_row9_col4" class="data row9 col4">0.65</td>
-      <td id="T_631bd_row9_col5" class="data row9 col5">0.80</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level1_row10" class="row_heading level1 row10">Coastal giant salamander</th>
-      <td id="T_631bd_row10_col0" class="data row10 col0">54.02</td>
-      <td id="T_631bd_row10_col1" class="data row10 col1">21.00</td>
-      <td id="T_631bd_row10_col2" class="data row10 col2">155.00</td>
-      <td id="T_631bd_row10_col3" class="data row10 col3">8.27</td>
-      <td id="T_631bd_row10_col4" class="data row10 col4">0.30</td>
-      <td id="T_631bd_row10_col5" class="data row10 col5">131.50</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level1_row11" class="row_heading level1 row11">Cutthroat trout</th>
-      <td id="T_631bd_row11_col0" class="data row11 col0">79.30</td>
-      <td id="T_631bd_row11_col1" class="data row11 col1">23.00</td>
-      <td id="T_631bd_row11_col2" class="data row11 col2">193.00</td>
-      <td id="T_631bd_row11_col3" class="data row11 col3">7.86</td>
-      <td id="T_631bd_row11_col4" class="data row11 col4">0.10</td>
-      <td id="T_631bd_row11_col5" class="data row11 col5">101.00</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level0_row12" class="row_heading level0 row12" rowspan="3">MACKOG-U</th>
-      <th id="T_631bd_level1_row12" class="row_heading level1 row12">Cascade torrent salamander</th>
-      <td id="T_631bd_row12_col0" class="data row12 col0">32.50</td>
-      <td id="T_631bd_row12_col1" class="data row12 col1">26.00</td>
-      <td id="T_631bd_row12_col2" class="data row12 col2">39.00</td>
-      <td id="T_631bd_row12_col3" class="data row12 col3">0.85</td>
-      <td id="T_631bd_row12_col4" class="data row12 col4">0.50</td>
-      <td id="T_631bd_row12_col5" class="data row12 col5">1.20</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level1_row13" class="row_heading level1 row13">Coastal giant salamander</th>
-      <td id="T_631bd_row13_col0" class="data row13 col0">54.64</td>
-      <td id="T_631bd_row13_col1" class="data row13 col1">21.00</td>
-      <td id="T_631bd_row13_col2" class="data row13 col2">164.00</td>
-      <td id="T_631bd_row13_col3" class="data row13 col3">8.20</td>
-      <td id="T_631bd_row13_col4" class="data row13 col4">0.30</td>
-      <td id="T_631bd_row13_col5" class="data row13 col5">134.00</td>
-    </tr>
-    <tr>
-      <th id="T_631bd_level1_row14" class="row_heading level1 row14">Cutthroat trout</th>
-      <td id="T_631bd_row14_col0" class="data row14 col0">81.47</td>
-      <td id="T_631bd_row14_col1" class="data row14 col1">25.00</td>
-      <td id="T_631bd_row14_col2" class="data row14 col2">175.00</td>
-      <td id="T_631bd_row14_col3" class="data row14 col3">8.29</td>
-      <td id="T_631bd_row14_col4" class="data row14 col4">0.10</td>
-      <td id="T_631bd_row14_col5" class="data row14 col5">104.00</td>
-    </tr>
-  </tbody>
+
+<table id="T_631bd" data-quarto-postprocess="true" class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th class="blank" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th colspan="3" id="T_631bd_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">length_1_mm</th>
+<th colspan="3" id="T_631bd_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">weight_g</th>
+</tr>
+<tr class="odd">
+<th class="blank" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank level1" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_631bd_level1_col0" class="col_heading level1 col0" data-quarto-table-cell-role="th">mean</th>
+<th id="T_631bd_level1_col1" class="col_heading level1 col1" data-quarto-table-cell-role="th">min</th>
+<th id="T_631bd_level1_col2" class="col_heading level1 col2" data-quarto-table-cell-role="th">max</th>
+<th id="T_631bd_level1_col3" class="col_heading level1 col3" data-quarto-table-cell-role="th">mean</th>
+<th id="T_631bd_level1_col4" class="col_heading level1 col4" data-quarto-table-cell-role="th">min</th>
+<th id="T_631bd_level1_col5" class="col_heading level1 col5" data-quarto-table-cell-role="th">max</th>
+</tr>
+<tr class="header">
+<th class="index_name level0" data-quarto-table-cell-role="th">sitecode</th>
+<th class="index_name level1" data-quarto-table-cell-role="th">species</th>
+<th class="blank col0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col1" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col2" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col3" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col4" data-quarto-table-cell-role="th">&nbsp;</th>
+<th class="blank col5" data-quarto-table-cell-role="th">&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="3" id="T_631bd_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">MACKCC-L</td>
+<td id="T_631bd_level1_row0" class="row_heading level1 row0" data-quarto-table-cell-role="th">Cascade torrent salamander</td>
+<td id="T_631bd_row0_col0" class="data row0 col0">36.80</td>
+<td id="T_631bd_row0_col1" class="data row0 col1">32.00</td>
+<td id="T_631bd_row0_col2" class="data row0 col2">40.00</td>
+<td id="T_631bd_row0_col3" class="data row0 col3">1.32</td>
+<td id="T_631bd_row0_col4" class="data row0 col4">0.80</td>
+<td id="T_631bd_row0_col5" class="data row0 col5">1.95</td>
+</tr>
+<tr class="even">
+<td id="T_631bd_level1_row1" class="row_heading level1 row1" data-quarto-table-cell-role="th">Coastal giant salamander</td>
+<td id="T_631bd_row1_col0" class="data row1 col0">59.09</td>
+<td id="T_631bd_row1_col1" class="data row1 col1">21.00</td>
+<td id="T_631bd_row1_col2" class="data row1 col2">143.00</td>
+<td id="T_631bd_row1_col3" class="data row1 col3">10.11</td>
+<td id="T_631bd_row1_col4" class="data row1 col4">0.29</td>
+<td id="T_631bd_row1_col5" class="data row1 col5">90.77</td>
+</tr>
+<tr class="odd">
+<td id="T_631bd_level1_row2" class="row_heading level1 row2" data-quarto-table-cell-role="th">Cutthroat trout</td>
+<td id="T_631bd_row2_col0" class="data row2 col0">78.93</td>
+<td id="T_631bd_row2_col1" class="data row2 col1">24.00</td>
+<td id="T_631bd_row2_col2" class="data row2 col2">253.00</td>
+<td id="T_631bd_row2_col3" class="data row2 col3">7.73</td>
+<td id="T_631bd_row2_col4" class="data row2 col4">0.09</td>
+<td id="T_631bd_row2_col5" class="data row2 col5">66.97</td>
+</tr>
+<tr class="even">
+<td rowspan="2" id="T_631bd_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">MACKCC-M</td>
+<td id="T_631bd_level1_row3" class="row_heading level1 row3" data-quarto-table-cell-role="th">Coastal giant salamander</td>
+<td id="T_631bd_row3_col0" class="data row3 col0">58.08</td>
+<td id="T_631bd_row3_col1" class="data row3 col1">25.00</td>
+<td id="T_631bd_row3_col2" class="data row3 col2">137.00</td>
+<td id="T_631bd_row3_col3" class="data row3 col3">9.55</td>
+<td id="T_631bd_row3_col4" class="data row3 col4">0.58</td>
+<td id="T_631bd_row3_col5" class="data row3 col5">85.60</td>
+</tr>
+<tr class="odd">
+<td id="T_631bd_level1_row4" class="row_heading level1 row4" data-quarto-table-cell-role="th">Cutthroat trout</td>
+<td id="T_631bd_row4_col0" class="data row4 col0">93.11</td>
+<td id="T_631bd_row4_col1" class="data row4 col1">27.00</td>
+<td id="T_631bd_row4_col2" class="data row4 col2">197.00</td>
+<td id="T_631bd_row4_col3" class="data row4 col3">11.76</td>
+<td id="T_631bd_row4_col4" class="data row4 col4">0.10</td>
+<td id="T_631bd_row4_col5" class="data row4 col5">77.78</td>
+</tr>
+<tr class="even">
+<td rowspan="2" id="T_631bd_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">MACKCC-U</td>
+<td id="T_631bd_level1_row5" class="row_heading level1 row5" data-quarto-table-cell-role="th">Coastal giant salamander</td>
+<td id="T_631bd_row5_col0" class="data row5 col0">57.79</td>
+<td id="T_631bd_row5_col1" class="data row5 col1">20.00</td>
+<td id="T_631bd_row5_col2" class="data row5 col2">154.00</td>
+<td id="T_631bd_row5_col3" class="data row5 col3">9.53</td>
+<td id="T_631bd_row5_col4" class="data row5 col4">0.42</td>
+<td id="T_631bd_row5_col5" class="data row5 col5">102.99</td>
+</tr>
+<tr class="odd">
+<td id="T_631bd_level1_row6" class="row_heading level1 row6" data-quarto-table-cell-role="th">Cutthroat trout</td>
+<td id="T_631bd_row6_col0" class="data row6 col0">84.36</td>
+<td id="T_631bd_row6_col1" class="data row6 col1">26.00</td>
+<td id="T_631bd_row6_col2" class="data row6 col2">192.00</td>
+<td id="T_631bd_row6_col3" class="data row6 col3">9.14</td>
+<td id="T_631bd_row6_col4" class="data row6 col4">0.10</td>
+<td id="T_631bd_row6_col5" class="data row6 col5">65.00</td>
+</tr>
+<tr class="even">
+<td rowspan="2" id="T_631bd_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">MACKOG-L</td>
+<td id="T_631bd_level1_row7" class="row_heading level1 row7" data-quarto-table-cell-role="th">Coastal giant salamander</td>
+<td id="T_631bd_row7_col0" class="data row7 col0">53.54</td>
+<td id="T_631bd_row7_col1" class="data row7 col1">20.00</td>
+<td id="T_631bd_row7_col2" class="data row7 col2">172.00</td>
+<td id="T_631bd_row7_col3" class="data row7 col3">8.56</td>
+<td id="T_631bd_row7_col4" class="data row7 col4">0.30</td>
+<td id="T_631bd_row7_col5" class="data row7 col5">134.59</td>
+</tr>
+<tr class="odd">
+<td id="T_631bd_level1_row8" class="row_heading level1 row8" data-quarto-table-cell-role="th">Cutthroat trout</td>
+<td id="T_631bd_row8_col0" class="data row8 col0">81.87</td>
+<td id="T_631bd_row8_col1" class="data row8 col1">25.00</td>
+<td id="T_631bd_row8_col2" class="data row8 col2">181.00</td>
+<td id="T_631bd_row8_col3" class="data row8 col3">8.50</td>
+<td id="T_631bd_row8_col4" class="data row8 col4">0.13</td>
+<td id="T_631bd_row8_col5" class="data row8 col5">63.00</td>
+</tr>
+<tr class="even">
+<td rowspan="3" id="T_631bd_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">MACKOG-M</td>
+<td id="T_631bd_level1_row9" class="row_heading level1 row9" data-quarto-table-cell-role="th">Cascade torrent salamander</td>
+<td id="T_631bd_row9_col0" class="data row9 col0">29.00</td>
+<td id="T_631bd_row9_col1" class="data row9 col1">28.00</td>
+<td id="T_631bd_row9_col2" class="data row9 col2">30.00</td>
+<td id="T_631bd_row9_col3" class="data row9 col3">0.73</td>
+<td id="T_631bd_row9_col4" class="data row9 col4">0.65</td>
+<td id="T_631bd_row9_col5" class="data row9 col5">0.80</td>
+</tr>
+<tr class="odd">
+<td id="T_631bd_level1_row10" class="row_heading level1 row10" data-quarto-table-cell-role="th">Coastal giant salamander</td>
+<td id="T_631bd_row10_col0" class="data row10 col0">54.02</td>
+<td id="T_631bd_row10_col1" class="data row10 col1">21.00</td>
+<td id="T_631bd_row10_col2" class="data row10 col2">155.00</td>
+<td id="T_631bd_row10_col3" class="data row10 col3">8.27</td>
+<td id="T_631bd_row10_col4" class="data row10 col4">0.30</td>
+<td id="T_631bd_row10_col5" class="data row10 col5">131.50</td>
+</tr>
+<tr class="even">
+<td id="T_631bd_level1_row11" class="row_heading level1 row11" data-quarto-table-cell-role="th">Cutthroat trout</td>
+<td id="T_631bd_row11_col0" class="data row11 col0">79.30</td>
+<td id="T_631bd_row11_col1" class="data row11 col1">23.00</td>
+<td id="T_631bd_row11_col2" class="data row11 col2">193.00</td>
+<td id="T_631bd_row11_col3" class="data row11 col3">7.86</td>
+<td id="T_631bd_row11_col4" class="data row11 col4">0.10</td>
+<td id="T_631bd_row11_col5" class="data row11 col5">101.00</td>
+</tr>
+<tr class="odd">
+<td rowspan="3" id="T_631bd_level0_row12" class="row_heading level0 row12" data-quarto-table-cell-role="th">MACKOG-U</td>
+<td id="T_631bd_level1_row12" class="row_heading level1 row12" data-quarto-table-cell-role="th">Cascade torrent salamander</td>
+<td id="T_631bd_row12_col0" class="data row12 col0">32.50</td>
+<td id="T_631bd_row12_col1" class="data row12 col1">26.00</td>
+<td id="T_631bd_row12_col2" class="data row12 col2">39.00</td>
+<td id="T_631bd_row12_col3" class="data row12 col3">0.85</td>
+<td id="T_631bd_row12_col4" class="data row12 col4">0.50</td>
+<td id="T_631bd_row12_col5" class="data row12 col5">1.20</td>
+</tr>
+<tr class="even">
+<td id="T_631bd_level1_row13" class="row_heading level1 row13" data-quarto-table-cell-role="th">Coastal giant salamander</td>
+<td id="T_631bd_row13_col0" class="data row13 col0">54.64</td>
+<td id="T_631bd_row13_col1" class="data row13 col1">21.00</td>
+<td id="T_631bd_row13_col2" class="data row13 col2">164.00</td>
+<td id="T_631bd_row13_col3" class="data row13 col3">8.20</td>
+<td id="T_631bd_row13_col4" class="data row13 col4">0.30</td>
+<td id="T_631bd_row13_col5" class="data row13 col5">134.00</td>
+</tr>
+<tr class="odd">
+<td id="T_631bd_level1_row14" class="row_heading level1 row14" data-quarto-table-cell-role="th">Cutthroat trout</td>
+<td id="T_631bd_row14_col0" class="data row14 col0">81.47</td>
+<td id="T_631bd_row14_col1" class="data row14 col1">25.00</td>
+<td id="T_631bd_row14_col2" class="data row14 col2">175.00</td>
+<td id="T_631bd_row14_col3" class="data row14 col3">8.29</td>
+<td id="T_631bd_row14_col4" class="data row14 col4">0.10</td>
+<td id="T_631bd_row14_col5" class="data row14 col5">104.00</td>
+</tr>
+</tbody>
 </table>
+
 
 </div>
 </div>
@@ -1605,7 +1578,7 @@ dtype: float64
 <h1>Visualizations</h1>
 <section id="scatter-plot" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="scatter-plot">Scatter Plot</h2>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-17-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-1" role="tab" aria-controls="tabset-17-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-17-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-17-2" role="tab" aria-controls="tabset-17-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-17-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-17-1-tab">
@@ -1623,7 +1596,7 @@ dtype: float64
 <div id="fig-trout_sal_size1" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
 <p><img src="index_files/figure-html/fig-trout_sal_size1-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;1: scatter plot length vs.&nbsp;weight visualized with ggplot</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">Figure&nbsp;1: scatter plot length vs.&nbsp;weight visualized with ggplot</figcaption>
 </figure>
 </div>
 </div>
@@ -1645,7 +1618,7 @@ dtype: float64
 <div id="fig-trout_sal_size2" class="quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="figure page-columns page-full">
 <p><img src="index_files/figure-html/fig-trout_sal_size2-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption margin-caption">Figure&nbsp;2: scatter plot of length vs.&nbsp;weight visualized with matplotlib</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">Figure&nbsp;2: scatter plot of length vs.&nbsp;weight visualized with matplotlib</figcaption>
 </figure>
 </div>
 </div>
@@ -1657,7 +1630,7 @@ dtype: float64
 <section id="histograms" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
 <p>These histograms show the distribution of coastal giant salamander lenths.</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-18-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-1" role="tab" aria-controls="tabset-18-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-18-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-18-2" role="tab" aria-controls="tabset-18-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-18-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-18-1-tab">
@@ -1696,7 +1669,7 @@ dtype: float64
 <section id="bar-plots" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="bar-plots">Bar Plots</h2>
 <p>These bar plots show the averge salamander weight based on site code.</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-19-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-1" role="tab" aria-controls="tabset-19-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-19-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-19-2" role="tab" aria-controls="tabset-19-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-19-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-19-1-tab">
@@ -1733,7 +1706,7 @@ dtype: float64
 <section id="line-plots" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="line-plots">Line Plots</h2>
 <p>These line plots show average salamander length over time.</p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-20-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-1" role="tab" aria-controls="tabset-20-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-20-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-20-2" role="tab" aria-controls="tabset-20-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-20-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-20-1-tab">
@@ -1777,7 +1750,7 @@ dtype: float64
 </div>
 <p>Looking at the data, we see that the <code>arc_weather</code> dataset begins on 1988-06-01 and ends on 2018-12-31. The <code>ntl_airtemp</code> dataset has a much longer period of record and begins on 1869-01-01 and ends on 2019-12-31. Also, the <code>ntl_airtemp</code> dataset has a column called <code>sampledate</code> that will have to be renamed to match <code>arc_weather's</code> <code>date</code> column so that both datasets have a common field that can be using for joins.</p>
 <p><strong>Types of Joins</strong> <img src="types_of_joins.jpeg" class="img-fluid" alt="types of joins"></p>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-21-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-21-1" role="tab" aria-controls="tabset-21-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-21-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-21-2" role="tab" aria-controls="tabset-21-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-21-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-21-1-tab">
@@ -1897,7 +1870,7 @@ dtype: float64
 </section>
 <section id="heading" class="level1 page-columns page-full">
 <h1>Heading</h1>
-<div class="panel-tabset page-columns page-full">
+<div class="tabset-margin-container"></div><div class="panel-tabset page-columns page-full">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-22-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-22-1" role="tab" aria-controls="tabset-22-1" aria-selected="true"><svg aria-label="R Project" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>R Project</title><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-22-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-22-2" role="tab" aria-controls="tabset-22-2" aria-selected="false"><svg aria-label="Python" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#5A5A5A;overflow:visible;position:relative;"><title>Python</title><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4 .1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8 .1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3 .1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"></path></svg> Python</a></li></ul>
 <div class="tab-content page-columns page-full">
 <div id="tabset-22-1" class="tab-pane active page-columns page-full" role="tabpanel" aria-labelledby="tabset-22-1-tab">
@@ -1923,14 +1896,14 @@ dtype: float64
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{rivers2022,
-  author = {Marie Rivers},
+  author = {Rivers, Marie},
   title = {Data {Wrangling} with {Python} and {R}},
   date = {2022-09-23},
   url = {https://marierivers.github.io/code_samples/data-wrangling-with-python-and-R/},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-rivers2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Marie Rivers. 2022. <span>“Data Wrangling with Python and R.”</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-rivers2022" class="csl-entry quarto-appendix-citeas" role="listitem">
+Rivers, Marie. 2022. <span>“Data Wrangling with Python and R.”</span>
 September 23, 2022. <a href="https://marierivers.github.io/code_samples/data-wrangling-with-python-and-R/">https://marierivers.github.io/code_samples/data-wrangling-with-python-and-R/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1960,9 +1933,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -2078,6 +2065,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

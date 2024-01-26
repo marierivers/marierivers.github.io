@@ -25,7 +25,7 @@ format:
   html:
     # theme: cosmo
     theme: 
-      - simple_theme.scss
+      - mtr_theme.scss
     css: styles.css
     toc: true
 

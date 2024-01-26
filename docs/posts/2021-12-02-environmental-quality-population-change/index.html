@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -59,13 +59,15 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
 <script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
@@ -82,34 +84,36 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Marie T. Rivers</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../code_samples.html">
+    <a class="nav-link" href="../../code_samples.html" rel="" target="">
  <span class="menu-text">Code Samples</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html">
+    <a class="nav-link" href="../../posts.html" rel="" target="">
  <span class="menu-text">Posts</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume/rivers_marie_resume.pdf">
+    <a class="nav-link" href="../../resume/rivers_marie_resume.pdf" rel="" target="">
  <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/marierivers"><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/marierivers" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -136,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Marie Rivers </p>
+               <p><a href="https://marierivers.github.io/">Marie Rivers</a> </p>
             </div>
     </div>
       
@@ -191,42 +195,39 @@ ul.task-list li input[type="checkbox"] {
 <p>The Environmental Quality Index (EQI), developed by the U.S. Environmental Protection Agency (EPA) provides a county level snapshop of environmental conditions throughout the country. EPA first released EQIs for the period 2000-2005 and updated these indexes for 2006-2010. This statistical evaluation focuses on the 2006-2010 EQI. The purpose of the EQI is to use (1) as an indicator of ambient conditions/exposure in environmental health and modeling and (2) as a covariate to adjust for ambient conditions in environmental models (EPA 2020). Previous studies have used the EQI to evaluate relationships between environmental quality and public health outcomes such as cancer incidence, asthma, obesity, and infant mortality.</p>
 <p>The EQI is developed from five domains each with identified environmental constructs as shown in Table 1. Each county has an overall environmental index and a domain specific index. Indexes were also stratified by rural-urban continuum codes (RUCCs) for counties classified as metropolitan urbanized, non-metro urbanized, less urbanized, and thinly populated.</p>
 <div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
-
-<table class=" lightable-paper table" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<table class="lightable-paper table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>EQI Environmental Domains and Constructs</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;font-weight: bold;"> Domain </th>
-   <th style="text-align:left;font-weight: bold;"> Constructs </th>
-  </tr>
- </thead>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Domain</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Constructs</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;font-weight: bold;border-right:1px solid;"> air </td>
-   <td style="text-align:left;"> criteria air pollutants and hazardous air pollutants </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;border-right:1px solid;"> water </td>
-   <td style="text-align:left;"> overall water quality, general water contamination, domestic use, atmospheric deposition, drought, chemical contamination, and drinking water quality </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;border-right:1px solid;"> land </td>
-   <td style="text-align:left;"> agriculture, pesticides, facilities, radon, and mining activity </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;border-right:1px solid;"> built </td>
-   <td style="text-align:left;"> roads, highway/road safety, commuting behavior, housing environment, walkability, and green space </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;border-right:1px solid;"> sociodemographic </td>
-   <td style="text-align:left;"> crime, socioeconomic, political character, and creative class representation </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; border-right: 1px solid;">air</td>
+<td style="text-align: left;">criteria air pollutants and hazardous air pollutants</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold; border-right: 1px solid;">water</td>
+<td style="text-align: left;">overall water quality, general water contamination, domestic use, atmospheric deposition, drought, chemical contamination, and drinking water quality</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; border-right: 1px solid;">land</td>
+<td style="text-align: left;">agriculture, pesticides, facilities, radon, and mining activity</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold; border-right: 1px solid;">built</td>
+<td style="text-align: left;">roads, highway/road safety, commuting behavior, housing environment, walkability, and green space</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; border-right: 1px solid;">sociodemographic</td>
+<td style="text-align: left;">crime, socioeconomic, political character, and creative class representation</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
@@ -251,50 +252,50 @@ ul.task-list li input[type="checkbox"] {
 <p>Kalawao County, Hawaii had the lowest EQI value (highest environmental quality) and greatest decrease in population (-17.4%). Falls Church, Virginia had the highest EQI (lowest environmental quality) and a population change of 15.4% which falls is the 99th percentile. The summary statistics in Table 2 suggest that population growth is correlated with worse environmental characteristics.</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<table class=" lightable-paper table" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<table class="lightable-paper table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>EQI summary statistics for counties based on population change between 2006 and 2010</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;font-weight: bold;"> Population Change </th>
-   <th style="text-align:right;font-weight: bold;"> Min </th>
-   <th style="text-align:right;font-weight: bold;"> Max </th>
-   <th style="text-align:right;font-weight: bold;"> Mean </th>
-   <th style="text-align:right;font-weight: bold;"> Standard Deviation </th>
-   <th style="text-align:right;font-weight: bold;"> Variance </th>
-   <th style="text-align:right;font-weight: bold;"> Number of Counties </th>
-  </tr>
- </thead>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Population Change</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Min</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Max</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Mean</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Standard Deviation</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Variance</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold;">Number of Counties</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> negative </td>
-   <td style="text-align:right;"> -5.88 </td>
-   <td style="text-align:right;"> 2.59 </td>
-   <td style="text-align:right;"> -0.24 </td>
-   <td style="text-align:right;"> 0.93 </td>
-   <td style="text-align:right;"> 0.87 </td>
-   <td style="text-align:right;"> 1088 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> positive </td>
-   <td style="text-align:right;"> -5.05 </td>
-   <td style="text-align:right;"> 2.85 </td>
-   <td style="text-align:right;"> 0.13 </td>
-   <td style="text-align:right;"> 1.01 </td>
-   <td style="text-align:right;"> 1.02 </td>
-   <td style="text-align:right;"> 2052 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;font-weight: bold;background-color: #e5e5e5 !important;"> all counties </td>
-   <td style="text-align:right;font-weight: bold;background-color: #e5e5e5 !important;"> -5.88 </td>
-   <td style="text-align:right;font-weight: bold;background-color: #e5e5e5 !important;"> 2.85 </td>
-   <td style="text-align:right;font-weight: bold;background-color: #e5e5e5 !important;"> 0.00 </td>
-   <td style="text-align:right;font-weight: bold;background-color: #e5e5e5 !important;"> 1.00 </td>
-   <td style="text-align:right;font-weight: bold;background-color: #e5e5e5 !important;"> 1.00 </td>
-   <td style="text-align:right;font-weight: bold;background-color: #e5e5e5 !important;"> 3140 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">negative</td>
+<td style="text-align: right;">-5.88</td>
+<td style="text-align: right;">2.59</td>
+<td style="text-align: right;">-0.24</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">1088</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">positive</td>
+<td style="text-align: right;">-5.05</td>
+<td style="text-align: right;">2.85</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">1.02</td>
+<td style="text-align: right;">2052</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; font-weight: bold; background-color: #e5e5e5 !important;">all counties</td>
+<td style="text-align: right; font-weight: bold; background-color: #e5e5e5 !important;">-5.88</td>
+<td style="text-align: right; font-weight: bold; background-color: #e5e5e5 !important;">2.85</td>
+<td style="text-align: right; font-weight: bold; background-color: #e5e5e5 !important;">0.00</td>
+<td style="text-align: right; font-weight: bold; background-color: #e5e5e5 !important;">1.00</td>
+<td style="text-align: right; font-weight: bold; background-color: #e5e5e5 !important;">1.00</td>
+<td style="text-align: right; font-weight: bold; background-color: #e5e5e5 !important;">3140</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
@@ -310,25 +311,13 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="math display">\[H_{0}: \mu_{posPopChange} - \mu_{negPopChange} = 0\]</span></p>
 <p><strong>alternative hypothesis:</strong> There is a difference in mean EQI for counties with positive and negative population change.</p>
 <p><span class="math display">\[H_{A}: \mu_{posPopChange} - \mu_{negPopChange} \neq 0\]</span></p>
-<div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
 <p><span class="math display">\[\text{point estimate} = \mu_{posPopChange} - \mu_{negPopChange} =0.131 - -0.245 = 0.376\]</span></p>
 <p>The standard error for the difference in means is:</p>
 <p><span class="math display">\[SE = \sqrt{\frac{s_1^2}{n_1} + \frac{s^2_2}{n_2}} = \sqrt{\frac{1.009^2}{2052} + \frac{0.933^2}{1088}} = 0.036\]</span></p>
 <p>The z-score for hypothesis testing is:</p>
 <p><span class="math display">\[z = \frac{\text{point estimate - null}}{SE} = \frac{0.376 - 0}{0.036} = 10.443\]</span></p>
-<div class="cell">
-
-</div>
 <p>The p-value, the probability of getting a point estimate at least as extreme as calculated if the null hypothesis were true, is:</p>
 <p><span class="math display">\[p\text {-value }=\operatorname{Pr}(Z&lt;-|z| \text { or } Z&gt;|z|)=2 * \operatorname{Pr}(Z&gt;|z|) = 1.5809578\times 10^{-25}\]</span></p>
-<div class="cell">
-
-</div>
 <p>Since the p-value is &lt; 0.001 we reject the null that there is no difference in EQI for counties with positive population change versus negative population change. There is a statistically significant difference (at the 0.1% significance level) in EQI across the two population change groups. The 95% confidence interval ranges from 0.31 to 0.45. This means that there is a 95% chance that this interval includes the true difference in mean EQI between counties with positive and negative percent population change.</p>
 </section>
 <section id="linear-regression" class="level3">
@@ -348,18 +337,12 @@ ul.task-list li input[type="checkbox"] {
 <p>The point estimate, <span class="math inline">\(\beta_1\)</span> = 0.991 and the standard error, SE = 0.077.</p>
 <p><span class="math display">\[z = \frac{\text{point estimate - null}}{SE} = \frac{{0.991 - 0}}{0.077} = 12.817\]</span></p>
 <p><span class="math display">\[p\text {-value }=\operatorname{Pr}(Z&lt;-|z| \text { or } Z&gt;|z|)=2 * \operatorname{Pr}(Z&gt;|z|) = 1.0849376\times 10^{-36}\]</span></p>
-<div class="cell">
-
-</div>
 <p>Since the p-value for the slope coefficient was &lt; 0.001, we reject the null hypothesis that EQI has no influence on population change at the 0.1% level. There is a statistically significant relationship between EQI and percent population change and the coefficient is significantly different from zero. Based on value of <span class="math inline">\(\beta_1\)</span>, for each one unit increase in EQI, the percent population change increases by 0.991. The 95% confidence interval for the slope coefficient ranges from 0.84 to 1.143. This means that there is a 95% chance that this interval includes the true county level rate of change for percent population change for each one unit change in EQI.</p>
 </section>
 <section id="domain-specific-linear-models" class="level3">
 <h3 class="anchored" data-anchor-id="domain-specific-linear-models">Domain Specific Linear Models</h3>
 <p><span class="math display">\[\text{percent population change}_i=\beta_{0,domain}+\beta_{1,domain} \cdot EQI_{i,domain} + \varepsilon_i\]</span> ::: {.cell}</p>
 <p>:::</p>
-<div class="cell">
-
-</div>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="768"></p>
@@ -368,167 +351,167 @@ ul.task-list li input[type="checkbox"] {
 <p>While a partly manual method was used above, statistical functions in R were used to test for the significance of domain models. Table 3 presents coefficients for each domain specific model. The numbers in [brackets] are the 95% confidence intervals for each estimated coefficient.</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<table class=" lightable-paper table" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<table class="lightable-paper table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Summary of EQI Domain Slope Coefficients</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;font-weight: bold;"> coefficient </th>
-   <th style="text-align:left;font-weight: bold;"> overall EQI </th>
-   <th style="text-align:left;font-weight: bold;"> air model </th>
-   <th style="text-align:left;font-weight: bold;"> water model </th>
-   <th style="text-align:left;font-weight: bold;"> land model </th>
-   <th style="text-align:left;font-weight: bold;"> built model </th>
-   <th style="text-align:left;font-weight: bold;"> sociodem model </th>
-  </tr>
- </thead>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">coefficient</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">overall EQI</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">air model</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">water model</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">land model</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">built model</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">sociodem model</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;font-weight: bold;font-weight: bold;"> Intercept </td>
-   <td style="text-align:left;font-weight: bold;"> 1.868 *** </td>
-   <td style="text-align:left;font-weight: bold;"> 1.869 *** </td>
-   <td style="text-align:left;font-weight: bold;"> 1.868 *** </td>
-   <td style="text-align:left;font-weight: bold;"> 1.868 *** </td>
-   <td style="text-align:left;font-weight: bold;"> 1.867 *** </td>
-   <td style="text-align:left;font-weight: bold;"> 1.868 *** </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;"> [1.716, 2.019] </td>
-   <td style="text-align:left;"> [1.717, 2.020] </td>
-   <td style="text-align:left;"> [1.714, 2.023] </td>
-   <td style="text-align:left;"> [1.713, 2.024] </td>
-   <td style="text-align:left;"> [1.713, 2.021] </td>
-   <td style="text-align:left;"> [1.718, 2.019] </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;font-weight: bold;"> EQI </td>
-   <td style="text-align:left;font-weight: bold;"> 0.991 *** </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;"> [0.840, 1.143] </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;font-weight: bold;"> air EQI </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;"> 0.998 *** </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> [0.847, 1.150] </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;font-weight: bold;"> water EQI </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;"> 0.485 *** </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> [0.331, 0.640] </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;font-weight: bold;"> land EQI </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;"> -0.314 *** </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> [-0.469, -0.158] </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;font-weight: bold;"> built EQI </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;"> 0.635 *** </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> [0.481, 0.790] </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;font-weight: bold;"> sociodem EQI </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;font-weight: bold;"> 1.068 *** </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> [0.917, 1.219] </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> n </td>
-   <td style="text-align:left;"> 3140 </td>
-   <td style="text-align:left;"> 3140 </td>
-   <td style="text-align:left;"> 3140 </td>
-   <td style="text-align:left;"> 3140 </td>
-   <td style="text-align:left;"> 3140 </td>
-   <td style="text-align:left;"> 3140 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;"> R2 </td>
-   <td style="text-align:left;"> 0.050 </td>
-   <td style="text-align:left;"> 0.051 </td>
-   <td style="text-align:left;"> 0.012 </td>
-   <td style="text-align:left;"> 0.005 </td>
-   <td style="text-align:left;"> 0.020 </td>
-   <td style="text-align:left;"> 0.058 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; font-weight: bold;">Intercept</td>
+<td style="text-align: left; font-weight: bold;">1.868 ***</td>
+<td style="text-align: left; font-weight: bold;">1.869 ***</td>
+<td style="text-align: left; font-weight: bold;">1.868 ***</td>
+<td style="text-align: left; font-weight: bold;">1.868 ***</td>
+<td style="text-align: left; font-weight: bold;">1.867 ***</td>
+<td style="text-align: left; font-weight: bold;">1.868 ***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left;">[1.716, 2.019]</td>
+<td style="text-align: left;">[1.717, 2.020]</td>
+<td style="text-align: left;">[1.714, 2.023]</td>
+<td style="text-align: left;">[1.713, 2.024]</td>
+<td style="text-align: left;">[1.713, 2.021]</td>
+<td style="text-align: left;">[1.718, 2.019]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; font-weight: bold;">EQI</td>
+<td style="text-align: left; font-weight: bold;">0.991 ***</td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left;">[0.840, 1.143]</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; font-weight: bold;">air EQI</td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;">0.998 ***</td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">[0.847, 1.150]</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; font-weight: bold;">water EQI</td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;">0.485 ***</td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">[0.331, 0.640]</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; font-weight: bold;">land EQI</td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;">-0.314 ***</td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">[-0.469, -0.158]</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; font-weight: bold;">built EQI</td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;">0.635 ***</td>
+<td style="text-align: left; font-weight: bold;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">[0.481, 0.790]</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold; font-weight: bold;">sociodem EQI</td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left; font-weight: bold;">1.068 ***</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">[0.917, 1.219]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">n</td>
+<td style="text-align: left;">3140</td>
+<td style="text-align: left;">3140</td>
+<td style="text-align: left;">3140</td>
+<td style="text-align: left;">3140</td>
+<td style="text-align: left;">3140</td>
+<td style="text-align: left;">3140</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">R2</td>
+<td style="text-align: left;">0.050</td>
+<td style="text-align: left;">0.051</td>
+<td style="text-align: left;">0.012</td>
+<td style="text-align: left;">0.005</td>
+<td style="text-align: left;">0.020</td>
+<td style="text-align: left;">0.058</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
@@ -559,15 +542,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{rivers2021,
-  author = {Marie Rivers},
+  author = {Rivers, Marie},
   title = {Does {Environmental} {Quality} {Influence} {Where} {People}
     {Live?}},
   date = {2021-12-02},
   url = {https://marierivers.github.io/posts/2021-12-02-environmental-quality-population-change/},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-rivers2021" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Marie Rivers. 2021. <span>“Does Environmental Quality Influence Where
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-rivers2021" class="csl-entry quarto-appendix-citeas" role="listitem">
+Rivers, Marie. 2021. <span>“Does Environmental Quality Influence Where
 People Live?”</span> December 2, 2021. <a href="https://marierivers.github.io/posts/2021-12-02-environmental-quality-population-change/">https://marierivers.github.io/posts/2021-12-02-environmental-quality-population-change/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -597,9 +580,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -664,6 +661,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
