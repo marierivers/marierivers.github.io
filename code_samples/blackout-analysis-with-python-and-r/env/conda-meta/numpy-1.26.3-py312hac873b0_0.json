@@ -1,0 +1,42 @@
+{
+  "build": "py312hac873b0_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-64",
+  "constrains": [],
+  "depends": [
+    "blas 1.0 mkl",
+    "libcxx >=14.0.6",
+    "mkl >=2023.1.0,<2024.0a0",
+    "mkl-service >=2.3.0,<3.0a0",
+    "mkl_fft",
+    "mkl_random",
+    "numpy-base 1.26.3 py312h6f81483_0",
+    "python >=3.12,<3.13.0a0"
+  ],
+  "extracted_package_dir": "/Users/marierivers/opt/anaconda3/pkgs/numpy-1.26.3-py312hac873b0_0",
+  "features": "",
+  "files": [],
+  "fn": "numpy-1.26.3-py312hac873b0_0.conda",
+  "legacy_bz2_md5": "0f12dbe3bcd6ad8dc3b92ef247482a49",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "link": {
+    "source": "/Users/marierivers/opt/anaconda3/pkgs/numpy-1.26.3-py312hac873b0_0",
+    "type": 1
+  },
+  "md5": "d2310a3607112d4b042330d0140434ef",
+  "name": "numpy",
+  "package_tarball_full_path": "/Users/marierivers/opt/anaconda3/pkgs/numpy-1.26.3-py312hac873b0_0.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "e7f2b1539aa280e0222128a026cc29c74af3b8bdb075eb09109da4d97e4c773f",
+  "size": 11563,
+  "subdir": "osx-64",
+  "timestamp": 1704314699056,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/numpy-1.26.3-py312hac873b0_0.conda",
+  "version": "1.26.3"
+}

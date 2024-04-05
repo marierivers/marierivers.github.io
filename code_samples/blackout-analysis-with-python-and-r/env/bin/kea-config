@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+usage()
+{
+    cat <<EOF
+Usage: kea-config [OPTIONS]
+Options:
+     [--prefix]
+     [--version]
+     [--libs]
+     [--cflags]
+     [--ldflags]
+     [--includes]
+     [--hdfincludes]
+     [--hdfcflags]
+     [--hdflibs]
+EOF
+    exit $1
+}
+if test $# -eq 0; then
+  usage 1 1>&2
+fi
+while test $# -gt 0; do
+case "$1" in
+    -*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+    *) optarg= ;;
+esac
+case $1 in
+    --prefix)
+    echo -n "/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env "
+     ;;
+	--version)
+    echo -n "1.5.0 "
+     ;;
+    --cflags)
+    echo -n "-I/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/include "
+      ;;
+    --libs)
+      echo -n "-L/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/lib -lkea "
+      ;;
+    --ldflags)
+      echo -n "/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/lib "
+      ;;
+    --includes)
+      echo -n "/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/include "
+      ;;
+	--hdfincludes)
+      echo -n " /Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/include "
+      ;;
+	--hdfcflags)
+      echo -n " -I/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/include "
+      ;;
+	--hdflibs)
+      echo -n " -L/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/lib -L/opt/MacOSX10.10.sdk/usr/lib -lhdf5_cpp -lhdf5 -lcrypto -lcurl -lpthread -lz -ldl -lm "
+      ;;
+  esac
+  shift
+done
+echo

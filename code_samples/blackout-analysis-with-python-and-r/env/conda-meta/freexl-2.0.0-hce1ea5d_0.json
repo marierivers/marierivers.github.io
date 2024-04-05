@@ -1,0 +1,81 @@
+{
+  "build": "hce1ea5d_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-64",
+  "constrains": [],
+  "depends": [
+    "expat >=2.5.0,<3.0a0",
+    "libiconv >=1.16,<2.0a0",
+    "minizip >=4.0.3,<5.0a0"
+  ],
+  "extracted_package_dir": "/Users/marierivers/opt/anaconda3/pkgs/freexl-2.0.0-hce1ea5d_0",
+  "features": "",
+  "files": [
+    "include/freexl.h",
+    "lib/libfreexl.1.dylib",
+    "lib/libfreexl.a",
+    "lib/libfreexl.dylib",
+    "lib/pkgconfig/freexl.pc"
+  ],
+  "fn": "freexl-2.0.0-hce1ea5d_0.conda",
+  "legacy_bz2_md5": "d7ef6a25e5a84f2e53545815074dce21",
+  "legacy_bz2_size": 62266,
+  "license": "MPL-1.1 OR GPL-2.0 OR LGPL-2.1",
+  "license_family": "OTHER",
+  "link": {
+    "source": "/Users/marierivers/opt/anaconda3/pkgs/freexl-2.0.0-hce1ea5d_0",
+    "type": 1
+  },
+  "md5": "bebe98118a7ec666c72ebcb745350413",
+  "name": "freexl",
+  "package_tarball_full_path": "/Users/marierivers/opt/anaconda3/pkgs/freexl-2.0.0-hce1ea5d_0.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "include/freexl.h",
+        "path_type": "hardlink",
+        "sha256": "410c8bbe03a8801bcbec25f48387312efa418ac0dbafcd54c501f2c4077e2d26",
+        "sha256_in_prefix": "410c8bbe03a8801bcbec25f48387312efa418ac0dbafcd54c501f2c4077e2d26",
+        "size_in_bytes": 29425
+      },
+      {
+        "_path": "lib/libfreexl.1.dylib",
+        "path_type": "hardlink",
+        "sha256": "d6230c4abb3e76f41464c8e988e2bf2510ec7e94fe4a280807b1797015403726",
+        "sha256_in_prefix": "d6230c4abb3e76f41464c8e988e2bf2510ec7e94fe4a280807b1797015403726",
+        "size_in_bytes": 66796
+      },
+      {
+        "_path": "lib/libfreexl.a",
+        "path_type": "hardlink",
+        "sha256": "80e1608df6e46ca7850fbb2f98b9a6ec97b26afdaa4bbdfca8c6314bde7f9d36",
+        "sha256_in_prefix": "80e1608df6e46ca7850fbb2f98b9a6ec97b26afdaa4bbdfca8c6314bde7f9d36",
+        "size_in_bytes": 66664
+      },
+      {
+        "_path": "lib/libfreexl.dylib",
+        "path_type": "softlink",
+        "sha256": "d6230c4abb3e76f41464c8e988e2bf2510ec7e94fe4a280807b1797015403726",
+        "size_in_bytes": 66796
+      },
+      {
+        "_path": "lib/pkgconfig/freexl.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_8e7nsi03bq/croot/freexl_1704741978007/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho",
+        "sha256": "be073b10ac22885cd00749bb5cf618016fc71070c8aa3966529e51ffd8265db3",
+        "sha256_in_prefix": "d51d14965aa81110ac25bd5c9f8faa74592a1ebd0e09305d9d23b12b7e605e0a",
+        "size_in_bytes": 538
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "656698bf7ea57d02f34799b49a717fb2ad169e35b6e634813b9716ce57439a0c",
+  "size": 54132,
+  "subdir": "osx-64",
+  "timestamp": 1704742027454,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/freexl-2.0.0-hce1ea5d_0.conda",
+  "version": "2.0.0"
+}

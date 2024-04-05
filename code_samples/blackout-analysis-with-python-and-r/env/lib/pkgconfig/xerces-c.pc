@@ -1,0 +1,11 @@
+prefix=/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Xerces-C++
+Description: Validating XML parser library for C++
+Version: 3.2.4
+Libs: -L${libdir} -lxerces-c
+Libs.private: -L/Users/builder/miniconda3/envs/prefect/lib -lcurl
+Cflags: -I${includedir}

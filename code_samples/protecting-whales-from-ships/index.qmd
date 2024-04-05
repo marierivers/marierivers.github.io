@@ -5,7 +5,7 @@ author:
   - name: Marie Rivers
     url: https://marierivers.github.io/
 # date: 2022-04-03
-categories: [Python, geopandas, statial analysis]
+categories: [Python, geopandas, geospatial analysis]
 citation: 
   url: https://marierivers.github.io/code_samples/protecting-whales-from-ships/ 
 image: whale_preview.png
@@ -62,7 +62,9 @@ input_folder = r"data/dominica"
 fp = os.path.join(input_folder, "dma_admn_adm0_py_s1_dominode_v2.shp")
 ```
 
-    data/dominica/dma_admn_adm0_py_s1_dominode_v2.shp
+```         
+data/dominica/dma_admn_adm0_py_s1_dominode_v2.shp
+```
 
 ```{python}
 #| column: page-right

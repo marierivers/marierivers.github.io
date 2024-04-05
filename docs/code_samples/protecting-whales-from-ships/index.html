@@ -1189,7 +1189,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - name: Marie Rivers</span></span>
 <span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="co">    url: https://marierivers.github.io/</span></span>
 <span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="co"># date: 2022-04-03</span></span>
-<span id="cb99-8"><a href="#cb99-8" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [Python, geopandas, statial analysis]</span></span>
+<span id="cb99-8"><a href="#cb99-8" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [Python, geopandas, geospatial analysis]</span></span>
 <span id="cb99-9"><a href="#cb99-9" aria-hidden="true" tabindex="-1"></a><span class="an">citation:</span><span class="co"> </span></span>
 <span id="cb99-10"><a href="#cb99-10" aria-hidden="true" tabindex="-1"></a><span class="co">  url: https://marierivers.github.io/code_samples/protecting-whales-from-ships/ </span></span>
 <span id="cb99-11"><a href="#cb99-11" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> whale_preview.png</span></span>
@@ -1246,455 +1246,457 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb99-68"><a href="#cb99-68" aria-hidden="true" tabindex="-1"></a>fp <span class="op">=</span> os.path.join(input_folder, <span class="st">"dma_admn_adm0_py_s1_dominode_v2.shp"</span>)</span>
 <span id="cb99-69"><a href="#cb99-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-70"><a href="#cb99-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-71"><a href="#cb99-71" aria-hidden="true" tabindex="-1"></a><span class="in">    data/dominica/dma_admn_adm0_py_s1_dominode_v2.shp</span></span>
-<span id="cb99-72"><a href="#cb99-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-75"><a href="#cb99-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-76"><a href="#cb99-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-77"><a href="#cb99-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file using gpd.read_file()</span></span>
-<span id="cb99-78"><a href="#cb99-78" aria-hidden="true" tabindex="-1"></a>dominica <span class="op">=</span> gpd.read_file(fp)</span>
-<span id="cb99-79"><a href="#cb99-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-80"><a href="#cb99-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-83"><a href="#cb99-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-84"><a href="#cb99-84" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-85"><a href="#cb99-85" aria-hidden="true" tabindex="-1"></a><span class="co"># check the object type</span></span>
-<span id="cb99-86"><a href="#cb99-86" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(dominica)</span>
-<span id="cb99-87"><a href="#cb99-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-88"><a href="#cb99-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-91"><a href="#cb99-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-92"><a href="#cb99-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-93"><a href="#cb99-93" aria-hidden="true" tabindex="-1"></a>dominica.head()</span>
-<span id="cb99-94"><a href="#cb99-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-95"><a href="#cb99-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-96"><a href="#cb99-96" aria-hidden="true" tabindex="-1"></a>From the <span class="in">`head()`</span> function, we can see that the geodataframe consists of one row - a polygon representing the outline of Dominica. Next, check the coordinate reference system and project the Dominica geodataframe to an appropriate projection for the study area.</span>
+<span id="cb99-71"><a href="#cb99-71" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb99-72"><a href="#cb99-72" aria-hidden="true" tabindex="-1"></a><span class="in">data/dominica/dma_admn_adm0_py_s1_dominode_v2.shp</span></span>
+<span id="cb99-73"><a href="#cb99-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-74"><a href="#cb99-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-77"><a href="#cb99-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-78"><a href="#cb99-78" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-79"><a href="#cb99-79" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file using gpd.read_file()</span></span>
+<span id="cb99-80"><a href="#cb99-80" aria-hidden="true" tabindex="-1"></a>dominica <span class="op">=</span> gpd.read_file(fp)</span>
+<span id="cb99-81"><a href="#cb99-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-82"><a href="#cb99-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-85"><a href="#cb99-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-86"><a href="#cb99-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-87"><a href="#cb99-87" aria-hidden="true" tabindex="-1"></a><span class="co"># check the object type</span></span>
+<span id="cb99-88"><a href="#cb99-88" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(dominica)</span>
+<span id="cb99-89"><a href="#cb99-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-90"><a href="#cb99-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-93"><a href="#cb99-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-94"><a href="#cb99-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-95"><a href="#cb99-95" aria-hidden="true" tabindex="-1"></a>dominica.head()</span>
+<span id="cb99-96"><a href="#cb99-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-97"><a href="#cb99-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-100"><a href="#cb99-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-101"><a href="#cb99-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-102"><a href="#cb99-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-103"><a href="#cb99-103" aria-hidden="true" tabindex="-1"></a>dominica.crs</span>
-<span id="cb99-104"><a href="#cb99-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-105"><a href="#cb99-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-108"><a href="#cb99-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-109"><a href="#cb99-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-110"><a href="#cb99-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-111"><a href="#cb99-111" aria-hidden="true" tabindex="-1"></a><span class="co"># change the projection to Dominica 1945 / British West Indies Grid (metric units)</span></span>
-<span id="cb99-112"><a href="#cb99-112" aria-hidden="true" tabindex="-1"></a>proj_area_crs <span class="op">=</span> <span class="dv">2002</span> <span class="co"># project area coordinate system EPSG code</span></span>
-<span id="cb99-113"><a href="#cb99-113" aria-hidden="true" tabindex="-1"></a>dominica <span class="op">=</span> dominica.to_crs(epsg<span class="op">=</span>proj_area_crs)</span>
-<span id="cb99-114"><a href="#cb99-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-115"><a href="#cb99-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-118"><a href="#cb99-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-119"><a href="#cb99-119" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-120"><a href="#cb99-120" aria-hidden="true" tabindex="-1"></a><span class="co"># check the coordinate reference system again to make sure the conversion worked</span></span>
-<span id="cb99-121"><a href="#cb99-121" aria-hidden="true" tabindex="-1"></a>dominica.crs</span>
-<span id="cb99-122"><a href="#cb99-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-123"><a href="#cb99-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-124"><a href="#cb99-124" aria-hidden="true" tabindex="-1"></a>Now that we have the correct project, plot the Dominica outline against a basemap.</span>
+<span id="cb99-98"><a href="#cb99-98" aria-hidden="true" tabindex="-1"></a>From the <span class="in">`head()`</span> function, we can see that the geodataframe consists of one row - a polygon representing the outline of Dominica. Next, check the coordinate reference system and project the Dominica geodataframe to an appropriate projection for the study area.</span>
+<span id="cb99-99"><a href="#cb99-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-102"><a href="#cb99-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-103"><a href="#cb99-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-104"><a href="#cb99-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-105"><a href="#cb99-105" aria-hidden="true" tabindex="-1"></a>dominica.crs</span>
+<span id="cb99-106"><a href="#cb99-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-107"><a href="#cb99-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-110"><a href="#cb99-110" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-111"><a href="#cb99-111" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-112"><a href="#cb99-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-113"><a href="#cb99-113" aria-hidden="true" tabindex="-1"></a><span class="co"># change the projection to Dominica 1945 / British West Indies Grid (metric units)</span></span>
+<span id="cb99-114"><a href="#cb99-114" aria-hidden="true" tabindex="-1"></a>proj_area_crs <span class="op">=</span> <span class="dv">2002</span> <span class="co"># project area coordinate system EPSG code</span></span>
+<span id="cb99-115"><a href="#cb99-115" aria-hidden="true" tabindex="-1"></a>dominica <span class="op">=</span> dominica.to_crs(epsg<span class="op">=</span>proj_area_crs)</span>
+<span id="cb99-116"><a href="#cb99-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-117"><a href="#cb99-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-120"><a href="#cb99-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-121"><a href="#cb99-121" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-122"><a href="#cb99-122" aria-hidden="true" tabindex="-1"></a><span class="co"># check the coordinate reference system again to make sure the conversion worked</span></span>
+<span id="cb99-123"><a href="#cb99-123" aria-hidden="true" tabindex="-1"></a>dominica.crs</span>
+<span id="cb99-124"><a href="#cb99-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-125"><a href="#cb99-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-128"><a href="#cb99-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-129"><a href="#cb99-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-130"><a href="#cb99-130" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> dominica.plot(color<span class="op">=</span><span class="st">"none"</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">9</span>))</span>
-<span id="cb99-131"><a href="#cb99-131" aria-hidden="true" tabindex="-1"></a>ctx.add_basemap(ax, crs<span class="op">=</span>dominica.crs.to_string())</span>
-<span id="cb99-132"><a href="#cb99-132" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
-<span id="cb99-133"><a href="#cb99-133" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb99-134"><a href="#cb99-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-135"><a href="#cb99-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-136"><a href="#cb99-136" aria-hidden="true" tabindex="-1"></a><span class="fu"># Whale sighting data</span></span>
+<span id="cb99-126"><a href="#cb99-126" aria-hidden="true" tabindex="-1"></a>Now that we have the correct project, plot the Dominica outline against a basemap.</span>
+<span id="cb99-127"><a href="#cb99-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-130"><a href="#cb99-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-131"><a href="#cb99-131" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-132"><a href="#cb99-132" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> dominica.plot(color<span class="op">=</span><span class="st">"none"</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">9</span>))</span>
+<span id="cb99-133"><a href="#cb99-133" aria-hidden="true" tabindex="-1"></a>ctx.add_basemap(ax, crs<span class="op">=</span>dominica.crs.to_string())</span>
+<span id="cb99-134"><a href="#cb99-134" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb99-135"><a href="#cb99-135" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb99-136"><a href="#cb99-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-137"><a href="#cb99-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-138"><a href="#cb99-138" aria-hidden="true" tabindex="-1"></a>Whale habitat was approximated by using data from \~5,000 whale sightings between 2008 and 2015.</span>
+<span id="cb99-138"><a href="#cb99-138" aria-hidden="true" tabindex="-1"></a><span class="fu"># Whale sighting data</span></span>
 <span id="cb99-139"><a href="#cb99-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-142"><a href="#cb99-142" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-143"><a href="#cb99-143" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-144"><a href="#cb99-144" aria-hidden="true" tabindex="-1"></a><span class="co"># Define path to folder</span></span>
-<span id="cb99-145"><a href="#cb99-145" aria-hidden="true" tabindex="-1"></a>input_folder2 <span class="op">=</span> <span class="vs">r"data"</span></span>
-<span id="cb99-146"><a href="#cb99-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-147"><a href="#cb99-147" aria-hidden="true" tabindex="-1"></a><span class="co"># Join folder path and filename </span></span>
-<span id="cb99-148"><a href="#cb99-148" aria-hidden="true" tabindex="-1"></a>fp2 <span class="op">=</span> os.path.join(input_folder2, <span class="st">"sightings2005_2018.csv"</span>)</span>
-<span id="cb99-149"><a href="#cb99-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-150"><a href="#cb99-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-153"><a href="#cb99-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-154"><a href="#cb99-154" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-155"><a href="#cb99-155" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file using gpd.read_file()</span></span>
-<span id="cb99-156"><a href="#cb99-156" aria-hidden="true" tabindex="-1"></a>whales <span class="op">=</span> gpd.read_file(fp2)</span>
-<span id="cb99-157"><a href="#cb99-157" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-158"><a href="#cb99-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-159"><a href="#cb99-159" aria-hidden="true" tabindex="-1"></a>Again, check the object type and view the first few rows. Use the columns from latitude and longitude to create a geometry column. Each whale sighting is represented as a point.</span>
+<span id="cb99-140"><a href="#cb99-140" aria-hidden="true" tabindex="-1"></a>Whale habitat was approximated by using data from \~5,000 whale sightings between 2008 and 2015.</span>
+<span id="cb99-141"><a href="#cb99-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-144"><a href="#cb99-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-145"><a href="#cb99-145" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-146"><a href="#cb99-146" aria-hidden="true" tabindex="-1"></a><span class="co"># Define path to folder</span></span>
+<span id="cb99-147"><a href="#cb99-147" aria-hidden="true" tabindex="-1"></a>input_folder2 <span class="op">=</span> <span class="vs">r"data"</span></span>
+<span id="cb99-148"><a href="#cb99-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-149"><a href="#cb99-149" aria-hidden="true" tabindex="-1"></a><span class="co"># Join folder path and filename </span></span>
+<span id="cb99-150"><a href="#cb99-150" aria-hidden="true" tabindex="-1"></a>fp2 <span class="op">=</span> os.path.join(input_folder2, <span class="st">"sightings2005_2018.csv"</span>)</span>
+<span id="cb99-151"><a href="#cb99-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-152"><a href="#cb99-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-155"><a href="#cb99-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-156"><a href="#cb99-156" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-157"><a href="#cb99-157" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file using gpd.read_file()</span></span>
+<span id="cb99-158"><a href="#cb99-158" aria-hidden="true" tabindex="-1"></a>whales <span class="op">=</span> gpd.read_file(fp2)</span>
+<span id="cb99-159"><a href="#cb99-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-160"><a href="#cb99-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-163"><a href="#cb99-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-164"><a href="#cb99-164" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-165"><a href="#cb99-165" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(whales)</span>
-<span id="cb99-166"><a href="#cb99-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-167"><a href="#cb99-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-170"><a href="#cb99-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-171"><a href="#cb99-171" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-172"><a href="#cb99-172" aria-hidden="true" tabindex="-1"></a>whales.head()</span>
-<span id="cb99-173"><a href="#cb99-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-174"><a href="#cb99-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-177"><a href="#cb99-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-178"><a href="#cb99-178" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-179"><a href="#cb99-179" aria-hidden="true" tabindex="-1"></a><span class="co"># bootstrap the geometries</span></span>
-<span id="cb99-180"><a href="#cb99-180" aria-hidden="true" tabindex="-1"></a>whale_points <span class="op">=</span> gpd.points_from_xy(whales[<span class="st">'Long'</span>], whales[<span class="st">'Lat'</span>])</span>
-<span id="cb99-181"><a href="#cb99-181" aria-hidden="true" tabindex="-1"></a>whale_gdf <span class="op">=</span> gpd.GeoDataFrame(whales, geometry<span class="op">=</span>whale_points)</span>
-<span id="cb99-182"><a href="#cb99-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-183"><a href="#cb99-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-186"><a href="#cb99-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-187"><a href="#cb99-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-188"><a href="#cb99-188" aria-hidden="true" tabindex="-1"></a>whale_gdf.head()</span>
-<span id="cb99-189"><a href="#cb99-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-190"><a href="#cb99-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-193"><a href="#cb99-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-194"><a href="#cb99-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-195"><a href="#cb99-195" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(whale_gdf)</span>
-<span id="cb99-196"><a href="#cb99-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-197"><a href="#cb99-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-198"><a href="#cb99-198" aria-hidden="true" tabindex="-1"></a>Set the coordinate reference system then project to the study area projection.</span>
+<span id="cb99-161"><a href="#cb99-161" aria-hidden="true" tabindex="-1"></a>Again, check the object type and view the first few rows. Use the columns from latitude and longitude to create a geometry column. Each whale sighting is represented as a point.</span>
+<span id="cb99-162"><a href="#cb99-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-165"><a href="#cb99-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-166"><a href="#cb99-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-167"><a href="#cb99-167" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(whales)</span>
+<span id="cb99-168"><a href="#cb99-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-169"><a href="#cb99-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-172"><a href="#cb99-172" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-173"><a href="#cb99-173" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-174"><a href="#cb99-174" aria-hidden="true" tabindex="-1"></a>whales.head()</span>
+<span id="cb99-175"><a href="#cb99-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-176"><a href="#cb99-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-179"><a href="#cb99-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-180"><a href="#cb99-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-181"><a href="#cb99-181" aria-hidden="true" tabindex="-1"></a><span class="co"># bootstrap the geometries</span></span>
+<span id="cb99-182"><a href="#cb99-182" aria-hidden="true" tabindex="-1"></a>whale_points <span class="op">=</span> gpd.points_from_xy(whales[<span class="st">'Long'</span>], whales[<span class="st">'Lat'</span>])</span>
+<span id="cb99-183"><a href="#cb99-183" aria-hidden="true" tabindex="-1"></a>whale_gdf <span class="op">=</span> gpd.GeoDataFrame(whales, geometry<span class="op">=</span>whale_points)</span>
+<span id="cb99-184"><a href="#cb99-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-185"><a href="#cb99-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-188"><a href="#cb99-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-189"><a href="#cb99-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-190"><a href="#cb99-190" aria-hidden="true" tabindex="-1"></a>whale_gdf.head()</span>
+<span id="cb99-191"><a href="#cb99-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-192"><a href="#cb99-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-195"><a href="#cb99-195" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-196"><a href="#cb99-196" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-197"><a href="#cb99-197" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(whale_gdf)</span>
+<span id="cb99-198"><a href="#cb99-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-199"><a href="#cb99-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-202"><a href="#cb99-202" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-203"><a href="#cb99-203" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-204"><a href="#cb99-204" aria-hidden="true" tabindex="-1"></a><span class="co"># project the dataset into an appropriate CRS</span></span>
-<span id="cb99-205"><a href="#cb99-205" aria-hidden="true" tabindex="-1"></a>whale_gdf <span class="op">=</span> whale_gdf.set_crs(epsg<span class="op">=</span><span class="dv">4326</span>)</span>
-<span id="cb99-206"><a href="#cb99-206" aria-hidden="true" tabindex="-1"></a>whale_gdf <span class="op">=</span> whale_gdf.to_crs(epsg<span class="op">=</span>proj_area_crs)</span>
-<span id="cb99-207"><a href="#cb99-207" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-208"><a href="#cb99-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-211"><a href="#cb99-211" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-212"><a href="#cb99-212" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-213"><a href="#cb99-213" aria-hidden="true" tabindex="-1"></a>whale_gdf.crs</span>
-<span id="cb99-214"><a href="#cb99-214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-215"><a href="#cb99-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-216"><a href="#cb99-216" aria-hidden="true" tabindex="-1"></a>This figure shows the distribution of whale sightings.</span>
+<span id="cb99-200"><a href="#cb99-200" aria-hidden="true" tabindex="-1"></a>Set the coordinate reference system then project to the study area projection.</span>
+<span id="cb99-201"><a href="#cb99-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-204"><a href="#cb99-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-205"><a href="#cb99-205" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-206"><a href="#cb99-206" aria-hidden="true" tabindex="-1"></a><span class="co"># project the dataset into an appropriate CRS</span></span>
+<span id="cb99-207"><a href="#cb99-207" aria-hidden="true" tabindex="-1"></a>whale_gdf <span class="op">=</span> whale_gdf.set_crs(epsg<span class="op">=</span><span class="dv">4326</span>)</span>
+<span id="cb99-208"><a href="#cb99-208" aria-hidden="true" tabindex="-1"></a>whale_gdf <span class="op">=</span> whale_gdf.to_crs(epsg<span class="op">=</span>proj_area_crs)</span>
+<span id="cb99-209"><a href="#cb99-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-210"><a href="#cb99-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-213"><a href="#cb99-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-214"><a href="#cb99-214" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-215"><a href="#cb99-215" aria-hidden="true" tabindex="-1"></a>whale_gdf.crs</span>
+<span id="cb99-216"><a href="#cb99-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-217"><a href="#cb99-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-220"><a href="#cb99-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-221"><a href="#cb99-221" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-222"><a href="#cb99-222" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">15</span>), dpi<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb99-223"><a href="#cb99-223" aria-hidden="true" tabindex="-1"></a>whale_gdf.plot(ax<span class="op">=</span>ax)</span>
-<span id="cb99-224"><a href="#cb99-224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-225"><a href="#cb99-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-226"><a href="#cb99-226" aria-hidden="true" tabindex="-1"></a><span class="fu"># Create grid</span></span>
+<span id="cb99-218"><a href="#cb99-218" aria-hidden="true" tabindex="-1"></a>This figure shows the distribution of whale sightings.</span>
+<span id="cb99-219"><a href="#cb99-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-222"><a href="#cb99-222" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-223"><a href="#cb99-223" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-224"><a href="#cb99-224" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">15</span>), dpi<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb99-225"><a href="#cb99-225" aria-hidden="true" tabindex="-1"></a>whale_gdf.plot(ax<span class="op">=</span>ax)</span>
+<span id="cb99-226"><a href="#cb99-226" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-227"><a href="#cb99-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-228"><a href="#cb99-228" aria-hidden="true" tabindex="-1"></a>Create grid cells over the project study area to help quantify the spatial density of whale sightings.</span>
+<span id="cb99-228"><a href="#cb99-228" aria-hidden="true" tabindex="-1"></a><span class="fu"># Create grid</span></span>
 <span id="cb99-229"><a href="#cb99-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-232"><a href="#cb99-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-233"><a href="#cb99-233" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-234"><a href="#cb99-234" aria-hidden="true" tabindex="-1"></a><span class="co"># this function returns a tuple of the minimum and maximum bounds of the whale sighting data</span></span>
-<span id="cb99-235"><a href="#cb99-235" aria-hidden="true" tabindex="-1"></a>xmin, ymin, xmax, ymax <span class="op">=</span> whale_gdf.total_bounds</span>
-<span id="cb99-236"><a href="#cb99-236" aria-hidden="true" tabindex="-1"></a>xmin, ymin, xmax, ymax</span>
-<span id="cb99-237"><a href="#cb99-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-238"><a href="#cb99-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-241"><a href="#cb99-241" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-242"><a href="#cb99-242" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-243"><a href="#cb99-243" aria-hidden="true" tabindex="-1"></a>cell_size <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb99-244"><a href="#cb99-244" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb99-245"><a href="#cb99-245" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="dv">2000</span></span>
-<span id="cb99-246"><a href="#cb99-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-247"><a href="#cb99-247" aria-hidden="true" tabindex="-1"></a>xs <span class="op">=</span> <span class="bu">list</span>(np.arange(xmin, xmax <span class="op">+</span> width, width)) </span>
-<span id="cb99-248"><a href="#cb99-248" aria-hidden="true" tabindex="-1"></a><span class="co"># return evenly spaced values starting at xmin, stopping (but not including) at xmax+width, by a step of width</span></span>
-<span id="cb99-249"><a href="#cb99-249" aria-hidden="true" tabindex="-1"></a>ys <span class="op">=</span> <span class="bu">list</span>(np.arange(ymin, ymax <span class="op">+</span> length, length))</span>
-<span id="cb99-250"><a href="#cb99-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-251"><a href="#cb99-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-254"><a href="#cb99-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-255"><a href="#cb99-255" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-256"><a href="#cb99-256" aria-hidden="true" tabindex="-1"></a><span class="co"># function to convert corner points into a cell polygon</span></span>
-<span id="cb99-257"><a href="#cb99-257" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_cell(x, y, cell_size):</span>
-<span id="cb99-258"><a href="#cb99-258" aria-hidden="true" tabindex="-1"></a>    ring <span class="op">=</span> [</span>
-<span id="cb99-259"><a href="#cb99-259" aria-hidden="true" tabindex="-1"></a>        (x, y),</span>
-<span id="cb99-260"><a href="#cb99-260" aria-hidden="true" tabindex="-1"></a>        (x <span class="op">+</span> cell_size, y),</span>
-<span id="cb99-261"><a href="#cb99-261" aria-hidden="true" tabindex="-1"></a>        (x <span class="op">+</span> cell_size, y <span class="op">+</span> cell_size),</span>
-<span id="cb99-262"><a href="#cb99-262" aria-hidden="true" tabindex="-1"></a>        (x, y <span class="op">+</span> cell_size)</span>
-<span id="cb99-263"><a href="#cb99-263" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb99-264"><a href="#cb99-264" aria-hidden="true" tabindex="-1"></a>    cell <span class="op">=</span> shapely.geometry.Polygon(ring)</span>
-<span id="cb99-265"><a href="#cb99-265" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cell</span>
-<span id="cb99-266"><a href="#cb99-266" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-267"><a href="#cb99-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-270"><a href="#cb99-270" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-271"><a href="#cb99-271" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-272"><a href="#cb99-272" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over each combination of x and y coordinates in two nested for loops</span></span>
-<span id="cb99-273"><a href="#cb99-273" aria-hidden="true" tabindex="-1"></a>cells <span class="op">=</span> []</span>
-<span id="cb99-274"><a href="#cb99-274" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> xs:</span>
-<span id="cb99-275"><a href="#cb99-275" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> y <span class="kw">in</span> ys:</span>
-<span id="cb99-276"><a href="#cb99-276" aria-hidden="true" tabindex="-1"></a>        cell <span class="op">=</span> make_cell(x, y, cell_size)</span>
-<span id="cb99-277"><a href="#cb99-277" aria-hidden="true" tabindex="-1"></a>        cells.append(cell)</span>
-<span id="cb99-278"><a href="#cb99-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-279"><a href="#cb99-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-280"><a href="#cb99-280" aria-hidden="true" tabindex="-1"></a>Convert the grid to a geodataframe with the correct projection.</span>
+<span id="cb99-230"><a href="#cb99-230" aria-hidden="true" tabindex="-1"></a>Create grid cells over the project study area to help quantify the spatial density of whale sightings.</span>
+<span id="cb99-231"><a href="#cb99-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-234"><a href="#cb99-234" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-235"><a href="#cb99-235" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-236"><a href="#cb99-236" aria-hidden="true" tabindex="-1"></a><span class="co"># this function returns a tuple of the minimum and maximum bounds of the whale sighting data</span></span>
+<span id="cb99-237"><a href="#cb99-237" aria-hidden="true" tabindex="-1"></a>xmin, ymin, xmax, ymax <span class="op">=</span> whale_gdf.total_bounds</span>
+<span id="cb99-238"><a href="#cb99-238" aria-hidden="true" tabindex="-1"></a>xmin, ymin, xmax, ymax</span>
+<span id="cb99-239"><a href="#cb99-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-240"><a href="#cb99-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-243"><a href="#cb99-243" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-244"><a href="#cb99-244" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-245"><a href="#cb99-245" aria-hidden="true" tabindex="-1"></a>cell_size <span class="op">=</span> <span class="dv">2000</span></span>
+<span id="cb99-246"><a href="#cb99-246" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="dv">2000</span></span>
+<span id="cb99-247"><a href="#cb99-247" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="dv">2000</span></span>
+<span id="cb99-248"><a href="#cb99-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-249"><a href="#cb99-249" aria-hidden="true" tabindex="-1"></a>xs <span class="op">=</span> <span class="bu">list</span>(np.arange(xmin, xmax <span class="op">+</span> width, width)) </span>
+<span id="cb99-250"><a href="#cb99-250" aria-hidden="true" tabindex="-1"></a><span class="co"># return evenly spaced values starting at xmin, stopping (but not including) at xmax+width, by a step of width</span></span>
+<span id="cb99-251"><a href="#cb99-251" aria-hidden="true" tabindex="-1"></a>ys <span class="op">=</span> <span class="bu">list</span>(np.arange(ymin, ymax <span class="op">+</span> length, length))</span>
+<span id="cb99-252"><a href="#cb99-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-253"><a href="#cb99-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-256"><a href="#cb99-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-257"><a href="#cb99-257" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-258"><a href="#cb99-258" aria-hidden="true" tabindex="-1"></a><span class="co"># function to convert corner points into a cell polygon</span></span>
+<span id="cb99-259"><a href="#cb99-259" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_cell(x, y, cell_size):</span>
+<span id="cb99-260"><a href="#cb99-260" aria-hidden="true" tabindex="-1"></a>    ring <span class="op">=</span> [</span>
+<span id="cb99-261"><a href="#cb99-261" aria-hidden="true" tabindex="-1"></a>        (x, y),</span>
+<span id="cb99-262"><a href="#cb99-262" aria-hidden="true" tabindex="-1"></a>        (x <span class="op">+</span> cell_size, y),</span>
+<span id="cb99-263"><a href="#cb99-263" aria-hidden="true" tabindex="-1"></a>        (x <span class="op">+</span> cell_size, y <span class="op">+</span> cell_size),</span>
+<span id="cb99-264"><a href="#cb99-264" aria-hidden="true" tabindex="-1"></a>        (x, y <span class="op">+</span> cell_size)</span>
+<span id="cb99-265"><a href="#cb99-265" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb99-266"><a href="#cb99-266" aria-hidden="true" tabindex="-1"></a>    cell <span class="op">=</span> shapely.geometry.Polygon(ring)</span>
+<span id="cb99-267"><a href="#cb99-267" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cell</span>
+<span id="cb99-268"><a href="#cb99-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-269"><a href="#cb99-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-272"><a href="#cb99-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-273"><a href="#cb99-273" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-274"><a href="#cb99-274" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over each combination of x and y coordinates in two nested for loops</span></span>
+<span id="cb99-275"><a href="#cb99-275" aria-hidden="true" tabindex="-1"></a>cells <span class="op">=</span> []</span>
+<span id="cb99-276"><a href="#cb99-276" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> xs:</span>
+<span id="cb99-277"><a href="#cb99-277" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> y <span class="kw">in</span> ys:</span>
+<span id="cb99-278"><a href="#cb99-278" aria-hidden="true" tabindex="-1"></a>        cell <span class="op">=</span> make_cell(x, y, cell_size)</span>
+<span id="cb99-279"><a href="#cb99-279" aria-hidden="true" tabindex="-1"></a>        cells.append(cell)</span>
+<span id="cb99-280"><a href="#cb99-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-281"><a href="#cb99-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-284"><a href="#cb99-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-285"><a href="#cb99-285" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-286"><a href="#cb99-286" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> gpd.GeoDataFrame({<span class="st">'geometry'</span>:cells}, crs<span class="op">=</span>proj_area_crs)</span>
-<span id="cb99-287"><a href="#cb99-287" aria-hidden="true" tabindex="-1"></a><span class="co">#grid.to_file("grid.shp")</span></span>
-<span id="cb99-288"><a href="#cb99-288" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-289"><a href="#cb99-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-292"><a href="#cb99-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-293"><a href="#cb99-293" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-294"><a href="#cb99-294" aria-hidden="true" tabindex="-1"></a>grid.head()</span>
-<span id="cb99-295"><a href="#cb99-295" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-296"><a href="#cb99-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-299"><a href="#cb99-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-300"><a href="#cb99-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-301"><a href="#cb99-301" aria-hidden="true" tabindex="-1"></a>grid.crs</span>
-<span id="cb99-302"><a href="#cb99-302" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-303"><a href="#cb99-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-306"><a href="#cb99-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-307"><a href="#cb99-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-308"><a href="#cb99-308" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>), dpi<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb99-309"><a href="#cb99-309" aria-hidden="true" tabindex="-1"></a>grid.boundary.plot(ax<span class="op">=</span>ax, linewidth <span class="op">=</span> <span class="fl">0.5</span>)</span>
-<span id="cb99-310"><a href="#cb99-310" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb99-311"><a href="#cb99-311" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-312"><a href="#cb99-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-313"><a href="#cb99-313" aria-hidden="true" tabindex="-1"></a>Now visualize the island of Dominica, whale sighting locations, and grid.</span>
+<span id="cb99-282"><a href="#cb99-282" aria-hidden="true" tabindex="-1"></a>Convert the grid to a geodataframe with the correct projection.</span>
+<span id="cb99-283"><a href="#cb99-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-286"><a href="#cb99-286" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-287"><a href="#cb99-287" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-288"><a href="#cb99-288" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> gpd.GeoDataFrame({<span class="st">'geometry'</span>:cells}, crs<span class="op">=</span>proj_area_crs)</span>
+<span id="cb99-289"><a href="#cb99-289" aria-hidden="true" tabindex="-1"></a><span class="co">#grid.to_file("grid.shp")</span></span>
+<span id="cb99-290"><a href="#cb99-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-291"><a href="#cb99-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-294"><a href="#cb99-294" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-295"><a href="#cb99-295" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-296"><a href="#cb99-296" aria-hidden="true" tabindex="-1"></a>grid.head()</span>
+<span id="cb99-297"><a href="#cb99-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-298"><a href="#cb99-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-301"><a href="#cb99-301" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-302"><a href="#cb99-302" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-303"><a href="#cb99-303" aria-hidden="true" tabindex="-1"></a>grid.crs</span>
+<span id="cb99-304"><a href="#cb99-304" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-305"><a href="#cb99-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-308"><a href="#cb99-308" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-309"><a href="#cb99-309" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-310"><a href="#cb99-310" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">10</span>), dpi<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb99-311"><a href="#cb99-311" aria-hidden="true" tabindex="-1"></a>grid.boundary.plot(ax<span class="op">=</span>ax, linewidth <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb99-312"><a href="#cb99-312" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb99-313"><a href="#cb99-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-314"><a href="#cb99-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-317"><a href="#cb99-317" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-318"><a href="#cb99-318" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-319"><a href="#cb99-319" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> dominica.plot(facecolor<span class="op">=</span><span class="st">'none'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">15</span>))</span>
-<span id="cb99-320"><a href="#cb99-320" aria-hidden="true" tabindex="-1"></a>whale_gdf.plot(ax<span class="op">=</span>base, facecolor<span class="op">=</span><span class="st">'red'</span>, markersize<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb99-321"><a href="#cb99-321" aria-hidden="true" tabindex="-1"></a>grid.boundary.plot(ax<span class="op">=</span>base, linewidth <span class="op">=</span> <span class="fl">0.5</span>)</span>
-<span id="cb99-322"><a href="#cb99-322" aria-hidden="true" tabindex="-1"></a>ctx.add_basemap(ax<span class="op">=</span>base, crs<span class="op">=</span>dominica.crs.to_string())</span>
-<span id="cb99-323"><a href="#cb99-323" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb99-324"><a href="#cb99-324" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-325"><a href="#cb99-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-326"><a href="#cb99-326" aria-hidden="true" tabindex="-1"></a><span class="fu"># Extract whale habitat</span></span>
+<span id="cb99-315"><a href="#cb99-315" aria-hidden="true" tabindex="-1"></a>Now visualize the island of Dominica, whale sighting locations, and grid.</span>
+<span id="cb99-316"><a href="#cb99-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-319"><a href="#cb99-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-320"><a href="#cb99-320" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-321"><a href="#cb99-321" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> dominica.plot(facecolor<span class="op">=</span><span class="st">'none'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">15</span>))</span>
+<span id="cb99-322"><a href="#cb99-322" aria-hidden="true" tabindex="-1"></a>whale_gdf.plot(ax<span class="op">=</span>base, facecolor<span class="op">=</span><span class="st">'red'</span>, markersize<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb99-323"><a href="#cb99-323" aria-hidden="true" tabindex="-1"></a>grid.boundary.plot(ax<span class="op">=</span>base, linewidth <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb99-324"><a href="#cb99-324" aria-hidden="true" tabindex="-1"></a>ctx.add_basemap(ax<span class="op">=</span>base, crs<span class="op">=</span>dominica.crs.to_string())</span>
+<span id="cb99-325"><a href="#cb99-325" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb99-326"><a href="#cb99-326" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-327"><a href="#cb99-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-328"><a href="#cb99-328" aria-hidden="true" tabindex="-1"></a>To identify an approximate whale habitata area, spatially join the grid with whale sighting data, then count the number of sightings in each cell.</span>
+<span id="cb99-328"><a href="#cb99-328" aria-hidden="true" tabindex="-1"></a><span class="fu"># Extract whale habitat</span></span>
 <span id="cb99-329"><a href="#cb99-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-332"><a href="#cb99-332" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-333"><a href="#cb99-333" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-334"><a href="#cb99-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-335"><a href="#cb99-335" aria-hidden="true" tabindex="-1"></a><span class="co"># use an inner join since we're not interested in grid cells without any sightings</span></span>
-<span id="cb99-336"><a href="#cb99-336" aria-hidden="true" tabindex="-1"></a>whale_grid <span class="op">=</span> grid.sjoin(whale_gdf, how<span class="op">=</span><span class="st">"inner"</span>)</span>
-<span id="cb99-337"><a href="#cb99-337" aria-hidden="true" tabindex="-1"></a>whale_grid</span>
-<span id="cb99-338"><a href="#cb99-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-339"><a href="#cb99-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-342"><a href="#cb99-342" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-343"><a href="#cb99-343" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-344"><a href="#cb99-344" aria-hidden="true" tabindex="-1"></a>whale_grid.boundary.plot(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">10</span>))</span>
-<span id="cb99-345"><a href="#cb99-345" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-346"><a href="#cb99-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-349"><a href="#cb99-349" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-350"><a href="#cb99-350" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-351"><a href="#cb99-351" aria-hidden="true" tabindex="-1"></a>whale_grid.crs</span>
-<span id="cb99-352"><a href="#cb99-352" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-353"><a href="#cb99-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-356"><a href="#cb99-356" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-357"><a href="#cb99-357" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-358"><a href="#cb99-358" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">'count'</span>] <span class="op">=</span> whale_grid.groupby(whale_grid.index).count()[<span class="st">'index_right'</span>]</span>
-<span id="cb99-359"><a href="#cb99-359" aria-hidden="true" tabindex="-1"></a><span class="co"># the column name spacified after .count() is arbitrary, since we are only counting rows</span></span>
-<span id="cb99-360"><a href="#cb99-360" aria-hidden="true" tabindex="-1"></a>grid</span>
-<span id="cb99-361"><a href="#cb99-361" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-362"><a href="#cb99-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-365"><a href="#cb99-365" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-366"><a href="#cb99-366" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-367"><a href="#cb99-367" aria-hidden="true" tabindex="-1"></a><span class="co"># subset the grid dataframe to cells that have more than 20 sightings</span></span>
-<span id="cb99-368"><a href="#cb99-368" aria-hidden="true" tabindex="-1"></a>whale_mask <span class="op">=</span> (grid[<span class="st">'count'</span>] <span class="op">&gt;</span> <span class="dv">20</span>)</span>
-<span id="cb99-369"><a href="#cb99-369" aria-hidden="true" tabindex="-1"></a>whale_mask</span>
-<span id="cb99-370"><a href="#cb99-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-371"><a href="#cb99-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-374"><a href="#cb99-374" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-375"><a href="#cb99-375" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-376"><a href="#cb99-376" aria-hidden="true" tabindex="-1"></a>whale_habitat <span class="op">=</span> grid[whale_mask]</span>
-<span id="cb99-377"><a href="#cb99-377" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-378"><a href="#cb99-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-379"><a href="#cb99-379" aria-hidden="true" tabindex="-1"></a>The speed reduction zone represents the area with frequent whale sightings.</span>
+<span id="cb99-330"><a href="#cb99-330" aria-hidden="true" tabindex="-1"></a>To identify an approximate whale habitata area, spatially join the grid with whale sighting data, then count the number of sightings in each cell.</span>
+<span id="cb99-331"><a href="#cb99-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-334"><a href="#cb99-334" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-335"><a href="#cb99-335" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-336"><a href="#cb99-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-337"><a href="#cb99-337" aria-hidden="true" tabindex="-1"></a><span class="co"># use an inner join since we're not interested in grid cells without any sightings</span></span>
+<span id="cb99-338"><a href="#cb99-338" aria-hidden="true" tabindex="-1"></a>whale_grid <span class="op">=</span> grid.sjoin(whale_gdf, how<span class="op">=</span><span class="st">"inner"</span>)</span>
+<span id="cb99-339"><a href="#cb99-339" aria-hidden="true" tabindex="-1"></a>whale_grid</span>
+<span id="cb99-340"><a href="#cb99-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-341"><a href="#cb99-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-344"><a href="#cb99-344" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-345"><a href="#cb99-345" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-346"><a href="#cb99-346" aria-hidden="true" tabindex="-1"></a>whale_grid.boundary.plot(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">10</span>))</span>
+<span id="cb99-347"><a href="#cb99-347" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-348"><a href="#cb99-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-351"><a href="#cb99-351" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-352"><a href="#cb99-352" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-353"><a href="#cb99-353" aria-hidden="true" tabindex="-1"></a>whale_grid.crs</span>
+<span id="cb99-354"><a href="#cb99-354" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-355"><a href="#cb99-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-358"><a href="#cb99-358" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-359"><a href="#cb99-359" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-360"><a href="#cb99-360" aria-hidden="true" tabindex="-1"></a>grid[<span class="st">'count'</span>] <span class="op">=</span> whale_grid.groupby(whale_grid.index).count()[<span class="st">'index_right'</span>]</span>
+<span id="cb99-361"><a href="#cb99-361" aria-hidden="true" tabindex="-1"></a><span class="co"># the column name spacified after .count() is arbitrary, since we are only counting rows</span></span>
+<span id="cb99-362"><a href="#cb99-362" aria-hidden="true" tabindex="-1"></a>grid</span>
+<span id="cb99-363"><a href="#cb99-363" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-364"><a href="#cb99-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-367"><a href="#cb99-367" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-368"><a href="#cb99-368" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-369"><a href="#cb99-369" aria-hidden="true" tabindex="-1"></a><span class="co"># subset the grid dataframe to cells that have more than 20 sightings</span></span>
+<span id="cb99-370"><a href="#cb99-370" aria-hidden="true" tabindex="-1"></a>whale_mask <span class="op">=</span> (grid[<span class="st">'count'</span>] <span class="op">&gt;</span> <span class="dv">20</span>)</span>
+<span id="cb99-371"><a href="#cb99-371" aria-hidden="true" tabindex="-1"></a>whale_mask</span>
+<span id="cb99-372"><a href="#cb99-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-373"><a href="#cb99-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-376"><a href="#cb99-376" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-377"><a href="#cb99-377" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-378"><a href="#cb99-378" aria-hidden="true" tabindex="-1"></a>whale_habitat <span class="op">=</span> grid[whale_mask]</span>
+<span id="cb99-379"><a href="#cb99-379" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-380"><a href="#cb99-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-383"><a href="#cb99-383" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-384"><a href="#cb99-384" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-385"><a href="#cb99-385" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone <span class="op">=</span> whale_habitat.unary_union.convex_hull</span>
-<span id="cb99-386"><a href="#cb99-386" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone</span>
-<span id="cb99-387"><a href="#cb99-387" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-388"><a href="#cb99-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-391"><a href="#cb99-391" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-392"><a href="#cb99-392" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-393"><a href="#cb99-393" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(speed_reduction_zone)</span>
-<span id="cb99-394"><a href="#cb99-394" aria-hidden="true" tabindex="-1"></a><span class="co"># need to create a new GeoDataFrame with the speed_reduction_zone as a single feature</span></span>
-<span id="cb99-395"><a href="#cb99-395" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-396"><a href="#cb99-396" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-399"><a href="#cb99-399" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-400"><a href="#cb99-400" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-401"><a href="#cb99-401" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone <span class="op">=</span> gpd.GeoDataFrame(index<span class="op">=</span>[<span class="dv">0</span>], crs<span class="op">=</span><span class="st">'epsg:2002'</span>, geometry<span class="op">=</span>[speed_reduction_zone])</span>
-<span id="cb99-402"><a href="#cb99-402" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-403"><a href="#cb99-403" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-406"><a href="#cb99-406" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-407"><a href="#cb99-407" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-408"><a href="#cb99-408" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone.crs</span>
-<span id="cb99-409"><a href="#cb99-409" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-410"><a href="#cb99-410" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-413"><a href="#cb99-413" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-414"><a href="#cb99-414" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-415"><a href="#cb99-415" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(speed_reduction_zone)</span>
-<span id="cb99-416"><a href="#cb99-416" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-417"><a href="#cb99-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-420"><a href="#cb99-420" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-421"><a href="#cb99-421" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-422"><a href="#cb99-422" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> dominica.plot(facecolor<span class="op">=</span><span class="st">'none'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">15</span>))</span>
-<span id="cb99-423"><a href="#cb99-423" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone.plot(ax<span class="op">=</span>base, facecolor<span class="op">=</span><span class="st">'lightgray'</span>, edgecolor<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, linewidth<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb99-424"><a href="#cb99-424" aria-hidden="true" tabindex="-1"></a>ctx.add_basemap(ax<span class="op">=</span>base, crs<span class="op">=</span>dominica.crs.to_string())</span>
-<span id="cb99-425"><a href="#cb99-425" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb99-426"><a href="#cb99-426" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-427"><a href="#cb99-427" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-428"><a href="#cb99-428" aria-hidden="true" tabindex="-1"></a><span class="fu"># Vessel data</span></span>
+<span id="cb99-381"><a href="#cb99-381" aria-hidden="true" tabindex="-1"></a>The speed reduction zone represents the area with frequent whale sightings.</span>
+<span id="cb99-382"><a href="#cb99-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-385"><a href="#cb99-385" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-386"><a href="#cb99-386" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-387"><a href="#cb99-387" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone <span class="op">=</span> whale_habitat.unary_union.convex_hull</span>
+<span id="cb99-388"><a href="#cb99-388" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone</span>
+<span id="cb99-389"><a href="#cb99-389" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-390"><a href="#cb99-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-393"><a href="#cb99-393" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-394"><a href="#cb99-394" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-395"><a href="#cb99-395" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(speed_reduction_zone)</span>
+<span id="cb99-396"><a href="#cb99-396" aria-hidden="true" tabindex="-1"></a><span class="co"># need to create a new GeoDataFrame with the speed_reduction_zone as a single feature</span></span>
+<span id="cb99-397"><a href="#cb99-397" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-398"><a href="#cb99-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-401"><a href="#cb99-401" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-402"><a href="#cb99-402" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-403"><a href="#cb99-403" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone <span class="op">=</span> gpd.GeoDataFrame(index<span class="op">=</span>[<span class="dv">0</span>], crs<span class="op">=</span><span class="st">'epsg:2002'</span>, geometry<span class="op">=</span>[speed_reduction_zone])</span>
+<span id="cb99-404"><a href="#cb99-404" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-405"><a href="#cb99-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-408"><a href="#cb99-408" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-409"><a href="#cb99-409" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-410"><a href="#cb99-410" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone.crs</span>
+<span id="cb99-411"><a href="#cb99-411" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-412"><a href="#cb99-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-415"><a href="#cb99-415" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-416"><a href="#cb99-416" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-417"><a href="#cb99-417" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(speed_reduction_zone)</span>
+<span id="cb99-418"><a href="#cb99-418" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-419"><a href="#cb99-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-422"><a href="#cb99-422" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-423"><a href="#cb99-423" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-424"><a href="#cb99-424" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> dominica.plot(facecolor<span class="op">=</span><span class="st">'none'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">15</span>))</span>
+<span id="cb99-425"><a href="#cb99-425" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone.plot(ax<span class="op">=</span>base, facecolor<span class="op">=</span><span class="st">'lightgray'</span>, edgecolor<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, linewidth<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb99-426"><a href="#cb99-426" aria-hidden="true" tabindex="-1"></a>ctx.add_basemap(ax<span class="op">=</span>base, crs<span class="op">=</span>dominica.crs.to_string())</span>
+<span id="cb99-427"><a href="#cb99-427" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb99-428"><a href="#cb99-428" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-429"><a href="#cb99-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-430"><a href="#cb99-430" aria-hidden="true" tabindex="-1"></a>Vessel data was obtained from Automatic Identification System (AIS) transceivers from 2015.</span>
+<span id="cb99-430"><a href="#cb99-430" aria-hidden="true" tabindex="-1"></a><span class="fu"># Vessel data</span></span>
 <span id="cb99-431"><a href="#cb99-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-432"><a href="#cb99-432" aria-hidden="true" tabindex="-1"></a><span class="fu">## Load data</span></span>
+<span id="cb99-432"><a href="#cb99-432" aria-hidden="true" tabindex="-1"></a>Vessel data was obtained from Automatic Identification System (AIS) transceivers from 2015.</span>
 <span id="cb99-433"><a href="#cb99-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-436"><a href="#cb99-436" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-437"><a href="#cb99-437" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-438"><a href="#cb99-438" aria-hidden="true" tabindex="-1"></a><span class="co"># Join folder path and filename </span></span>
-<span id="cb99-439"><a href="#cb99-439" aria-hidden="true" tabindex="-1"></a>fp3 <span class="op">=</span> os.path.join(input_folder2, <span class="st">"station1249.csv"</span>)</span>
-<span id="cb99-440"><a href="#cb99-440" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-441"><a href="#cb99-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-444"><a href="#cb99-444" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-445"><a href="#cb99-445" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-446"><a href="#cb99-446" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file using gpd.read_file()</span></span>
-<span id="cb99-447"><a href="#cb99-447" aria-hidden="true" tabindex="-1"></a>vessels <span class="op">=</span> gpd.read_file(fp3)</span>
-<span id="cb99-448"><a href="#cb99-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-449"><a href="#cb99-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-452"><a href="#cb99-452" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-453"><a href="#cb99-453" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-454"><a href="#cb99-454" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(vessels)</span>
-<span id="cb99-455"><a href="#cb99-455" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-456"><a href="#cb99-456" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-459"><a href="#cb99-459" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-460"><a href="#cb99-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-461"><a href="#cb99-461" aria-hidden="true" tabindex="-1"></a>vessels.head()</span>
-<span id="cb99-462"><a href="#cb99-462" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-463"><a href="#cb99-463" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-464"><a href="#cb99-464" aria-hidden="true" tabindex="-1"></a>Similar to the whale sighting data, set the geometry and coordinate reference system for the vessel data.</span>
+<span id="cb99-434"><a href="#cb99-434" aria-hidden="true" tabindex="-1"></a><span class="fu">## Load data</span></span>
+<span id="cb99-435"><a href="#cb99-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-438"><a href="#cb99-438" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-439"><a href="#cb99-439" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-440"><a href="#cb99-440" aria-hidden="true" tabindex="-1"></a><span class="co"># Join folder path and filename </span></span>
+<span id="cb99-441"><a href="#cb99-441" aria-hidden="true" tabindex="-1"></a>fp3 <span class="op">=</span> os.path.join(input_folder2, <span class="st">"station1249.csv"</span>)</span>
+<span id="cb99-442"><a href="#cb99-442" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-443"><a href="#cb99-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-446"><a href="#cb99-446" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-447"><a href="#cb99-447" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-448"><a href="#cb99-448" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file using gpd.read_file()</span></span>
+<span id="cb99-449"><a href="#cb99-449" aria-hidden="true" tabindex="-1"></a>vessels <span class="op">=</span> gpd.read_file(fp3)</span>
+<span id="cb99-450"><a href="#cb99-450" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-451"><a href="#cb99-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-454"><a href="#cb99-454" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-455"><a href="#cb99-455" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-456"><a href="#cb99-456" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(vessels)</span>
+<span id="cb99-457"><a href="#cb99-457" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-458"><a href="#cb99-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-461"><a href="#cb99-461" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-462"><a href="#cb99-462" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-463"><a href="#cb99-463" aria-hidden="true" tabindex="-1"></a>vessels.head()</span>
+<span id="cb99-464"><a href="#cb99-464" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-465"><a href="#cb99-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-468"><a href="#cb99-468" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-469"><a href="#cb99-469" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-470"><a href="#cb99-470" aria-hidden="true" tabindex="-1"></a><span class="co"># bootstrap the geometries</span></span>
-<span id="cb99-471"><a href="#cb99-471" aria-hidden="true" tabindex="-1"></a>vessel_points <span class="op">=</span> gpd.points_from_xy(vessels[<span class="st">'LON'</span>], vessels[<span class="st">'LAT'</span>])</span>
-<span id="cb99-472"><a href="#cb99-472" aria-hidden="true" tabindex="-1"></a>vessel_gdf <span class="op">=</span> gpd.GeoDataFrame(vessels, geometry<span class="op">=</span>vessel_points)</span>
-<span id="cb99-473"><a href="#cb99-473" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-474"><a href="#cb99-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-477"><a href="#cb99-477" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-478"><a href="#cb99-478" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-479"><a href="#cb99-479" aria-hidden="true" tabindex="-1"></a><span class="co"># project the dataset into an appropriate CRS</span></span>
-<span id="cb99-480"><a href="#cb99-480" aria-hidden="true" tabindex="-1"></a>vessel_gdf <span class="op">=</span> vessel_gdf.set_crs(epsg<span class="op">=</span><span class="dv">4326</span>)</span>
-<span id="cb99-481"><a href="#cb99-481" aria-hidden="true" tabindex="-1"></a>vessel_gdf <span class="op">=</span> vessel_gdf.to_crs(epsg<span class="op">=</span>proj_area_crs)</span>
-<span id="cb99-482"><a href="#cb99-482" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-483"><a href="#cb99-483" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-486"><a href="#cb99-486" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-487"><a href="#cb99-487" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-488"><a href="#cb99-488" aria-hidden="true" tabindex="-1"></a>vessel_gdf.crs</span>
-<span id="cb99-489"><a href="#cb99-489" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-490"><a href="#cb99-490" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-493"><a href="#cb99-493" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-494"><a href="#cb99-494" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-495"><a href="#cb99-495" aria-hidden="true" tabindex="-1"></a>vessel_gdf[<span class="st">'TIMESTAMP'</span>] <span class="op">=</span> pd.to_datetime(vessel_gdf[<span class="st">'TIMESTAMP'</span>])</span>
-<span id="cb99-496"><a href="#cb99-496" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-497"><a href="#cb99-497" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-500"><a href="#cb99-500" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-501"><a href="#cb99-501" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-502"><a href="#cb99-502" aria-hidden="true" tabindex="-1"></a>vessel_gdf.head()</span>
-<span id="cb99-503"><a href="#cb99-503" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-504"><a href="#cb99-504" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-507"><a href="#cb99-507" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-508"><a href="#cb99-508" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-509"><a href="#cb99-509" aria-hidden="true" tabindex="-1"></a><span class="co"># plot vessel points against Dominca outline and speed reduction zone</span></span>
-<span id="cb99-510"><a href="#cb99-510" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> dominica.plot(facecolor<span class="op">=</span><span class="st">'none'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">15</span>))</span>
-<span id="cb99-511"><a href="#cb99-511" aria-hidden="true" tabindex="-1"></a>vessel_gdf.plot(ax<span class="op">=</span>base, markersize <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb99-512"><a href="#cb99-512" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone.plot(ax<span class="op">=</span>base, edgecolor<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb99-513"><a href="#cb99-513" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-514"><a href="#cb99-514" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-517"><a href="#cb99-517" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-518"><a href="#cb99-518" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-519"><a href="#cb99-519" aria-hidden="true" tabindex="-1"></a><span class="co"># spatially subset AIS data to only include vessels within identified whale habitat</span></span>
-<span id="cb99-520"><a href="#cb99-520" aria-hidden="true" tabindex="-1"></a>vessels_in_whale_habitat <span class="op">=</span> vessel_gdf.sjoin(speed_reduction_zone, how<span class="op">=</span><span class="st">"inner"</span>)</span>
-<span id="cb99-521"><a href="#cb99-521" aria-hidden="true" tabindex="-1"></a>vessels_in_whale_habitat</span>
-<span id="cb99-522"><a href="#cb99-522" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-523"><a href="#cb99-523" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-524"><a href="#cb99-524" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calculate distance and speed</span></span>
+<span id="cb99-466"><a href="#cb99-466" aria-hidden="true" tabindex="-1"></a>Similar to the whale sighting data, set the geometry and coordinate reference system for the vessel data.</span>
+<span id="cb99-467"><a href="#cb99-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-470"><a href="#cb99-470" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-471"><a href="#cb99-471" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-472"><a href="#cb99-472" aria-hidden="true" tabindex="-1"></a><span class="co"># bootstrap the geometries</span></span>
+<span id="cb99-473"><a href="#cb99-473" aria-hidden="true" tabindex="-1"></a>vessel_points <span class="op">=</span> gpd.points_from_xy(vessels[<span class="st">'LON'</span>], vessels[<span class="st">'LAT'</span>])</span>
+<span id="cb99-474"><a href="#cb99-474" aria-hidden="true" tabindex="-1"></a>vessel_gdf <span class="op">=</span> gpd.GeoDataFrame(vessels, geometry<span class="op">=</span>vessel_points)</span>
+<span id="cb99-475"><a href="#cb99-475" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-476"><a href="#cb99-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-479"><a href="#cb99-479" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-480"><a href="#cb99-480" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-481"><a href="#cb99-481" aria-hidden="true" tabindex="-1"></a><span class="co"># project the dataset into an appropriate CRS</span></span>
+<span id="cb99-482"><a href="#cb99-482" aria-hidden="true" tabindex="-1"></a>vessel_gdf <span class="op">=</span> vessel_gdf.set_crs(epsg<span class="op">=</span><span class="dv">4326</span>)</span>
+<span id="cb99-483"><a href="#cb99-483" aria-hidden="true" tabindex="-1"></a>vessel_gdf <span class="op">=</span> vessel_gdf.to_crs(epsg<span class="op">=</span>proj_area_crs)</span>
+<span id="cb99-484"><a href="#cb99-484" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-485"><a href="#cb99-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-488"><a href="#cb99-488" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-489"><a href="#cb99-489" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-490"><a href="#cb99-490" aria-hidden="true" tabindex="-1"></a>vessel_gdf.crs</span>
+<span id="cb99-491"><a href="#cb99-491" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-492"><a href="#cb99-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-495"><a href="#cb99-495" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-496"><a href="#cb99-496" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-497"><a href="#cb99-497" aria-hidden="true" tabindex="-1"></a>vessel_gdf[<span class="st">'TIMESTAMP'</span>] <span class="op">=</span> pd.to_datetime(vessel_gdf[<span class="st">'TIMESTAMP'</span>])</span>
+<span id="cb99-498"><a href="#cb99-498" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-499"><a href="#cb99-499" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-502"><a href="#cb99-502" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-503"><a href="#cb99-503" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-504"><a href="#cb99-504" aria-hidden="true" tabindex="-1"></a>vessel_gdf.head()</span>
+<span id="cb99-505"><a href="#cb99-505" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-506"><a href="#cb99-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-509"><a href="#cb99-509" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-510"><a href="#cb99-510" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-511"><a href="#cb99-511" aria-hidden="true" tabindex="-1"></a><span class="co"># plot vessel points against Dominca outline and speed reduction zone</span></span>
+<span id="cb99-512"><a href="#cb99-512" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> dominica.plot(facecolor<span class="op">=</span><span class="st">'none'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">15</span>))</span>
+<span id="cb99-513"><a href="#cb99-513" aria-hidden="true" tabindex="-1"></a>vessel_gdf.plot(ax<span class="op">=</span>base, markersize <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb99-514"><a href="#cb99-514" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone.plot(ax<span class="op">=</span>base, edgecolor<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb99-515"><a href="#cb99-515" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-516"><a href="#cb99-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-519"><a href="#cb99-519" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-520"><a href="#cb99-520" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-521"><a href="#cb99-521" aria-hidden="true" tabindex="-1"></a><span class="co"># spatially subset AIS data to only include vessels within identified whale habitat</span></span>
+<span id="cb99-522"><a href="#cb99-522" aria-hidden="true" tabindex="-1"></a>vessels_in_whale_habitat <span class="op">=</span> vessel_gdf.sjoin(speed_reduction_zone, how<span class="op">=</span><span class="st">"inner"</span>)</span>
+<span id="cb99-523"><a href="#cb99-523" aria-hidden="true" tabindex="-1"></a>vessels_in_whale_habitat</span>
+<span id="cb99-524"><a href="#cb99-524" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb99-525"><a href="#cb99-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-528"><a href="#cb99-528" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-529"><a href="#cb99-529" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-530"><a href="#cb99-530" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of only vessel points within speed reduction zone</span></span>
-<span id="cb99-531"><a href="#cb99-531" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> dominica.plot(facecolor<span class="op">=</span><span class="st">'none'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">15</span>))</span>
-<span id="cb99-532"><a href="#cb99-532" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone.plot(ax<span class="op">=</span>base, facecolor<span class="op">=</span><span class="st">'none'</span>, edgecolor<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb99-533"><a href="#cb99-533" aria-hidden="true" tabindex="-1"></a>vessels_in_whale_habitat.plot(ax<span class="op">=</span>base, markersize <span class="op">=</span> <span class="fl">0.5</span>, facecolor<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb99-534"><a href="#cb99-534" aria-hidden="true" tabindex="-1"></a>ctx.add_basemap(ax<span class="op">=</span>base, crs<span class="op">=</span>dominica.crs.to_string())</span>
-<span id="cb99-535"><a href="#cb99-535" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb99-536"><a href="#cb99-536" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-537"><a href="#cb99-537" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-540"><a href="#cb99-540" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-541"><a href="#cb99-541" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-542"><a href="#cb99-542" aria-hidden="true" tabindex="-1"></a><span class="co"># sort vessel dataframe by MMSI and time</span></span>
-<span id="cb99-543"><a href="#cb99-543" aria-hidden="true" tabindex="-1"></a>vessels_in_whale_habitat <span class="op">=</span> vessels_in_whale_habitat.sort_values(by<span class="op">=</span>[<span class="st">'MMSI'</span>, <span class="st">'TIMESTAMP'</span>])</span>
-<span id="cb99-544"><a href="#cb99-544" aria-hidden="true" tabindex="-1"></a>vessels_in_whale_habitat</span>
-<span id="cb99-545"><a href="#cb99-545" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-546"><a href="#cb99-546" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-549"><a href="#cb99-549" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-550"><a href="#cb99-550" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-551"><a href="#cb99-551" aria-hidden="true" tabindex="-1"></a><span class="co"># create a copy of the vessel dataframe and shift each observation down one row using `shift()`</span></span>
-<span id="cb99-552"><a href="#cb99-552" aria-hidden="true" tabindex="-1"></a>vessels_shift <span class="op">=</span> vessels_in_whale_habitat.copy(deep<span class="op">=</span><span class="va">True</span>).shift(periods<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb99-553"><a href="#cb99-553" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-554"><a href="#cb99-554" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-557"><a href="#cb99-557" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-558"><a href="#cb99-558" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-559"><a href="#cb99-559" aria-hidden="true" tabindex="-1"></a><span class="co"># rename shifted column names</span></span>
-<span id="cb99-560"><a href="#cb99-560" aria-hidden="true" tabindex="-1"></a>vessels_shift <span class="op">=</span> vessels_shift.rename(columns<span class="op">=</span>{<span class="st">"field_1"</span>: <span class="st">"field_1_shift"</span>, <span class="st">"MMSI"</span>: <span class="st">"MMSI_shift"</span>, <span class="st">"LON"</span>: <span class="st">"LON_shift"</span>, <span class="st">"LAT"</span>: <span class="st">"LAT_shift"</span>, <span class="st">"TIMESTAMP"</span>: <span class="st">"TIMESTAMP_shift"</span>, <span class="st">"geometry"</span>: <span class="st">"geometry_shift"</span>, <span class="st">"index_right"</span>: <span class="st">"index_right_shift"</span>})</span>
-<span id="cb99-561"><a href="#cb99-561" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-562"><a href="#cb99-562" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-565"><a href="#cb99-565" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-566"><a href="#cb99-566" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-567"><a href="#cb99-567" aria-hidden="true" tabindex="-1"></a><span class="co"># join original dataframe with the shifted copy using `join()`</span></span>
-<span id="cb99-568"><a href="#cb99-568" aria-hidden="true" tabindex="-1"></a>vessels_shift_join <span class="op">=</span> vessels_in_whale_habitat.join(vessels_shift).sort_values(by<span class="op">=</span>[<span class="st">'MMSI'</span>, <span class="st">'TIMESTAMP'</span>])</span>
-<span id="cb99-569"><a href="#cb99-569" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-570"><a href="#cb99-570" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-573"><a href="#cb99-573" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-574"><a href="#cb99-574" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-575"><a href="#cb99-575" aria-hidden="true" tabindex="-1"></a><span class="co"># drop all rows in the joined dataframe in which the MMSI of the left is not the same as the one on the right</span></span>
-<span id="cb99-576"><a href="#cb99-576" aria-hidden="true" tabindex="-1"></a>vessels_keep <span class="op">=</span> vessels_shift_join.drop(vessels_shift_join[vessels_shift_join[<span class="st">'MMSI'</span>] <span class="op">!=</span> vessels_shift_join[<span class="st">'MMSI_shift'</span>]].index)</span>
-<span id="cb99-577"><a href="#cb99-577" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-578"><a href="#cb99-578" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-581"><a href="#cb99-581" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-582"><a href="#cb99-582" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-583"><a href="#cb99-583" aria-hidden="true" tabindex="-1"></a><span class="co"># set the geometry column</span></span>
-<span id="cb99-584"><a href="#cb99-584" aria-hidden="true" tabindex="-1"></a>vessels_keep <span class="op">=</span> vessels_keep.set_geometry(<span class="st">"geometry"</span>)</span>
-<span id="cb99-585"><a href="#cb99-585" aria-hidden="true" tabindex="-1"></a>vessels_keep2 <span class="op">=</span> vessels_keep.set_geometry(<span class="st">"geometry_shift"</span>)</span>
-<span id="cb99-586"><a href="#cb99-586" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-587"><a href="#cb99-587" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-590"><a href="#cb99-590" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-591"><a href="#cb99-591" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-592"><a href="#cb99-592" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate distance between each observation</span></span>
-<span id="cb99-593"><a href="#cb99-593" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'distance_m'</span>] <span class="op">=</span> vessels_keep.distance(vessels_keep2)</span>
-<span id="cb99-594"><a href="#cb99-594" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-595"><a href="#cb99-595" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-598"><a href="#cb99-598" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-599"><a href="#cb99-599" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-600"><a href="#cb99-600" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate time difference between each observation to the next</span></span>
-<span id="cb99-601"><a href="#cb99-601" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'time'</span>] <span class="op">=</span> vessels_keep[<span class="st">'TIMESTAMP'</span>] <span class="op">-</span> vessels_keep[<span class="st">'TIMESTAMP_shift'</span>]</span>
-<span id="cb99-602"><a href="#cb99-602" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-603"><a href="#cb99-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-606"><a href="#cb99-606" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-607"><a href="#cb99-607" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-608"><a href="#cb99-608" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate speed</span></span>
-<span id="cb99-609"><a href="#cb99-609" aria-hidden="true" tabindex="-1"></a>meters_per_nm <span class="op">=</span> <span class="dv">1852</span></span>
-<span id="cb99-610"><a href="#cb99-610" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-611"><a href="#cb99-611" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'speed_m_per_sec'</span>] <span class="op">=</span> vessels_keep[<span class="st">'distance_m'</span>] <span class="op">/</span> vessels_keep[<span class="st">'time'</span>].dt.total_seconds()</span>
-<span id="cb99-612"><a href="#cb99-612" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'speed_knots'</span>] <span class="op">=</span> vessels_keep[<span class="st">'speed_m_per_sec'</span>] <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">/</span> meters_per_nm</span>
-<span id="cb99-613"><a href="#cb99-613" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'time_10knots_minutes'</span>] <span class="op">=</span> (vessels_keep[<span class="st">'distance_m'</span>] <span class="op">*</span> <span class="dv">60</span> ) <span class="op">/</span> ( meters_per_nm <span class="op">*</span> <span class="dv">10</span> )</span>
-<span id="cb99-614"><a href="#cb99-614" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'time_dif_minutes'</span>] <span class="op">=</span> vessels_keep[<span class="st">'time_10knots_minutes'</span>] <span class="op">-</span> (vessels_keep[<span class="st">'time'</span>].dt.total_seconds() <span class="op">/</span> <span class="dv">60</span> )</span>
-<span id="cb99-615"><a href="#cb99-615" aria-hidden="true" tabindex="-1"></a>vessels_keep</span>
-<span id="cb99-616"><a href="#cb99-616" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-617"><a href="#cb99-617" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-620"><a href="#cb99-620" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-621"><a href="#cb99-621" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-622"><a href="#cb99-622" aria-hidden="true" tabindex="-1"></a>vessels_keep <span class="op">=</span> vessels_keep.sort_values(by<span class="op">=</span>[<span class="st">'speed_knots'</span>], ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb99-623"><a href="#cb99-623" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-624"><a href="#cb99-624" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-627"><a href="#cb99-627" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-628"><a href="#cb99-628" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-629"><a href="#cb99-629" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the vessels that would be affected by the speed reduction zone</span></span>
-<span id="cb99-630"><a href="#cb99-630" aria-hidden="true" tabindex="-1"></a>vessels_going_too_fast <span class="op">=</span> vessels_keep.drop(vessels_keep[vessels_keep[<span class="st">'time_dif_minutes'</span>] <span class="op">&lt;</span> <span class="dv">0</span>].index)</span>
-<span id="cb99-631"><a href="#cb99-631" aria-hidden="true" tabindex="-1"></a>vessels_going_too_fast</span>
-<span id="cb99-632"><a href="#cb99-632" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-633"><a href="#cb99-633" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-636"><a href="#cb99-636" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb99-637"><a href="#cb99-637" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
-<span id="cb99-638"><a href="#cb99-638" aria-hidden="true" tabindex="-1"></a>shipping_impact_minutes <span class="op">=</span> vessels_going_too_fast[<span class="st">'time_dif_minutes'</span>].<span class="bu">sum</span>()</span>
-<span id="cb99-639"><a href="#cb99-639" aria-hidden="true" tabindex="-1"></a>shipping_impact_days <span class="op">=</span> <span class="bu">round</span>(shipping_impact_minutes <span class="op">/</span> ( <span class="dv">60</span> <span class="op">*</span> <span class="dv">24</span>), <span class="dv">2</span>)</span>
-<span id="cb99-640"><a href="#cb99-640" aria-hidden="true" tabindex="-1"></a>shipping_impact_days</span>
-<span id="cb99-641"><a href="#cb99-641" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb99-642"><a href="#cb99-642" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-643"><a href="#cb99-643" aria-hidden="true" tabindex="-1"></a>**A 10-knot reduced speed zone in the identified whale habitat will increase travel time by approximately 27.88 days.**</span>
+<span id="cb99-526"><a href="#cb99-526" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calculate distance and speed</span></span>
+<span id="cb99-527"><a href="#cb99-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-530"><a href="#cb99-530" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-531"><a href="#cb99-531" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-532"><a href="#cb99-532" aria-hidden="true" tabindex="-1"></a><span class="co"># plot of only vessel points within speed reduction zone</span></span>
+<span id="cb99-533"><a href="#cb99-533" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> dominica.plot(facecolor<span class="op">=</span><span class="st">'none'</span>, linewidth<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">15</span>))</span>
+<span id="cb99-534"><a href="#cb99-534" aria-hidden="true" tabindex="-1"></a>speed_reduction_zone.plot(ax<span class="op">=</span>base, facecolor<span class="op">=</span><span class="st">'none'</span>, edgecolor<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb99-535"><a href="#cb99-535" aria-hidden="true" tabindex="-1"></a>vessels_in_whale_habitat.plot(ax<span class="op">=</span>base, markersize <span class="op">=</span> <span class="fl">0.5</span>, facecolor<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb99-536"><a href="#cb99-536" aria-hidden="true" tabindex="-1"></a>ctx.add_basemap(ax<span class="op">=</span>base, crs<span class="op">=</span>dominica.crs.to_string())</span>
+<span id="cb99-537"><a href="#cb99-537" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb99-538"><a href="#cb99-538" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-539"><a href="#cb99-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-542"><a href="#cb99-542" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-543"><a href="#cb99-543" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-544"><a href="#cb99-544" aria-hidden="true" tabindex="-1"></a><span class="co"># sort vessel dataframe by MMSI and time</span></span>
+<span id="cb99-545"><a href="#cb99-545" aria-hidden="true" tabindex="-1"></a>vessels_in_whale_habitat <span class="op">=</span> vessels_in_whale_habitat.sort_values(by<span class="op">=</span>[<span class="st">'MMSI'</span>, <span class="st">'TIMESTAMP'</span>])</span>
+<span id="cb99-546"><a href="#cb99-546" aria-hidden="true" tabindex="-1"></a>vessels_in_whale_habitat</span>
+<span id="cb99-547"><a href="#cb99-547" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-548"><a href="#cb99-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-551"><a href="#cb99-551" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-552"><a href="#cb99-552" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-553"><a href="#cb99-553" aria-hidden="true" tabindex="-1"></a><span class="co"># create a copy of the vessel dataframe and shift each observation down one row using `shift()`</span></span>
+<span id="cb99-554"><a href="#cb99-554" aria-hidden="true" tabindex="-1"></a>vessels_shift <span class="op">=</span> vessels_in_whale_habitat.copy(deep<span class="op">=</span><span class="va">True</span>).shift(periods<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb99-555"><a href="#cb99-555" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-556"><a href="#cb99-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-559"><a href="#cb99-559" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-560"><a href="#cb99-560" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-561"><a href="#cb99-561" aria-hidden="true" tabindex="-1"></a><span class="co"># rename shifted column names</span></span>
+<span id="cb99-562"><a href="#cb99-562" aria-hidden="true" tabindex="-1"></a>vessels_shift <span class="op">=</span> vessels_shift.rename(columns<span class="op">=</span>{<span class="st">"field_1"</span>: <span class="st">"field_1_shift"</span>, <span class="st">"MMSI"</span>: <span class="st">"MMSI_shift"</span>, <span class="st">"LON"</span>: <span class="st">"LON_shift"</span>, <span class="st">"LAT"</span>: <span class="st">"LAT_shift"</span>, <span class="st">"TIMESTAMP"</span>: <span class="st">"TIMESTAMP_shift"</span>, <span class="st">"geometry"</span>: <span class="st">"geometry_shift"</span>, <span class="st">"index_right"</span>: <span class="st">"index_right_shift"</span>})</span>
+<span id="cb99-563"><a href="#cb99-563" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-564"><a href="#cb99-564" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-567"><a href="#cb99-567" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-568"><a href="#cb99-568" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-569"><a href="#cb99-569" aria-hidden="true" tabindex="-1"></a><span class="co"># join original dataframe with the shifted copy using `join()`</span></span>
+<span id="cb99-570"><a href="#cb99-570" aria-hidden="true" tabindex="-1"></a>vessels_shift_join <span class="op">=</span> vessels_in_whale_habitat.join(vessels_shift).sort_values(by<span class="op">=</span>[<span class="st">'MMSI'</span>, <span class="st">'TIMESTAMP'</span>])</span>
+<span id="cb99-571"><a href="#cb99-571" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-572"><a href="#cb99-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-575"><a href="#cb99-575" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-576"><a href="#cb99-576" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-577"><a href="#cb99-577" aria-hidden="true" tabindex="-1"></a><span class="co"># drop all rows in the joined dataframe in which the MMSI of the left is not the same as the one on the right</span></span>
+<span id="cb99-578"><a href="#cb99-578" aria-hidden="true" tabindex="-1"></a>vessels_keep <span class="op">=</span> vessels_shift_join.drop(vessels_shift_join[vessels_shift_join[<span class="st">'MMSI'</span>] <span class="op">!=</span> vessels_shift_join[<span class="st">'MMSI_shift'</span>]].index)</span>
+<span id="cb99-579"><a href="#cb99-579" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-580"><a href="#cb99-580" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-583"><a href="#cb99-583" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-584"><a href="#cb99-584" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-585"><a href="#cb99-585" aria-hidden="true" tabindex="-1"></a><span class="co"># set the geometry column</span></span>
+<span id="cb99-586"><a href="#cb99-586" aria-hidden="true" tabindex="-1"></a>vessels_keep <span class="op">=</span> vessels_keep.set_geometry(<span class="st">"geometry"</span>)</span>
+<span id="cb99-587"><a href="#cb99-587" aria-hidden="true" tabindex="-1"></a>vessels_keep2 <span class="op">=</span> vessels_keep.set_geometry(<span class="st">"geometry_shift"</span>)</span>
+<span id="cb99-588"><a href="#cb99-588" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-589"><a href="#cb99-589" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-592"><a href="#cb99-592" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-593"><a href="#cb99-593" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-594"><a href="#cb99-594" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate distance between each observation</span></span>
+<span id="cb99-595"><a href="#cb99-595" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'distance_m'</span>] <span class="op">=</span> vessels_keep.distance(vessels_keep2)</span>
+<span id="cb99-596"><a href="#cb99-596" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-597"><a href="#cb99-597" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-600"><a href="#cb99-600" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-601"><a href="#cb99-601" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-602"><a href="#cb99-602" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate time difference between each observation to the next</span></span>
+<span id="cb99-603"><a href="#cb99-603" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'time'</span>] <span class="op">=</span> vessels_keep[<span class="st">'TIMESTAMP'</span>] <span class="op">-</span> vessels_keep[<span class="st">'TIMESTAMP_shift'</span>]</span>
+<span id="cb99-604"><a href="#cb99-604" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-605"><a href="#cb99-605" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-608"><a href="#cb99-608" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-609"><a href="#cb99-609" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-610"><a href="#cb99-610" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate speed</span></span>
+<span id="cb99-611"><a href="#cb99-611" aria-hidden="true" tabindex="-1"></a>meters_per_nm <span class="op">=</span> <span class="dv">1852</span></span>
+<span id="cb99-612"><a href="#cb99-612" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-613"><a href="#cb99-613" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'speed_m_per_sec'</span>] <span class="op">=</span> vessels_keep[<span class="st">'distance_m'</span>] <span class="op">/</span> vessels_keep[<span class="st">'time'</span>].dt.total_seconds()</span>
+<span id="cb99-614"><a href="#cb99-614" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'speed_knots'</span>] <span class="op">=</span> vessels_keep[<span class="st">'speed_m_per_sec'</span>] <span class="op">*</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">/</span> meters_per_nm</span>
+<span id="cb99-615"><a href="#cb99-615" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'time_10knots_minutes'</span>] <span class="op">=</span> (vessels_keep[<span class="st">'distance_m'</span>] <span class="op">*</span> <span class="dv">60</span> ) <span class="op">/</span> ( meters_per_nm <span class="op">*</span> <span class="dv">10</span> )</span>
+<span id="cb99-616"><a href="#cb99-616" aria-hidden="true" tabindex="-1"></a>vessels_keep[<span class="st">'time_dif_minutes'</span>] <span class="op">=</span> vessels_keep[<span class="st">'time_10knots_minutes'</span>] <span class="op">-</span> (vessels_keep[<span class="st">'time'</span>].dt.total_seconds() <span class="op">/</span> <span class="dv">60</span> )</span>
+<span id="cb99-617"><a href="#cb99-617" aria-hidden="true" tabindex="-1"></a>vessels_keep</span>
+<span id="cb99-618"><a href="#cb99-618" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-619"><a href="#cb99-619" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-622"><a href="#cb99-622" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-623"><a href="#cb99-623" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-624"><a href="#cb99-624" aria-hidden="true" tabindex="-1"></a>vessels_keep <span class="op">=</span> vessels_keep.sort_values(by<span class="op">=</span>[<span class="st">'speed_knots'</span>], ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb99-625"><a href="#cb99-625" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-626"><a href="#cb99-626" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-629"><a href="#cb99-629" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-630"><a href="#cb99-630" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-631"><a href="#cb99-631" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the vessels that would be affected by the speed reduction zone</span></span>
+<span id="cb99-632"><a href="#cb99-632" aria-hidden="true" tabindex="-1"></a>vessels_going_too_fast <span class="op">=</span> vessels_keep.drop(vessels_keep[vessels_keep[<span class="st">'time_dif_minutes'</span>] <span class="op">&lt;</span> <span class="dv">0</span>].index)</span>
+<span id="cb99-633"><a href="#cb99-633" aria-hidden="true" tabindex="-1"></a>vessels_going_too_fast</span>
+<span id="cb99-634"><a href="#cb99-634" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-635"><a href="#cb99-635" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-638"><a href="#cb99-638" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb99-639"><a href="#cb99-639" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: page-right</span></span>
+<span id="cb99-640"><a href="#cb99-640" aria-hidden="true" tabindex="-1"></a>shipping_impact_minutes <span class="op">=</span> vessels_going_too_fast[<span class="st">'time_dif_minutes'</span>].<span class="bu">sum</span>()</span>
+<span id="cb99-641"><a href="#cb99-641" aria-hidden="true" tabindex="-1"></a>shipping_impact_days <span class="op">=</span> <span class="bu">round</span>(shipping_impact_minutes <span class="op">/</span> ( <span class="dv">60</span> <span class="op">*</span> <span class="dv">24</span>), <span class="dv">2</span>)</span>
+<span id="cb99-642"><a href="#cb99-642" aria-hidden="true" tabindex="-1"></a>shipping_impact_days</span>
+<span id="cb99-643"><a href="#cb99-643" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb99-644"><a href="#cb99-644" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-645"><a href="#cb99-645" aria-hidden="true" tabindex="-1"></a>**A 10-knot reduced speed zone in the identified whale habitat will increase travel time by approximately 27.88 days.**</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -1,0 +1,8 @@
+poppler_datadir=/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/share/poppler
+
+Name: poppler-data
+Description: Encoding files for use with poppler
+Version: 0.4.11
+
+Cflags: -DPOPPLER_DATADIR=/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/share/poppler
+

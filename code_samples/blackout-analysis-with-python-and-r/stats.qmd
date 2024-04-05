@@ -1,0 +1,103 @@
+---
+title: "statistical_analysis"
+editor: visual
+---
+
+```{r}
+#| warning: false
+# load libraries used in analysis
+library(tidyverse)
+library(patchwork)
+library(jtools)
+library(kableExtra)
+```
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from statsmodels.formula.api import ols
+```
+
+# Linear Regression
+```{r}
+#| include: false
+census_tract_blackout_data <- read_csv("data/census_tract_blackout_data_df.csv")
+```
+
+```{python}
+#| include: false
+census_tract_blackout_data_py = pd.read_csv("data/census_tract_blackout_data_df.csv")
+```
+
+Linear regression was used to model the relationship between percent of houses that lost power and selected data from the U.S. Census Bureau’s American Community Survey (ACS). All data are aggregated to the census tract level.
+
+## Race
+
+### Percent white
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| warning: false
+#| code-overflow: wrap
+#| code-fold: false
+#| column: page-right
+#| fig-cap: "Percent of houses that lost power vs. percent population white in census tract"
+
+# linear regression model
+model_pct_white <- lm(data = census_tract_blackout_data, pct_houses_that_lost_power ~ pct_white)
+
+#plot
+plot_model_pct_white <- ggplot(data = census_tract_blackout_data, aes(x = pct_white, y = pct_houses_that_lost_power)) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm, formula = y~x, se = FALSE) +
+  theme_classic() +
+  labs(x = "% white", y = "% of houses that lost power")
+plot_model_pct_white
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| code-overflow: wrap
+#| code-fold: false
+#| column: page-right
+#| fig-cap: "Percent of houses that lost power vs. percent population white in census tract"
+
+model_pct_white_py = ols('pct_houses_that_lost_power ~ pct_white', 
+                         data = census_tract_blackout_data_py)
+model_pct_white_py = model_pct_white_py.fit()
+
+sns.regplot(x = 'pct_white', y = 'pct_houses_that_lost_power',
+            data = census_tract_blackout_data_py, ci = None,
+           scatter_kws = {'s':1, 'color':'black'})
+plt.xlabel('% white')
+plt.ylabel('% of houses that lost power')
+plt.suptitle('Percent of houses that lost power vs. percent population white in census tract', y=0, ha='center')
+```
+:::
+
+```{r}
+#| code-overflow: wrap
+#| column: page-right
+#| code-fold: true
+#| code-summary: "Code for model summary result values"
+# model summary
+summary_model_pct_white <- summary(model_pct_white)
+
+# extract model coefficients
+slope_coef_white <- round(summary_model_pct_white$coefficients["pct_white", "Estimate"], digits = 3)
+
+std_err_white <- round(summary_model_pct_white$coefficients["pct_white", "Std. Error"], digits = 3)
+
+p_value_white <- format(summary_model_pct_white$coefficients["pct_white", "Pr(>|t|)"], scientific = FALSE, digits = 2)
+
+# confidence intervals
+ci_95_lower_white <- round(confint(model_pct_white, level = 0.95)[2, 1], digits = 3)
+ci_95_upper_white <- round(confint(model_pct_white, level = 0.95)[2, 2], digits = 3)
+
+# r-squared value
+r_sqrd_white <- round(summary_model_pct_white$r.squared, digits = 3)
+```

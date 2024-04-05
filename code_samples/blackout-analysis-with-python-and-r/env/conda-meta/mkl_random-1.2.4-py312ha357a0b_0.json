@@ -1,0 +1,114 @@
+{
+  "build": "py312ha357a0b_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-64",
+  "constrains": [],
+  "depends": [
+    "libcxx >=14.0.6",
+    "mkl >=2023.1.0,<2024.0a0",
+    "mkl-service >=2.3.0,<3.0a0",
+    "numpy",
+    "python >=3.12,<3.13.0a0",
+    "blas * mkl"
+  ],
+  "extracted_package_dir": "/Users/marierivers/opt/anaconda3/pkgs/mkl_random-1.2.4-py312ha357a0b_0",
+  "features": "",
+  "files": [
+    "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/INSTALLER",
+    "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/LICENSE.txt",
+    "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/METADATA",
+    "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/RECORD",
+    "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/REQUESTED",
+    "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/WHEEL",
+    "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/direct_url.json",
+    "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/top_level.txt",
+    "lib/python3.12/site-packages/mkl_random/mklrand.cpython-312-darwin.so"
+  ],
+  "fn": "mkl_random-1.2.4-py312ha357a0b_0.conda",
+  "legacy_bz2_md5": "81c86c05e2ade2554b03711fde4bb983",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "link": {
+    "source": "/Users/marierivers/opt/anaconda3/pkgs/mkl_random-1.2.4-py312ha357a0b_0",
+    "type": 1
+  },
+  "md5": "c1ea9c8eee79a5af3399f3c31be0e9c6",
+  "name": "mkl_random",
+  "package_tarball_full_path": "/Users/marierivers/opt/anaconda3/pkgs/mkl_random-1.2.4-py312ha357a0b_0.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/LICENSE.txt",
+        "path_type": "hardlink",
+        "sha256": "955777b8b56b2286fd9402d2b34c9b454d3f3c82efb2953f16551eceac200c17",
+        "sha256_in_prefix": "955777b8b56b2286fd9402d2b34c9b454d3f3c82efb2953f16551eceac200c17",
+        "size_in_bytes": 1505
+      },
+      {
+        "_path": "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "9855cd00a14a753b4d2d9f528527ecd4b7f347da93253792719e6093fdcc27a9",
+        "sha256_in_prefix": "9855cd00a14a753b4d2d9f528527ecd4b7f347da93253792719e6093fdcc27a9",
+        "size_in_bytes": 3674
+      },
+      {
+        "_path": "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "7fbb375565ded2edf787008c3f1e77ac0ab9e776cae9c7eefd00f3b3e1997da8",
+        "sha256_in_prefix": "7fbb375565ded2edf787008c3f1e77ac0ab9e776cae9c7eefd00f3b3e1997da8",
+        "size_in_bytes": 792
+      },
+      {
+        "_path": "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "2d42cdba927801ff1a6499ddea7ad3b94eec2afd1a2f972097751f83586047fb",
+        "sha256_in_prefix": "2d42cdba927801ff1a6499ddea7ad3b94eec2afd1a2f972097751f83586047fb",
+        "size_in_bytes": 111
+      },
+      {
+        "_path": "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "3c1c259e346f9e05d64e2c99db539f17560d8b108e86e23bb13e031a54650233",
+        "sha256_in_prefix": "3c1c259e346f9e05d64e2c99db539f17560d8b108e86e23bb13e031a54650233",
+        "size_in_bytes": 120
+      },
+      {
+        "_path": "lib/python3.12/site-packages/mkl_random-1.2.4.dist-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "4942b845967daa874f95c251a995ba8dead6079bf876c2010d6c34fae2792aff",
+        "sha256_in_prefix": "4942b845967daa874f95c251a995ba8dead6079bf876c2010d6c34fae2792aff",
+        "size_in_bytes": 11
+      },
+      {
+        "_path": "lib/python3.12/site-packages/mkl_random/mklrand.cpython-312-darwin.so",
+        "path_type": "hardlink",
+        "sha256": "2523e2bd667d0e9ebc5f487c62c2fa3998928ddc25682e8d2d83757b833d85cd",
+        "sha256_in_prefix": "2523e2bd667d0e9ebc5f487c62c2fa3998928ddc25682e8d2d83757b833d85cd",
+        "size_in_bytes": 930396
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "4eec33c0cf604d2488684675324537067dcb1e64eb3946b5ca121b8b84fb40ff",
+  "size": 235812,
+  "subdir": "osx-64",
+  "timestamp": 1699239580881,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/mkl_random-1.2.4-py312ha357a0b_0.conda",
+  "version": "1.2.4"
+}

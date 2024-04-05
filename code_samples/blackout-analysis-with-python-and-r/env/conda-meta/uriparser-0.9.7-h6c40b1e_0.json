@@ -1,0 +1,148 @@
+{
+  "build": "h6c40b1e_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/osx-64",
+  "constrains": [],
+  "depends": [],
+  "extracted_package_dir": "/Users/marierivers/opt/anaconda3/pkgs/uriparser-0.9.7-h6c40b1e_0",
+  "features": "",
+  "files": [
+    "include/uriparser/Uri.h",
+    "include/uriparser/UriBase.h",
+    "include/uriparser/UriDefsAnsi.h",
+    "include/uriparser/UriDefsConfig.h",
+    "include/uriparser/UriDefsUnicode.h",
+    "include/uriparser/UriIp4.h",
+    "lib/cmake/uriparser-0.9.7/uriparser-config-version.cmake",
+    "lib/cmake/uriparser-0.9.7/uriparser-config.cmake",
+    "lib/cmake/uriparser-0.9.7/uriparser-release.cmake",
+    "lib/cmake/uriparser-0.9.7/uriparser.cmake",
+    "lib/liburiparser.1.0.30.dylib",
+    "lib/liburiparser.1.dylib",
+    "lib/liburiparser.dylib",
+    "lib/pkgconfig/liburiparser.pc"
+  ],
+  "fn": "uriparser-0.9.7-h6c40b1e_0.conda",
+  "legacy_bz2_md5": "e697defd6c59ca6d98ab4bb5f951eb21",
+  "legacy_bz2_size": 44105,
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "link": {
+    "source": "/Users/marierivers/opt/anaconda3/pkgs/uriparser-0.9.7-h6c40b1e_0",
+    "type": 1
+  },
+  "md5": "768cdde3e16bbf0b40640272623a4c58",
+  "name": "uriparser",
+  "package_tarball_full_path": "/Users/marierivers/opt/anaconda3/pkgs/uriparser-0.9.7-h6c40b1e_0.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "include/uriparser/Uri.h",
+        "path_type": "hardlink",
+        "sha256": "746469f206226b5cc75024673695339d69bed9fa659f1b275f757fbd4bee2302",
+        "sha256_in_prefix": "746469f206226b5cc75024673695339d69bed9fa659f1b275f757fbd4bee2302",
+        "size_in_bytes": 38245
+      },
+      {
+        "_path": "include/uriparser/UriBase.h",
+        "path_type": "hardlink",
+        "sha256": "fe084937f891942dbd51f5b640d0404f9cb1f18c02dbfb3305e2abfbdfc51aef",
+        "sha256_in_prefix": "fe084937f891942dbd51f5b640d0404f9cb1f18c02dbfb3305e2abfbdfc51aef",
+        "size_in_bytes": 12499
+      },
+      {
+        "_path": "include/uriparser/UriDefsAnsi.h",
+        "path_type": "hardlink",
+        "sha256": "c4b0fcf5edcb068c0e0a32c52a3d4e8c4f4aecf53aa59c19b2d8317caf8a811c",
+        "sha256_in_prefix": "c4b0fcf5edcb068c0e0a32c52a3d4e8c4f4aecf53aa59c19b2d8317caf8a811c",
+        "size_in_bytes": 2583
+      },
+      {
+        "_path": "include/uriparser/UriDefsConfig.h",
+        "path_type": "hardlink",
+        "sha256": "4971bdec1d1ce4c15b26ee31b70aea5db844a62c00b3fb5c4db957f63958d78d",
+        "sha256_in_prefix": "4971bdec1d1ce4c15b26ee31b70aea5db844a62c00b3fb5c4db957f63958d78d",
+        "size_in_bytes": 3312
+      },
+      {
+        "_path": "include/uriparser/UriDefsUnicode.h",
+        "path_type": "hardlink",
+        "sha256": "4c46e9fbf1996080de79c3ce17c4f91a27e16fc6c334fefee802eea399ad7cec",
+        "sha256_in_prefix": "4c46e9fbf1996080de79c3ce17c4f91a27e16fc6c334fefee802eea399ad7cec",
+        "size_in_bytes": 2600
+      },
+      {
+        "_path": "include/uriparser/UriIp4.h",
+        "path_type": "hardlink",
+        "sha256": "d44918cbe50737c7dd8d36ae661b2a6020bf10e4b451696f24406884ebd0199c",
+        "sha256_in_prefix": "d44918cbe50737c7dd8d36ae661b2a6020bf10e4b451696f24406884ebd0199c",
+        "size_in_bytes": 3460
+      },
+      {
+        "_path": "lib/cmake/uriparser-0.9.7/uriparser-config-version.cmake",
+        "path_type": "hardlink",
+        "sha256": "c246a7a7af0ed0d81a338c004587956d4b907e70209a667f1d177776e05e93f4",
+        "sha256_in_prefix": "c246a7a7af0ed0d81a338c004587956d4b907e70209a667f1d177776e05e93f4",
+        "size_in_bytes": 2762
+      },
+      {
+        "_path": "lib/cmake/uriparser-0.9.7/uriparser-config.cmake",
+        "path_type": "hardlink",
+        "sha256": "b66b26460755fcf5b13f4e20c22446a58528a0096065b97740c4bfd66050203b",
+        "sha256_in_prefix": "b66b26460755fcf5b13f4e20c22446a58528a0096065b97740c4bfd66050203b",
+        "size_in_bytes": 3069
+      },
+      {
+        "_path": "lib/cmake/uriparser-0.9.7/uriparser-release.cmake",
+        "path_type": "hardlink",
+        "sha256": "379955781e1ac9be01fa6ea4a672fb751888d236dcb922e1d5d61270ba565e2e",
+        "sha256_in_prefix": "379955781e1ac9be01fa6ea4a672fb751888d236dcb922e1d5d61270ba565e2e",
+        "size_in_bytes": 907
+      },
+      {
+        "_path": "lib/cmake/uriparser-0.9.7/uriparser.cmake",
+        "path_type": "hardlink",
+        "sha256": "440e921cef0c30707ab8dfb5f78304cc87181a1771d6f3cb8036c68987991a70",
+        "sha256_in_prefix": "440e921cef0c30707ab8dfb5f78304cc87181a1771d6f3cb8036c68987991a70",
+        "size_in_bytes": 3967
+      },
+      {
+        "_path": "lib/liburiparser.1.0.30.dylib",
+        "path_type": "hardlink",
+        "sha256": "7765f70c0af5403a9dd395dc3e5b7f4ed9177fe0769aa1d0b502fc676bdfc53f",
+        "sha256_in_prefix": "7765f70c0af5403a9dd395dc3e5b7f4ed9177fe0769aa1d0b502fc676bdfc53f",
+        "size_in_bytes": 59308
+      },
+      {
+        "_path": "lib/liburiparser.1.dylib",
+        "path_type": "softlink",
+        "sha256": "7765f70c0af5403a9dd395dc3e5b7f4ed9177fe0769aa1d0b502fc676bdfc53f",
+        "size_in_bytes": 59308
+      },
+      {
+        "_path": "lib/liburiparser.dylib",
+        "path_type": "softlink",
+        "sha256": "7765f70c0af5403a9dd395dc3e5b7f4ed9177fe0769aa1d0b502fc676bdfc53f",
+        "size_in_bytes": 59308
+      },
+      {
+        "_path": "lib/pkgconfig/liburiparser.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_a9hls2_ebd/croot/uriparser_1692186914129/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+        "sha256": "e1614fcf86118daf36e5ac70176c7342cb412e02a782601fe47478899fa904dc",
+        "sha256_in_prefix": "2b05cbb98a626d528755120624dce1b200e61b498ce661e304f23a0d0b6eabda",
+        "size_in_bytes": 510
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "f301179cec73253ac83e2d9c43911078a6efc3f71dcfefcba45586e8023d0874",
+  "size": 41376,
+  "subdir": "osx-64",
+  "timestamp": 1692186954114,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/osx-64/uriparser-0.9.7-h6c40b1e_0.conda",
+  "version": "0.9.7"
+}

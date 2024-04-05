@@ -12,8 +12,8 @@ $cream: #FDFBF7;
 $dark-gray: #2e2d2b;
 $gray: #504f4f;
 $light-gray: #8b8b87;
-$lighter-gray: tint-color($light-gray, 70%);
-$lightest-gray: tint-color($light-gray, 90%);
+$lighter-gray: tint-color($light-gray, 60%);
+$lightest-gray: tint-color($light-gray, 80%);
 $purple: #AE8BD1;
 $black: #000000;
 $burnt-orange: #ad7237;
@@ -68,7 +68,7 @@ $popover-bg: $dark-purple;	// The background color for popovers (for example, wh
 $code-color: $dark-red; // The text color of inline code
 
 // Code blocks
-$code-block-bg: $lighter-gray;
+$code-block-bg: $lightest-gray;
 $code-block-bg-alpha: -0.35; // Defaults to -0.35
 $code-block-border-left: $teal;
 $code-block-border-left-size: 5px; // The thickness of the left border displayed on code blocks. Defaults to 3px
@@ -138,7 +138,7 @@ body {
   border-radius: 0.6rem;
   border-width: thin;
   font-size: 18px;
-  font-color: $cream;
+  font-color: $orangey;
   letter-spacing: 3px;
   padding-top: 2px;
   padding-bottom: 2px;

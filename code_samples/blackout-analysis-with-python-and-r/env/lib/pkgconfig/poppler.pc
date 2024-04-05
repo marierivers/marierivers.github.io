@@ -1,0 +1,10 @@
+prefix=/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env
+libdir=/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/lib
+includedir=/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/include
+
+Name: poppler
+Description: PDF rendering library
+Version: 22.12.0
+
+Libs: -L${libdir} -lpoppler
+Cflags: -I${includedir}/poppler

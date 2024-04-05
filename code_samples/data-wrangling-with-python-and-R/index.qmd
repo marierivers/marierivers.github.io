@@ -181,6 +181,14 @@ trout_salamander_py.species.unique()
 Get number of unique values
 
 ```{python}
+trout_salamander_py.nunique()
+```
+
+```{python}
+trout_salamander_py['species'].nunique()
+```
+
+```{python}
 len(pd.unique(trout_salamander_py['species']))
 ```
 
@@ -188,6 +196,27 @@ Get number of observations for each unique value
 
 ```{python}
 trout_salamander_py.groupby(['species']).count()
+```
+:::
+
+# Rename columns
+
+::: panel-tabset
+## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
+
+```{r}
+#| column: page-right
+trout_salamander_R_rename <- trout_salamander_R %>% 
+  rename(species_name = species,
+         weight_grams = weight_g)
+```
+
+## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
+
+```{python}
+#| column: page-right
+# {'old_name':'new_name'}
+trout_salamander_py_rename = dtrout_salamander_py.rename(columns={'species': 'species_name', 'weight_g': 'weight_grams'}) 
 ```
 :::
 

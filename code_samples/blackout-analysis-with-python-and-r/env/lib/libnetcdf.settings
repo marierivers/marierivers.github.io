@@ -1,0 +1,47 @@
+# NetCDF C Configuration Summary
+==============================
+
+# General
+-------
+NetCDF Version:		4.8.1
+Dispatch Version:       3
+Configured On:		Fri Aug  4 08:12:28 CDT 2023
+Host System:		x86_64-Darwin-20.6.0
+Build Directory: 	/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_catz7cv408/croot/libnetcdf_1691154370231/work
+Install Prefix:         /Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env
+
+# Compiling Options
+-----------------
+C Compiler:		/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_catz7cv408/croot/libnetcdf_1691154370231/_build_env/bin/x86_64-apple-darwin13.4.0-clang
+CFLAGS:			-march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -isystem /Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/include -fdebug-prefix-map=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_catz7cv408/croot/libnetcdf_1691154370231/work=/usr/local/src/conda/libnetcdf-4.8.1 -fdebug-prefix-map=/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env=/usr/local/src/conda-prefix -fno-strict-aliasing -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -isystem /Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/include -fdebug-prefix-map=/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_catz7cv408/croot/libnetcdf_1691154370231/work=/usr/local/src/conda/libnetcdf-4.8.1 -fdebug-prefix-map=/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env=/usr/local/src/conda-prefix
+CPPFLAGS:		 
+LDFLAGS:		-Wl,-pie -Wl,-headerpad_max_install_names  -Wl,-rpath,/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/lib -L/Users/marierivers/Documents/Data_Science/marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/env/lib 
+AM_CFLAGS:		
+AM_CPPFLAGS:		
+AM_LDFLAGS:		
+Shared Library:		yes
+Static Library:		no
+Extra libraries:	-lmfhdf -ldf -lhdf5_hl -lhdf5 -lcrypto -lcurl -lpthread -lz -ldl -lm -lzip
+
+# Features
+--------
+NetCDF-2 API:		yes
+HDF4 Support:		yes
+HDF5 Support:		yes
+NetCDF-4 API:		yes
+NC-4 Parallel Support:	no
+PnetCDF Support:	no
+DAP2 Support:		yes
+DAP4 Support:		yes
+Byte-Range Support:	yes
+Diskless Support:	yes
+MMap Support:		no
+JNA Support:		no
+CDF5 Support:		yes
+ERANGE Fill Support:	yes
+Relaxed Boundary Check:	yes
+SZIP Support:           no
+SZIP Write Support:     no
+Parallel Filters:       yes
+NCZarr Support:		yes
+Multi-Filter Support:	yes
