@@ -8,7 +8,7 @@ author:
 categories: [Python, R, geospatial analysis]
 citation: 
   url: https://marierivers.github.io/code_samples/blackout-analysis-with-python-and-r/ 
-# image: blackout_areas.png
+image: leaflet_blackout_mask.png
 draft: false
 editor: visual
 toc-title: Contents

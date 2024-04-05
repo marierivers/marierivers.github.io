@@ -8,7 +8,7 @@ date: 2022-09-23
 categories: [Python, R, Data Wrangling]
 citation: 
   url: https://marierivers.github.io/code_samples/data-wrangling-with-python-and-R/ 
-#image: 
+image: types_of_joins.jpeg
 draft: false
 editor: visual
 toc-title: Contents
@@ -199,7 +199,7 @@ trout_salamander_py.groupby(['species']).count()
 ```
 :::
 
-# Rename columns
+## Rename columns
 
 ::: panel-tabset
 ## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
@@ -216,7 +216,7 @@ trout_salamander_R_rename <- trout_salamander_R %>%
 ```{python}
 #| column: page-right
 # {'old_name':'new_name'}
-trout_salamander_py_rename = dtrout_salamander_py.rename(columns={'species': 'species_name', 'weight_g': 'weight_grams'}) 
+trout_salamander_py_rename = trout_salamander_py.rename(columns={'species': 'species_name', 'weight_g': 'weight_grams'}) 
 ```
 :::
 
