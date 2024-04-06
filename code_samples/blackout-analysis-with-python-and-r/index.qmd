@@ -338,6 +338,45 @@ profile.update({
 ```
 :::
 
+```{r}
+#| column: page-right
+#| code-overflow: wrap
+#| code-fold: true
+#| code-summary: "Code for leaflet map"
+#| fig-cap: "Region of Interest"
+roi_leaflet <- st_as_sf(roi_sfc)
+roi_leaflet <- st_make_valid(roi_leaflet)
+
+leaflet(roi_leaflet) %>%
+  setView(lat = 29.75, lng = -95.5, zoom = 8) %>%
+  addProviderTiles(providers$OpenStreetMap) %>% 
+  addPolygons(fillColor = "green", fillOpacity = 0.5, weight = 2)
+```
+
+::: columns
+::: {.column width="50%"}
+#### Before the storms
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+plot(feb7_roi, main = "DNB at Sensor Radiance Feb 7, 2021", axes = TRUE, key.pos = NULL)
+```
+:::
+
+::: {.column width="50%"}
+#### After the storms
+
+```{r}
+#| message: false
+#| warning: false
+#| echo: false
+plot(feb16_roi, main = "DNB at Sensor Radiance Feb 16, 2021", axes = TRUE, key.pos = NULL)
+```
+:::
+:::
+
 ### Road and Building data
 
 Building and road data was obtained from [OpenStreetMap](https://www.openstreetmap.org/#map=5/38.007/-95.844). Subsets of the data were provided as GeoPackages (.gpkg) for the Houston metropolitan area. SQL queries were used to subset highways and major roads from the the road file and residential buildings from the building file.
@@ -399,7 +438,7 @@ query_buildings <- "SELECT * FROM gis_osm_buildings_a_free_1 WHERE (type IS NULL
 
 # read buildings gpkg into object, and transform to correct projection
 buildings <- st_read("data/gis_osm_buildings_a_free_1.gpkg", query = query_buildings)
-buildings_3083 <- st_transform(buildings, crs = 3083) # xx
+buildings_3083 <- st_transform(buildings, crs = 3083)
 buildings_4326 <- st_transform(buildings, crs = 4326)
 ```
 
@@ -646,7 +685,7 @@ acs_children_household_df <- acs_children_household %>%
   select(GEOID) %>%
   mutate(pop_children_under_18 = acs_children_household$B09002e1,
          pct_children_under_18 = (pop_children_under_18 / acs_hispanic_latino$B03002e1) * 100)
-# the children_household_relationship layer did not contain a total populaiton field
+# the children_household_relationship layer did not contain a total population field
 ```
 
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
@@ -728,7 +767,7 @@ acs_income_py = acs_income_py[['GEOID', 'median_income']]
 
 #### Join census track data
 
-Next, the selected race, age, and income layers are joined. The resulting data set contains the geometry of each census tract and corresponding socioeconomic data.
+Next, the selected race, age, and income layers are joined. The resulting dataset contains the geometry of each census tract and corresponding socioeconomic data.
 
 ::: panel-tabset
 ## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
@@ -795,10 +834,11 @@ blackout_threshold[blackout_threshold > threshold] = TRUE # a blackout area
 
 # vectorize the blackout mask
 blackout_threshold_vector <- st_as_sf(blackout_threshold)
-blackout_threshold_vector <- st_make_valid(blackout_threshold_vector)
+blackout_threshold_vector <- st_make_valid(blackout_threshold_vector) %>% 
+  st_transform(crs = 3083)
 
-# remove the highway buffer from our vectorized blackout mask using st_difference()
-blackout_mask <- st_difference(blackout_threshold_vector, highways_buffer_4326)
+# remove the highway buffer from the vectorized blackout mask using st_difference()
+blackout_mask_3083 <- st_difference(blackout_threshold_vector, highways_buffer_3083)
 ```
 
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
@@ -836,7 +876,28 @@ gc()
 
 ## Visualize
 
-xx
+The map below shows the areas identified as still experiencing power outages as of February 16, 2021.
+
+```{r}
+#| column: page-right
+#| code-overflow: wrap
+#| code-fold: true
+#| code-summary: "Code for leaflet map"
+
+# transform to WG84 to be compatible with the leaflet package
+blackout_mask_4326 <- st_transform(blackout_mask_3083, crs = 4326)
+
+pal_blackout <- colorNumeric(c("red"), 1, na.color = "transparent")
+
+leaflet(blackout_mask_4326) %>%
+  setView(lat = 29.75, lng = -95.5, zoom = 9) %>%
+  addProviderTiles(providers$OpenStreetMap) %>%
+  addPolygons(fillColor = ~pal_blackout(DNB_At_Sensor_Radiance_500m), fillOpacity = 0.75, weight = 0)
+```
+
+::: callout-note
+While the spatial analysis was completed using the NAD83 / Texas Centric Albers Equal Area (EPSG:3083) projection, the processed data was transposed to WGS 84 / World Geodetic System (EPSF:4326) to be compatible with maps created with the leaflet package.
+:::
 
 ## Identify houses without power
 
@@ -851,7 +912,6 @@ Houses that lost electricity were identified based on a spatial intersection of 
 #| warning: false
 
 # use spatial subsetting to find all the residential buildings in blackout areas
-blackout_mask_3083 <- st_transform(blackout_mask, crs = 3083)
 blackout_buildings_3083 <- buildings_3083[blackout_mask_3083, op = st_intersects]
 
 number_of_buildings_without_power <- nrow(blackout_buildings_3083)
@@ -879,6 +939,7 @@ Based on this analysis, an estimated `r format(number_of_buildings_without_power
 ```{r}
 #| column: page-right
 #| code-overflow: wrap
+#| message: false
 
 # use a spatial join to attach the census tract data to the building data
 blackout_buildings_census_3083 <- st_join(blackout_buildings_3083, census_tract_data_3083) %>%
@@ -900,7 +961,9 @@ counts_of_lost_power_by_census_tract <- all_building_data_3083 %>%
          num_houses_lost_power = "lost power") %>%
   mutate(pct_houses_that_lost_power = (num_houses_lost_power / (num_houses_did_not_lose_power + num_houses_lost_power)) * 100)
 
-census_tract_blackout_data <- left_join(census_tract_data_roi_4326, counts_of_lost_power_by_census_tract, by = "GEOID_Data") %>% 
+census_tract_blackout_data_with_geometry <- left_join(census_tract_data_roi_4326, counts_of_lost_power_by_census_tract, by = "GEOID_Data")
+
+census_tract_blackout_data <- census_tract_blackout_data_with_geometry %>% 
   st_drop_geometry()
 ```
 
@@ -931,6 +994,33 @@ census_tract_blackout_data_py['pct_houses_that_lost_power'] = (census_tract_blac
 ```
 :::
 
+The map below shows blackout areas layered over census tract populations, with labels identifying the number of houses in each census tract that lost power. The buildings layer was not visualized due to the size of the dataset and slow load times.
+
+```{r}
+#| column: page-right
+#| code-overflow: wrap
+#| code-fold: true
+#| code-summary: "Code for leaflet map"
+pal_pop <- colorQuantile("Blues", census_tract_blackout_data_with_geometry$total_population, n = 5)
+pal_blackout <- colorNumeric(c("red"), 1, na.color = "transparent")
+
+pop_colors <- unique(pal_pop(sort(census_tract_blackout_data_with_geometry$total_population)))
+pop_labs <- format(quantile(census_tract_blackout_data_with_geometry$total_population, seq(0, 1, .2)), big.mark = ",", digits = 0)
+pop_labs <- paste(lag(pop_labs), pop_labs, sep = " - ")[-1]
+
+leaflet(census_tract_blackout_data_with_geometry) %>%
+  setView(lat = 29.75, lng = -95.5, zoom = 9) %>%
+  addProviderTiles(providers$OpenStreetMap) %>% 
+  addPolygons(fillColor = ~pal_pop(total_population), fillOpacity = 0.5,
+              color = "gray", weight = 0.75,
+              label = ~paste("Number of houses without power:", format(num_houses_lost_power, big.mark = ",")),
+              highlight = highlightOptions(weight = 2, color = "black", bringToFront = TRUE)) %>%
+  addLegend(colors = pop_colors, labels = pop_labs,
+            title = "Total Population",
+            "bottomright") %>%
+  addPolygons(data = blackout_mask_4326, fillColor = ~pal_blackout(DNB_At_Sensor_Radiance_500m), fillOpacity = 0.75, weight = 0)
+```
+
 # Statistical Analysis
 
 Linear regression was used to model the relationship between percent of houses that lost power and selected data from the U.S. Census Bureau's American Community Survey (ACS). All data are aggregated to the census tract level.
@@ -953,7 +1043,7 @@ census_tract_blackout_data_py = pd.read_csv("data/census_tract_blackout_data_df.
 ## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
 
 ```{r}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| warning: false
 #| fig-cap: "Percent of houses that lost power vs. percent population white in census tract"
@@ -997,7 +1087,7 @@ r_sqrd_white <- round(summary_model_pct_white$r.squared, digits = 3)
 
 ```{python}
 #| code-overflow: wrap
-#| column: page-right
+#| column: margin
 #| fig-cap: "Percent of houses that lost power vs. percent population white in census tract"
 
 model_pct_white_py = ols('pct_houses_that_lost_power ~ pct_white', 
@@ -1040,7 +1130,7 @@ r_sqrd_white_py = round(model_pct_white_py.rsquared, 3)
 ## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
 
 ```{r}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| warning: false
 #| fig-cap: "Percent of houses that lost power vs. percent population black in census tract"
@@ -1083,7 +1173,7 @@ r_sqrd_black <- round(summary_model_pct_black$r.squared, digits = 3)
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 ```{python}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| fig-cap: "Percent of houses that lost power vs. percent population black in census tract"
 model_pct_black_py = ols('pct_houses_that_lost_power ~ pct_black', 
@@ -1118,7 +1208,7 @@ r_sqrd_black_py = round(model_pct_black_py.rsquared, 3)
 ## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
 
 ```{r}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| warning: false
 #| fig-cap: "Percent of houses that lost power vs. percent population native american in census tract"
@@ -1161,7 +1251,7 @@ r_sqrd_am_native <- round(summary_model_pct_am_native$r.squared, digits = 3)
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 ```{python}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| fig-cap: "Percent of houses that lost power vs. percent population native american in census tract"
 model_pct_am_native_py = ols('pct_houses_that_lost_power ~ pct_am_native', 
@@ -1196,7 +1286,7 @@ r_sqrd_am_native_py = round(model_pct_am_native_py.rsquared, 3)
 ## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
 
 ```{r}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| warning: false
 #| fig-cap: "Percent of houses that lost power vs. percent population asian in census tract"
@@ -1240,7 +1330,7 @@ r_sqrd_asian <- round(summary_model_pct_asian$r.squared, digits = 3)
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 ```{python}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| fig-cap: "Percent of houses that lost power vs. percent population asian in census tract"
 
@@ -1276,7 +1366,7 @@ r_sqrd_asian_py = round(model_pct_asian_py.rsquared, 3)
 ## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
 
 ```{r}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| warning: false
 #| fig-cap: "Percent of houses that lost power vs. percent population hispanic / latino in census tract"
@@ -1320,7 +1410,7 @@ r_sqrd_hispanic_latino <- round(summary_model_pct_hispanic_latino$r.squared, dig
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 ```{python}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| fig-cap: "Percent of houses that lost power vs. percent population hispanic / latino in census tract"
 
@@ -1352,7 +1442,10 @@ r_sqrd_hispanic_latino_py = round(model_pct_hispanic_latino_py.rsquared, 3)
 
 ### Race summary plots
 
-```{r}
+```{r fig.width=10,fig.height=6}
+#| code-overflow: wrap
+#| column: screen-right
+#| warning: false
 model_plots_race <- (plot_model_pct_white | plot_model_pct_black | plot_model_pct_am_native) / 
   (plot_model_pct_asian | plot_model_pct_hispanic_latino | plot_spacer()) +
   plot_annotation(title = "Lineral Regression Models of Power Outages vs. Race")
@@ -1411,7 +1504,7 @@ r_sqrd_65_and_over <- round(summary_model_pct_65_and_over$r.squared, digits = 3)
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 ```{python}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| fig-cap: "Percent of houses that lost power vs. percent population age 65 and older in census tract"
 model_pct_65_and_over_py = ols('pct_houses_that_lost_power ~ pct_65_and_over', 
@@ -1466,6 +1559,7 @@ plot_model_pct_children_under_18
 
 ```{r}
 #| code-overflow: wrap
+#| column: page-right
 #| code-fold: true
 #| code-summary: "Code for model summary result values"
 # model summary
@@ -1489,7 +1583,7 @@ r_sqrd_children_under_18 <- round(summary_model_pct_children_under_18$r.squared,
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 ```{python}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| fig-cap: "Percent of houses that lost power vs. percent population children under 18 in census tract"
 model_pct_children_under_18_py = ols('pct_houses_that_lost_power ~ pct_children_under_18', 
@@ -1521,7 +1615,7 @@ r_sqrd_children_under_18_py = round(model_pct_children_under_18_py.rsquared, 3)
 
 ### Age summary plots
 
-```{r fig.width=10,fig.height=3}
+```{r fig.width=10,fig.height=4}
 #| warning: false
 #| code-overflow: wrap
 #| column: screen-right
@@ -1559,6 +1653,7 @@ plot_model_pct_households_below_poverty
 
 ```{r}
 #| code-overflow: wrap
+#| column: page-right
 #| code-fold: true
 #| code-summary: "Code for model summary result values"
 # model summary
@@ -1583,7 +1678,7 @@ r_sqrd_households_below_poverty <- round(summary_model_pct_households_below_pove
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 ```{python}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| fig-cap: "Percent of houses that lost power vs. percent population of household below the poverty level in census tract"
 model_pct_households_below_poverty_py = ols('pct_houses_that_lost_power ~ pct_households_below_poverty', 
@@ -1638,6 +1733,7 @@ plot_model_median_income
 
 ```{r}
 #| code-overflow: wrap
+#| column: page-right
 #| code-fold: true
 #| code-summary: "Code for model summary result values"
 # model summary
@@ -1661,7 +1757,7 @@ r_sqrd_median_income <- round(summary_model_median_income$r.squared, digits = 3)
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 ```{python}
-#| column: page-right
+#| column: margin
 #| code-overflow: wrap
 #| fig-cap: "Percent of houses that lost power vs. median income in census tract"
 model_pct_median_income_py = ols('pct_houses_that_lost_power ~ median_income', 
@@ -1693,7 +1789,7 @@ r_sqrd_median_income_py = round(model_pct_median_income_py.rsquared, 3)
 
 ### Income summary plots
 
-```{r fig.width=10,fig.height=3}
+```{r fig.width=10,fig.height=4}
 #| warning: false
 #| code-overflow: wrap
 #| column: screen-right
@@ -1764,6 +1860,7 @@ The figures below provide a visual comparison of each model result. The bold por
 
 ```{r}
 #| code-overflow: wrap
+#| column: page-right
 #| message: false
 race_model_summary <- plot_summs(model_pct_white, model_pct_black, model_pct_am_native, model_pct_asian, model_pct_hispanic_latino,
            inner_ci_level = 0.9,
@@ -1772,8 +1869,9 @@ race_model_summary
 ```
 
 ```{r}
+#| column: page-right
 #| message: false
-#| #| code-overflow: wrap
+#| code-overflow: wrap
 age_model_summary <-plot_summs(model_pct_65_and_over, model_pct_children_under_18,
            inner_ci_level = 0.95,
            model.names = c("over 65", "under 18"))
@@ -1781,6 +1879,7 @@ age_model_summary
 ```
 
 ```{r}
+#| column: page-right
 #| message: false
 #| code-overflow: wrap
 income_model_summary <-plot_summs(model_pct_households_below_poverty, model_median_income,
@@ -1793,7 +1892,9 @@ income_model_summary
 
 This analysis does not include any verification of power outage locations nor does it incorporate typical variations in nighttime lights. The intent of the statistical analysis is not to use sociodemographic variables as predictors of power outages, but rather provide insight into groups that were disproportionately affected. Further work could incorporate electric utility data to identify vulnerable power grid infrastructure and then recommend equitable asset management and capital improvement plans.
 
-# Additional maps
+# Limitations
+
+This analysis does not include any verification of power outage locations nor does it incorporate typical variations in nighttime lights. The intent of the statistical analysis is not to use sociodemographic variables as predictors of power outages, but rather provide insight into groups that were disproportionately affected. Further work could incorporate electric utility data to identify vulnerable power grid infrastructure and then recommend equitable asset management and capital improvement plans.
 
 # References
 
@@ -1802,19 +1903,3 @@ This analysis does not include any verification of power outage locations nor do
 Pebesma E (2022). stars: Spatiotemporal Arrays, Raster and Vector Data Cubes. https://r-spatial.github.io/stars/, https://github.com/r-spatial/stars/.
 
 [Extreme Winter Weather Causes U.S. Blackouts](https://earthobservatory.nasa.gov/images/147941/extreme-winter-weather-causes-us-blackouts)
-
-::: panel-tabset
-## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
-
-```{r}
-
-
-```
-
-## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
-
-```{python}
-
-   
-```
-:::
