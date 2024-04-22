@@ -290,6 +290,11 @@ feb16_merged_dataset.write(feb16_merged_py)
 ```
 :::
 
+```{python}
+#| include: false
+del(dnb_feb7_h08v05_py, dnb_feb7_h08v06_py, dnb_feb16_h08v05_py, dnb_feb16_h08v06_py)
+```
+
 According to the metadata, the fill value is `r fill_value`.
 
 #### Crop to ROI
@@ -462,6 +467,11 @@ buildings_3083_py = buildings_4326_py.to_crs(3083)
 rm(highways_py, buildings)
 gc()
 ```
+
+```{python}
+del(buildings_4326_py, highways_py, highways_3083_py, query_roads_py)
+```
+
 
 ### Census data
 
@@ -718,7 +728,6 @@ acs_poverty_df <- acs_poverty %>%
   mutate(total_households = acs_poverty$B17017e1,
          num_households_below_poverty = acs_poverty$B17017e2,
          pct_households_below_poverty = (num_households_below_poverty / total_households) * 100)
-
 ```
 
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
@@ -765,6 +774,14 @@ acs_income_py = acs_income_py[['GEOID', 'median_income']]
 ```
 :::
 
+```{r}
+#| include: false
+
+#remove data not needed anymore
+rm(acs_age_sex, acs_race, acs_hispanic_latino, acs_children_household, acs_poverty, acs_income)
+gc()
+```
+
 #### Join census track data
 
 Next, the selected race, age, and income layers are joined. The resulting dataset contains the geometry of each census tract and corresponding socioeconomic data.
@@ -800,7 +817,7 @@ census_tract_data_roi_3083 <- st_transform(census_tract_data_roi_4326, crs = 308
 #| code-overflow: wrap
 
 # join data layers to census tract geometry
-census_tract_data_py = acs_geoms_py_3083 = acs_geoms_py.to_crs(3083).copy()
+census_tract_data_py = acs_geoms_py_3083.copy()
 census_tract_data_py = census_tract_data_py.merge(acs_age_sex_py, how='left', left_on='GEOID_Data', right_on='GEOID')
 census_tract_data_py = census_tract_data_py.merge(acs_race_py, how='left', left_on='GEOID_Data', right_on='GEOID')
 census_tract_data_py = census_tract_data_py.drop(columns=['GEOID_x', 'GEOID_y'])
@@ -812,6 +829,11 @@ census_tract_data_py = census_tract_data_py.merge(acs_income_py, how='left', lef
 census_tract_data_py = census_tract_data_py.drop(columns=['GEOID_x', 'GEOID_y'])
 ```
 :::
+
+```{python}
+del(acs_geoms_py, acs_geoms_py_3083, acs_age_sex_py, acs_race_py, acs_hispanic_latino_py, acs_children_household_py, acs_poverty_py, acs_income_py)
+```
+
 
 ## Create blackout mask
 
@@ -1021,6 +1043,37 @@ leaflet(census_tract_blackout_data_with_geometry) %>%
   addPolygons(data = blackout_mask_4326, fillColor = ~pal_blackout(DNB_At_Sensor_Radiance_500m), fillOpacity = 0.75, weight = 0)
 ```
 
+```{r}
+#| include: false
+
+#remove data not needed anymore
+rm(blackout_buildings_census_3083, no_blackout_buildings_3083,
+   blackout_buildings_3083, blackout_mask_3083, blackout_mask_4326,
+   blackout_threshold_vector, feb16_roi, feb16_merged, feb7_roi, feb7_merged,
+   all_building_data_3083, counts_of_lost_power_by_census_tract,
+   census_tract_blackout_data_with_geometry, census_tract_blackout_data,
+   acs_income_df, acs_layer_names, acs_poverty_df, acs_race, acs_race_df, acs_income,
+   acs_geoms, buildings_3083, buildings_4326, census_tract_data, census_tract_data_3083,
+   census_tract_data_roi_4326, census_tract_data_roi_3083, census_tract_data_roi_4326,
+   highways, highways_3083, highways_buffer_3083, highways_buffer_4326, acs_age_sex_df,
+   acs_children_household_df, acs_hispanic_latino_df, census_tract_data_4326, no_blackout_buildings_census_3083)
+gc()
+```
+
+```{python}
+#| include: false
+del(all_building_data_3083_py, blackout_buildings_3083_py, blackout_buildings_census_3083_py, blackout_mask_3083_py, blackout_threshold_data_py)
+```
+
+```{python}
+del(blackout_threshold_dataset, blackout_threshold_py, blackout_threshold_vector_3083_py, blackout_threshold_vector_py, buildings_3083_py, census_tract_data_py, difference_py, ds, feb16_merged_dataset)
+```
+
+```{python}
+del(census_tract_blackout_data_py, counts_of_lost_power_by_census_tract_py, feb16_merged_metadata, feb16_merged_py, feb16_roi_py, feb7_merged_dataset, feb7_merged_metadata, feb7_merged_py, feb7_roi_py, fill_value_py, geometries, highway_buffer_3083_py, max_x, max_y, meta, min_x, min_y, no_blackout_buildings_3083_py, no_blackout_buildings_census_3083_py, profile, roi_coordinates_py, shapes_gen, threshold_py, transform, window)
+```
+
+
 # Statistical Analysis
 
 Linear regression was used to model the relationship between percent of houses that lost power and selected data from the U.S. Census Bureau's American Community Survey (ACS). All data are aggregated to the census tract level.
@@ -1043,7 +1096,6 @@ census_tract_blackout_data_py = pd.read_csv("data/census_tract_blackout_data_df.
 ## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
 
 ```{r}
-#| column: margin
 #| code-overflow: wrap
 #| warning: false
 #| fig-cap: "Percent of houses that lost power vs. percent population white in census tract"
@@ -1087,7 +1139,6 @@ r_sqrd_white <- round(summary_model_pct_white$r.squared, digits = 3)
 
 ```{python}
 #| code-overflow: wrap
-#| column: margin
 #| fig-cap: "Percent of houses that lost power vs. percent population white in census tract"
 
 model_pct_white_py = ols('pct_houses_that_lost_power ~ pct_white', 
@@ -1130,7 +1181,7 @@ r_sqrd_white_py = round(model_pct_white_py.rsquared, 3)
 ## `r fontawesome::fa("r-project", fill = "#5A5A5A", a11y = "sem")` R
 
 ```{r}
-#| column: margin
+#| column: page-right
 #| code-overflow: wrap
 #| warning: false
 #| fig-cap: "Percent of houses that lost power vs. percent population black in census tract"
@@ -1173,7 +1224,7 @@ r_sqrd_black <- round(summary_model_pct_black$r.squared, digits = 3)
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 ```{python}
-#| column: margin
+#| column: page-right
 #| code-overflow: wrap
 #| fig-cap: "Percent of houses that lost power vs. percent population black in census tract"
 model_pct_black_py = ols('pct_houses_that_lost_power ~ pct_black', 
@@ -1500,7 +1551,6 @@ ci_95_upper_pct_65_and_over <- round(confint(model_pct_65_and_over, level = 0.95
 r_sqrd_65_and_over <- round(summary_model_pct_65_and_over$r.squared, digits = 3)
 ```
 
-
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
 ```{python}
@@ -1673,7 +1723,6 @@ ci_95_upper_households_below_poverty <- round(confint(model_pct_households_below
 # r-squared value
 r_sqrd_households_below_poverty <- round(summary_model_pct_households_below_poverty$r.squared, digits = 3)
 ```
-
 
 ## `r fontawesome::fa("python", fill = "#5A5A5A", a11y ="sem")` Python
 
@@ -1894,7 +1943,7 @@ This analysis does not include any verification of power outage locations nor do
 
 # Limitations
 
-This analysis does not include any verification of power outage locations nor does it incorporate typical variations in nighttime lights. The intent of the statistical analysis is not to use sociodemographic variables as predictors of power outages, but rather provide insight into groups that were disproportionately affected. Further work could incorporate electric utility data to identify vulnerable power grid infrastructure and then recommend equitable asset management and capital improvement plans.
+This analysis does not include any verification of power outage locations nor does it incorporate typical variations in nighttime lights. The intent of the statistical analysis is not to use sociodemographic variables as predictors of power outages, but rather provide insight into groups that were disproportionately affected. Further work could incorporate electric utility data to identify vulnerable power grid infrastructure and then recommend equitable asset management and capital improvement plans..
 
 # References
 
