@@ -1,0 +1,194 @@
+---
+title: "Buoy Data"
+description: "xxx"
+author:
+  - name: Marie Rivers
+    url: https://marierivers.github.io/
+# date: 2022-04-03
+categories: [Python, R, xx]
+citation: 
+  url: https://marierivers.github.io/code_samples/buoy_data/ 
+# image: xx.png
+draft: false
+editor: visual
+toc-title: Contents
+toc-location: left
+toc-depth: 3
+code-tools: 
+  source: true
+  toggle: true
+  caption: view code
+code-block-bg: true
+# code-block-border-left: "#31BAE9"
+---
+
+```{r}
+
+```
+
+This analysis...
+
+```{python}
+# import Python packages
+import pandas as pd
+import numpy as np
+import datetime
+import time
+import calendar
+import netCDF4
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+from matplotlib import gridspec
+from matplotlib import cm
+import statsmodels.api as sm
+```
+
+# Read data and metadata
+
+```{python}
+stn = '071'
+# CDIP Archived Dataset URL
+data_url = 'http://thredds.cdip.ucsd.edu/thredds/dodsC/cdip/archive/' + stn + 'p1/' + stn + 'p1_historic.nc'
+data = netCDF4.Dataset(data_url)
+```
+
+```{python}
+data
+```
+
+```{python}
+data.summary
+```
+
+```{python}
+# return all variables included in the dataset
+print(data.variables.keys())
+```
+
+```{python}
+# learn more about a variable including long name, units, valid min/max values
+print(data['sstSeaSurfaceTemperature'])
+```
+
+```{python}
+# Get SST timestamp variable 
+sst_time_var = data.variables['sstTime']
+
+# Get SST variable 
+sst = data.variables['sstSeaSurfaceTemperature'][:]
+
+# Get wave height timestamp variable
+wave_time_var = data.variables['waveTime']
+
+# Get wave height variable 
+wave = data.variables['waveHs'][:]
+```
+
+```{python}
+# Use num2date on sst_time_var
+sst_time = netCDF4.num2date(sst_time_var[:], sst_time_var.units, only_use_cftime_datetimes=False)
+```
+
+```{python}
+# Make an empty pandas dataframe
+sst_df = pd.DataFrame()
+
+# Fill it with SST and the date time it was collected
+sst_df['date_time'] = sst_time
+# Make date_time column a pandas date_time
+sst_df['date_time'] = pd.to_datetime(sst_df['date_time']) 
+# Pull out date from datetime
+sst_df['date'] = sst_df['date_time'].dt.date
+# Pull out month from datetime
+sst_df['month'] = sst_df['date_time'].dt.month
+# Pull out year from datetime
+sst_df['year'] = sst_df['date_time'].dt.year
+sst_df['sst'] = sst
+sst_df
+```
+
+```{python}
+# Use num2date on wave_time_var
+wave_time = netCDF4.num2date(wave_time_var[:], wave_time_var.units, only_use_cftime_datetimes=False)
+# Make an empty pandas dataframe
+wave_df = pd.DataFrame()
+
+# Fill it with wave data and the date time it was collected
+wave_df['date_time'] = wave_time
+# Make date_time column a pandas date_time
+wave_df['date_time'] = pd.to_datetime(wave_df['date_time']) 
+# Pull out date from datetime
+wave_df['date'] = wave_df['date_time'].dt.date
+# Pull out month from datetime
+wave_df['month'] = wave_df['date_time'].dt.month
+# Pull out year from datetime
+wave_df['year'] = wave_df['date_time'].dt.year
+wave_df['wave'] = wave
+wave_df
+```
+
+
+# Visualize Data
+```{python}
+# Plot here to see what the data looks like
+f, (pHs, pSst) = plt.subplots(2, 1, sharex=True, figsize=(15,10)) 
+pSst.plot(sst_df.date, sst_df.sst, linewidth = 0.5)
+pHs.plot(wave_df.date, wave_df.wave, linewidth = 0.5)
+plt.title("Harvest Buoy", fontsize=30, y = 2.3)
+pHs.set_ylabel('Wave Height, m', fontsize=18)
+pSst.set_ylabel('SST, C', fontsize=18)
+plt.show()
+```
+
+```{python}
+# Filter data to be greater than 1997 to dump missing values
+sst_df = sst_df[sst_df['year'] > 1997]
+
+wave_df = wave_df[wave_df['year'] > 1997]
+```
+
+
+```{python}
+# Group by date and summarise with mean SST and Wave Height
+sst_monthly = sst_df.groupby(['month', 'year']).agg({'sst': 'mean'})
+sst_monthly
+```
+
+```{python}
+wave_monthly = wave_df.groupby(['month', 'year']).agg({'wave': 'mean'})
+wave_monthly
+```
+
+
+```{python}
+# join monthly sst and wave data into a buoy dataframe
+buoy_df = sst_monthly.join(wave_monthly).reset_index()
+buoy_df
+```
+
+```{python}
+# calculate the anomalies
+buoy_anom_df = buoy_df.groupby(['month', 'year']).agg({'sst': 'mean', 'wave': 'mean'}) - \
+    buoy_df.groupby(['month']).agg({'sst': 'mean', 'wave': 'mean'})
+buoy_anom_df = buoy_anom_df.reset_index()
+buoy_anom_df.columns=['month', 'year', 'sst_anom', 'wave_anom']
+buoy_anom_df.head()
+```
+
+```{python}
+# Assign arbitrary day value
+buoy_anom_df = buoy_anom_df.assign(day = 1) 
+
+# set datetime 
+buoy_anom_df['date'] = pd.to_datetime(buoy_anom_df[['year', 'month', 'day']])
+
+# sort values
+buoy_anom_df = buoy_anom_df.sort_values(by=['date'])
+
+# set the index for plotting
+buoy_anom_df = buoy_anom_df.set_index('date')
+buoy_anom_df
+```
+
+
+
